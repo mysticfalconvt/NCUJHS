@@ -28,6 +28,7 @@ const userSchema = new Schema({
 	hearts               : [
 		{ type: mongoose.Schema.ObjectId, ref: 'Store' },
 	],
+	isTeacher: Boolean
 });
 
 userSchema.virtual('gravatar').get(function() {
