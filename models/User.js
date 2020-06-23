@@ -25,9 +25,6 @@ const userSchema = new Schema({
 	},
 	resetPasswordToken   : String,
 	resetPasswordExpires : Date,
-	hearts               : [
-		{ type: mongoose.Schema.ObjectId, ref: 'Store' },
-	],
 	isTeacher: {
 		type: Boolean, 
 		default: false
@@ -35,13 +32,10 @@ const userSchema = new Schema({
 	isAdmin: {
 		type: Boolean, 
 		default: false
-	}
+	},
+	currentAssignment: String
 });
 
-userSchema.virtual('gravatar').get(function() {
-	const hash = md5(this.email);
-	return `https://gravatar.com/avatar/${hash}?s=200`;
-});
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);
