@@ -1,35 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const storeController = require('../controllers/storeController');
+const calendarController = require('../controllers/calendarController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
-router.get('/', catchErrors(storeController.getStores));
-router.get('/stores', catchErrors(storeController.getStores));
-router.get('/add', authController.isLoggedIn, storeController.addStore);
+router.get('/', catchErrors(calendarController.getEvents));
+router.get('/calendars', catchErrors(calendarController.getEvents));
+router.get('/add', authController.isLoggedIn, calendarController.addEvent);
 
 router.post(
 	'/add',
-	storeController.upload,
-	catchErrors(storeController.resize),
-	catchErrors(storeController.createStore),
+	catchErrors(calendarController.createEvent),
 );
 
 router.post(
 	'/add/:id',
-	storeController.upload,
-	catchErrors(storeController.resize),
-	catchErrors(storeController.updateStore),
+	
+	catchErrors(calendarController.updateEvent),
 );
 
-router.get('/stores/:id/edit', catchErrors(storeController.editStore));
+router.get('/calendar/:_id/edit', catchErrors(calendarController.editEvent));
 
-router.get('/store/:slug', catchErrors(storeController.getStoreBySlug));
+router.get('/calendar/:_id', catchErrors(calendarController.getEventByID));
 
-router.get('/tags', catchErrors(storeController.getStoresByTag));
-router.get('/tags/:tag', catchErrors(storeController.getStoresByTag));
+
 
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
@@ -43,15 +39,13 @@ router.post('/account', catchErrors(userController.updateAccount));
 router.post('/account/forgot', catchErrors(authController.forgot));
 router.get('/account/reset/:token', catchErrors(authController.reset));
 router.post('/account/reset/:token', authController.confirmedPasswords, catchErrors(authController.update));
-router.get('/map', storeController.mapPage);
+
 
 /* 
 	API
 */
 
-router.get('/api/search', catchErrors(storeController.searchStores));
-router.get('/api/stores/near', catchErrors(storeController.mapStores));
+router.get('/api/search', catchErrors(calendarController.searchEvent));
 
-router.post('/api/stores/:id/heart', catchErrors(storeController.heartStore));
 
 module.exports = router;

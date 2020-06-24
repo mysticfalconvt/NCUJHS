@@ -9,7 +9,7 @@ const callbackSchema = new mongoose.Schema({
   teacher: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    required: 'You must supply an teacher!'
+    required: 'You must supply a teacher!'
   },
   student: {
     type: mongoose.Schema.ObjectId,
@@ -20,7 +20,9 @@ const callbackSchema = new mongoose.Schema({
     type: String,
     required: 'You must have an assignment!'
   },
-  
+  completed: {
+    type: Boolean
+  }
 });
 
 function autopopulate(next) {

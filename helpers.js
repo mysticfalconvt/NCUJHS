@@ -16,14 +16,13 @@ exports.staticMap = ([lng, lat]) => `https://maps.googleapis.com/maps/api/static
 
 // inserting an SVG
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
+exports.logo = (name) => fs.readFileSync(`./public/images/icons/${name}.png`);
 
 // Some details about the site
 exports.siteName = `Now That's Delicious!`;
 
 exports.menu = [
-  { slug: '/stores', title: 'Stores', icon: 'store', },
-  { slug: '/tags', title: 'Tags', icon: 'tag', },
-  { slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/add', title: 'Add', icon: 'add', },
-  { slug: '/map', title: 'Map', icon: 'map', },
+  { slug: '/calendars', title: 'Events', icon: 'map', },
+  { slug: '/callback', title: 'Callback', icon: 'tag', },
+    
 ];

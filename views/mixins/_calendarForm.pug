@@ -1,0 +1,15 @@
+mixin calendarForm(calendar = {})
+  form(action=`/add/${calendar._id || ''}` method="POST" class="card" )
+    label(for="title") Event Title
+    input(type="text" name="title" value=calendar.title)
+    label(for="Date") Event Date
+    input(type="text" name="Date" value=calendar.Date)
+    label(for="description") Description
+    textarea(name="description")= calendar.description
+    label(for="linkTitle") Link
+    textarea(name="link")= calendar.link
+    label(for="linkTitle") Link Title
+    textarea(name="linkTitle")= calendar.linkTitle
+    
+   
+    input(type="submit" value="Save →" class="button")

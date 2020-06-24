@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    .single
+        .single__hero
+            h2.title.title--single
+                a(href=`/calendar/${calendar._id}/edit`) #{calendar.title}
+                p= calendar.Date.getMonth()+1 +"/"+ calendar.Date.getDate() +"/" + calendar.Date.getFullYear()
+
+    .single.details.inner
+        p= calendar.description
+        a(href=`//${calendar.link}`) Link to: #{calendar.linkTitle}
+        p= "Date added to calendar: "+ calendar.created.getMonth() +"/"+ calendar.created.getDate() +"/" + calendar.created.getFullYear()
+        p= "Event created by: " + calendar.author.name

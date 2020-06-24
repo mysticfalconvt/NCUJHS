@@ -33,7 +33,8 @@ const userSchema = new Schema({
 		type: Boolean, 
 		default: false
 	},
-	currentAssignment: String
+	currentAssignment: String,
+	
 });
 
 

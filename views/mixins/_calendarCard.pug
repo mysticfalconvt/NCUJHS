@@ -1,0 +1,15 @@
+mixin calendarCard(calendar={})
+    .calendar
+        .calendar__hero
+            .calendar__actions
+                if user
+                    
+                if user && calendar.author.equals(user._id)
+                    .store__action.store__action--edit
+                        a(href=`/calendar/${calendar._id}/edit`)
+                            !=h.icon('pencil')
+            h2.title
+                a(href=`/calendar/${calendar._id}`) #{calendar.title}
+                p= calendar.Date.getMonth()+1 +"/"+ calendar.Date.getDate() +"/" + calendar.Date.getFullYear()
+        .store__details
+            p=calendar.description.split(' ').slice(0,25).join(' ')
