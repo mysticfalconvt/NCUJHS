@@ -27,13 +27,31 @@ html
               if user.isTeacher
                 li.nav__item
                   a.nav__link(href="/addCallback", class=(currentPath.startsWith('/addCallback') ? 'nav__link--active' : ''))
-                    != h.icon('pencil')
+                    != h.icon('add')
                     span #{"add Callback"}
               if user.isAdmin
                 li.nav__item
                   a.nav__link(href="/add", class=(currentPath.startsWith('/add') ? 'nav__link--active' : ''))
-                    != h.icon('add')
+                    != h.icon('addcalendar')
                     span #{"add event"}
+              if user.isTeacher
+                li.nav__item
+                  a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
+                    != h.icon('studentFocus')
+                    span #{"Student Focus"}
+                li.nav__item
+                  a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
+                    != h.icon('pencil')
+                    span #{"add Student Focus"}    
+              else if user.isAdmin
+                li.nav__item
+                  a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
+                    != h.icon('studentFocus')
+                    span #{"Student Focus"}
+                li.nav__item
+                  a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
+                    != h.icon('pencil')
+                    span #{"add Student Focus"}
           .nav__section.nav__section--search
             .search
               input.search__input(type="text" placeholder="Search..." name="search")

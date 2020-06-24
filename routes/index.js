@@ -16,7 +16,7 @@ router.post(
 );
 
 router.post(
-	'/add/:id',
+	'/add/:_id',
 	
 	catchErrors(calendarController.updateEvent),
 );
