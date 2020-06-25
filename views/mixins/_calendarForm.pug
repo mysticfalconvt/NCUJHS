@@ -3,7 +3,7 @@ mixin calendarForm(calendar = {})
     label(for="title") Event Title
     input(type="text" name="title" value=calendar.title)
     label(for="Date") Event Date
-    input(type="text" name="Date" value=calendar.Date)
+    input(type="text" name="Date" value=calendar.Date.getMonth()+1 +"/"+ calendar.Date.getDate() +"/" + calendar.Date.getFullYear())
     label(for="description") Description
     textarea(name="description")= calendar.description
     label(for="linkTitle") Link

@@ -11,24 +11,28 @@ I am a middle school teacher learning Web Dev to make some of the non-teaching p
 
 ## What needs to be done?
 
-Users- Teachers, Admin, Students.  Each with a differnt view and ability to change things.
+**Users** - Teachers, Admin, Students.  Each with a differnt view and ability to change things.
 
-Landing page - if you are not logged in then all you see is the login
 
-Calendar- Everyone can see the events calendar, but only Admin can add things to the calendar.
+**Landing page** - if you are not logged in then all you see is the login
 
-Callback - This is the list of late assignments.  only a teacher can create an assignment and it needs to be tagged to the teacher and the student.  Teacher view includes a check box for completed assignment.  
+
+**Calendar**- Everyone can see the events calendar, but only Admin can add things to the calendar. 
+
+**Added Feature**- home page shows calendar events starting today (or maybe yesterday) and highlights events that are today, and only shows 2 weeks in the future.  Click on Calendar page and it shows all events from 2 weeks ago until the end?
+
+**Callback** - This is the list of late assignments.  only a teacher can create an assignment and it needs to be tagged to the teacher and the student.  Teacher view includes a check box for completed assignment.  
 When a student goes here they see a list of all their own assignments from all teachers.  
 
-Teachers - Each teacher should have a list of TA students.  These are Teacher Advisory or Homeroom students.  
+**Teachers** - Each teacher should have a list of TA students.  These are Teacher Advisory or Homeroom students.  
 When a teacher goes to callback they should see a list of callback assignments for their own TA students.  
 Alternate page where a teacher sees all the callback assignments that they created.
 
-Students - Student has an editable list of up to 8 teachers.  Each student sees the calendar of events, and their callback assignmnets, and their teacher's current assignments.  
+**Students** - Student has an editable list of up to 8 teachers.  Each student sees the calendar of events, and their callback assignmnets, and their teacher's current assignments.  
 
-Current Assignment - Each teacher should have a current assignment.  updatable by the teacher only on their own home page?  Their students see if on their own home pages. 
+**Current Assignment** - Each teacher should have a current assignment.  updatable by the teacher only on their own home page?  Their students see if on their own home pages. 
 
-Student Focus - This is where teachers keep track of students and parent contacts.  Just notes about students that all teachers can see.  Students cannot see this at all.  Teachers and Admin can create and view.  Each one tagged to a student and an author.  Tags - parent contact, behavior, refferal.  
+**Student Focus** - This is where teachers keep track of students and parent contacts.  Just notes about students that all teachers can see.  Students cannot see this at all.  Teachers and Admin can create and view.  Each one tagged to a student and an author.  Tags - parent contact, behavior, referral.  
 
 
-Search - Only available to teacher or admin.  Search by a student name and pull up that student's info: current assignments, callback, and student focus.  
+**Search** - Only available to teacher or admin.  Search by a student name and pull up that student's info: current assignments, callback, and student focus.  
