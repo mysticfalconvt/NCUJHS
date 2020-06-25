@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Calendar = mongoose.model('Calendar');
 const User = mongoose.model('User');
+// get yesterday's date
+const today = new Date()
+const yesterday = new Date(today)
+yesterday.setDate(yesterday.getDate() - 1)
 
 
 exports.addEvent = (req, res) => {
@@ -16,8 +20,13 @@ exports.createEvent = async (req, res) => {
 };
 
 exports.getEvents = async (req, res) => {
+	const timeOffset = 2*86400000;
 	// 1. querey the database
-	const calendars = await Calendar.find();
+	const calendars = await Calendar.find(
+		{
+			Date: {$gte: new Date()-timeOffset}
+		}
+	).sort({Date: 1});
 	res.render('calendars', { title: 'Calendar', calendars: calendars });
 };
 
