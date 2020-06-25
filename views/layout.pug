@@ -13,45 +13,47 @@ html
             li.nav__item
               a.nav__link.nav__link--logo(href="/")
                 img(src='https://33b9108ac7008bb485d5-91c3a2b112acf0947e0c098656bd605c.ssl.cf1.rackcdn.com/ncuhs_login.png' width="60")
-                if user.isTeacher
-                  span Teacher Dashboard
-                else if user.isAdmin
-                  span Admin Dashboard
-                else 
-                  span Student Dashboard
+                if user
+                  if user.isTeacher
+                    span Teacher Dashboard
+                  else if user.isAdmin
+                    span Admin Dashboard
+                  else 
+                    span Student Dashboard
               each item in h.menu
                 li.nav__item
                   a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
                     != h.icon(item.icon)
                     span #{item.title}
-              if user.isTeacher
-                li.nav__item
-                  a.nav__link(href="/addCallback", class=(currentPath.startsWith('/addCallback') ? 'nav__link--active' : ''))
-                    != h.icon('add')
-                    span #{"add Callback"}
-              if user.isAdmin
-                li.nav__item
-                  a.nav__link(href="/add", class=(currentPath.startsWith('/add') ? 'nav__link--active' : ''))
-                    != h.icon('addcalendar')
-                    span #{"add event"}
-              if user.isTeacher
-                li.nav__item
-                  a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
-                    != h.icon('studentFocus')
-                    span #{"Student Focus"}
-                li.nav__item
-                  a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
-                    != h.icon('pencil')
-                    span #{"add Student Focus"}    
-              else if user.isAdmin
-                li.nav__item
-                  a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
-                    != h.icon('studentFocus')
-                    span #{"Student Focus"}
-                li.nav__item
-                  a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
-                    != h.icon('pencil')
-                    span #{"add Student Focus"}
+              if user
+                if user.isTeacher
+                  li.nav__item
+                    a.nav__link(href="/addCallback", class=(currentPath.startsWith('/addCallback') ? 'nav__link--active' : ''))
+                      != h.icon('add')
+                      span #{"add Callback"}
+                if user.isAdmin
+                  li.nav__item
+                    a.nav__link(href="/add", class=(currentPath.startsWith('/add') ? 'nav__link--active' : ''))
+                      != h.icon('addcalendar')
+                      span #{"add event"}
+                if user.isTeacher
+                  li.nav__item
+                    a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
+                      != h.icon('studentFocus')
+                      span #{"Student Focus"}
+                  li.nav__item
+                    a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
+                      != h.icon('pencil')
+                      span #{"add Student Focus"}    
+                else if user.isAdmin
+                  li.nav__item
+                    a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
+                      != h.icon('studentFocus')
+                      span #{"Student Focus"}
+                  li.nav__item
+                    a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
+                      != h.icon('pencil')
+                      span #{"add Student Focus"}
           .nav__section.nav__section--search
             .search
               input.search__input(type="text" placeholder="Search..." name="search")

@@ -11,5 +11,5 @@ mixin calendarCard(calendar={})
             h2.title
                 a(href=`/calendar/${calendar._id}`) #{calendar.title}
                 p= calendar.Date.getMonth()+1 +"/"+ calendar.Date.getDate() +"/" + calendar.Date.getFullYear()
-        .store__details
+        .calendar__details
             p=calendar.description.split(' ').slice(0,25).join(' ')
