@@ -13,9 +13,9 @@ body {
     width: 100%; }
 
 .inner {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto; }
-  @media all and (max-width: 900px) {
+  @media all and (max-width: 1200px) {
     .inner {
       padding: 2rem; } }
 
@@ -763,7 +763,7 @@ label {
 
 .calendar__hero {
   position: relative;
-  padding: 0 10px 0 10px;
+  padding: 12px 10px 0 10px;
   text-align: right; }
   .calendar__hero:before {
     display: block;
@@ -773,7 +773,7 @@ label {
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(45deg, #05b3d6 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #0958ec 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, #d209ec 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, #05e129 100%, rgba(5, 225, 41, 0) 70%);
+    background: linear-gradient(45deg, #2101d6 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #0059ff 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, rgba(180, 13, 35, 0.767) 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, rgba(255, 0, 21, 0.719) 100%, rgba(5, 225, 41, 0) 70%);
     opacity: 0.6;
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);

@@ -30,6 +30,18 @@ exports.getEvents = async (req, res) => {
 	res.render('calendars', { title: 'Calendar', calendars: calendars });
 };
 
+exports.getTodaysEvents = async (req, res) => {
+	const timeOffset = 1*86400000;
+	// 1. querey the database
+	const calendars = await Calendar.find(
+		{
+			Date: {$gte: new Date()-timeOffset,
+				$lte: new Date()+timeOffset,}
+		}
+	).sort({Date: 1});
+	res.render('calendars', { title: 'Calendar', calendars: calendars });
+};
+
 const confirmOwner = (calendar, user) => {
 	if (!calendar.author.equals(user._id)) {
 		throw Error('You must own an event in order to edit it!');

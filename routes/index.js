@@ -6,7 +6,7 @@ const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
-router.get('/', catchErrors(calendarController.getEvents));
+router.get('/', catchErrors(calendarController.getTodaysEvents));
 router.get('/calendars', catchErrors(calendarController.getEvents));
 router.get('/add', authController.isLoggedIn, calendarController.addEvent);
 

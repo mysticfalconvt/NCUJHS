@@ -56,7 +56,7 @@
 
 .calendar__hero {
 	position: relative;
-	padding: 0 10px 0 10px;
+	padding: 12px 10px 0 10px;
 	text-align: right;
 	&:before {
 		display: block;
@@ -66,10 +66,10 @@
 		width: 100%;
 		top: 0;
 		right: 0;
-		background: linear-gradient(45deg, hsla(190, 95%, 43%, 1) 0%, hsla(190, 95%, 43%, 0) 70%),
-			linear-gradient(135deg, hsla(219, 93%, 48%, 1) 10%, hsla(219, 93%, 48%, 0) 80%),
-			linear-gradient(225deg, hsla(293, 93%, 48%, 1) 10%, hsla(293, 93%, 48%, 0) 80%),
-			linear-gradient(315deg, hsla(130, 96%, 45%, 1) 100%, hsla(130, 96%, 45%, 0) 70%);
+		background: linear-gradient(45deg, rgb(33, 1, 214) 0%, hsla(190, 95%, 43%, 0) 70%),
+			linear-gradient(135deg, rgb(0, 89, 255) 10%, hsla(219, 93%, 48%, 0) 80%),
+			linear-gradient(225deg, rgba(180, 13, 35, 0.767) 10%, hsla(293, 93%, 48%, 0) 80%),
+			linear-gradient(315deg, rgba(255, 0, 21, 0.719) 100%, hsla(130, 96%, 45%, 0) 70%);
 		opacity: 0.6;
 		z-index: 1;
 		clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);

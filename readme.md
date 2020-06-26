@@ -36,3 +36,5 @@ Alternate page where a teacher sees all the callback assignments that they creat
 
 
 **Search** - Only available to teacher or admin.  Search by a student name and pull up that student's info: current assignments, callback, and student focus.  
+
+**User** - Admin only option to adjust user roles.  Currently just isAdmin, and isTeacher booleans, since some people need to be both.  
