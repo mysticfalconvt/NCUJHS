@@ -5,6 +5,8 @@ mixin callbackForm(callback = {})
     label(for="description") Description
     textarea(name="description")= callback.description
     label(for="student") student
-    textarea(name="student")= callback.student
+    input(name="student" value=callback.student._id)
+    label(for="completed") Assignment Completed
+    input(type="checkbox" name="completed" checked=callback.completed value="true")
        
     input(type="submit" value="Save →" class="button")

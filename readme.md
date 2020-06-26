@@ -11,6 +11,8 @@ I am a middle school teacher learning Web Dev to make some of the non-teaching p
 
 ## What needs to be done?
 
+**Current struggle** - How to create an autocomplete or something like that so that a teacher can add a student to an assignment. It currently has a box to enter the ID but that isnt really functional.
+
 **Users** - Teachers, Admin, Students.  Each with a differnt view and ability to change things.
 
 

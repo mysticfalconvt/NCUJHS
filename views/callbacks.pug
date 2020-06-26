@@ -4,6 +4,8 @@ include mixins/_callbackCard
 block content
     .inner
         h2= title
+        p 
+            a(href='/callback/teacher/includingCompleted') Search completed
         .calendars
             each callback in callbacks
                 +callbackCard(callback)
