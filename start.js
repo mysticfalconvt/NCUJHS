@@ -25,9 +25,9 @@ mongoose.connection.on('error', (err) => {
 // READY?! Let's go!
 
 // import all our models
-// require('./models/callback');
-require('./models/calendar');
-require('./models/user');
+require('./models/Callback');
+require('./models/Calendar');
+require('./models/User');
 
 // Start our app!
 const app = require('./app');
