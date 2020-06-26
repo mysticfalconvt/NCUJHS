@@ -39,7 +39,7 @@ exports.getTodaysEvents = async (req, res) => {
 				$lte: new Date()+timeOffset,}
 		}
 	).sort({Date: 1});
-	res.render('calendars', { title: 'Calendar', calendars: calendars });
+	res.render('calendars', { title: 'Today!! ', calendars: calendars });
 };
 
 const confirmOwner = (calendar, user) => {

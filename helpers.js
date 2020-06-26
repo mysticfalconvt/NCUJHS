@@ -19,7 +19,7 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.logo = (name) => fs.readFileSync(`./public/images/icons/${name}.png`);
 
 // Some details about the site
-exports.siteName = `Now That's Delicious!`;
+exports.siteName = `NCUJHS Dashboard`;
 
 exports.menu = [
   { slug: '/calendars', title: 'Events', icon: 'map', },
