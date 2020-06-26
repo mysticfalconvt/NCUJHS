@@ -39,7 +39,7 @@ html
                 if user.isTeacher
                   li.nav__item
                     a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
-                      != h.icon('studentFocus')
+                      != h.icon('studentfocus')
                       span #{"Student Focus"}
                   li.nav__item
                     a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
@@ -48,7 +48,7 @@ html
                 else if user.isAdmin
                   li.nav__item
                     a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
-                      != h.icon('studentFocus')
+                      != h.icon('studentfocus')
                       span #{"Student Focus"}
                   li.nav__item
                     a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
