@@ -1,0 +1,8 @@
+extends layout
+
+include mixins/_callbackForm
+
+block content 
+    .inner 
+        h2 #{title}
+        +callbackForm(callback)

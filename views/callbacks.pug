@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/_callbackCard
+block content
+    .inner
+        h2= title
+        .calendars
+            each callback in callbacks
+                +callbackCard(callback)

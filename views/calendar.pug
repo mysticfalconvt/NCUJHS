@@ -4,8 +4,12 @@ block content
     .single
         .single__hero
             h2.title.title--single
-                a(href=`/calendar/${calendar._id}/edit`) #{calendar.title}
-                p= calendar.Date.getMonth()+1 +"/"+ calendar.Date.getDate() +"/" + calendar.Date.getFullYear()
+                a=calendar.title
+                if user
+                    p
+                        a(href=`/calendar/${calendar._id}/edit`) Edit
+            
+                p= calendar.Date.toDateString()
 
     .single.details.inner
         p= calendar.description

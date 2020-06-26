@@ -20,6 +20,9 @@ const callbackSchema = new mongoose.Schema({
     type: String,
     required: 'You must have an assignment!'
   },
+  description: {
+    type: String
+  },
   completed: {
     type: Boolean
   }

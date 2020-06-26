@@ -1,0 +1,10 @@
+mixin callbackForm(callback = {})
+  form(action=`/callback/add/${callback._id || ''}` method="POST" class="card" )
+    label(for="assignment") Assignment
+    input(type="text" name="assignment" value=callback.assignment)
+    label(for="description") Description
+    textarea(name="description")= callback.description
+    label(for="student") student
+    textarea(name="student")= callback.student
+       
+    input(type="submit" value="Save →" class="button")

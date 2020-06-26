@@ -28,7 +28,11 @@ html
               if user
                 if user.isTeacher
                   li.nav__item
-                    a.nav__link(href="/addCallback", class=(currentPath.startsWith('/addCallback') ? 'nav__link--active' : ''))
+                    a.nav__link(href="/callback/teacher", class=(currentPath.startsWith('/callback/teacher') ? 'nav__link--active' : ''))
+                      != h.icon('tag')
+                      span #{"Assigned Callback"}
+                  li.nav__item
+                    a.nav__link(href="/callback/add", class=(currentPath.startsWith('/callback/add') ? 'nav__link--active' : ''))
                       != h.icon('add')
                       span #{"add Callback"}
                 if user.isAdmin

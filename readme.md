@@ -17,7 +17,7 @@ I am a middle school teacher learning Web Dev to make some of the non-teaching p
 **Landing page** - if you are not logged in then all you see is the login
 
 
-**Calendar**- Everyone can see the events calendar, but only Admin can add things to the calendar. 
+**Calendar**- Everyone can see the events calendar, but only Admin can add things to the calendar. -- Done, I think
 
 **Added Feature**- home page shows calendar events starting today (or maybe yesterday) and highlights events that are today, and only shows 2 weeks in the future.  Click on Calendar page and it shows all events from 2 weeks ago until the end?
 
@@ -33,6 +33,7 @@ Alternate page where a teacher sees all the callback assignments that they creat
 **Current Assignment** - Each teacher should have a current assignment.  updatable by the teacher only on their own home page?  Their students see if on their own home pages. 
 
 **Student Focus** - This is where teachers keep track of students and parent contacts.  Just notes about students that all teachers can see.  Students cannot see this at all.  Teachers and Admin can create and view.  Each one tagged to a student and an author.  Tags - parent contact, behavior, referral.  
+
 
 
 **Search** - Only available to teacher or admin.  Search by a student name and pull up that student's info: current assignments, callback, and student focus.  

@@ -1,0 +1,8 @@
+mixin callbackCard(callback={})
+    .calendar
+        .calendar__hero
+            h2.title
+                a(href=`/callback/${callback._id}`) #{callback.assignment}
+                p= callback.assigned.toDateString()
+        .calendar__details
+            p=callback.description.split(' ').slice(0,25).join(' ')

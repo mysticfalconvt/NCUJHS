@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    .single
+        .single__hero
+            h2.title.title--single
+                a(href=`/callback/${callback._id}/edit`) #{callback.assignment}
+                p= "On callback since: " + callback.assigned.toDateString()
+
+    .single.details.inner
+        p= callback.description
+        p= "Assigned by: " + callback.teacher.name
