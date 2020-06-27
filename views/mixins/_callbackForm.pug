@@ -4,9 +4,17 @@ mixin callbackForm(callback = {})
     input(type="text" name="assignment" value=callback.assignment)
     label(for="description") Description
     textarea(name="description")= callback.description
-    label(for="student") student
-    input(name="student" value=callback.student._id)
-    label(for="completed") Assignment Completed
-    input(type="checkbox" name="completed" checked=callback.completed value="true")
+    .search
+      label(for="student") student
+      if callback.student
+        .search__input
+          input(name="student" value=callback.student._id)
+      else
+        .search__input
+        input(name="student" value=callback.student)
+      .search__results
+      if callback.student
+        label(for="completed") Assignment Completed
+        input(type="checkbox" name="completed" checked=callback.completed value="true")
        
     input(type="submit" value="Save →" class="button")

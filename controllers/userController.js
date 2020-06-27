@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const { TRUE } = require('node-sass');
 
 exports.loginForm = (req, res) => {
 	res.render('login', { title: 'Login' });
@@ -55,4 +56,17 @@ exports.updateAccount = async (req, res) => {
 	);
 	req.flash('success', 'Updated the profile!');
 	res.redirect('back');
+};
+
+exports.getStudents = async (req, res) => {
+	const users = await User.find({isTeacher: false, isAdmin: false},{name: 1}).sort({name: 1});
+	userStrings = users.map(function(singleUser) {
+		 return singleUser['name']});
+	res.json(userStrings);
+};
+exports.getTeachers = async (req, res) => {
+	const users = await User.find({ $or: [{ isTeacher: { $ne: false}}, {isAdmin: { $ne: false}}]}, {name: 1}).sort({name: 1});
+	userStrings = users.map(function(singleUser) {
+		 return singleUser['name']});
+	res.json(userStrings);
 };

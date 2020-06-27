@@ -4,6 +4,7 @@ const User = mongoose.model('User');
 
 
 exports.addCallback = (req, res) => {
+
 	res.render('editCallback', { title: 'Add Callback' });
 };
 
@@ -76,7 +77,7 @@ exports.updateCallback = async (req, res) => {
 
 
 exports.searchCallback = async (req, res) => {
-	const callbacks = await callback.find(
+	const users = await User.find(
 		{
 			$text : {
 				$search : req.query.q,
@@ -90,7 +91,7 @@ exports.searchCallback = async (req, res) => {
 		score : { $meta: 'textScore' },
 		})
 		.limit(10);
-		res.json(callbacks);
+		res.json(users);
 	};
 
 

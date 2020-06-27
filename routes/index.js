@@ -50,7 +50,9 @@ router.post('/account/reset/:token', authController.confirmedPasswords, catchErr
 	API
 */
 
-router.get('/api/search', catchErrors(calendarController.searchEvent));
+router.get('/api/search', authController.isLoggedIn, catchErrors(calendarController.searchCallback));
+router.get('/api/getStudents', authController.isLoggedIn, catchErrors(userController.getStudents));
+router.get('/api/getTeachers', authController.isLoggedIn, catchErrors(userController.getTeachers));
 
 
 module.exports = router;
