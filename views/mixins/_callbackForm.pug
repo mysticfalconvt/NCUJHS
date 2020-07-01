@@ -4,22 +4,31 @@ mixin callbackForm(callback = {})
     input(type="text" name="assignment" value=callback.assignment)
     label(for="description") Description
     textarea(name="description")= callback.description
-<<<<<<< HEAD
-    .search
-      label(for="student") student
+
+    label(for="studentName") student Name
+    .student
       if callback.student
-        .search__input
-          input(name="student" value=callback.student._id)
+        input(name="studentName" value=callback.student.name disabled="disabled")
       else
-        .search__input
-        input(name="student" value=callback.student)
-      .search__results
-      if callback.student
-        label(for="completed") Assignment Completed
-        input(type="checkbox" name="completed" checked=callback.completed value="true")
-=======
-    label(for="student") student
-    textarea(name="student")= callback.student
->>>>>>> parent of 66f06e3... added callback completion
-       
+        input(name="studentName" type="text" value=callback.student)
+      .search
+        .search__results
+    label(for="linkTitle") Link
+    textarea(name="link")= callback.link
+    label(for="linkTitle") Link Title
+    textarea(name="linkTitle")= callback.linkTitle
+
+    if callback.student
+      label(for="completed") Assignment Completed
+      input(type="checkbox" name="completed" checked=callback.completed value="true")
+      
+    label(for="student") student ID (do not change)
+    if callback.student
+      .search__input
+        input(name="student" value=callback.student._id disabled="disabled")
+    else
+      .search__input
+      input(name="student" value=callback.student)
+      
     input(type="submit" value="Save →" class="button")
+  

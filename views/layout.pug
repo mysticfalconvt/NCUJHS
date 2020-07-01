@@ -58,10 +58,10 @@ html
                     a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
                       != h.icon('pencil')
                       span #{"add Student Focus"}
-          .nav__section.nav__section--search
-            .search
-              input.search__input(type="text" placeholder="Search..." name="search")
-              .search__results
+          //- .nav__section.nav__section--search
+          //-   .search
+          //-     input.search__input(type="text" placeholder="Search..." name="search")
+          //-     .search__results
           .nav__section.nav__section--user
             if user
               li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))

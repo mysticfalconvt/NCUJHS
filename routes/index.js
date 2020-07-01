@@ -20,7 +20,7 @@ router.get('/calendar/:_id/edit', catchErrors(calendarController.editEvent));
 router.get('/calendar/:_id', catchErrors(calendarController.getEventByID));
 
 // Callback Routes
-router.get('/callback/add', authController.isLoggedIn, callbackController.addCallback);
+router.get('/callback/add', authController.isLoggedIn, catchErrors(callbackController.addCallback));
 router.post('/callback/add', authController.isLoggedIn, catchErrors(callbackController.createCallback));
 router.post('/callback/add/:_id', authController.isLoggedIn, catchErrors(callbackController.updateCallback));
 router.get('/callback/teacher', catchErrors(callbackController.getCallbackByTeacher));
@@ -46,7 +46,7 @@ router.post('/account/reset/:token', authController.confirmedPasswords, catchErr
 	API
 */
 
-router.get('/api/search', authController.isLoggedIn, catchErrors(calendarController.searchCallback));
+router.get('/api/search', authController.isLoggedIn, catchErrors(callbackController.searchCallback));
 router.get('/api/getStudents', authController.isLoggedIn, catchErrors(userController.getStudents));
 router.get('/api/getTeachers', authController.isLoggedIn, catchErrors(userController.getTeachers));
 

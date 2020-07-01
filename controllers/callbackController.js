@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { getStudents } = require('./userController');
 const Callback = mongoose.model('Callback');
 const User = mongoose.model('User');
 // get yesterday's date
@@ -7,9 +8,13 @@ const yesterday = new Date(today)
 yesterday.setDate(yesterday.getDate() - 1)
 
 
-exports.addCallback = (req, res) => {
 
-	res.render('editCallback', { title: 'Add Callback' });
+exports.addCallback = async (req, res) => {
+	const users = await User.find({isTeacher: false, isAdmin: false},{name: 1}).sort({name: 1});
+	studentList = users.map(function(singleUser) {
+		 return singleUser['name']});
+	
+	res.render('editCallback', { title: 'Add Callback', students: studentList });
 };
 
 
@@ -52,7 +57,7 @@ const confirmOwner = (callback, user) => {
 exports.editCallback = async (req, res) => {
 	//find the event given id
 	const callback = await Callback.findOne({ _id: req.params._id });
-
+	const studentList = await 
 	//confirm they are owner of the event
 	confirmOwner(callback, req.user);
 	//render out the edit form so they can edit

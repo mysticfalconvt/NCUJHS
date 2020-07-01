@@ -24,12 +24,20 @@ const callbackSchema = new mongoose.Schema({
     type: String
   },
   completed: {
-    type: Boolean
-  }
+    type: Boolean,
+    default: false
+  },
+  link: {
+    type: String,
+  },
+  linkTitle: {
+    type: String,
+  },
 });
 
 function autopopulate(next) {
   this.populate('teacher');
+  this.populate('student');
   next();
 }
 
