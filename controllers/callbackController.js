@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Callback = mongoose.model('Callback');
 const User = mongoose.model('User');
+// get yesterday's date
+const today = new Date()
+const yesterday = new Date(today)
+yesterday.setDate(yesterday.getDate() - 1)
 
 
 exports.addCallback = (req, res) => {
@@ -8,11 +12,6 @@ exports.addCallback = (req, res) => {
 	res.render('editCallback', { title: 'Add Callback' });
 };
 
-exports.getCallbackByID = async (req, res, next) => {
-	const callback = await Callback.findOne({ _id: req.params._id });
-	if (!callback) return next();
-	res.render('callback', { callback, title: callback.title });
-};
 
 exports.createCallback = async (req, res) => {
 	req.body.teacher = req.user.id;
@@ -21,28 +20,28 @@ exports.createCallback = async (req, res) => {
 	res.redirect(`/callback/${callback._id}`);
 };
 
-exports.getCallbackByTeacher = async (req, res) => {	
+exports.getCallbackByTeacher = async (req, res) => {
+	
 	// 1. querey the database
 	const callbacks = await Callback.find(
 		{
-			teacher: req.user._id,
-			completed: false
+			teacher: req.user._id
 		}
-	).sort({student: 1, assigned: 1});
-
+	).sort({Date: 1});
 	res.render('callbacks', { title: 'callback', callbacks: callbacks });
 };
-exports.getCallbackByTeacherIncludingCompleted = async (req, res) => {	
+
+exports.getTodaysEvents = async (req, res) => {
+	const timeOffset = 1*86400000;
 	// 1. querey the database
-	const callbacks = await Callback.find(
+	const callbacks = await callback.find(
 		{
-			teacher: req.user._id			
+			Date: {$gte: new Date()-timeOffset,
+				$lte: new Date()+timeOffset,}
 		}
-	).sort({student: 1, assigned: 1});
-
-	res.render('callbacks', { title: 'callback', callbacks: callbacks });
+	).sort({Date: 1});
+	res.render('callbacks', { title: 'Todays Events! ', callbacks: callbacks });
 };
-
 
 const confirmOwner = (callback, user) => {
 	if (!callback.teacher.equals(user._id)) {
@@ -94,6 +93,11 @@ exports.searchCallback = async (req, res) => {
 		res.json(users);
 	};
 
+exports.getCallbackByID = async (req, res, next) => {
+	const callback = await Callback.findOne({ _id: req.params._id });
+	if (!callback) return next();
+	res.render('callback', { callback, title: callback.title });
+};
 
 exports.getStoresByTag = async (req, res) => {
 	const tag = req.params.tag;

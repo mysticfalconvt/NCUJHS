@@ -1,15 +1,11 @@
 extends layout
 
 block content
-    -owner = user.id == callback.teacher._id
     .single
         .single__hero
             h2.title.title--single
-                a=callback.assignment
-                if owner
-                    p
-                        a(href=`/callback/${callback._id}/edit`) edit
-                p= callback.student.name + " has been on callback since: " + callback.assigned.toDateString()
+                a(href=`/callback/${callback._id}/edit`) #{callback.assignment}
+                p= "On callback since: " + callback.assigned.toDateString()
 
     .single.details.inner
         p= callback.description

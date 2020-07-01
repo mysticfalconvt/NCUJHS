@@ -30,7 +30,6 @@ const callbackSchema = new mongoose.Schema({
 
 function autopopulate(next) {
   this.populate('teacher');
-  this.populate('student')
   next();
 }
 
