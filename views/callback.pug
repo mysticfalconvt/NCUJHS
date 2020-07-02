@@ -4,7 +4,10 @@ block content
     .single
         .single__hero
             h2.title.title--single
-                a(href=`/callback/${callback._id}/edit`) #{callback.assignment}
+                a=callback.assignment
+                if editable
+                    p
+                        a(href=`/callback/${callback._id}/edit`) Edit
                 p= "On callback since: " + callback.assigned.toDateString()
 
     .single.details.inner

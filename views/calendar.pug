@@ -5,7 +5,7 @@ block content
         .single__hero
             h2.title.title--single
                 a=calendar.title
-                if user
+                if editable
                     p
                         a(href=`/calendar/${calendar._id}/edit`) Edit
             

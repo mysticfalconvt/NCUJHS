@@ -95,7 +95,8 @@ exports.searchEvent = async (req, res) => {
 exports.getEventByID = async (req, res, next) => {
 	const calendar = await Calendar.findOne({ _id: req.params._id });
 	if (!calendar) return next();
-	res.render('calendar', { calendar, title: calendar.title });
+	const editable = calendar.author.equals(req.user._id)
+	res.render('calendar', { calendar, editable, title: calendar.title });
 };
 
 exports.getStoresByTag = async (req, res) => {

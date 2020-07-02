@@ -57,8 +57,7 @@ const confirmOwner = (callback, user) => {
 exports.editCallback = async (req, res) => {
 	//find the event given id
 	const callback = await Callback.findOne({ _id: req.params._id });
-	const studentList = await 
-	//confirm they are owner of the event
+		//confirm they are owner of the event
 	confirmOwner(callback, req.user);
 	//render out the edit form so they can edit
 	res.render('editCallback', { title: `edit ${callback.assignment}`, callback });
@@ -101,7 +100,8 @@ exports.searchCallback = async (req, res) => {
 exports.getCallbackByID = async (req, res, next) => {
 	const callback = await Callback.findOne({ _id: req.params._id });
 	if (!callback) return next();
-	res.render('callback', { callback, title: callback.title });
+	const editable = callback.teacher.equals(req.user._id)
+	res.render('callback', { callback, editable, title: callback.title });
 };
 
 exports.getStoresByTag = async (req, res) => {
