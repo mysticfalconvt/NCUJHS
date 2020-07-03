@@ -993,7 +993,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function searchResultsHTML(users) {
 	return users.map(function (user) {
-		return '<p class="search__result">\n                <strong>' + user.name + '</strong>\n        </p>';
+		return '<p class="search__result">\n               ' + user.name + '\n        </p>';
 	}).join('');
 }
 
@@ -1008,16 +1008,14 @@ function typeAhead(search) {
 		var _this = this;
 
 		if (!this.value) {
-			console.log('no search');
+
 			searchResults.style.display = 'none';
 			return;
 		}
-		console.log('search');
 		searchResults.style.display = 'block';
 		searchResults.style.innerHTML = '';
 		_axios2.default.get('/api/search?q=' + this.value).then(function (res) {
 			if (res.data.length) {
-				console.log(res.data);
 				searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
 				return;
 			}
@@ -1039,6 +1037,7 @@ function typeAhead(search) {
 
 	//   Keyboard controls
 	searchInput.on('keyup', function (e) {
+		var studentName = document.getElementById('search');
 		if (![38, 40, 13].includes(e.keyCode)) {
 			return;
 		}
@@ -1047,7 +1046,6 @@ function typeAhead(search) {
 		var items = search.querySelectorAll('.search__result');
 		var next = void 0;
 
-		console.log(current);
 		if (e.keyCode === 40 && current) {
 			next = current.nextElementSibling || items[0];
 		} else if (e.keyCode === 40) {
@@ -1057,8 +1055,8 @@ function typeAhead(search) {
 		} else if (e.keyCode === 38) {
 			next = items[items.length - 1];
 		} else if (e.keyCode === 13) {
-			console.log(current.strong);
-			search = current;
+			studentName.value = current.innerHTML.trim();
+			searchResults.style.display = 'none';
 			return;
 		}
 		if (current) {
