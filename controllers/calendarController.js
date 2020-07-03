@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Calendar = mongoose.model('Calendar');
+const Callback = mongoose.model('Callback');
 const User = mongoose.model('User');
 // get yesterday's date
 const today = new Date()
@@ -39,7 +40,12 @@ exports.getTodaysEvents = async (req, res) => {
 				$lte: new Date()+timeOffset,}
 		}
 	).sort({Date: 1});
-	res.render('calendars', { title: 'Todays Events! ', calendars: calendars });
+	const callbacks = await Callback.find(
+		{
+			student: req.user._id
+		}
+	).sort({date: 1});
+	res.render('dashboard', { title: 'Todays Events! ', calendars: calendars, callbacks: callbacks });
 };
 
 const confirmOwner = (calendar, user) => {
