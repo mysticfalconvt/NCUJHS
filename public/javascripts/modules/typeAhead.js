@@ -11,6 +11,20 @@ function searchResultsHTML(users) {
 		.join('');
 }
 
+function fillId(search){
+	console.log(search.value)
+	const id = document.getElementById('id')
+	axios
+		.get(`/api/search?q=${search.value}`)
+		.then((res) => {
+			console.log(res.data[0]._id);
+			id.value = res.data[0]._id;
+		})
+		.catch((err) => {
+			console.error(err);
+		});
+};
+
 function typeAhead(search) {
 	if (!search) return;
 
@@ -80,6 +94,7 @@ function typeAhead(search) {
 		} else if (e.keyCode === 13 ) {
 			studentName.value = current.innerHTML.trim();
 			searchResults.style.display = 'none';
+			fillId(searchInput)
 			return;
 		}
 		if (current) {

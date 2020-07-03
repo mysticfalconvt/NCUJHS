@@ -997,6 +997,17 @@ function searchResultsHTML(users) {
 	}).join('');
 }
 
+function fillId(search) {
+	console.log(search.value);
+	var id = document.getElementById('id');
+	_axios2.default.get('/api/search?q=' + search.value).then(function (res) {
+		console.log(res.data[0]._id);
+		id.value = res.data[0]._id;
+	}).catch(function (err) {
+		console.error(err);
+	});
+};
+
 function typeAhead(search) {
 	if (!search) return;
 
@@ -1057,6 +1068,7 @@ function typeAhead(search) {
 		} else if (e.keyCode === 13) {
 			studentName.value = current.innerHTML.trim();
 			searchResults.style.display = 'none';
+			fillId(searchInput);
 			return;
 		}
 		if (current) {

@@ -25,10 +25,10 @@ mixin callbackForm(callback = {})
     label(for="student") student ID (do not change)
     if callback.student
       .search__input
-        input(name="student" value=callback.student._id disabled="disabled")
+        input(name="student" id="id" value=callback.student._id disabled="disabled")
     else
       .search__input
-      input(name="student" value=callback.student)
+      input(name="student" id="id" value=callback.student )
       
     input(type="submit" value="Save →" class="button")
   
