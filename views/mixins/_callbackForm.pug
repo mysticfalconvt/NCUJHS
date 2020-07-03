@@ -10,7 +10,7 @@ mixin callbackForm(callback = {})
       if callback.student
         input(name="studentName" value=callback.student.name disabled="disabled")
       else
-        input(name="studentName" type="text" value=callback.student)
+        input(name="studentName" id="search" type="text" value=callback.student)
       .search
         .search__results
     label(for="linkTitle") Link

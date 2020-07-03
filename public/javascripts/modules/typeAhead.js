@@ -45,6 +45,16 @@ function typeAhead(search) {
 	});
 
 	//handle keyboard input
+
+	//stop enter on search
+	document.getElementById("search").onkeypress = function(e) {
+		var key = e.charCode || e.keyCode || 0;     
+		if (key == 13) {
+		  e.preventDefault();
+		}
+	  }
+
+	//   Keyboard controls
 	searchInput.on('keyup', (e) => {
 		if (
 			![
@@ -60,7 +70,7 @@ function typeAhead(search) {
 			const items = search.querySelectorAll('.search__result');
 			let next;
 			
-			console.log(window.location)
+			console.log(current)
 			if (e.keyCode === 40 && current) {
 			next = current.nextElementSibling || items[0];
 		} else if (e.keyCode === 40) {
@@ -69,8 +79,9 @@ function typeAhead(search) {
 			next = current.previousElementSibling || items[items.length - 1];
 		} else if (e.keyCode === 38) {
 			next = items[items.length - 1];
-		} else if (e.keyCode === 13 && current.p) {
-			window.location = current.strong;
+		} else if (e.keyCode === 13 ) {
+			console.log(current.strong)
+			search = current;
 			return;
 		}
 		if (current) {
