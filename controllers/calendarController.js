@@ -42,7 +42,8 @@ exports.getTodaysEvents = async (req, res) => {
 	).sort({Date: 1});
 	const callbacks = await Callback.find(
 		{
-			student: req.user._id
+			student: req.user._id,
+			completed: false
 		}
 	).sort({date: 1});
 	res.render('dashboard', { title: 'Todays Events! ', calendars: calendars, callbacks: callbacks });
