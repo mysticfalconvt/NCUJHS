@@ -721,7 +721,7 @@ label {
 .calendar {
   background: white;
   margin: 1.25em 0 0 1.25em;
-  width: calc(33.3333% - 1.25em);
+  width: calc(25% - 1.25em);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
   .calendar--wide {
     width: 100%; }
@@ -799,7 +799,7 @@ label {
 .calendar {
   background: white;
   margin: 1.25em 0 0 1.25em;
-  width: calc(33.3333% - 1.25em);
+  width: calc(25% - 1.25em);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
   .calendar--wide {
     width: 100%; }

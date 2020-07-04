@@ -9,7 +9,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 // Do work here
 
 //home route
-router.get('/', catchErrors(calendarController.getTodaysEvents));
+router.get('/', catchErrors(calendarController.dashboard));
 
 // Calendar Routes
 router.get('/add', authController.isLoggedIn, calendarController.addEvent);

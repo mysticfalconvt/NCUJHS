@@ -31,7 +31,7 @@ exports.getEvents = async (req, res) => {
 	res.render('calendars', { title: 'Calendar', calendars: calendars });
 };
 
-exports.getTodaysEvents = async (req, res) => {
+exports.dashboard = async (req, res) => {
 	const timeOffset = 1*86400000;
 	// 1. querey the database
 	const calendars = await Calendar.find(
@@ -46,7 +46,7 @@ exports.getTodaysEvents = async (req, res) => {
 			completed: false
 		}
 	).sort({date: 1});
-	res.render('dashboard', { title: 'Todays Events! ', calendars: calendars, callbacks: callbacks });
+	res.render('dashboard', { title: 'N.C.U.J.H.S. Dashboard ', calendars: calendars, callbacks: callbacks });
 };
 
 const confirmOwner = (calendar, user) => {
