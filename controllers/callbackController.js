@@ -30,6 +30,17 @@ exports.getCallbackByTeacher = async (req, res) => {
 	// 1. querey the database
 	const callbacks = await Callback.find(
 		{
+			teacher: req.user._id,
+			completed: false
+		}
+	).sort({Date: 1});
+	res.render('callbacks', { title: 'callback', callbacks: callbacks });
+};
+exports.getallCallbackByTeacher = async (req, res) => {
+	
+	// 1. querey the database
+	const callbacks = await Callback.find(
+		{
 			teacher: req.user._id
 		}
 	).sort({Date: 1});
@@ -85,6 +96,7 @@ exports.searchCallback = async (req, res) => {
 			$text : {
 				$search : req.query.q,
 			},
+			isTeacher : false
 		},
 		{
 			score : { $meta: 'textScore' },

@@ -4,6 +4,11 @@ include mixins/_callbackCard
 block content
     .inner
         h2= title
+        p 
+            if currentPath.startsWith('/callback/teacher/old')
+                a(href="/callback/teacher") Only incomplete Callback
+            else 
+                a(href="/callback/teacher/old") Include Completed Callback
         .calendars
             each callback in callbacks
                 +callbackCard(callback)

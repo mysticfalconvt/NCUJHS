@@ -23,6 +23,7 @@ router.get('/calendar/:_id', catchErrors(calendarController.getEventByID));
 router.get('/callback/add', authController.isLoggedIn, catchErrors(callbackController.addCallback));
 router.post('/callback/add', authController.isLoggedIn, catchErrors(callbackController.createCallback));
 router.post('/callback/add/:_id', authController.isLoggedIn, catchErrors(callbackController.updateCallback));
+router.get('/callback/teacher/old', catchErrors(callbackController.getallCallbackByTeacher));
 router.get('/callback/teacher', catchErrors(callbackController.getCallbackByTeacher));
 router.get('/callback/:_id/edit', catchErrors(callbackController.editCallback));
 router.get('/callback/:_id', catchErrors(callbackController.getCallbackByID));

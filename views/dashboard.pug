@@ -1,9 +1,12 @@
 extends layout
 
 include mixins/_calendarCard
+include mixins/_callbackCard
 block content
     .inner
         h2= title
         .calendars
             each calendar in calendars
                 +calendarCard(calendar)
+            each callback in callbacks
+                +callbackCard(callback)
