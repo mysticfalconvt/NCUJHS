@@ -1000,7 +1000,7 @@ function searchResultsHTML(users) {
 function fillId(search) {
 	console.log(search.value);
 	var id = document.getElementById('id');
-	_axios2.default.get('/api/search?q=' + search.value).then(function (res) {
+	_axios2.default.get('/api/searchAll?q=' + search.value).then(function (res) {
 		console.log(res.data[0]._id);
 		id.value = res.data[0]._id;
 	}).catch(function (err) {
@@ -1025,7 +1025,7 @@ function typeAhead(search) {
 		}
 		searchResults.style.display = 'block';
 		searchResults.style.innerHTML = '';
-		_axios2.default.get('/api/search?q=' + this.value).then(function (res) {
+		_axios2.default.get('/api/searchStudent?q=' + this.value).then(function (res) {
 			if (res.data.length) {
 				searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
 				return;

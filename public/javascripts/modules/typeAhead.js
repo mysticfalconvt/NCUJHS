@@ -15,7 +15,7 @@ function fillId(search){
 	console.log(search.value)
 	const id = document.getElementById('id')
 	axios
-		.get(`/api/search?q=${search.value}`)
+		.get(`/api/searchAll?q=${search.value}`)
 		.then((res) => {
 			console.log(res.data[0]._id);
 			id.value = res.data[0]._id;
@@ -41,7 +41,7 @@ function typeAhead(search) {
 		searchResults.style.display = 'block';
 		searchResults.style.innerHTML = '';
 		axios
-			.get(`/api/search?q=${this.value}`)
+			.get(`/api/searchStudent?q=${this.value}`)
 			.then((res) => {
 				if (res.data.length) {
 					searchResults.innerHTML = dompurify.sanitize(searchResultsHTML(res.data));

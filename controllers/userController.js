@@ -58,15 +58,61 @@ exports.updateAccount = async (req, res) => {
 	res.redirect('back');
 };
 
-exports.getStudents = async (req, res) => {
-	const users = await User.find({isTeacher: false, isAdmin: false},{name: 1}).sort({name: 1});
-	userStrings = users.map(function(singleUser) {
-		 return singleUser['name']});
-	res.json(userStrings);
-};
-exports.getTeachers = async (req, res) => {
-	const users = await User.find({ $or: [{ isTeacher: { $ne: false}}, {isAdmin: { $ne: false}}]}, {name: 1}).sort({name: 1});
-	userStrings = users.map(function(singleUser) {
-		 return singleUser['name']});
-	res.json(userStrings);
-};
+
+
+
+exports.searchTeacher = async (req, res) => {
+	const users = await User.find(
+		{
+			$text : {
+				$search : req.query.q,
+			},
+			isTeacher : true
+		},
+		{
+			score : { $meta: 'textScore' },
+		},
+	)
+	.sort({
+		score : { $meta: 'textScore' },
+		})
+		.limit(10);
+		res.json(users);
+	};
+exports.searchStudent = async (req, res) => {
+	const users = await User.find(
+		{
+			$text : {
+				$search : req.query.q,
+			},
+			isTeacher : false,
+			isAdmin: false
+		},
+		{
+			score : { $meta: 'textScore' },
+		},
+	)
+	.sort({
+		score : { $meta: 'textScore' },
+		})
+		.limit(10);
+		res.json(users);
+	};
+exports.searchAll = async (req, res) => {
+	const users = await User.find(
+		{
+			$text : {
+				$search : req.query.q,
+			},
+			isTeacher : false
+		},
+		{
+			score : { $meta: 'textScore' },
+		},
+	)
+	.sort({
+		score : { $meta: 'textScore' },
+		})
+		.limit(10);
+		res.json(users);
+	};
