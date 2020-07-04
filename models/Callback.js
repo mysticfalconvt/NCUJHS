@@ -33,6 +33,7 @@ const callbackSchema = new mongoose.Schema({
   linkTitle: {
     type: String,
   },
+  message: String
 });
 
 function autopopulate(next) {

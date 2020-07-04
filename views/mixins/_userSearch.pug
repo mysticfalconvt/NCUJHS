@@ -1,0 +1,14 @@
+mixin userSearch(student = {})
+  form(action=`/user/${student.id || ''}` method="get" class="card" )
+
+    label(for="studentName") student Name
+    .student
+      input(name="studentName" id="search" type="text" )
+      .search
+        .search__results
+   
+      .search__input
+      input(name="id" id="id" )
+      
+    input(type="submit" value="Search →" class="button")
+  

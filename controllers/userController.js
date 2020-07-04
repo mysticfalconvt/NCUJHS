@@ -10,6 +10,9 @@ exports.loginForm = (req, res) => {
 exports.registerForm = (req, res) => {
 	res.render('register', { title: 'Register' });
 };
+exports.searchUser = (req, res) => {
+	res.render('searchUser', { title: 'Search for an account' });
+};
 
 exports.validateRegister = (req, res, next) => {
 	req.sanitizeBody('name');
@@ -43,6 +46,9 @@ exports.register = async (req, res, next) => {
 exports.account = (req, res) => {
 	res.render('account', { title: 'Edit your account' });
 };
+exports.editAccount = (req, res) => {
+	res.render('accountAdmin', { title: 'Edit account' });
+};
 
 exports.updateAccount = async (req, res) => {
 	const updates = {
@@ -60,7 +66,7 @@ exports.updateAccount = async (req, res) => {
 
 
 
-
+	//API
 exports.searchTeacher = async (req, res) => {
 	const users = await User.find(
 		{
@@ -98,6 +104,7 @@ exports.searchStudent = async (req, res) => {
 		.limit(10);
 		res.json(users);
 	};
+
 exports.searchAll = async (req, res) => {
 	const users = await User.find(
 		{

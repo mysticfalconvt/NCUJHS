@@ -25,6 +25,7 @@ router.post('/callback/add', authController.isLoggedIn, catchErrors(callbackCont
 router.post('/callback/add/:_id', authController.isLoggedIn, catchErrors(callbackController.updateCallback));
 router.get('/callback/teacher/old', catchErrors(callbackController.getallCallbackByTeacher));
 router.get('/callback/teacher', catchErrors(callbackController.getCallbackByTeacher));
+router.get('/callback/student', catchErrors(callbackController.getCallbackByStudent));
 router.get('/callback/:_id/edit', catchErrors(callbackController.editCallback));
 router.get('/callback/:_id', catchErrors(callbackController.getCallbackByID));
 
@@ -37,6 +38,9 @@ router.get('/register', userController.registerForm);
 router.post('/register', userController.validateRegister, userController.register, authController.login);
 router.get('/logout', authController.logout);
 router.get('/account', authController.isLoggedIn, userController.account);
+router.get('/user', authController.isLoggedIn, userController.searchUser);
+router.get('/user/:_id', authController.isLoggedIn, userController.editAccount);
+router.get('/user/:_id', authController.isLoggedIn, userController.searchUser);
 router.post('/account', catchErrors(userController.updateAccount));
 router.post('/account/forgot', catchErrors(authController.forgot));
 router.get('/account/reset/:token', catchErrors(authController.reset));

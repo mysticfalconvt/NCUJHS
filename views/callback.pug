@@ -13,3 +13,4 @@ block content
     .single.details.inner
         p= callback.description
         p= "Assigned by: " + callback.teacher.name
+        a(href=`//${callback.link}`)= "link to: " + callback.linkTitle

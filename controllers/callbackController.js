@@ -36,6 +36,18 @@ exports.getCallbackByTeacher = async (req, res) => {
 	).sort({Date: 1});
 	res.render('callbacks', { title: 'callback', callbacks: callbacks });
 };
+
+exports.getCallbackByStudent = async (req, res) => {
+	
+	// 1. querey the database
+	const callbacks = await Callback.find(
+		{
+			student: req.user._id,
+			completed: false
+		}
+	).sort({Date: 1});
+	res.render('callbacks', { title: 'callback', callbacks: callbacks });
+};
 exports.getallCallbackByTeacher = async (req, res) => {
 	
 	// 1. querey the database
@@ -47,17 +59,6 @@ exports.getallCallbackByTeacher = async (req, res) => {
 	res.render('callbacks', { title: 'callback', callbacks: callbacks });
 };
 
-exports.getTodaysEvents = async (req, res) => {
-	const timeOffset = 1*86400000;
-	// 1. querey the database
-	const callbacks = await callback.find(
-		{
-			Date: {$gte: new Date()-timeOffset,
-				$lte: new Date()+timeOffset,}
-		}
-	).sort({Date: 1});
-	res.render('callbacks', { title: 'Todays Events! ', callbacks: callbacks });
-};
 
 const confirmOwner = (callback, user) => {
 	if (!callback.teacher.equals(user._id)) {

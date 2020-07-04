@@ -4,5 +4,6 @@ mixin callbackCard(callback={})
             h2.title
                 a(href=`/callback/${callback._id}`) #{callback.assignment}
                 p=callback.student.name +" - " + callback.assigned.toDateString()
+                p=callback.teacher.name
         .calendar__details
             p=callback.description.split(' ').slice(0,25).join(' ')
