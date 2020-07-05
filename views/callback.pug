@@ -8,7 +8,7 @@ block content
                 if editable
                     p
                         a(href=`/callback/${callback._id}/edit`) Edit
-                p= "On callback since: " + callback.assigned.toDateString()
+                p= callback.student.name + " has been on callback since: " + callback.assigned.toDateString()
 
     .single.details.inner
         p= callback.description

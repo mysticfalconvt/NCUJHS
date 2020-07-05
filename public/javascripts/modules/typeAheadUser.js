@@ -25,10 +25,10 @@ function fillId(search){
 		});
 };
 
-function typeAhead(search) {
+function typeAheadUser(search) {
 	if (!search) return;
 
-	const searchInput = search.querySelector('input[name="studentName"]');
+	const searchInput = search.querySelector('input[name="userName"]');
 	console.log(searchInput)
 	const searchResults = search.querySelector('.search__results');
 	
@@ -41,7 +41,7 @@ function typeAhead(search) {
 		searchResults.style.display = 'block';
 		searchResults.style.innerHTML = '';
 		axios
-			.get(`/api/searchStudent?q=${this.value}`)
+			.get(`/api/searchUser?q=${this.value}`)
 			.then((res) => {
 				if (res.data.length) {
 					searchResults.innerHTML = dompurify.sanitize(searchResultsHTML(res.data));
@@ -104,4 +104,4 @@ function typeAhead(search) {
 	});
 }
 
-export default typeAhead;
+export default typeAheadUser;

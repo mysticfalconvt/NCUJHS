@@ -39,8 +39,8 @@ router.post('/register', userController.validateRegister, userController.registe
 router.get('/logout', authController.logout);
 router.get('/account', authController.isLoggedIn, userController.account);
 router.get('/user', authController.isLoggedIn, userController.searchUser);
-router.get('/user/:_id', authController.isLoggedIn, userController.editAccount);
-router.get('/user/:_id', authController.isLoggedIn, userController.searchUser);
+router.get('/user/edit/:_id', authController.isLoggedIn, userController.editAccount);
+router.get('/user/:_id', authController.isLoggedIn, userController.userSearchResult);
 router.post('/account', catchErrors(userController.updateAccount));
 router.post('/account/forgot', catchErrors(authController.forgot));
 router.get('/account/reset/:token', catchErrors(authController.reset));
@@ -51,7 +51,7 @@ router.post('/account/reset/:token', authController.confirmedPasswords, catchErr
 	API
 */
 
-router.get('/api/searchAll', authController.isLoggedIn, catchErrors(userController.searchAll));
+router.get('/api/searchUser', authController.isLoggedIn, catchErrors(userController.searchAll));
 router.get('/api/searchStudent', authController.isLoggedIn, catchErrors(userController.searchStudent));
 router.get('/api/searchTeacher', authController.isLoggedIn, catchErrors(userController.searchTeacher));
 

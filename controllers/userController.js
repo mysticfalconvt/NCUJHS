@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const Callback = mongoose.model('Callback');
 const promisify = require('es6-promisify');
 const { TRUE } = require('node-sass');
 
@@ -12,6 +13,17 @@ exports.registerForm = (req, res) => {
 };
 exports.searchUser = (req, res) => {
 	res.render('searchUser', { title: 'Search for an account' });
+};
+
+exports.userSearchResult = async (req, res) => {
+	// find the account
+	const account = await User.findOne({ _id: req.params._id });
+	// find their callback 
+	const callbacks = await Callback.find({ student: req.params._id });
+	// find their callback 
+	const ta = await User.find({ta: req.params._id});
+	//render out the edit form so they can edit
+	res.render('userSearchResult', { title: `edit ${account.name}`, account, callbacks, ta});
 };
 
 exports.validateRegister = (req, res, next) => {
@@ -46,8 +58,11 @@ exports.register = async (req, res, next) => {
 exports.account = (req, res) => {
 	res.render('account', { title: 'Edit your account' });
 };
-exports.editAccount = (req, res) => {
-	res.render('accountAdmin', { title: 'Edit account' });
+
+exports.editAccount = async (req, res) => {
+	// find the account
+	const account = await User.findOne({ _id: req.params._id });
+	res.render('accountAdmin', { title: 'Edit account' , account});
 };
 
 exports.updateAccount = async (req, res) => {

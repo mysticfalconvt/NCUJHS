@@ -35,11 +35,14 @@ html
                     a.nav__link(href="/callback/add", class=(currentPath.startsWith('/callback/add') ? 'nav__link--active' : ''))
                       != h.icon('add')
                       span #{"add Callback"}
-                if user.isAdmin
                   li.nav__item
                     a.nav__link(href="/add", class=(currentPath.startsWith('/add') ? 'nav__link--active' : ''))
                       != h.icon('addcalendar')
                       span #{"add event"}
+                  li.nav__item
+                    a.nav__link(href="/user", class=(currentPath.startsWith('/user') ? 'nav__link--active' : ''))
+                      != h.icon('review')
+                      span #{"search"}
 
                       //- Student Focus
                 //- if user.isTeacher
@@ -73,7 +76,7 @@ html
                 != h.icon('top')
                 span Account
             else
-              li.nav__item: a.nav__link(href="/register", class=(currentPath.startsWith('/register') ? 'nav__link--active' : '')) Register
+              //- li.nav__item: a.nav__link(href="/register", class=(currentPath.startsWith('/register') ? 'nav__link--active' : '')) Register
               li.nav__item: a.nav__link(href="/login", class=(currentPath.startsWith('/login') ? 'nav__link--active' : '')) Log In
 
     block messages

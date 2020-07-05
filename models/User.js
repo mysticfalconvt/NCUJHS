@@ -34,9 +34,16 @@ const userSchema = new Schema({
 		default: false
 	},
 	currentAssignment: String,
-	
+	ta: mongoose.Schema.ObjectId,
 });
 
+function autopopulate(next) {
+	this.populate('ta');
+	next();
+  }
+  
+  userSchema.pre('find', autopopulate);
+  userSchema.pre('findOne', autopopulate);
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 userSchema.plugin(mongodbErrorHandler);

@@ -1,9 +1,9 @@
 mixin userSearch(student = {})
-  form(action=`/user/${student.id || ''}` method="get" class="card" )
+  form(action=`/user/${id || ''}` method="get" class="card" )
 
     label(for="studentName") student Name
-    .student
-      input(name="studentName" id="search" type="text" )
+    .userSearch
+      input(name="studentName" id="userName" type="text" )
       .search
         .search__results
    

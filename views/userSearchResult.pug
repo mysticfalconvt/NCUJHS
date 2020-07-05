@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_callbackCard
+block content
+    .inner
+        h2= title
+        if user.isAdmin
+            a(href=`/user/edit/${account._id}`) Edit this account
+        .calendars
+            each callback in callbacks
+                +callbackCard(callback)
+        //- h.dump()=account
+        h.dump()=ta
