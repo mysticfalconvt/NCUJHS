@@ -45,7 +45,7 @@ exports.dashboard = async (req, res) => {
 	).sort({Date: 1});
 	callbacks = await Callback.find(
 		{
-			student: req.user._id,
+			$or:[{student: req.user._id}, {ta: req.user._id}],
 			completed: false
 		}
 	).sort({date: 1});

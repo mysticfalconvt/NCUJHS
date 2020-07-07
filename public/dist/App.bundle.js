@@ -1822,7 +1822,7 @@ function searchResultsHTML(users) {
 function fillId(search) {
 	console.log(search.value);
 	var id = document.getElementById('id');
-	_axios2.default.get('/api/searchAll?q=' + search.value).then(function (res) {
+	_axios2.default.get('/api/searchuser?q=' + search.value).then(function (res) {
 		console.log(res.data[0]._id);
 		id.value = res.data[0]._id;
 	}).catch(function (err) {

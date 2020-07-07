@@ -15,7 +15,7 @@ function fillId(search){
 	console.log(search.value)
 	const id = document.getElementById('id')
 	axios
-		.get(`/api/searchAll?q=${search.value}`)
+		.get(`/api/searchuser?q=${search.value}`)
 		.then((res) => {
 			console.log(res.data[0]._id);
 			id.value = res.data[0]._id;
