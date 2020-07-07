@@ -35,6 +35,11 @@ const userSchema = new Schema({
 	},
 	currentAssignment: String,
 	ta: mongoose.Schema.ObjectId,
+	math: mongoose.Schema.ObjectId,
+	languageArts: mongoose.Schema.ObjectId,
+	science: mongoose.Schema.ObjectId,
+	socialStudies: mongoose.Schema.ObjectId,
+	
 });
 
 function autopopulate(next) {

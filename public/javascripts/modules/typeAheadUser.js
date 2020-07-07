@@ -4,26 +4,28 @@ import dompurify from 'dompurify';
 function searchResultsHTML(users) {
 	return users
 		.map((user) => {
-			return `<p class="search__result">
-               ${user.name}
-        </p>`;
+			return `
+			<a href="/user/${user._id}" class="search__result">
+        <strong>${user.name}</strong>
+      </a>
+			`;
 		})
 		.join('');
 }
 
-function fillId(search){
-	console.log(search.value)
-	const id = document.getElementById('id')
-	axios
-		.get(`/api/searchAll?q=${search.value}`)
-		.then((res) => {
-			console.log(res.data[0]._id);
-			id.value = res.data[0]._id;
-		})
-		.catch((err) => {
-			console.error(err);
-		});
-};
+// function fillId(search){
+// 	console.log(search)
+// 	const id = document.getElementById('id')
+// 	axios
+// 		.get(`/api/searchAll?q=${search.value}`)
+// 		.then((res) => {
+// 			console.log(res.data[0]._id);
+// 			id.value = res.data[0]._id;
+// 		})
+// 		.catch((err) => {
+// 			console.error(err);
+// 		});
+// };
 
 function typeAheadUser(search) {
 	if (!search) return;
@@ -58,17 +60,10 @@ function typeAheadUser(search) {
 
 	//handle keyboard input
 
-	//stop enter on search
-	document.getElementById("search").onkeypress = function(e) {
-		var key = e.charCode || e.keyCode || 0;     
-		if (key == 13) {
-		  e.preventDefault();
-		}
-	  }
-
+	
 	//   Keyboard controls
 	searchInput.on('keyup', (e) => {
-		const studentName = document.getElementById('search')
+		
 		if (
 			![
 				38,
@@ -91,10 +86,8 @@ function typeAheadUser(search) {
 			next = current.previousElementSibling || items[items.length - 1];
 		} else if (e.keyCode === 38) {
 			next = items[items.length - 1];
-		} else if (e.keyCode === 13 ) {
-			studentName.value = current.innerHTML.trim();
-			searchResults.style.display = 'none';
-			fillId(searchInput)
+		} else if (e.keyCode === 13 && current.href) {
+			window.location = current.href;
 			return;
 		}
 		if (current) {

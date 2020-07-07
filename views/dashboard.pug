@@ -5,8 +5,9 @@ include mixins/_callbackCard
 block content
     .inner
         h2= title
-        .calendars
-            each calendar in calendars
-                +calendarCard(calendar)
-            each callback in callbacks
-                +callbackCard(callback)
+        if user
+            .calendars
+                each calendar in calendars
+                    +calendarCard(calendar)
+                each callback in callbacks
+                    +callbackCard(callback)

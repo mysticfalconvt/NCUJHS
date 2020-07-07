@@ -34,18 +34,22 @@ exports.getEvents = async (req, res) => {
 exports.dashboard = async (req, res) => {
 	const timeOffset = 1*86400000;
 	// 1. querey the database
-	const calendars = await Calendar.find(
+	let calendars = {};
+	let callbacks = {};
+	if (req.user){
+	calendars = await Calendar.find(
 		{
 			Date: {$gte: new Date()-timeOffset,
 				$lte: new Date()+timeOffset,}
 		}
 	).sort({Date: 1});
-	const callbacks = await Callback.find(
+	callbacks = await Callback.find(
 		{
 			student: req.user._id,
 			completed: false
 		}
 	).sort({date: 1});
+	};
 	res.render('dashboard', { title: 'N.C.U.J.H.S. Dashboard ', calendars: calendars, callbacks: callbacks });
 };
 

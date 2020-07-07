@@ -23,7 +23,7 @@ exports.userSearchResult = async (req, res) => {
 	// find their callback 
 	const ta = await User.find({ta: req.params._id});
 	//render out the edit form so they can edit
-	res.render('userSearchResult', { title: `edit ${account.name}`, account, callbacks, ta});
+	res.render('userSearchResult', { title: `${account.name}'s details`, account, callbacks, ta});
 };
 
 exports.validateRegister = (req, res, next) => {
@@ -126,7 +126,7 @@ exports.searchAll = async (req, res) => {
 			$text : {
 				$search : req.query.q,
 			},
-			isTeacher : false
+			
 		},
 		{
 			score : { $meta: 'textScore' },

@@ -10,7 +10,7 @@ import typeAheadUser from './modules/typeAheadUser';
 autocomplete($('#address'), $('#lat'), $('#lng'));
 
 typeAheadStudent($('.student'));
-typeAheadStudent($('.teacherSearch'));
-typeAheadStudent($('.userSearch'));
+typeAheadTeacher($('.teacherSearch'));
+typeAheadUser($('.userSearch'));
 
 
