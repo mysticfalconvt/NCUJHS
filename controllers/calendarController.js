@@ -36,16 +36,21 @@ exports.dashboard = async (req, res) => {
 	// 1. querey the database
 	let calendars = {};
 	let callbacks = {};
+
 	if (req.user){
+	ids = await await User.find({ta: req.user._id});
+	idArray = ids.map(function(id) {return id._id});
+	
 	calendars = await Calendar.find(
 		{
 			Date: {$gte: new Date()-timeOffset,
 				$lte: new Date()+timeOffset,}
 		}
 	).sort({Date: 1});
+	
 	callbacks = await Callback.find(
 		{
-			$or:[{student: req.user._id}, {ta: req.user._id}],
+			$or:[{student: req.user._id}, {'student': {$in: idArray}}],
 			completed: false
 		}
 	).sort({date: 1});
@@ -110,18 +115,3 @@ exports.getEventByID = async (req, res, next) => {
 	res.render('calendar', { calendar, editable, title: calendar.title });
 };
 
-exports.getStoresByTag = async (req, res) => {
-	const tag = req.params.tag;
-	const tagQuerey = tag || { $exists: true };
-	const tagsPromise = Store.getTagsList();
-	const storesPromise = Store.find({ tags: tagQuerey });
-	const [
-		tags,
-		stores,
-	] = await Promise.all([
-		tagsPromise,
-		storesPromise,
-	]);
-
-	res.render('tag', { tags, title: 'Tags', tag, stores });
-};

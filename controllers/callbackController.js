@@ -117,18 +117,3 @@ exports.getCallbackByID = async (req, res, next) => {
 	res.render('callback', { callback, editable, title: callback.title });
 };
 
-exports.getStoresByTag = async (req, res) => {
-	const tag = req.params.tag;
-	const tagQuerey = tag || { $exists: true };
-	const tagsPromise = Store.getTagsList();
-	const storesPromise = Store.find({ tags: tagQuerey });
-	const [
-		tags,
-		stores,
-	] = await Promise.all([
-		tagsPromise,
-		storesPromise,
-	]);
-
-	res.render('tag', { tags, title: 'Tags', tag, stores });
-};
