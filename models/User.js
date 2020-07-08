@@ -52,5 +52,5 @@ userSchema.plugin(mongodbErrorHandler);
 userSchema.index({
   name: "text",
 });
-
+mongoose.set("useFindAndModify", false);
 module.exports = mongoose.model("User", userSchema);

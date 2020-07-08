@@ -9,8 +9,23 @@ block content
             input(type="text" name="name" value=account.name) 
             label(for="email") Email Address
             input(type="text" name="email" value=account.email)
-            label(for="isTeacher") TA Teacher
-            input(type="text" name="isTeacher" value=account.isTeacher)
+            .teacherSearch
+                if account.ta
+                    label(for="teacherName") TA Teacher
+                    input(type="text" id="search" name="teacherName" value=account.ta.name)
+                    .search
+                        .search__results
+                    label(for="ta") TA Teacher id
+                    input(type="text" id="id" name="ta" readonly="readonly" value=account.ta._id)
+                else
+                    label(for="teacherName") TA Teacher
+                    input(type="text" id="search" name="teacherName" value=account.ta)
+                    .search
+                        .search__results
+                    label(for="ta") TA Teacher id
+                    input(type="text" id="id" name="ta"  value=account.ta)
             label(for="isTeacher") Teacher
-            input(type="checkbox" name="isTeacher" checked=account.isTeacher )
+            input(type="checkbox" name="isTeacher" checked=account.isTeacher value=account.isTeacher )
+            label(for="id") id
+            input(type="text" name="id" value=account._id ) 
             input.button(type="submit" value="Update My Account")
