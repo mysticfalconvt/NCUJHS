@@ -32,6 +32,7 @@ exports.getEvents = async (req, res) => {
 };
 
 exports.dashboard = async (req, res) => {
+	console.log("fuck fuck fuck");
 	const timeOffset = 1*86400000;
 	// 1. querey the database
 	let calendars = {};
