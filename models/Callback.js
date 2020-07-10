@@ -24,8 +24,8 @@ const callbackSchema = new mongoose.Schema({
     type: String
   },
   completed: {
-    type: Boolean,
-    default: false
+    type: String,
+    default: ""
   },
   link: {
     type: String,

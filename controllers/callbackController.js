@@ -31,7 +31,7 @@ exports.getCallbackByTeacher = async (req, res) => {
 	const callbacks = await Callback.find(
 		{
 			teacher: req.user._id,
-			completed: false
+			completed: ""
 		}
 	).sort({Date: 1});
 	res.render('callbacks', { title: 'callback', callbacks: callbacks });
@@ -43,7 +43,7 @@ exports.getCallbackByStudent = async (req, res) => {
 	const callbacks = await Callback.find(
 		{
 			student: req.user._id,
-			completed: false
+			completed: ""
 		}
 	).sort({Date: 1});
 	res.render('callbacks', { title: 'callback', callbacks: callbacks });

@@ -14,6 +14,7 @@ router.get("/", catchErrors(calendarController.dashboard));
 // Calendar Routes
 router.get("/add", authController.isLoggedIn, calendarController.addEvent);
 router.get("/calendars", catchErrors(calendarController.getEvents));
+router.get("/allCalendars", catchErrors(calendarController.getAllEvents));
 router.post("/add", catchErrors(calendarController.createEvent));
 router.post("/add/:_id", catchErrors(calendarController.updateEvent));
 router.get("/calendar/:_id/edit", catchErrors(calendarController.editEvent));
