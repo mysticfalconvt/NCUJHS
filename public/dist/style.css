@@ -763,11 +763,12 @@ label {
 
 .calendar__hero {
   position: relative;
+  color: rgba(255, 255, 255, 0.678);
   padding: 12px 10px 0 10px;
   text-align: right; }
   .calendar__hero:before {
     display: block;
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     width: 100%;
@@ -842,6 +843,7 @@ label {
 .callback__hero {
   position: relative;
   padding: 12px 10px 0 10px;
+  color: rgba(255, 255, 255, 0.678);
   text-align: right; }
   .callback__hero:before {
     display: block;
