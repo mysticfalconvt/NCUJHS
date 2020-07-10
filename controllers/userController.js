@@ -115,9 +115,7 @@ exports.updateAccount = async (req, res) => {
   res.redirect("back");
 };
 exports.adminUpdateAccount = async (req, res) => {
-  console.log(req.body.ta);
   const updates = updateCheck(req.body);
-  console.log(updates);
   const user = await User.findOneAndUpdate(
     { _id: req.body.id },
     { $set: updates },
