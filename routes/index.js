@@ -12,11 +12,7 @@ const { catchErrors } = require("../handlers/errorHandlers");
 router.get("/", catchErrors(calendarController.dashboard));
 
 // Calendar Routes
-router.get(
-  "/add",
-  authController.isLoggedIn,
-  catchErrors(calendarController.addEvent),
-);
+router.get("/add", authController.isLoggedIn, calendarController.addEvent);
 router.get("/calendars", catchErrors(calendarController.getEvents));
 router.post("/add", catchErrors(calendarController.createEvent));
 router.post("/add/:_id", catchErrors(calendarController.updateEvent));
