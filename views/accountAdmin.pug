@@ -24,8 +24,31 @@ block content
                         .search__results
                     label(for="ta") TA Teacher id
                     input(type="text" id="id" name="ta"  value=account.ta)
-            label(for="isTeacher") Teacher
-            input(type="checkbox" name="isTeacher" checked=account.isTeacher value=account.isTeacher )
+
+            if account.isTeacher
+                label(for="isTeacher") Teacher
+                input(type="radio" name="isTeacher" checked value="true")
+                label(for="isTeacher") Student
+                input(type="radio" name="isTeacher" value="")
+            else
+                label(for="isTeacher") Teacher
+                input(type="radio" name="isTeacher" value="true")
+                label(for="isTeacher") Student
+                input(type="radio" name="isTeacher" checked value="")
+            if account.isAdmin
+                label(for="isAdmin") Has Admin Rights
+                input(type="radio" name="isAdmin" checked value="true")
+                label(for="isAdmin") Not Admin
+                input(type="radio" name="isAdmin" value="")
+            else
+                label(for="isAdmin") Has Admin Rights
+                input(type="radio" name="isAdmin" value="true")
+                label(for="isAdmin") Not Admin
+                input(type="radio" name="isAdmin" checked value="")
+
+                
+            
+
             label(for="id") id
             input(type="text" name="id" value=account._id ) 
-            input.button(type="submit" value="Update My Account")
+            input.button(type="submit" value=`Update ${account.name}'s Account`)

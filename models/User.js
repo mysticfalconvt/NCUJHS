@@ -23,12 +23,12 @@ const userSchema = new Schema({
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   isTeacher: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: "",
   },
   isAdmin: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: "",
   },
   currentAssignment: String,
   ta: mongoose.Schema.ObjectId,
