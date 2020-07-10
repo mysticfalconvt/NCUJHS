@@ -1,6 +1,7 @@
 mixin callbackCard(callback={})
-    .calendar
+    .callback
         .callback__hero
+            img(src=`/uploads/callback.png`)
             h2.title
                 a(href=`/callback/${callback._id}`) #{callback.assignment}
                 p=callback.student.name +" - " + callback.assigned.toDateString()

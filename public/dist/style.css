@@ -789,33 +789,33 @@ label {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
 
-.calendars {
+.callbacks {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: -1.25em 0 0 -1.25em; }
 
-.calendar {
+.callback {
   background: white;
   margin: 1.25em 0 0 1.25em;
   width: calc(25% - 1.25em);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
-  .calendar--wide {
+  .callback--wide {
     width: 100%; }
-  .calendar__details {
+  .callback__details {
     padding: 2rem; }
-    .calendar__details p {
+    .callback__details p {
       line-height: 1.2;
       margin-bottom: 0; }
   @media all and (max-width: 850px) {
-    .calendar {
+    .callback {
       width: calc(50% - 1.25em); } }
   @media all and (max-width: 550px) {
-    .calendar {
+    .callback {
       width: 100%; } }
 
-.calendar__actions {
+.callback__actions {
   position: relative;
   z-index: 2;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -831,12 +831,12 @@ label {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-.calendar__action {
+.callback__action {
   font-size: 10px; }
-  .calendar__action svg {
+  .callback__action svg {
     width: 25px;
     fill: white; }
-  .calendar__action--edit a {
+  .callback__action--edit a {
     border-bottom: 0; }
 
 .callback__hero {
@@ -845,7 +845,7 @@ label {
   text-align: right; }
   .callback__hero:before {
     display: block;
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     width: 100%;

@@ -1,6 +1,7 @@
 mixin calendarCard(calendar={})
     .calendar
         .calendar__hero
+            img(src=`/uploads/calendar.png`)
             h2.title
                 a(href=`/calendar/${calendar._id}`) #{calendar.title}
                 p= calendar.Date.toDateString()
