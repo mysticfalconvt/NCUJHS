@@ -4,6 +4,26 @@ const Callback = mongoose.model("Callback");
 const promisify = require("es6-promisify");
 const { TRUE } = require("node-sass");
 
+updateCheck = (body) => {
+  
+  if(body.ta) {
+    return  {
+    name: body.name,
+    email: body.email,
+    ta: body.ta,
+    isTeacher: body.isTeacher,
+    isAdmin: body.isAdmin,
+    }} else  {
+      return   {
+      name: body.name,
+      email: body.email,
+      isTeacher: body.isTeacher,
+      isAdmin: body.isAdmin,
+      };
+    };
+      
+}
+
 exports.loginForm = (req, res) => {
   res.render("login", { title: "Login" });
 };
@@ -95,12 +115,7 @@ exports.updateAccount = async (req, res) => {
   res.redirect("back");
 };
 exports.adminUpdateAccount = async (req, res) => {
-  const updates = {
-    name: req.body.name,
-    email: req.body.email,
-    ta: req.body.ta,
-    isTeacher: Boolean(req.body.isTeacher),
-  };
+  const updates = updateCheck(req.body);
   const user = await User.findOneAndUpdate(
     { _id: req.body.id },
     { $set: updates },
@@ -117,7 +132,7 @@ exports.searchTeacher = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      isTeacher: true,
+      isTeacher: "true",
     },
     {
       score: { $meta: "textScore" },
@@ -135,8 +150,8 @@ exports.searchStudent = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      isTeacher: false,
-      isAdmin: false,
+      isTeacher: "",
+      isAdmin: "",
     },
     {
       score: { $meta: "textScore" },

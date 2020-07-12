@@ -23,6 +23,14 @@ exports.getEvents = async (req, res) => {
   // 1. querey the database
   const calendars = await Calendar.find({
     Date: { $gte: new Date() - timeOffset },
+  }).sort({ Date: 1 })
+  .limit(10);
+  res.render("calendars", { title: "Calendar", calendars: calendars });
+};
+exports.getAllEvents = async (req, res) => {
+  // 1. querey the database
+  const calendars = await Calendar.find({
+    
   }).sort({ Date: 1 });
   res.render("calendars", { title: "Calendar", calendars: calendars });
 };
