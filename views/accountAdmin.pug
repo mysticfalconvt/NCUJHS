@@ -15,16 +15,14 @@ block content
                     input(type="text" id="search" name="teacherName" value=account.ta.name)
                     .search
                         .search__results
-                    label(for="ta") TA Teacher id
-                    input(type="text" id="id" name="ta" readonly="readonly" value=account.ta._id)
+                    input(type="hidden" id="id" name="ta" readonly="readonly" value=account.ta._id)
                 else
                     label(for="teacherName") TA Teacher
                     input(type="text" id="search" name="teacherName" value=account.ta)
                     .search
                         .search__results
-                    label(for="ta") TA Teacher id
-                    input(type="text" id="id" name="ta"  value=account.ta)
-
+                    input(type="hidden" id="id" name="ta"  value=account.ta)
+            hr
             if account.isTeacher
                 label(for="isTeacher") Teacher
                 input(type="radio" name="isTeacher" checked value="true")
@@ -35,6 +33,7 @@ block content
                 input(type="radio" name="isTeacher" value="true")
                 label(for="isTeacher") Student
                 input(type="radio" name="isTeacher" checked value="")
+            hr
             if account.isAdmin
                 label(for="isAdmin") Has Admin Rights
                 input(type="radio" name="isAdmin" checked value="true")
@@ -49,6 +48,5 @@ block content
                 
             
 
-            label(for="id") id
-            input(type="text" name="id" value=account._id ) 
+            input(type="hidden" name="id"  value=account._id ) 
             input.button(type="submit" value=`Update ${account.name}'s Account`)

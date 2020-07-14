@@ -28,6 +28,10 @@ const calendarSchema = new mongoose.Schema({
     type: Date,
     required: "You must have a date!",
   },
+  teachersOnly: {
+    type: String,
+    default: "true",
+  },
 });
 
 function autopopulate(next) {

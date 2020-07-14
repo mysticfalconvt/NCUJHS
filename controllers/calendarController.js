@@ -21,17 +21,44 @@ exports.createEvent = async (req, res) => {
 exports.getEvents = async (req, res) => {
   const timeOffset = 2 * 86400000;
   // 1. querey the database
-  const calendars = await Calendar.find({
-    Date: { $gte: new Date() - timeOffset },
-  }).sort({ Date: 1 })
-  .limit(10);
+  let calendars = {};
+  if (req.user) {
+    
+    // check if teacher for calendar events
+    if(req.user.isTeacher){
+      calendars = await Calendar.find({
+        Date: { $gte: new Date() - timeOffset},
+      })
+      .sort({ Date: 1 })
+      .limit(8);
+    } else{
+      calendars = await Calendar.find({
+        Date: { $gte: new Date() - timeOffset},
+        teachersOnly: "",
+      }).sort({ Date: 1 })
+      .limit(8);
+    };
+  };
   res.render("calendars", { title: "Calendar", calendars: calendars });
 };
+
 exports.getAllEvents = async (req, res) => {
   // 1. querey the database
-  const calendars = await Calendar.find({
+  // check if logged in
+  let calendars = {};
+  if (req.user) {
     
-  }).sort({ Date: 1 });
+    // check if teacher for calendar events
+    if(req.user.isTeacher){
+      calendars = await Calendar.find()
+      .sort({ Date: 1 });
+    } else{
+      calendars = await Calendar.find({
+        teachersOnly: "",
+      }).sort({ Date: 1 });
+    };
+  };
+  
   res.render("calendars", { title: "Calendar", calendars: calendars });
 };
 
@@ -40,19 +67,43 @@ exports.dashboard = async (req, res) => {
   // 1. querey the database
   let calendars = {};
   let callbacks = {};
-
+  
+// check if logged in
   if (req.user) {
+    
+    // check if teacher for calendar events
+    if(req.user.isTeacher){
+      calendars = await Calendar.find({
+        Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
+      }).sort({ Date: 1 });
+    } else{
+      calendars = await Calendar.find({
+        Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
+        teachersOnly: "",
+      }).sort({ Date: 1 });
+    };
+    // find TA students
     ids = await User.find({ ta: req.user._id });
     idArray = ids.map(function (id) {
       return id._id;
     });
-    calendars = await Calendar.find({
-      Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
-    }).sort({ Date: 1 });
-    callbacks = await Callback.find({
-      $or: [{ student: req.user._id }, { student: { $in: idArray } }],
-      completed: false,
-    }).sort({ date: 1 });
+    
+    // Find Callback Assignments
+    if(req.user.isTeacher){
+      callbacks = await Callback.find({
+        $or: [{$and:[{teacher: req.user._id}, {message: {"$exists" : true, "$ne" : ""}}]}, { student: { $in: idArray } }],
+        
+        completed: "",
+      }).sort({ message: -1, date: 1 });
+    } else{
+      callbacks = await Callback.find({
+        $or: [{ student: req.user._id }, { student: { $in: idArray } }],
+        completed: "",
+      }).sort({ date: 1 });
+    };
+
+
+    
   }
   res.render("dashboard", {
     title: "N.C.U.J.H.S. Dashboard ",
