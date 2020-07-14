@@ -87,11 +87,23 @@ exports.dashboard = async (req, res) => {
     idArray = ids.map(function (id) {
       return id._id;
     });
+    
+    // Find Callback Assignments
+    if(req.user.isTeacher){
+      callbacks = await Callback.find({
+        $or: [{$and:[{teacher: req.user._id}, {message: {"$exists" : true, "$ne" : ""}}]}, { student: { $in: idArray } }],
+        
+        completed: "",
+      }).sort({ message: -1, date: 1 });
+    } else{
+      callbacks = await Callback.find({
+        $or: [{ student: req.user._id }, { student: { $in: idArray } }],
+        completed: "",
+      }).sort({ date: 1 });
+    };
 
-    callbacks = await Callback.find({
-      $or: [{ student: req.user._id }, { student: { $in: idArray } }],
-      completed: "",
-    }).sort({ date: 1 });
+
+    
   }
   res.render("dashboard", {
     title: "N.C.U.J.H.S. Dashboard ",

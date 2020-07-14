@@ -112,7 +112,7 @@ exports.updateAccount = async (req, res) => {
     { new: true, runValidators: true, context: "query" },
   );
   req.flash("success", "Updated the profile!");
-  res.redirect("back");
+  res.redirect("/");
 };
 exports.adminUpdateAccount = async (req, res) => {
   const updates = updateCheck(req.body);
@@ -121,8 +121,8 @@ exports.adminUpdateAccount = async (req, res) => {
     { $set: updates },
     { new: true, runValidators: true, context: "query" },
   );
-  req.flash("success", req.body.ta);
-  res.redirect("back");
+  req.flash("success", `Successfulyl updated ${req.body.name}`);
+  res.redirect("/");
 };
 
 //API

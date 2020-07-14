@@ -84,7 +84,7 @@ exports.updateCallback = async (req, res) => {
     "success",
     `Sucessfully Updated <strong>${callback.assignment}</strong>. <a href="/callback/${callback._id}">View Event</a>`,
   );
-  res.redirect(`/callback/${callback._id}/edit`);
+  res.redirect(`/callback/${callback._id}`);
 };
 
 exports.searchCallback = async (req, res) => {
