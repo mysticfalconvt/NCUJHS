@@ -6,5 +6,7 @@ mixin callbackCard(callback={})
                 a(href=`/callback/${callback._id}`) #{callback.assignment}
                 p=callback.student.name +" - " + callback.assigned.toDateString()
                 p=callback.teacher.name
-        .calendar__details
-            p=callback.description.split(' ').slice(0,25).join(' ')
+        .callback__details
+            p=callback.description.split(' ').slice(0,20).join(' ')
+            if callback.message
+                p.message=callback.message.split(' ').slice(0,20).join(' ')

@@ -14,3 +14,9 @@ block content
         p= callback.description
         p= "Assigned by: " + callback.teacher.name
         a(href=`//${callback.link}`)= "link to: " + callback.linkTitle
+        if owner
+            hr
+            form(action=`/callback/add/${callback._id || ''}` method="POST" )
+                label(for="message") student/teacher message
+                input(type="text" name="message" value=callback.message)
+                input(type="submit" value="Save →" class="button")
