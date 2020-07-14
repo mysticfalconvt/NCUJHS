@@ -49,6 +49,7 @@ router.get(
   catchErrors(callbackController.getCallbackByStudent),
 );
 router.get("/callback/:_id/edit", catchErrors(callbackController.editCallback));
+router.get("/callback/:_id/duplicate", catchErrors(callbackController.duplicateCallback));
 router.get("/callback/:_id", catchErrors(callbackController.getCallbackByID));
 
 //Account Routes

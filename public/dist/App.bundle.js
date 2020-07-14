@@ -1811,14 +1811,16 @@ function typeAheadStudent(search) {
 		var _this = this;
 
 		if (!this.value) {
-
+			console.log("11111111");
 			searchResults.style.display = 'none';
 			return;
 		}
 		searchResults.style.display = 'block';
 		searchResults.style.innerHTML = '';
 		_axios2.default.get('/api/searchStudent?q=' + this.value).then(function (res) {
+			console.log(res.data);
 			if (res.data.length) {
+				console.log("2222222");
 				searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
 				return;
 			}
