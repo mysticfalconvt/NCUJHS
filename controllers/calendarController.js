@@ -97,9 +97,9 @@ exports.dashboard = async (req, res) => {
       }).sort({ message: -1, date: 1 });
     } else{
       callbacks = await Callback.find({
-        $or: [{ student: req.user._id }, { student: { $in: idArray } }],
+        $or: [{ student: req.user._id }],
         completed: "",
-      }).sort({ date: 1 });
+      }).sort({ message: -1, date: 1 });
     };
 
 

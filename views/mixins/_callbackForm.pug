@@ -1,6 +1,6 @@
 mixin callbackForm(callback = {})
   form(action=`/callback/add/${callback._id || ''}` method="POST" class="card" )
-    label(for="assignment") Assignment
+    label(for="assignment") Assignment 
     input(type="text" name="assignment" value=callback.assignment)
     label(for="description") Description
     textarea(name="description")= callback.description
@@ -17,7 +17,7 @@ mixin callbackForm(callback = {})
     textarea(name="link")= callback.link
     label(for="linkTitle") Link Title
     textarea(name="linkTitle")= callback.linkTitle
-
+    hr
     if callback.student
       if callback.completed
         label(for="completed") Assignment Completed
@@ -30,13 +30,13 @@ mixin callbackForm(callback = {})
         label(for="completed") Assignment Incomplete
         input(type="radio" name="completed" checked value="")
       
-    label(for="student") student ID
+  
     if callback.student
       .search__input
-        input(name="student" id="id" value=callback.student._id readonly)
+        input(name="student" id="id" value=callback.student._id hidden)
     else
       .search__input
-      input(name="student" id="id" value=callback.student readonly)
+      input(name="student" id="id" value=callback.student hidden)
       
     input(type="submit" value="Save →" class="button")
   

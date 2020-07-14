@@ -34,7 +34,7 @@ function typeAheadStudent(search) {
 	
 	searchInput.on('input', function() {
 		if (!this.value) {
-			
+			console.log("11111111");
 			searchResults.style.display = 'none';
 			return;
 		}
@@ -43,7 +43,9 @@ function typeAheadStudent(search) {
 		axios
 			.get(`/api/searchStudent?q=${this.value}`)
 			.then((res) => {
+				console.log(res.data)
 				if (res.data.length) {
+					console.log("2222222")
 					searchResults.innerHTML = dompurify.sanitize(searchResultsHTML(res.data));
 					return;
 				}
