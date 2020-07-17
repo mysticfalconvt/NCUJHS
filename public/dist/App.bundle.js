@@ -1993,7 +1993,7 @@ exports.default = typeAheadTeacher;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _axios = __webpack_require__(1);
@@ -2007,9 +2007,9 @@ var _dompurify2 = _interopRequireDefault(_dompurify);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function searchResultsHTML(users) {
-	return users.map(function (user) {
-		return '\n\t\t\t<a href="/user/' + user._id + '" class="search__result">\n        <strong>' + user.name + '</strong>\n      </a>\n\t\t\t';
-	}).join('');
+  return users.map(function (user) {
+    return "\n\t\t\t<a href=\"/user/" + user._id + "\" class=\"search__result\">\n        <strong>" + user.name + "</strong>\n      </a>\n\t\t\t";
+  }).join("");
 }
 
 // function fillId(search){
@@ -2027,64 +2027,62 @@ function searchResultsHTML(users) {
 // };
 
 function typeAheadUser(search) {
-	if (!search) return;
+  if (!search) return;
 
-	var searchInput = search.querySelector('input[name="userName"]');
-	console.log(searchInput);
-	var searchResults = search.querySelector('.search__results');
+  var searchInput = search.querySelector('input[name="userName"]');
+  console.log(searchInput);
+  var searchResults = search.querySelector(".search__results");
 
-	searchInput.on('input', function () {
-		var _this = this;
+  searchInput.on("input", function () {
+    var _this = this;
 
-		if (!this.value) {
+    if (!this.value) {
+      searchResults.style.display = "none";
+      return;
+    }
+    searchResults.style.display = "block";
+    searchResults.style.innerHTML = "";
+    _axios2.default.get("/api/searchUser?q=" + this.value).then(function (res) {
+      if (res.data.length) {
+        searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
+        return;
+      }
+      searchResults.innerHTML = _dompurify2.default.sanitize("<div class=\"search__result\">No results for " + _this.value + " found!</div>");
+    }).catch(function (err) {
+      console.error(err);
+    });
+  });
 
-			searchResults.style.display = 'none';
-			return;
-		}
-		searchResults.style.display = 'block';
-		searchResults.style.innerHTML = '';
-		_axios2.default.get('/api/searchUser?q=' + this.value).then(function (res) {
-			if (res.data.length) {
-				searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
-				return;
-			}
-			searchResults.innerHTML = _dompurify2.default.sanitize('<div class="search__result">No results for ' + _this.value + ' found!</div>');
-		}).catch(function (err) {
-			console.error(err);
-		});
-	});
+  //handle keyboard input
 
-	//handle keyboard input
+  //   Keyboard controls
+  searchInput.on("keyup", function (e) {
+    if (![38, 40, 13].includes(e.keyCode)) {
+      return;
+    }
+    var activeClass = "search__result--active";
+    var current = search.querySelector("." + activeClass);
+    var items = search.querySelectorAll(".search__result");
+    var next = void 0;
 
-
-	//   Keyboard controls
-	searchInput.on('keyup', function (e) {
-
-		if (![38, 40, 13].includes(e.keyCode)) {
-			return;
-		}
-		var activeClass = 'search__result--active';
-		var current = search.querySelector('.' + activeClass);
-		var items = search.querySelectorAll('.search__result');
-		var next = void 0;
-
-		if (e.keyCode === 40 && current) {
-			next = current.nextElementSibling || items[0];
-		} else if (e.keyCode === 40) {
-			next = items[0];
-		} else if (e.keyCode === 38 && current) {
-			next = current.previousElementSibling || items[items.length - 1];
-		} else if (e.keyCode === 38) {
-			next = items[items.length - 1];
-		} else if (e.keyCode === 13 && current.href) {
-			window.location = current.href;
-			return;
-		}
-		if (current) {
-			current.classList.remove(activeClass);
-		}
-		next.classList.add(activeClass);
-	});
+    if (e.keyCode === 40 && current) {
+      next = current.nextElementSibling || items[0];
+    } else if (e.keyCode === 40) {
+      next = items[0];
+    } else if (e.keyCode === 38 && current) {
+      next = current.previousElementSibling || items[items.length - 1];
+    } else if (e.keyCode === 38) {
+      next = items[items.length - 1];
+    } else if (e.keyCode === 13 && current.href) {
+      e.preventDefault();
+      window.location = current.href;
+      return;
+    }
+    if (current) {
+      current.classList.remove(activeClass);
+    }
+    next.classList.add(activeClass);
+  });
 }
 
 exports.default = typeAheadUser;
