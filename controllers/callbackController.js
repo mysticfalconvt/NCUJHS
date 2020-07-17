@@ -70,11 +70,13 @@ exports.editCallback = async (req, res) => {
 };
 exports.duplicateCallback = async (req, res) => {
   //find the event given id
-  let callback = await Callback.findOne({ _id: req.params._id },{student: 0});
+  let callback = await Callback.findOne(
+    { _id: req.params._id },
+    { _id: 0, student: 0 },
+  );
   //confirm they are owner of the event
   confirmOwner(callback, req.user);
-  
-  
+
   //render out the edit form so they can edit
   res.render("editCallback", {
     title: `add another copy of ${callback.assignment}`,
