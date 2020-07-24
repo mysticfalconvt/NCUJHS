@@ -4,6 +4,8 @@ include mixins/_calendarCard
 block content
     .inner
         h2= title
+            if user.isTeacher
+                a.title_link(href="/add") Add Event
         p 
             if currentPath.startsWith("/allCalendars")
                 a(href="/calendars") Upcoming events only

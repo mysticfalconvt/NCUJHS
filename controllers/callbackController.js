@@ -97,7 +97,7 @@ exports.updateCallback = async (req, res) => {
   // redirect to the store and tell them it worked
   req.flash(
     "success",
-    `Sucessfully Updated <strong>${callback.assignment}</strong>. <a href="/callback/${callback._id}">View Event</a>`,
+    `Sucessfully Updated <strong>${callback.assignment}</strong>.`,
   );
   res.redirect(`/callback/${callback._id}`);
 };
