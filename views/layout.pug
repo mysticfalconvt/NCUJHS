@@ -27,14 +27,6 @@ html
                       != h.icon('tag')
                       span #{"My Callback"}
                   li.nav__item
-                    a.nav__link(href="/callback/add", class=(currentPath.startsWith('/callback/add') ? 'nav__link--active' : ''))
-                      != h.icon('add')
-                      span #{"add Callback"}
-                  li.nav__item
-                    a.nav__link(href="/add", class=(currentPath.startsWith('/add') ? 'nav__link--active' : ''))
-                      != h.icon('addcalendar')
-                      span #{"add event"}
-                  li.nav__item
                     a.nav__link(href="/user", class=(currentPath.startsWith('/user') ? 'nav__link--active' : ''))
                       != h.icon('searchUser')
                       span #{"Finder"}
