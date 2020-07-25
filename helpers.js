@@ -23,5 +23,6 @@ exports.siteName = `NCUJHS Dashboard`;
 
 exports.menu = [
   { slug: '/calendars', title: 'Events', icon: 'map', },
+  { slug: '/info', title: 'Info', icon: 'review', },
       
 ];

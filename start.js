@@ -28,6 +28,7 @@ mongoose.connection.on('error', (err) => {
 require('./models/Callback');
 require('./models/Calendar');
 require('./models/User');
+require('./models/Info');
 
 // Start our app!
 const app = require('./app');

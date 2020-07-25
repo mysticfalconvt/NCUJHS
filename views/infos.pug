@@ -1,0 +1,30 @@
+extends layout
+
+
+block content
+    .inner
+        h2= title
+            if user
+                if user .isTeacher
+                    a.title_link(href="/info/add") Add new 
+        
+        table.table     
+            thead
+                td Category
+                td Title
+                td Description
+                td Link
+                if user
+                    if user.isAdmin
+                        td edit
+            each info in infos
+                tr
+                    td=info.category
+                    td=info.title
+                    td=info.description
+                    td
+                        a(href=`//${info.link}`)=info.linkTitle
+                    if user
+                        if user.isAdmin
+                            td 
+                                a(href=`/info/${info._id}`) EDIT

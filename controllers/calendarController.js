@@ -23,22 +23,22 @@ exports.getEvents = async (req, res) => {
   // 1. querey the database
   let calendars = {};
   if (req.user) {
-    
     // check if teacher for calendar events
-    if(req.user.isTeacher){
+    if (req.user.isTeacher) {
       calendars = await Calendar.find({
-        Date: { $gte: new Date() - timeOffset},
+        Date: { $gte: new Date() - timeOffset },
       })
-      .sort({ Date: 1 })
-      .limit(8);
-    } else{
+        .sort({ Date: 1 })
+        .limit(8);
+    } else {
       calendars = await Calendar.find({
-        Date: { $gte: new Date() - timeOffset},
+        Date: { $gte: new Date() - timeOffset },
         teachersOnly: "",
-      }).sort({ Date: 1 })
-      .limit(8);
-    };
-  };
+      })
+        .sort({ Date: 1 })
+        .limit(8);
+    }
+  }
   res.render("calendars", { title: "Calendar", calendars: calendars });
 };
 
@@ -47,18 +47,16 @@ exports.getAllEvents = async (req, res) => {
   // check if logged in
   let calendars = {};
   if (req.user) {
-    
     // check if teacher for calendar events
-    if(req.user.isTeacher){
-      calendars = await Calendar.find()
-      .sort({ Date: 1 });
-    } else{
+    if (req.user.isTeacher) {
+      calendars = await Calendar.find().sort({ Date: 1 });
+    } else {
       calendars = await Calendar.find({
         teachersOnly: "",
       }).sort({ Date: 1 });
-    };
-  };
-  
+    }
+  }
+
   res.render("calendars", { title: "Calendar", calendars: calendars });
 };
 
@@ -67,43 +65,47 @@ exports.dashboard = async (req, res) => {
   // 1. querey the database
   let calendars = {};
   let callbacks = {};
-  
-// check if logged in
+
+  // check if logged in
   if (req.user) {
-    
     // check if teacher for calendar events
-    if(req.user.isTeacher){
+    if (req.user.isTeacher) {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
       }).sort({ Date: 1 });
-    } else{
+    } else {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
         teachersOnly: "",
       }).sort({ Date: 1 });
-    };
+    }
     // find TA students
     ids = await User.find({ ta: req.user._id });
     idArray = ids.map(function (id) {
       return id._id;
     });
-    
+
     // Find Callback Assignments
-    if(req.user.isTeacher){
+    if (req.user.isTeacher) {
       callbacks = await Callback.find({
-        $or: [{$and:[{teacher: req.user._id}, {message: {"$exists" : true, "$ne" : ""}}]}, { student: { $in: idArray } }],
-        
+        $or: [
+          {
+            $and: [
+              { teacher: req.user._id },
+              { message: { $exists: true, $ne: "" } },
+            ],
+          },
+          { student: { $in: idArray } },
+        ],
+
         completed: "",
       }).sort({ message: -1, date: 1 });
-    } else{
+    } else {
       callbacks = await Callback.find({
         $or: [{ student: req.user._id }],
         completed: "",
       }).sort({ message: -1, date: 1 });
-    };
-
-
-    
+    }
   }
   res.render("dashboard", {
     title: "N.C.U.J.H.S. Dashboard ",
@@ -113,6 +115,7 @@ exports.dashboard = async (req, res) => {
 };
 
 const confirmOwner = (calendar, user) => {
+  console.log(user.isAdmin);
   if (!calendar.author.equals(user._id)) {
     throw Error("You must own an event in order to edit it!");
   }
@@ -122,8 +125,11 @@ exports.editEvent = async (req, res) => {
   //find the event given id
   const calendar = await Calendar.findOne({ _id: req.params._id });
 
-  //confirm they are owner of the event
-  confirmOwner(calendar, req.user);
+  //confirm they are owner of the event or admin
+  if (!req.user.isAdmin) {
+    confirmOwner(calendar, req.user);
+  }
+
   //render out the edit form so they can edit
   res.render("editEvent", { title: `edit ${calendar.title}`, calendar });
 };
@@ -167,6 +173,7 @@ exports.searchEvent = async (req, res) => {
 exports.getEventByID = async (req, res, next) => {
   const calendar = await Calendar.findOne({ _id: req.params._id });
   if (!calendar) return next();
-  const editable = calendar.author.equals(req.user._id);
+  const editable =
+    calendar.author.equals(req.user._id) || req.user.isAdmin === "true";
   res.render("calendar", { calendar, editable, title: calendar.title });
 };
