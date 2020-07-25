@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
+
 const infoSchema = new mongoose.Schema({
   created: {
     type: Date,
