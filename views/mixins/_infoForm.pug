@@ -1,0 +1,26 @@
+mixin infoForm(info = {})
+  form(action=`/info/add/${info._id || ''}` method="POST" class="card" )
+    label(for="title") Title
+    input(type="text" name="title" value=info.title)
+    label(for="description") Description
+    textarea(name="description")= info.description
+    label(for="category") Category
+    input(type="text" name="category" value=`${info.category || "General Info"}`)
+    label(for="link") Link
+    input(type="text" name="link" value=`${info.link || ""}`)
+    label(for="linkTitle") Link Title
+    input(type="text" name="linkTitle" value=`${info.linkTitle || ""}`)
+    hr
+    if info
+      if info.teachersOnly
+        label(for="teachersOnly") Event for teachers only
+        input(type="radio" name="teachersOnly" checked value="true")
+        label(for="teachersOnly") Event for everyone
+        input(type="radio" name="teachersOnly" value="")
+      else
+        label(for="teachersOnly") Event for teachers only
+        input(type="radio" name="teachersOnly" value="true")
+        label(for="teachersOnly") Event for everyone
+        input(type="radio" name="teachersOnly" checked value="")
+    hr
+    input(type="submit" value="Save →" class="button")

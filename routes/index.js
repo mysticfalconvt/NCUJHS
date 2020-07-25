@@ -4,6 +4,7 @@ const calendarController = require("../controllers/calendarController");
 const callbackController = require("../controllers/callbackController");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
+const infoController = require("../controllers/infoController");
 const { catchErrors } = require("../handlers/errorHandlers");
 
 // Do work here
@@ -89,6 +90,12 @@ router.post(
   catchErrors(authController.update),
 );
 
+// info routes
+router.get("/info",catchErrors(infoController.getInfo));
+router.get("/info/add", authController.isLoggedIn, infoController.addInfo);
+router.post("/info/add", authController.isLoggedIn, catchErrors(infoController.createInfo));
+router.post("/info/add/:_id", authController.isLoggedIn, catchErrors(infoController.updateInfo));
+router.get("/info/:_id", authController.isLoggedIn, catchErrors(infoController.editInfo));
 /* 
 	API
 */
@@ -99,7 +106,7 @@ router.get(
   catchErrors(userController.searchAll),
 );
 router.get(
-  "/api/searchStudent",
+  "/api/searc\hStudent",
   authController.isLoggedIn,
   catchErrors(userController.searchStudent),
 );
