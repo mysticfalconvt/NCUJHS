@@ -5,24 +5,23 @@ const promisify = require("es6-promisify");
 const { TRUE } = require("node-sass");
 
 updateCheck = (body) => {
-  
-  if(body.ta) {
-    return  {
-    name: body.name,
-    email: body.email,
-    ta: body.ta,
-    isTeacher: body.isTeacher,
-    isAdmin: body.isAdmin,
-    }} else  {
-      return   {
+  if (body.ta) {
+    return {
+      name: body.name,
+      email: body.email,
+      ta: body.ta,
+      isTeacher: body.isTeacher,
+      isAdmin: body.isAdmin,
+    };
+  } else {
+    return {
       name: body.name,
       email: body.email,
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
-      };
     };
-      
-}
+  }
+};
 
 exports.loginForm = (req, res) => {
   res.render("login", { title: "Login" });
@@ -31,6 +30,7 @@ exports.loginForm = (req, res) => {
 exports.registerForm = (req, res) => {
   res.render("register", { title: "Register" });
 };
+
 exports.searchUser = (req, res) => {
   res.render("searchUser", { title: "Search for an account" });
 };
@@ -38,17 +38,34 @@ exports.searchUser = (req, res) => {
 exports.userSearchResult = async (req, res) => {
   // find the account
   const account = await User.findOne({ _id: req.params._id });
-  // find their callback
-  const callbacks = await Callback.find({ student: req.params._id });
-  // find their callback
-  const ta = await User.find({ ta: req.params._id });
-  //render out the edit form so they can edit
-  res.render("userSearchResult", {
-    title: `${account.name}'s details`,
-    account,
-    callbacks,
-    ta,
-  });
+  // check if teacher
+  if (account.isTeacher) {
+    // find their callback
+    const callbacks = await Callback.find({ teacher: req.params._id });
+    // find their callback
+    // const ta = await User.find({ ta: req.params._id });
+    //render out the edit form so they can edit
+    res.render("userSearchResult", {
+      title: `${account.name}'s assigned callback`,
+      account,
+      callbacks,
+      // ta,
+    });
+    // student
+  } else {
+    // find their callback
+
+    const callbacks = await Callback.find({ student: req.params._id });
+    // find their callback
+    // const ta = await User.find({ ta: req.params._id });
+    //render out the edit form so they can edit
+    res.render("userSearchResult", {
+      title: `${account.name}'s details`,
+      account,
+      callbacks,
+      // ta,
+    });
+  }
 };
 
 exports.validateRegister = (req, res, next) => {
