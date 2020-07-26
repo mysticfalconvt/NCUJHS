@@ -1770,7 +1770,7 @@ exports.$$ = $$;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _axios = __webpack_require__(1);
@@ -1784,92 +1784,93 @@ var _dompurify2 = _interopRequireDefault(_dompurify);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function searchResultsHTML(users) {
-	return users.map(function (user) {
-		return '<p class="search__result">\n               ' + user.name + '\n        </p>';
-	}).join('');
+  return users.map(function (user) {
+    return "<p class=\"search__result\">\n               " + user.name + "\n        </p>";
+  }).join("");
 }
 
 function fillId(search) {
-	console.log(search.value);
-	var id = document.getElementById('id');
-	_axios2.default.get('/api/searchuser?q=' + search.value).then(function (res) {
-		console.log(res.data[0]._id);
-		id.value = res.data[0]._id;
-	}).catch(function (err) {
-		console.error(err);
-	});
-};
+  var id = document.getElementById("id");
+  _axios2.default.get("/api/searchuser?q=" + search.value).then(function (res) {
+    id.value = res.data[0]._id;
+  }).catch(function (err) {
+    console.error(err);
+  });
+}
 
 function typeAheadStudent(search) {
-	if (!search) return;
+  if (!search) return;
 
-	var searchInput = search.querySelector('input[name="studentName"]');
-	console.log(searchInput);
-	var searchResults = search.querySelector('.search__results');
+  var searchInput = search.querySelector('input[name="studentName"]');
+  var searchResults = search.querySelector(".search__results");
 
-	searchInput.on('input', function () {
-		var _this = this;
+  searchInput.on("input", function () {
+    var _this = this;
 
-		if (!this.value) {
-			console.log("11111111");
-			searchResults.style.display = 'none';
-			return;
-		}
-		searchResults.style.display = 'block';
-		searchResults.style.innerHTML = '';
-		_axios2.default.get('/api/searchStudent?q=' + this.value).then(function (res) {
-			console.log(res.data);
-			if (res.data.length) {
-				console.log("2222222");
-				searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
-				return;
-			}
-			searchResults.innerHTML = _dompurify2.default.sanitize('<div class="search__result">No results for ' + _this.value + ' found!</div>');
-		}).catch(function (err) {
-			console.error(err);
-		});
-	});
+    if (!this.value) {
+      searchResults.style.display = "none";
+      return;
+    }
+    searchResults.style.display = "block";
+    searchResults.style.innerHTML = "";
+    _axios2.default.get("/api/searchStudent?q=" + this.value).then(function (res) {
+      if (res.data.length) {
+        searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
+        return;
+      }
+      searchResults.innerHTML = _dompurify2.default.sanitize("<div class=\"search__result\">No results for " + _this.value + " found!</div>");
+    }).catch(function (err) {
+      console.error(err);
+    });
+  });
 
-	//handle keyboard input
+  //handle keyboard input
 
-	//stop enter on search
-	document.getElementById("search").onkeypress = function (e) {
-		var key = e.charCode || e.keyCode || 0;
-		if (key == 13) {
-			e.preventDefault();
-		}
-	};
+  //stop enter on search
+  document.getElementById("search").onkeypress = function (e) {
+    var key = e.charCode || e.keyCode || 0;
+    if (key == 13) {
+      e.preventDefault();
+    }
+  };
 
-	//   Keyboard controls
-	searchInput.on('keyup', function (e) {
-		var studentName = document.getElementById('search');
-		if (![38, 40, 13].includes(e.keyCode)) {
-			return;
-		}
-		var activeClass = 'search__result--active';
-		var current = search.querySelector('.' + activeClass);
-		var items = search.querySelectorAll('.search__result');
-		var next = void 0;
+  //   Keyboard controls
+  searchInput.on("keyup", function (e) {
+    var studentName = document.getElementById("search");
+    if (![38, 40, 13].includes(e.keyCode)) {
+      return;
+    }
+    var activeClass = "search__result--active";
+    var current = search.querySelector("." + activeClass);
+    var items = search.querySelectorAll(".search__result");
+    var next = void 0;
 
-		if (e.keyCode === 40 && current) {
-			next = current.nextElementSibling || items[0];
-		} else if (e.keyCode === 40) {
-			next = items[0];
-		} else if (e.keyCode === 38 && current) {
-			next = current.previousElementSibling || items[items.length - 1];
-		} else if (e.keyCode === 38) {
-			next = items[items.length - 1];
-		} else if (e.keyCode === 13) {
-			studentName.value = current.innerHTML.trim();
-			searchResults.style.display = 'none';
-			fillId(searchInput);
-			return;
-		}
-		if (current) {
-			current.classList.remove(activeClass);
-		}
-		next.classList.add(activeClass);
-	});
+    if (e.keyCode === 40 && current) {
+      next = current.nextElementSibling || items[0];
+    } else if (e.keyCode === 40) {
+      next = items[0];
+    } else if (e.keyCode === 38 && current) {
+      next = current.previousElementSibling || items[items.length - 1];
+    } else if (e.keyCode === 38) {
+      next = items[items.length - 1];
+    } else if (e.keyCode === 13) {
+      studentName.value = current.innerHTML.trim();
+      searchResults.style.display = "none";
+      fillId(searchInput);
+      return;
+    }
+    if (current) {
+      current.classList.remove(activeClass);
+    }
+    next.classList.add(activeClass);
+  });
+  // click on name to
+  searchResults.on("click", function (e) {
+    var studentName = document.getElementById("search");
+    studentName.value = e.path[0].innerHTML.trim();
+    searchResults.style.display = "none";
+    fillId(searchInput);
+  });
 }
 
 exports.default = typeAheadStudent;
