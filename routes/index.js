@@ -50,7 +50,10 @@ router.get(
   catchErrors(callbackController.getCallbackByStudent),
 );
 router.get("/callback/:_id/edit", catchErrors(callbackController.editCallback));
-router.get("/callback/:_id/duplicate", catchErrors(callbackController.duplicateCallback));
+router.get(
+  "/callback/:_id/duplicate",
+  catchErrors(callbackController.duplicateCallback),
+);
 router.get("/callback/:_id", catchErrors(callbackController.getCallbackByID));
 
 //Account Routes
@@ -91,11 +94,23 @@ router.post(
 );
 
 // info routes
-router.get("/info",catchErrors(infoController.getInfo));
+router.get("/info", catchErrors(infoController.getInfo));
 router.get("/info/add", authController.isLoggedIn, infoController.addInfo);
-router.post("/info/add", authController.isLoggedIn, catchErrors(infoController.createInfo));
-router.post("/info/add/:_id", authController.isLoggedIn, catchErrors(infoController.updateInfo));
-router.get("/info/:_id", authController.isLoggedIn, catchErrors(infoController.editInfo));
+router.post(
+  "/info/add",
+  authController.isLoggedIn,
+  catchErrors(infoController.createInfo),
+);
+router.post(
+  "/info/add/:_id",
+  authController.isLoggedIn,
+  catchErrors(infoController.updateInfo),
+);
+router.get(
+  "/info/:_id",
+  authController.isLoggedIn,
+  catchErrors(infoController.editInfo),
+);
 /* 
 	API
 */
@@ -106,7 +121,7 @@ router.get(
   catchErrors(userController.searchAll),
 );
 router.get(
-  "/api/searc\hStudent",
+  "/api/searchStudent",
   authController.isLoggedIn,
   catchErrors(userController.searchStudent),
 );
