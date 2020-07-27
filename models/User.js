@@ -36,6 +36,9 @@ const userSchema = new Schema({
   languageArts: mongoose.Schema.ObjectId,
   science: mongoose.Schema.ObjectId,
   socialStudies: mongoose.Schema.ObjectId,
+  trimester1: mongoose.Schema.ObjectId,
+  trimester2: mongoose.Schema.ObjectId,
+  trimester3: mongoose.Schema.ObjectId,
 });
 
 function autopopulate(next) {
