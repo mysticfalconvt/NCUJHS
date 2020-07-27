@@ -95,11 +95,19 @@ exports.updateCallback = async (req, res) => {
     },
   ).exec();
   // redirect to the store and tell them it worked
-  req.flash(
-    "success",
-    `Sucessfully Updated <strong>${callback.assignment}</strong>.`,
-  );
-  res.redirect(`/callback/${callback._id}`);
+  if (req.body.student) {
+    req.flash(
+      "success",
+      `Sucessfully Updated <strong>${callback.assignment}</strong>.`,
+    );
+    res.redirect(`/callback/${callback._id}`);
+  } else {
+    req.flash(
+      "success",
+      `Sucessfully Checked off <strong>${callback.assignment}</strong>.`,
+    );
+    res.redirect("back");
+  }
 };
 
 exports.searchCallback = async (req, res) => {
