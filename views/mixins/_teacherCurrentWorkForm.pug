@@ -1,0 +1,9 @@
+mixin teacherCurrentWorkForm(teacher = {})
+  form(action=`/user/currentWork/:${teacher._id}` method="post")
+    label(for="currentAssignment") Current Class Assignment
+    input(type="text" name="currentAssignment" value=teacher.currentAssignment)
+    //- input(type="text" name="name"  value=teacher.name)
+    input(type="text" name="id" hidden value=teacher._id)
+    //- input(type="text" name="email"  value=teacher.email)
+    input(type="submit" value="Update Current Assignment" class="button")
+  

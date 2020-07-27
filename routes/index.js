@@ -79,6 +79,11 @@ router.post(
   authController.isLoggedIn,
   catchErrors(userController.adminUpdateAccount),
 );
+router.post(
+  "/user/currentWork/:_id",
+  authController.isLoggedIn,
+  catchErrors(userController.updateCurrentWork),
+);
 router.get(
   "/user/:_id",
   authController.isLoggedIn,

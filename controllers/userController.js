@@ -13,6 +13,12 @@ updateCheck = (body) => {
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
     };
+  } else if (body.currentAssignment) {
+    return {
+      name: body.name,
+      email: body.email,
+      currentAssignment: body.currentAssignment,
+    };
   } else {
     return {
       name: body.name,
@@ -139,6 +145,20 @@ exports.adminUpdateAccount = async (req, res) => {
     { new: true, runValidators: true, context: "query" },
   );
   req.flash("success", `Successfulyl updated ${req.body.name}`);
+  res.redirect("/");
+};
+exports.updateCurrentWork = async (req, res) => {
+  console.log(req.body);
+  const updates = { currentAssignment: req.body.currentAssignment };
+  const user = await User.findOneAndUpdate(
+    { _id: req.body.id },
+    { $set: updates },
+    { new: true, context: "query" },
+  );
+  req.flash(
+    "success",
+    `Successfulyl updated current assignment to ${req.body.currentAssignment}`,
+  );
   res.redirect("/");
 };
 
