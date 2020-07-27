@@ -1,4 +1,5 @@
 mixin callbackCard(callback={})
+    - let teacher = callback.teacher._id.equals(user._id)
     .callback
         .callback__hero
             img(src=`/uploads/callback.png`)
@@ -8,5 +9,11 @@ mixin callbackCard(callback={})
                 p=callback.teacher.name
         .callback__details
             p=callback.description.split(' ').slice(0,20).join(' ')
+            if callback.completed
+                p.message completed
             if callback.message
                 p.message=callback.message.split(' ').slice(0,20).join(' ')
+            if teacher
+                form(action=`/callback/add/${callback._id || ''}` method="POST" class="" )
+                    input(type="radio" name="completed" checked value="true" hidden)
+                    input(type="submit" value="Mark Completed ✅" class="button")
