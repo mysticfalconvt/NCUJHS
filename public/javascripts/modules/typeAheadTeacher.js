@@ -99,6 +99,13 @@ function typeAheadTeacher(search) {
     }
     next.classList.add(activeClass);
   });
+  // click on name to
+  searchResults.on("click", (e) => {
+    const studentName = document.getElementById("search");
+    studentName.value = e.path[0].innerHTML.trim();
+    searchResults.style.display = "none";
+    fillId(searchInput);
+  });
 }
 
 export default typeAheadTeacher;

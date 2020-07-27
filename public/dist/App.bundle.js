@@ -1982,6 +1982,13 @@ function typeAheadTeacher(search) {
     }
     next.classList.add(activeClass);
   });
+  // click on name to
+  searchResults.on("click", function (e) {
+    var studentName = document.getElementById("search");
+    studentName.value = e.path[0].innerHTML.trim();
+    searchResults.style.display = "none";
+    fillId(searchInput);
+  });
 }
 
 exports.default = typeAheadTeacher;
