@@ -5,6 +5,7 @@ const callbackController = require("../controllers/callbackController");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const infoController = require("../controllers/infoController");
+const taController = require("../controllers/taController");
 const { catchErrors } = require("../handlers/errorHandlers");
 
 // Do work here
@@ -115,6 +116,14 @@ router.get(
   "/info/:_id",
   authController.isLoggedIn,
   catchErrors(infoController.editInfo),
+);
+
+// ta routes
+
+router.get(
+  "/ta",
+  authController.isLoggedIn,
+  catchErrors(taController.taDashboard),
 );
 /* 
 	API
