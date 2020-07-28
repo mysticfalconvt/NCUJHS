@@ -31,7 +31,6 @@ function typeAheadUser(search) {
   if (!search) return;
 
   const searchInput = search.querySelector('input[name="userName"]');
-  console.log(searchInput);
   const searchResults = search.querySelector(".search__results");
 
   searchInput.on("input", function () {

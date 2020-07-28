@@ -26,7 +26,7 @@ router.get("/calendar/:_id", catchErrors(calendarController.getEventByID));
 router.get(
   "/callback/add",
   authController.isLoggedIn,
-  catchErrors(callbackController.addCallback),
+  callbackController.addCallback,
 );
 router.post(
   "/callback/add",

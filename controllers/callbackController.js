@@ -7,21 +7,45 @@ const today = new Date();
 const yesterday = new Date(today);
 yesterday.setDate(yesterday.getDate() - 1);
 
-exports.addCallback = async (req, res) => {
-  const users = await User.find(
-    { isTeacher: false, isAdmin: false },
-    { name: 1 },
-  ).sort({ name: 1 });
-  studentList = users.map(function (singleUser) {
-    return singleUser["name"];
-  });
+recountCallback = async (id) => {
+  const callback = await Callback.findOne({ _id: id });
+  console.log(callback);
+  const teacherCount = await Callback.find({
+    teacher: callback.teacher,
+    completed: "",
+  }).count();
+  const studentCount = await Callback.find({
+    student: callback.student,
+    completed: "",
+  }).count();
+  console.log(teacherCount);
+  console.log(studentCount);
+  const teacher = await User.findOneAndUpdate(
+    { _id: callback.teacher },
+    { callbackCount: teacherCount },
+  ).exec();
+  const student = await User.findOneAndUpdate(
+    { _id: callback.student },
+    { callbackCount: studentCount },
+  ).exec();
+};
 
-  res.render("editCallback", { title: "Add Callback", students: studentList });
+exports.addCallback = (req, res) => {
+  // const users = await User.find(
+  //   { isTeacher: false, isAdmin: false },
+  //   { name: 1 },
+  // ).sort({ name: 1 });
+  // studentList = users.map(function (singleUser) {
+  //   return singleUser["name"];
+  // });
+
+  res.render("editCallback", { title: "Add Callback" });
 };
 
 exports.createCallback = async (req, res) => {
   req.body.teacher = req.user.id;
   const callback = await new Callback(req.body).save();
+  recountCallback(callback._id);
   req.flash("success", `Successfully Created ${callback.assignment}.`);
   res.redirect(`/callback/${callback._id}`);
 };
@@ -106,6 +130,7 @@ exports.updateCallback = async (req, res) => {
       "success",
       `Sucessfully Checked off <strong>${callback.assignment}</strong>.`,
     );
+    recountCallback(callback._id);
     res.redirect("back");
   }
 };
