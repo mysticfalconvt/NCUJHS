@@ -1,11 +1,14 @@
 extends layout
 
 include mixins/_callbackCard
+include mixins/_showCurrentWork
 block content
     .inner
         h2= title
         if user.isAdmin
             a(href=`/user/edit/${account._id}`) Edit this account
+            hr
         .calendars
             each callback in callbacks
                 +callbackCard(callback)
+        +showCurrentWork(account)

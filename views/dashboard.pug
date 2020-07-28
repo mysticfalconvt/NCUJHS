@@ -3,6 +3,8 @@ extends layout
 include mixins/_calendarCard
 include mixins/_callbackCard
 include mixins/_teacherCurrentWorkForm
+include mixins/_showCurrentWork
+
 block content
     .inner
         h2= title
@@ -15,46 +17,4 @@ block content
                     +calendarCard(calendar)
                 each callback in callbacks
                     +callbackCard(callback)
-            if user.ta
-                hr
-                h1 Current Classwork
-                table.table
-                    thead 
-                        td Class
-                        td Teacher
-                        td Current Assignment to work on 
-                    if user.math
-                        tr
-                            td Math
-                            td= user.math.name
-                            td= user.math.currentAssignment
-                    if user.languageArts
-                        tr
-                            td languageArts
-                            td= user.languageArts.name
-                            td= user.languageArts.currentAssignment
-                    if user.science
-                        tr
-                            td science
-                            td= user.science.name
-                            td= user.science.currentAssignment
-                    if user.socialStudies
-                        tr
-                            td socialStudies
-                            td= user.socialStudies.name
-                            td= user.socialStudies.currentAssignment
-                    if user.trimester1
-                        tr
-                            td trimester1
-                            td= user.trimester1.name
-                            td= user.trimester1.currentAssignment
-                    if user.trimester2
-                        tr
-                            td trimester2
-                            td= user.trimester2.name
-                            td= user.trimester2.currentAssignment
-                    if user.trimester3
-                        tr
-                            td trimester3
-                            td= user.trimester3.name
-                            td= user.trimester3.currentAssignment
+            +showCurrentWork(user)
