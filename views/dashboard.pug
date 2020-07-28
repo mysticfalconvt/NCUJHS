@@ -3,6 +3,8 @@ extends layout
 include mixins/_calendarCard
 include mixins/_callbackCard
 include mixins/_teacherCurrentWorkForm
+include mixins/_showCurrentWork
+
 block content
     .inner
         h2= title
@@ -15,3 +17,4 @@ block content
                     +calendarCard(calendar)
                 each callback in callbacks
                     +callbackCard(callback)
+            +showCurrentWork(user)

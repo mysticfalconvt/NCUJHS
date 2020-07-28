@@ -79,14 +79,20 @@ exports.dashboard = async (req, res) => {
         teachersOnly: "",
       }).sort({ Date: 1 });
     }
-    // find TA students
-    ids = await User.find({ ta: req.user._id });
-    idArray = ids.map(function (id) {
-      return id._id;
-    });
+    // if (req.user.isTeacher) {
+    //   ids = await User.find({ ta: req.user._id });
+    //   idArray = ids.map(function (id) {
+    //     return id._id;
+    //   });
+    // }
 
-    // Find Callback Assignments
+    // find TA students
     if (req.user.isTeacher) {
+      ids = await User.find({ ta: req.user._id });
+      idArray = ids.map(function (id) {
+        return id._id;
+      });
+      // Find Callback Assignments
       callbacks = await Callback.find({
         $or: [
           {

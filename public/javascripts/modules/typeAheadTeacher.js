@@ -11,9 +11,10 @@ function searchResultsHTML(users) {
     .join("");
 }
 
-function fillId(search) {
+function fillId(search, field) {
   console.log(search.value);
-  const id = document.getElementById("id");
+  console.log(field);
+  const id = document.getElementById(field);
   axios
     .get(`/api/searchUser?q=${search.value}`)
     .then((res) => {
@@ -25,11 +26,11 @@ function fillId(search) {
     });
 }
 
-function typeAheadTeacher(search) {
+function typeAheadTeacher(search, field) {
   if (!search) return;
 
-  const searchInput = search.querySelector('input[name="teacherName"]');
-  console.log(searchInput);
+  const searchInput = search.querySelector(`input[name="${field}Name"]`);
+  console.log(field);
   console.log(search);
   const searchResults = search.querySelector(".search__results");
   console.log(searchResults);
@@ -62,7 +63,7 @@ function typeAheadTeacher(search) {
   //handle keyboard input
 
   //stop enter on search
-  document.getElementById("search").onkeypress = function (e) {
+  document.onkeypress = function (e) {
     var key = e.charCode || e.keyCode || 0;
     if (key == 13) {
       e.preventDefault();
@@ -71,7 +72,7 @@ function typeAheadTeacher(search) {
 
   //   Keyboard controls
   searchInput.on("keyup", (e) => {
-    const teacherName = document.getElementById("search");
+    const teacherName = document.querySelector(`input[name="${field}Name"]`);
     if (![38, 40, 13].includes(e.keyCode)) {
       return;
     }
@@ -89,9 +90,10 @@ function typeAheadTeacher(search) {
     } else if (e.keyCode === 38) {
       next = items[items.length - 1];
     } else if (e.keyCode === 13) {
+      e.preventDefault();
       teacherName.value = current.innerHTML.trim();
       searchResults.style.display = "none";
-      fillId(searchInput);
+      fillId(searchInput, field);
       return;
     }
     if (current) {
@@ -101,10 +103,10 @@ function typeAheadTeacher(search) {
   });
   // click on name to
   searchResults.on("click", (e) => {
-    const studentName = document.getElementById("search");
-    studentName.value = e.path[0].innerHTML.trim();
+    const teacherName = document.querySelector(`input[name="${field}Name"]`);
+    teacherName.value = e.path[0].innerHTML.trim();
     searchResults.style.display = "none";
-    fillId(searchInput);
+    fillId(searchInput, field);
   });
 }
 

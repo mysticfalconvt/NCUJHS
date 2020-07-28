@@ -1902,9 +1902,10 @@ function searchResultsHTML(users) {
   }).join("");
 }
 
-function fillId(search) {
+function fillId(search, field) {
   console.log(search.value);
-  var id = document.getElementById("id");
+  console.log(field);
+  var id = document.getElementById(field);
   _axios2.default.get("/api/searchUser?q=" + search.value).then(function (res) {
     console.log(res.data[0]._id);
     id.value = res.data[0]._id;
@@ -1913,11 +1914,11 @@ function fillId(search) {
   });
 }
 
-function typeAheadTeacher(search) {
+function typeAheadTeacher(search, field) {
   if (!search) return;
 
-  var searchInput = search.querySelector('input[name="teacherName"]');
-  console.log(searchInput);
+  var searchInput = search.querySelector("input[name=\"" + field + "Name\"]");
+  console.log(field);
   console.log(search);
   var searchResults = search.querySelector(".search__results");
   console.log(searchResults);
@@ -1945,7 +1946,7 @@ function typeAheadTeacher(search) {
   //handle keyboard input
 
   //stop enter on search
-  document.getElementById("search").onkeypress = function (e) {
+  document.onkeypress = function (e) {
     var key = e.charCode || e.keyCode || 0;
     if (key == 13) {
       e.preventDefault();
@@ -1954,7 +1955,7 @@ function typeAheadTeacher(search) {
 
   //   Keyboard controls
   searchInput.on("keyup", function (e) {
-    var teacherName = document.getElementById("search");
+    var teacherName = document.querySelector("input[name=\"" + field + "Name\"]");
     if (![38, 40, 13].includes(e.keyCode)) {
       return;
     }
@@ -1972,9 +1973,10 @@ function typeAheadTeacher(search) {
     } else if (e.keyCode === 38) {
       next = items[items.length - 1];
     } else if (e.keyCode === 13) {
+      e.preventDefault();
       teacherName.value = current.innerHTML.trim();
       searchResults.style.display = "none";
-      fillId(searchInput);
+      fillId(searchInput, field);
       return;
     }
     if (current) {
@@ -1984,10 +1986,10 @@ function typeAheadTeacher(search) {
   });
   // click on name to
   searchResults.on("click", function (e) {
-    var studentName = document.getElementById("search");
-    studentName.value = e.path[0].innerHTML.trim();
+    var teacherName = document.querySelector("input[name=\"" + field + "Name\"]");
+    teacherName.value = e.path[0].innerHTML.trim();
     searchResults.style.display = "none";
-    fillId(searchInput);
+    fillId(searchInput, field);
   });
 }
 
@@ -3069,7 +3071,14 @@ var _typeAheadUser2 = _interopRequireDefault(_typeAheadUser);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _typeAheadStudent2.default)((0, _bling.$)(".student"));
-(0, _typeAheadTeacher2.default)((0, _bling.$)(".teacherSearch"));
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".teacherSearch"), "ta");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".mathTeacherSearch"), "math");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".languageArtsTeacherSearch"), "languageArts");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".scienceTeacherSearch"), "science");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".socialStudiesTeacherSearch"), "socialStudies");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".trimester1TeacherSearch"), "trimester1");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".trimester2TeacherSearch"), "trimester2");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".trimester3TeacherSearch"), "trimester3");
 (0, _typeAheadUser2.default)((0, _bling.$)(".userSearch"));
 
 /***/ })

@@ -12,6 +12,13 @@ updateCheck = (body) => {
       ta: body.ta,
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
+      math: body.math || null,
+      languageArts: body.languageArts || null,
+      science: body.science || null,
+      socialStudies: body.socialStudies || null,
+      trimester1: body.trimester1 || null,
+      trimester2: body.trimester2 || null,
+      trimester3: body.trimester3 || null,
     };
   } else if (body.currentAssignment) {
     return {
@@ -187,8 +194,8 @@ exports.searchStudent = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      // isTeacher: "",
-      // isAdmin: "",
+      isTeacher: "",
+      isAdmin: "",
     },
     {
       score: { $meta: "textScore" },
