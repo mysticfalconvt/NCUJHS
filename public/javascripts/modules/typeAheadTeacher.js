@@ -12,13 +12,10 @@ function searchResultsHTML(users) {
 }
 
 function fillId(search, field) {
-  console.log(search.value);
-  console.log(field);
   const id = document.getElementById(field);
   axios
     .get(`/api/searchUser?q=${search.value}`)
     .then((res) => {
-      console.log(res.data[0]._id);
       id.value = res.data[0]._id;
     })
     .catch((err) => {
@@ -30,12 +27,8 @@ function typeAheadTeacher(search, field) {
   if (!search) return;
 
   const searchInput = search.querySelector(`input[name="${field}Name"]`);
-  console.log(field);
-  console.log(search);
   const searchResults = search.querySelector(".search__results");
-  console.log(searchResults);
   searchInput.on("input", function () {
-    console.log("searching");
     if (!this.value) {
       searchResults.style.display = "none";
       return;

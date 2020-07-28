@@ -155,7 +155,6 @@ exports.adminUpdateAccount = async (req, res) => {
   res.redirect("/");
 };
 exports.updateCurrentWork = async (req, res) => {
-  console.log(req.body);
   const updates = { currentAssignment: req.body.currentAssignment };
   const user = await User.findOneAndUpdate(
     { _id: req.body.id },

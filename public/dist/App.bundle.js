@@ -1903,11 +1903,8 @@ function searchResultsHTML(users) {
 }
 
 function fillId(search, field) {
-  console.log(search.value);
-  console.log(field);
   var id = document.getElementById(field);
   _axios2.default.get("/api/searchUser?q=" + search.value).then(function (res) {
-    console.log(res.data[0]._id);
     id.value = res.data[0]._id;
   }).catch(function (err) {
     console.error(err);
@@ -1918,14 +1915,10 @@ function typeAheadTeacher(search, field) {
   if (!search) return;
 
   var searchInput = search.querySelector("input[name=\"" + field + "Name\"]");
-  console.log(field);
-  console.log(search);
   var searchResults = search.querySelector(".search__results");
-  console.log(searchResults);
   searchInput.on("input", function () {
     var _this = this;
 
-    console.log("searching");
     if (!this.value) {
       searchResults.style.display = "none";
       return;
@@ -2040,7 +2033,6 @@ function typeAheadUser(search) {
   if (!search) return;
 
   var searchInput = search.querySelector('input[name="userName"]');
-  console.log(searchInput);
   var searchResults = search.querySelector(".search__results");
 
   searchInput.on("input", function () {

@@ -121,7 +121,6 @@ exports.dashboard = async (req, res) => {
 };
 
 const confirmOwner = (calendar, user) => {
-  console.log(user.isAdmin);
   if (!calendar.author.equals(user._id)) {
     throw Error("You must own an event in order to edit it!");
   }
