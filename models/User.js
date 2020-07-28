@@ -39,6 +39,7 @@ const userSchema = new Schema({
   trimester1: mongoose.Schema.ObjectId,
   trimester2: mongoose.Schema.ObjectId,
   trimester3: mongoose.Schema.ObjectId,
+  callbackCount: String,
 });
 
 function autopopulate(next) {

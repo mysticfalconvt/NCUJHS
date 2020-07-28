@@ -2,7 +2,7 @@ mixin showCurrentWork(user = {})
 
     if user.ta
                 hr
-                p=`Current Classwork for ${user.name}`
+                p=`Current Classwork for ${user.name}. They have ${user.callbackCount} items on callback.`
                 table.table
                     thead 
                         td Class
