@@ -1985,7 +1985,7 @@ function typeAheadTeacher(search) {
   // click on name to
   searchResults.on("click", function (e) {
     var studentName = document.getElementById("search");
-    studentName.value = e.path[0].innerHTML.trim();
+    teacherName.value = e.path[0].innerHTML.trim();
     searchResults.style.display = "none";
     fillId(searchInput);
   });
@@ -3070,6 +3070,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _typeAheadStudent2.default)((0, _bling.$)(".student"));
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacherSearch"));
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".mathTeacherSearch"));
 (0, _typeAheadUser2.default)((0, _bling.$)(".userSearch"));
 
 /***/ })

@@ -102,7 +102,7 @@ function typeAheadTeacher(search) {
   // click on name to
   searchResults.on("click", (e) => {
     const studentName = document.getElementById("search");
-    studentName.value = e.path[0].innerHTML.trim();
+    teacherName.value = e.path[0].innerHTML.trim();
     searchResults.style.display = "none";
     fillId(searchInput);
   });

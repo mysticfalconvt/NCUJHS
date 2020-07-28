@@ -7,4 +7,5 @@ import typeAheadUser from "./modules/typeAheadUser";
 
 typeAheadStudent($(".student"));
 typeAheadTeacher($(".teacherSearch"));
+typeAheadTeacher($(".mathTeacherSearch"));
 typeAheadUser($(".userSearch"));

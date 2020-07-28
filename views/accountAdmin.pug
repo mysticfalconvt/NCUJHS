@@ -22,6 +22,19 @@ block content
                     .search
                         .search__results
                     input(type="hidden" id="id" name="ta"  value=account.ta)
+            .mathTeacherSearch
+                if account.math
+                    label(for="teacherName") Math Teacher
+                    input(type="text" id="search" name="teacherName" value=account.math.name)
+                    .search
+                        .search__results
+                    input(type="hidden" id="id" name="math" readonly="readonly" value=account.math._id)
+                else
+                    label(for="teacherName") TA Teacher
+                    input(type="text" id="search" name="teacherName" value=account.math)
+                    .search
+                        .search__results
+                    input(type="hidden" id="id" name="math"  value=account.math)
             hr
             if account.isTeacher
                 label(for="isTeacher") Teacher
