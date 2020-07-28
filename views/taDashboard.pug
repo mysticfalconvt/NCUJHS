@@ -1,6 +1,5 @@
 extends layout
 
-include mixins/_calendarCard
 include mixins/_callbackCard
 include mixins/_teacherCurrentWorkForm
 include mixins/_showCurrentWork
@@ -9,13 +8,11 @@ block content
     .inner
         h2= title
         if user
-            if user.isTeacher
-                +teacherCurrentWorkForm(user)
-                hr
-            .calendars
-                each calendar in calendars
-                    +calendarCard(calendar)
+           
+            .callbacks
                 each callback in callbacks
                     +callbackCard(callback)
             if !user.isTeacher
                 +showCurrentWork(user)
+            each taStudent in taStudents
+                +showCurrentWork(taStudent)

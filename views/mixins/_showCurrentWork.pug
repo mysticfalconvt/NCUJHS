@@ -2,7 +2,7 @@ mixin showCurrentWork(user = {})
 
     if user.ta
                 hr
-                h1 Current Classwork
+                p=`Current Classwork for ${user.name}`
                 table.table
                     thead 
                         td Class
