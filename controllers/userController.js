@@ -12,6 +12,13 @@ updateCheck = (body) => {
       ta: body.ta,
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
+      math: body.math,
+      languageArts: body.languageArts,
+      science: body.science,
+      socialStudies: body.socialStudies,
+      trimester1: body.trimester1,
+      trimester2: body.trimester2,
+      trimester3: body.trimester3,
     };
   } else if (body.currentAssignment) {
     return {

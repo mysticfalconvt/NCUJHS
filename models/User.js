@@ -43,6 +43,13 @@ const userSchema = new Schema({
 
 function autopopulate(next) {
   this.populate("ta");
+  this.populate("math");
+  this.populate("languageArts");
+  this.populate("science");
+  this.populate("socialStudies");
+  this.populate("trimester1");
+  this.populate("trimester2");
+  this.populate("trimester3");
   next();
 }
 
