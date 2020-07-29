@@ -35,7 +35,6 @@ const userSchema = new Schema({
     default: "",
   },
   child: mongoose.Schema.ObjectId,
-  parent: mongoose.Schema.ObjectId,
   currentAssignment: String,
   ta: mongoose.Schema.ObjectId,
   math: mongoose.Schema.ObjectId,

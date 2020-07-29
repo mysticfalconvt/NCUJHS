@@ -32,6 +32,7 @@ updateCheck = (body) => {
       email: body.email,
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
+      ta: body.ta || null,
     };
   }
 };
@@ -46,7 +47,7 @@ exports.registerForm = (req, res) => {
 
 exports.registerParentForm = async (req, res) => {
   const student = await User.findOne({_id: req.params._id});
-  res.render("registerParent", { title: "Register" , student});
+  res.render("registerParent", { title: "Register" ,});
 };
 
 exports.searchUser = (req, res) => {

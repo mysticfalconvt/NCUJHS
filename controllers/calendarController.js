@@ -120,7 +120,7 @@ exports.dashboard = async (req, res) => {
     }
     // if parent find student
     if (req.user.isParent) {
-      students = await User.find({ parent: req.user.parent } )
+      students = await User.findOne({ _id: req.user.child } )
     };
   }
 
@@ -128,7 +128,7 @@ exports.dashboard = async (req, res) => {
     title: "N.C.U.J.H.S. Dashboard ",
     calendars: calendars,
     callbacks: callbacks,
-    students: students || null
+    student: students || null
   });
 };
 
