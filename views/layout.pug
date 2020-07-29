@@ -11,7 +11,7 @@ html
         nav.nav
           .nav__section.nav__section--pages
             li.nav__item
-              a.nav__link.nav__link--logo(href="/")
+              a.nav__link.nav__link--logo(href="/" class=(currentPath.endsWith('/') ? 'nav__link--active' : ''))
                 img(src='https://33b9108ac7008bb485d5-91c3a2b112acf0947e0c098656bd605c.ssl.cf1.rackcdn.com/ncuhs_login.png' width="60")
                 if user
                     span #{user.name}

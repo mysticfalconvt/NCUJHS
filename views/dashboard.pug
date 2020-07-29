@@ -7,7 +7,7 @@ include mixins/_showCurrentWork
 
 block content
     .inner
-        h2= title
+        h1= title
         if user
             if user.isTeacher
                 +teacherCurrentWorkForm(user)

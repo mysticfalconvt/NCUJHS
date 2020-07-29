@@ -26,6 +26,14 @@ exports.isLoggedIn = (req, res, next) => {
   req.flash("error", "You must be logged in");
   res.redirect("/login");
 };
+exports.isTeacher = (req, res, next) => {
+  if (req.user.isTeacher) {
+    next();
+    return;
+  }
+  req.flash("error", "You must be logged in as a teacher");
+  res.redirect("/");
+};
 
 exports.forgot = async (req, res) => {
   // 1. see if the email exists
@@ -55,15 +63,14 @@ exports.forgot = async (req, res) => {
 
 exports.reset = async (req, res) => {
   const user = await User.findOne({
-    resetPasswordToken: req.params.token,
-    resetPasswordExpires: { $gt: Date.now() },
+    _id: req.params._id,
   });
 
   if (!user) {
     req.flash("error", "Password reset is invalid or has expired");
     return res.redirect("/login");
   }
-  res.render("reset", { title: "reset your Password!" });
+  res.render("reset", { title: `Reset Password for ${user.name}` });
 };
 
 exports.confirmedPasswords = (req, res, next) => {
@@ -77,8 +84,7 @@ exports.confirmedPasswords = (req, res, next) => {
 
 exports.update = async (req, res) => {
   const user = await User.findOne({
-    resetPasswordToken: req.params.token,
-    resetPasswordExpires: { $gt: Date.now() },
+    _id: req.params._id,
   });
 
   if (!user) {

@@ -92,9 +92,9 @@ router.get(
 );
 router.post("/account", catchErrors(userController.updateAccount));
 router.post("/account/forgot", catchErrors(authController.forgot));
-router.get("/account/reset/:token", catchErrors(authController.reset));
+router.get("/account/reset/:_id", catchErrors(authController.reset));
 router.post(
-  "/account/reset/:token",
+  "/account/reset/:_id",
   authController.confirmedPasswords,
   catchErrors(authController.update),
 );
@@ -105,11 +105,13 @@ router.get("/info/add", authController.isLoggedIn, infoController.addInfo);
 router.post(
   "/info/add",
   authController.isLoggedIn,
+  authController.isTeacher,
   catchErrors(infoController.createInfo),
 );
 router.post(
   "/info/add/:_id",
   authController.isLoggedIn,
+  authController.isTeacher,
   catchErrors(infoController.updateInfo),
 );
 router.get(
@@ -123,6 +125,7 @@ router.get(
 router.get(
   "/ta",
   authController.isLoggedIn,
+  authController.isTeacher,
   catchErrors(taController.taDashboard),
 );
 /* 

@@ -9,7 +9,6 @@ yesterday.setDate(yesterday.getDate() - 1);
 
 recountCallback = async (id) => {
   const callback = await Callback.findOne({ _id: id });
-  console.log(callback);
   const teacherCount = await Callback.find({
     teacher: callback.teacher,
     completed: "",
@@ -18,8 +17,6 @@ recountCallback = async (id) => {
     student: callback.student,
     completed: "",
   }).count();
-  console.log(teacherCount);
-  console.log(studentCount);
   const teacher = await User.findOneAndUpdate(
     { _id: callback.teacher },
     { callbackCount: teacherCount },
