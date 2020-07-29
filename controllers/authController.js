@@ -26,6 +26,14 @@ exports.isLoggedIn = (req, res, next) => {
   req.flash("error", "You must be logged in");
   res.redirect("/login");
 };
+exports.isTeacher = (req, res, next) => {
+  if (req.user.isTeacher) {
+    next();
+    return;
+  }
+  req.flash("error", "You must be logged in");
+  res.redirect("/login");
+};
 
 exports.forgot = async (req, res) => {
   // 1. see if the email exists

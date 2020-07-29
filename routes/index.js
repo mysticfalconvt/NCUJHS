@@ -105,11 +105,13 @@ router.get("/info/add", authController.isLoggedIn, infoController.addInfo);
 router.post(
   "/info/add",
   authController.isLoggedIn,
+  authController.isTeacher,
   catchErrors(infoController.createInfo),
 );
 router.post(
   "/info/add/:_id",
   authController.isLoggedIn,
+  authController.isTeacher,
   catchErrors(infoController.updateInfo),
 );
 router.get(
@@ -123,6 +125,7 @@ router.get(
 router.get(
   "/ta",
   authController.isLoggedIn,
+  authController.isTeacher,
   catchErrors(taController.taDashboard),
 );
 /* 
