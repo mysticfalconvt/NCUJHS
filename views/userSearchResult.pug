@@ -6,7 +6,10 @@ block content
     .inner
         h2= title
         if user.isAdmin
-            a(href=`/user/edit/${account._id}`) Edit this account
+            p
+                a(href=`/user/edit/${account._id}`) Edit this account
+            p
+                a(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
             hr
         .calendars
             each callback in callbacks
