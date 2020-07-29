@@ -7,23 +7,20 @@ exports.addInfo = (req, res) => {
   };
 
 exports.getInfo = async (req, res) => {
-   
+   let infos = {};
     if (req.user) {
       // check if teacher for calendar events
       if (req.user.isTeacher) {
-        infos = await Info.find({
-         
-        })
-          .sort({ category: 1 });
-      }}
-       else {
+        infos = await Info.find()
+        .sort({ category: 1 });
+      } else {
         infos = await Info.find({
           teachersOnly: "",
         })
-          .sort({ category: 1 });
+        .sort({ category: 1 });
       }
-    
-    res.render("infos", { title: "Important Info", info: infos });
+    }
+    res.render("infos", { title: "Important Info", infos: infos });
   };
 
   exports.createInfo = async (req, res) => {

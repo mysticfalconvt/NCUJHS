@@ -19,3 +19,6 @@ block content
                     +callbackCard(callback)
             if !user.isTeacher
                 +showCurrentWork(user)
+            if user.isParent
+                each student in students
+                    +showCurrentWork(student)

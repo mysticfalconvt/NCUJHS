@@ -30,6 +30,12 @@ const userSchema = new Schema({
     type: String,
     default: "",
   },
+  isParent: {
+    type: String,
+    default: "",
+  },
+  child: mongoose.Schema.ObjectId,
+  parent: mongoose.Schema.ObjectId,
   currentAssignment: String,
   ta: mongoose.Schema.ObjectId,
   math: mongoose.Schema.ObjectId,
