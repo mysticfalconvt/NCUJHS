@@ -10,6 +10,8 @@ block content
                 a(href=`/user/edit/${account._id}`) Edit this account
             p
                 a(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
+            p
+                a(href=`/parent/register/${account._id}`) Setup a parent account for #{account.name}
             hr
         .calendars
             each callback in callbacks

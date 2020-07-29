@@ -61,6 +61,7 @@ router.get("/callback/:_id", catchErrors(callbackController.getCallbackByID));
 router.get("/login", userController.loginForm);
 router.post("/login", authController.login);
 router.get("/register", userController.registerForm);
+router.get("/parent/register/:_id", catchErrors(userController.registerParentForm));
 router.post(
   "/register",
   userController.validateRegister,
