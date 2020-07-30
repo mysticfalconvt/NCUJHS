@@ -5,7 +5,16 @@ mixin infoForm(info = {})
     label(for="description") Description
     textarea(name="description")= info.description
     label(for="category") Category
-    input(type="text" name="category" value=`${info.category || "General Info"}`)
+    select(type="text" name="category" value=`${info.category || "General Info"}`)
+      option(value="General Info") General Info
+      option(value="Remote Learning") Remote Learning
+      option(value="Discipline") Discipline
+      option(value="Student Info") Student Info
+      option(value="Schedule") Schedule
+      option(value="TA Info") TA Info
+      option(value="Eval Info") Eval Info
+      option(value="School Wide Info") School Wide Info
+      option(value="Reflection") Reflection
     label(for="link") Link
     input(type="text" name="link" value=`${info.link || ""}`)
     label(for="linkTitle") Link Title
@@ -13,14 +22,14 @@ mixin infoForm(info = {})
     hr
     if info
       if info.teachersOnly
-        label(for="teachersOnly") Event for teachers only
+        label(for="teachersOnly") Link for teachers only
         input(type="radio" name="teachersOnly" checked value="true")
-        label(for="teachersOnly") Event for everyone
+        label(for="teachersOnly") Link for everyone
         input(type="radio" name="teachersOnly" value="")
       else
-        label(for="teachersOnly") Event for teachers only
+        label(for="teachersOnly") Link for teachers only
         input(type="radio" name="teachersOnly" value="true")
-        label(for="teachersOnly") Event for everyone
+        label(for="teachersOnly") Link for everyone
         input(type="radio" name="teachersOnly" checked value="")
     hr
     input(type="submit" value="Save →" class="button")
