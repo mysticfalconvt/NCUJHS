@@ -46,8 +46,8 @@ exports.registerForm = (req, res) => {
 };
 
 exports.registerParentForm = async (req, res) => {
-  const student = await User.findOne({_id: req.params._id});
-  res.render("registerParent", { title: "Register" ,});
+  const student = await User.findOne({ _id: req.params._id });
+  res.render("registerParent", { title: "Register", student });
 };
 
 exports.searchUser = (req, res) => {
@@ -121,7 +121,12 @@ exports.validateRegister = (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
-  const user = new User({ email: req.body.email, name: req.body.name, child: req.body.child || "" , isParent: req.body.isParent || ""});
+  const user = new User({
+    email: req.body.email,
+    name: req.body.name,
+    child: req.body.child || "",
+    isParent: req.body.isParent || "",
+  });
   const register = promisify(User.register, User);
   await register(user, req.body.password);
   next(); // pass to authController.login

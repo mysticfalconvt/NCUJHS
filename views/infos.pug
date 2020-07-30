@@ -23,7 +23,7 @@ block content
                     td=info.title
                     td=info.description
                     td
-                        a(href=`//${info.link}`)=info.linkTitle
+                        a(href=`${info.link}`)=info.linkTitle
                     if user
                         if user.isAdmin
                             td 

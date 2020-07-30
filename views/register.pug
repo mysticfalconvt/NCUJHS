@@ -12,4 +12,53 @@ block content
       input(type="password" name="password")
       label(for="password-confirm") Confirm Password
       input(type="password" name="password-confirm")
+      .teacherSearch
+        label(for="taName") TA Teacher
+        input(type="text" id="search" name="taName")
+        .search
+            .search__results
+        input(type="hidden" id="ta" name="ta")
+      .mathTeacherSearch
+        label(for="mathName") Math Teacher
+        input(type="text" id="search" name="mathName")
+        .search
+            .search__results
+      input(type="hidden" id="math" name="math")
+      .languageArtsTeacherSearch
+        label(for="languageArtsName") language Arts Teacher
+        input(type="text" id="search" name="languageArtsName")
+        .search
+            .search__results
+        input(type="hidden" id="languageArts" name="languageArts")
+      .scienceTeacherSearch
+        label(for="scienceName") science Teacher
+        input(type="text" id="search" name="scienceName")
+        .search
+            .search__results
+        input(type="hidden" id="science" name="science")
+      .socialStudiesTeacherSearch
+        label(for="socialStudiesName") social Studies Teacher
+        input(type="text" id="search" name="socialStudiesName")
+        .search
+            .search__results
+        input(type="hidden" id="socialStudies" name="socialStudies")
+      .trimester1TeacherSearch
+        label(for="trimester1Name") trimester1 Teacher
+        input(type="text" id="search" name="trimester1Name")
+        .search
+            .search__results
+        input(type="hidden" id="trimester1" name="trimester1")
+      .trimester2TeacherSearch
+        label(for="trimester2Name") trimester2 Teacher
+        input(type="text" id="search" name="trimester2Name")
+        .search
+            .search__results
+        input(type="hidden" id="trimester2" name="trimester2")
+      .trimester3TeacherSearch
+        label(for="trimester3Name") trimester3 Teacher
+        input(type="text" id="search" name="trimester3Name")
+        .search
+            .search__results
+        input(type="hidden" id="trimester3" name="trimester3")
+      
       input.button(type="submit" value="Register →")
