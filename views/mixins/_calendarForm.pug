@@ -4,9 +4,9 @@ mixin calendarForm(calendar = {})
     input(type="text" name="title" value=calendar.title)
     label(for="Date") Event Date
     if calendar.Date
-      input(type="text" name="Date" value=calendar.Date.toDateString())
+      input(type="date" name="Date" value=calendar.Date.toISOString().split('T')[0])
     else
-      input(type="text" name="Date" value="mm/dd/yyyy")
+      input(type="date" name="Date" value=calendar.Date)
     label(for="description") Description
     textarea(name="description")= calendar.description
     label(for="linkTitle") Link
