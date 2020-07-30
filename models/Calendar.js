@@ -17,6 +17,7 @@ const calendarSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+    default: "",
   },
   link: {
     type: String,
