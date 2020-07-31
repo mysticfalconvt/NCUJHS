@@ -68,7 +68,7 @@ router.get(
 router.post(
   "/register",
   userController.validateRegister,
-  userController.register,
+  catchErrors(userController.register),
   authController.login,
 );
 router.get("/logout", authController.logout);
@@ -136,11 +136,7 @@ router.get(
 	API
 */
 
-router.get(
-  "/api/searchUser",
-  authController.isLoggedIn,
-  catchErrors(userController.searchAll),
-);
+router.get("/api/searchUser", catchErrors(userController.searchAll));
 router.get(
   "/api/searchStudent",
   authController.isLoggedIn,

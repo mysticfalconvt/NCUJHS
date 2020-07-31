@@ -121,11 +121,20 @@ exports.validateRegister = (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
+  console.log(req.body);
   const user = new User({
     email: req.body.email,
     name: req.body.name,
-    child: req.body.child || "",
+    child: req.body.child || null,
     isParent: req.body.isParent || "",
+    ta: req.body.ta || null,
+    math: req.body.math || null,
+    languageArts: req.body.languageArts || null,
+    science: req.body.science || null,
+    socialStudies: req.body.socialStudies || null,
+    trimester1: req.body.trimester1 || null,
+    trimester2: req.body.trimester2 || null,
+    trimester3: req.body.trimester3 || null,
   });
   const register = promisify(User.register, User);
   await register(user, req.body.password);
