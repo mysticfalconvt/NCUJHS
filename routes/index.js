@@ -146,10 +146,6 @@ router.get(
   authController.isLoggedIn,
   catchErrors(userController.searchStudent),
 );
-router.get(
-  "/api/searchTeacher",
-  authController.isLoggedIn,
-  catchErrors(userController.searchTeacher),
-);
+router.get("/api/searchTeacher", catchErrors(userController.searchTeacher));
 
 module.exports = router;
