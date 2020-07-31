@@ -136,11 +136,7 @@ router.get(
 	API
 */
 
-router.get(
-  "/api/searchUser",
-  authController.isLoggedIn,
-  catchErrors(userController.searchAll),
-);
+router.get("/api/searchUser", catchErrors(userController.searchAll));
 router.get(
   "/api/searchStudent",
   authController.isLoggedIn,
