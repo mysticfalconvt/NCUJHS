@@ -124,8 +124,8 @@ exports.register = async (req, res, next) => {
   const user = new User({
     email: req.body.email,
     name: req.body.name,
-    child: req.body.child || "",
-    isParent: req.body.isParent || "",
+    child: req.body.child || null,
+    isParent: req.body.isParent || null,
   });
   const register = promisify(User.register, User);
   await register(user, req.body.password);

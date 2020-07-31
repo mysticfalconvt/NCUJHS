@@ -68,7 +68,7 @@ router.get(
 router.post(
   "/register",
   userController.validateRegister,
-  userController.register,
+  catchErrors(userController.register),
   authController.login,
 );
 router.get("/logout", authController.logout);
