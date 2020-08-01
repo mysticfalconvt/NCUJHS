@@ -1925,10 +1925,8 @@ function typeAheadTeacher(search, field) {
     }
     searchResults.style.display = "block";
     searchResults.style.innerHTML = "";
-    console.log(this.value);
     _axios2.default.get("/api/searchTeacher?q=" + this.value).then(function (res) {
       if (res.data.length) {
-        console.log(res);
         searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
         return;
       }

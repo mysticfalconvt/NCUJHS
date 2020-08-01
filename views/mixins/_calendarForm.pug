@@ -15,15 +15,20 @@ mixin calendarForm(calendar = {})
     textarea(name="linkTitle")= calendar.linkTitle
     hr
     if calendar
-      if calendar.teachersOnly
-        label(for="teachersOnly") Event for teachers only
-        input(type="radio" name="teachersOnly" checked value="true")
-        label(for="teachersOnly") Event for everyone
-        input(type="radio" name="teachersOnly" value="")
-      else
-        label(for="teachersOnly") Event for teachers only
-        input(type="radio" name="teachersOnly" value="true")
-        label(for="teachersOnly") Event for everyone
-        input(type="radio" name="teachersOnly" checked value="")
+      .radioContainer
+        if calendar.teachersOnly
+          input(type="radio" name="teachersOnly" id="teacherTrue" checked value="true")
+          label(for="teacherTrue") 
+            span.radio Event for teachers only
+          input(type="radio" name="teachersOnly" id="teacherFalse" value="")
+          label(for="teacherFalse") 
+            span.radio Event for everyone
+        else
+          input(type="radio" name="teachersOnly" id="teacherTrue" value="true")
+          label(for="teacherTrue") 
+            span.radio Event for teachers only
+          input(type="radio" name="teachersOnly" id="teacherFalse" checked value="")
+          label(for="teacherFalse") 
+            span.radio Event for everyone
     hr
     input(type="submit" value="Save →" class="button")

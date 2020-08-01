@@ -1,6 +1,7 @@
-input, textarea {
-  width:100%;
-  padding:10px;
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
   border: 1px solid $grey;
   &.input {
     &--error {
@@ -30,3 +31,49 @@ label {
     border-bottom: 1px solid $grey;
   }
 }
+
+.radioContainer {
+  input[type="radio"] {
+    display: none;
+  }
+  float: left;
+}
+.radioContainer label {
+  position: relative;
+  margin-left: 60px;
+  margin-right: 80px;
+}
+
+.radioContainer span::before,
+.radioContainer span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.radioContainer span.radio:hover {
+  cursor: pointer;
+}
+.radioContainer span.radio::before {
+  left: -52px;
+  width: 25px;
+  height: 25px;
+  background-color: #a8aac1;
+  border-radius: 50px;
+}
+.radioContainer span.radio::after {
+  left: -49px;
+  width: 17px;
+  height: 17px;
+  border-radius: 10px;
+  background-color: #a8aac1;
+  transition: left 0.25s, background-color 0.25s;
+}
+input[type="radio"]:checked + label span.radio::after {
+  left: -47.5px;
+  background-color: $yellow;
+}
+
+// for select

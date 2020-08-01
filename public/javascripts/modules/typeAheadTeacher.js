@@ -35,12 +35,10 @@ function typeAheadTeacher(search, field) {
     }
     searchResults.style.display = "block";
     searchResults.style.innerHTML = "";
-    console.log(this.value);
     axios
       .get(`/api/searchTeacher?q=${this.value}`)
       .then((res) => {
         if (res.data.length) {
-          console.log(res);
           searchResults.innerHTML = dompurify.sanitize(
             searchResultsHTML(res.data),
           );

@@ -19,16 +19,21 @@ mixin callbackForm(callback = {})
     textarea(name="linkTitle")= callback.linkTitle
     hr
     if callback.student
-      if callback.completed
-        label(for="completed") Assignment Completed
-        input(type="radio" name="completed" checked value="true")
-        label(for="completed") Assignment Incomplete
-        input(type="radio" name="completed" value="")
-      else
-        label(for="completed") Assignment Completed
-        input(type="radio" name="completed" value="true")
-        label(for="completed") Assignment Incomplete
-        input(type="radio" name="completed" checked value="")
+      .radioContainer
+        if callback.completed
+          input(type="radio" name="completed" id="callbackCompletedTrue" checked value="true")
+          label(for="callbackCompletedTrue") 
+            span.radio Assignment Completed
+          input(type="radio" name="completed" id="callbackCompletedFalse" value="")
+          label(for="callbackCompletedFalse") 
+            span.radio Assignment Incomplete
+        else
+          input(type="radio" name="completed" id="callbackCompletedTrue" value="true")
+          label(for="callbackCompletedTrue") 
+            span.radio Assignment Completed
+          input(type="radio" name="completed" id="callbackCompletedFalse" checked value="")
+          label(for="callbackCompletedFalse") 
+            span.radio Assignment Incomplete
       
   
     if callback.student
