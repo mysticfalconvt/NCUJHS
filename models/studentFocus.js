@@ -3,36 +3,39 @@ mongoose.Promise = global.Promise;
 
 
 const studentFocusSchema = new mongoose.Schema({
-	tags        : [
-		String,
-	],
+	
 	created     : {
 		type    : Date,
 		default : Date.now,
 	},	
-	author      : {
+	teacher      : {
 		type     : mongoose.Schema.ObjectId,
 		ref      : 'User',
-		required : 'You must supply an author',
+		required : 'You must supply a teacher',
+	},
+	student      : {
+		type     : mongoose.Schema.ObjectId,
+		ref      : 'User',
+		required : 'You must supply a student',
 	},
 	comments: {
 		type: String
-	}
+	},
+	category: {
+		type: String
+	},
 });
 
-// Define our indexes
-storeSchema.index({
-	name        : 'text',
-	description : 'text',
-});
+function autopopulate(next) {
+	this.populate("teacher");
+	this.populate("student");
+	next();
+  }
+  
+  studentFocusSchema.pre("find", autopopulate);
+  studentFocusSchema.pre("findOne", autopopulate);
 
 
-storeSchema.statics.getTagsList = function() {
-	return this.aggregate([
-		{ $unwind: '$tags' },
-		{ $group: { _id: '$tags', count: { $sum: 1 } } },
-		{ $sort: { count: -1 } },
-	]);
-};
+
 
 module.exports = mongoose.model('studentFocus', studentFocusSchema);

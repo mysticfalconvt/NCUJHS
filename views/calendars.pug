@@ -4,13 +4,15 @@ include mixins/_calendarCard
 block content
     .inner
         h2= title
-            if user.isTeacher
-                a.title_link(href="/add") Add Event
-        p 
-            if currentPath.startsWith("/allCalendars")
-                a(href="/calendars") Upcoming events only
-            else 
-                a(href="/allCalendars") Include all events
+            if user
+                if user.isTeacher
+                    a.title_link(href="/add") Add Event
+        p
+            if user
+                if currentPath.startsWith("/allCalendars")
+                    a(href="/calendars") Upcoming events only
+                else 
+                    a(href="/allCalendars") Include all events
         .calendars
             each calendar in calendars
                 +calendarCard(calendar)

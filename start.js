@@ -30,6 +30,7 @@ require("./models/Callback");
 require("./models/Calendar");
 require("./models/User");
 require("./models/Info");
+require("./models/studentFocus");
 
 // Start our app!
 const app = require("./app");

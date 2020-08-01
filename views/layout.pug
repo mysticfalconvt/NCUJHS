@@ -36,24 +36,16 @@ html
                       span #{"Finder"}
 
                       //- Student Focus
-                //- if user.isTeacher
-                //-   li.nav__item
-                //-     a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
-                //-       != h.icon('studentfocus')
-                //-       span #{"Student Focus"}
-                //-   li.nav__item
-                //-     a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
-                //-       != h.icon('pencil')
-                //-       span #{"add Student Focus"}    
-                //- else if user.isAdmin
-                //-   li.nav__item
-                //-     a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
-                //-       != h.icon('studentfocus')
-                //-       span #{"Student Focus"}
-                //-   li.nav__item
-                //-     a.nav__link(href="/addStudentFocus", class=(currentPath.startsWith('/addStudentFocus') ? 'nav__link--active' : ''))
-                //-       != h.icon('pencil')
-                //-       span #{"add Student Focus"}
+                if user.isTeacher || user.isAdmin
+                  li.nav__item
+                    a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
+                      != h.icon('studentfocus')
+                      span #{"Student Focus"}
+                else if user.isAdmin
+                  li.nav__item
+                    a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
+                      != h.icon('studentfocus')
+                      span #{"Student Focus"}
           //- .nav__section.nav__section--search
           //-   .search
           //-     input.search__input(type="text" placeholder="Search..." name="search")
