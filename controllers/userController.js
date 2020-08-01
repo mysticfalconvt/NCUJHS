@@ -121,7 +121,6 @@ exports.validateRegister = (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
-  console.log(req.body);
   const user = new User({
     email: req.body.email,
     name: req.body.name,

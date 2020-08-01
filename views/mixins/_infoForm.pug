@@ -21,15 +21,20 @@ mixin infoForm(info = {})
     input(type="text" name="linkTitle" value=`${info.linkTitle || ""}`)
     hr
     if info
-      if info.teachersOnly
-        label(for="teachersOnly") Link for teachers only
-        input(type="radio" name="teachersOnly" checked value="true")
-        label(for="teachersOnly") Link for everyone
-        input(type="radio" name="teachersOnly" value="")
-      else
-        label(for="teachersOnly") Link for teachers only
-        input(type="radio" name="teachersOnly" value="true")
-        label(for="teachersOnly") Link for everyone
-        input(type="radio" name="teachersOnly" checked value="")
+      .radioContainer
+        if info.teachersOnly
+          input(type="radio" name="teachersOnly" id="teacherTrue" checked value="true")
+          label(for="teacherTrue") 
+            span.radio Link for teachers only
+          input(type="radio" name="teachersOnly" id="teacherFalse" value="")
+          label(for="teacherFalse") 
+            span.radio Link for everyone
+        else
+          input(type="radio" name="teachersOnly" id="teacherTrue" value="true")
+          label(for="teacherTrue") 
+            span.radio Link for teachers only
+          input(type="radio" name="teachersOnly" id="teacherFalse" checked value="")
+          label(for="teacherFalse") 
+            span.radio Link for everyone
     hr
     input(type="submit" value="Save →" class="button")

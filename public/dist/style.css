@@ -500,11 +500,13 @@ p {
   font-size: 8rem;
   text-align: center; }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #e6e6e6; }
-  input.input--error, textarea.input--error {
+  input.input--error,
+  textarea.input--error {
     border-color: red; }
 
 label {
@@ -523,6 +525,46 @@ label {
     padding-bottom: 2rem;
     margin-bottom: 2rem;
     border-bottom: 1px solid #e6e6e6; }
+
+.radioContainer {
+  float: left; }
+  .radioContainer input[type="radio"] {
+    display: none; }
+
+.radioContainer label {
+  position: relative;
+  margin-left: 60px;
+  margin-right: 80px; }
+
+.radioContainer span::before,
+.radioContainer span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto; }
+
+.radioContainer span.radio:hover {
+  cursor: pointer; }
+
+.radioContainer span.radio::before {
+  left: -52px;
+  width: 45px;
+  height: 25px;
+  background-color: #a8aac1;
+  border-radius: 50px; }
+
+.radioContainer span.radio::after {
+  left: -49px;
+  width: 17px;
+  height: 17px;
+  border-radius: 10px;
+  background-color: #6c788a;
+  transition: left 0.25s, background-color 0.25s; }
+
+input[type="radio"]:checked + label span.radio::after {
+  left: -27px;
+  background-color: #FFC40E; }
 
 .search {
   position: relative;
