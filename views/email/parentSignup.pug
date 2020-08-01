@@ -1,0 +1,9 @@
+extends email-layout
+
+block content
+  h2= subject
+  p Hello, Parent or guardian of #{name}. You have been sent a link to signup for a parent/guardian account for the NCUJHS Dashboard website at ncujhs.tech.
+  +button(signupURL, 'Signup here →')
+  p If you can't click the above button please visit #{signupURL}
+  br
+  p If you didn't request this email, please ignore it.

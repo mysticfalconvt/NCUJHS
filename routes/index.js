@@ -6,6 +6,7 @@ const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const infoController = require("../controllers/infoController");
 const studentFocusController = require("../controllers/studentFocusController");
+const mailController = require("../controllers/mailController");
 const taController = require("../controllers/taController");
 const { catchErrors } = require("../handlers/errorHandlers");
 
@@ -125,8 +126,15 @@ router.get(
   catchErrors(infoController.editInfo),
 );
 // studentFocus routes
-router.get("/studentFocus", catchErrors(studentFocusController.getStudentFocus));
-router.get("/studentFocus/add", authController.isLoggedIn, studentFocusController.addStudentFocus);
+router.get(
+  "/studentFocus",
+  catchErrors(studentFocusController.getStudentFocus),
+);
+router.get(
+  "/studentFocus/add",
+  authController.isLoggedIn,
+  studentFocusController.addStudentFocus,
+);
 router.post(
   "/studentFocus/add",
   authController.isLoggedIn,
@@ -153,6 +161,21 @@ router.get(
   authController.isTeacher,
   catchErrors(taController.taDashboard),
 );
+
+//Mail Routes
+router.get(
+  `/email/parent/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(mailController.parentSignup),
+);
+router.post(
+  `/email/parent/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(mailController.sendParentSignup),
+);
+
 /* 
 	API
 */

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    .inner
+        form.form(action=`/email/parent/${account._id}` method="post" class="card")
+                h2=title
+                label(for="email") Email
+                input(type="email" name="email")
+                input.button(type="submit" value="Send ✉️")
