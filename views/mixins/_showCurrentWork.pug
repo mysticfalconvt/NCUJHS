@@ -3,6 +3,9 @@ mixin showCurrentWork(user = {})
     if user.ta
                 hr
                 p=`Current Classwork for ${user.name}. They have ${user.callbackCount} items on callback.`
+                if !user.parent && currentPath.startsWith('/ta')
+                    p
+                        a(href=`/email/parent/${user._id}`) Send a parent account signup email for #{user.name}
                 table.table
                     thead 
                         td Class

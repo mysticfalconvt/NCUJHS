@@ -42,12 +42,8 @@ exports.forgot = async (req, res) => {
     req.flash("error", "No account with that email exists");
     return res.redirect("/login");
   }
-  // 2. Set reset token and expiry on their account
-  user.resetPasswordToken = crypto.randomBytes(20).toString("hex");
-  user.resetPasswordExpires = Date.now() + 3600000;
-  await user.save();
   // 3. Send them an email
-  const resetURL = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
+  const resetURL = `http://${req.headers.host}/account/reset/`;
 
   mail.send({
     user,
