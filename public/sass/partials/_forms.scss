@@ -58,7 +58,7 @@ label {
 }
 .radioContainer span.radio::before {
   left: -52px;
-  width: 45px;
+  width: 25px;
   height: 25px;
   background-color: #a8aac1;
   border-radius: 50px;
@@ -68,10 +68,12 @@ label {
   width: 17px;
   height: 17px;
   border-radius: 10px;
-  background-color: #6c788a;
+  background-color: #a8aac1;
   transition: left 0.25s, background-color 0.25s;
 }
 input[type="radio"]:checked + label span.radio::after {
-  left: -27px;
+  left: -47.5px;
   background-color: $yellow;
 }
+
+// for select
