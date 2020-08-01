@@ -1,0 +1,8 @@
+extends layout
+
+include mixins/_studentFocusForm
+
+block content 
+    .inner 
+        h2 #{title}
+        +studentFocusForm(studentFocus)

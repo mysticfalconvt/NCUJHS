@@ -19,7 +19,12 @@ exports.getInfo = async (req, res) => {
         })
         .sort({ category: 1 });
       }
-    }
+    } else {
+      infos = await Info.find({
+        teachersOnly: "",
+      })
+      .sort({ category: 1 });
+    };
     res.render("infos", { title: "Important Info", infos: infos });
   };
 

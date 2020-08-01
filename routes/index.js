@@ -5,6 +5,7 @@ const callbackController = require("../controllers/callbackController");
 const userController = require("../controllers/userController");
 const authController = require("../controllers/authController");
 const infoController = require("../controllers/infoController");
+const studentFocusController = require("../controllers/studentFocusController");
 const taController = require("../controllers/taController");
 const { catchErrors } = require("../handlers/errorHandlers");
 
@@ -122,6 +123,26 @@ router.get(
   "/info/:_id",
   authController.isLoggedIn,
   catchErrors(infoController.editInfo),
+);
+// studentFocus routes
+router.get("/studentFocus", catchErrors(studentFocusController.getStudentFocus));
+router.get("/studentFocus/add", authController.isLoggedIn, studentFocusController.addStudentFocus);
+router.post(
+  "/studentFocus/add",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(studentFocusController.createStudentFocus),
+);
+router.post(
+  "/studentFocus/add/:_id",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(studentFocusController.updateStudentFocus),
+);
+router.get(
+  "/studentFocus/:_id",
+  authController.isLoggedIn,
+  catchErrors(studentFocusController.editStudentFocus),
 );
 
 // ta routes

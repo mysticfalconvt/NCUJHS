@@ -1,0 +1,29 @@
+extends layout
+
+
+block content
+    .inner
+        h2= title
+            if user
+                if user.isTeacher
+                    a.title_link(href="/studentFocus/add") Add new 
+        if user
+            if user.isTeacher || user.isAdmin
+                table.table     
+                    thead
+                        td Category
+                        td Student
+                        td Comments
+                        td Teacher
+                        td Date
+                        td edit
+                    each studentFocus in studentFocuss
+                        tr
+                            td=studentFocus.category
+                            td=studentFocus.student.name
+                            td=studentFocus.comments
+                            td=studentFocus.teacher.name
+                            td=studentFocus.created.toDateString()
+                            if (user._id.equals(studentFocus.teacher._id)) || user.isAdmin
+                                td 
+                                    a(href=`/studentFocus/${studentFocus._id}`) EDIT

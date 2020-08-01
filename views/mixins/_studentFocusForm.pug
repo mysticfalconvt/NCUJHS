@@ -1,0 +1,26 @@
+mixin studentFocusForm(studentFocus = {})
+  form(action=`/studentFocus/add/${studentFocus._id || ''}` method="POST" class="card" )
+    label(for="studentName") student Name
+    .student
+      if studentFocus.student
+        input(name="studentName" value=studentFocus.student.name disabled="disabled")
+      else
+        input(name="studentName" id="search" type="text" value=studentFocus.student)
+      .search
+        .search__results
+    label(for="category") Category
+    select(type="text" name="category" value=`${studentFocus.category || "General Student Focus"}`)
+      option(value="Parent Contact") Parent Contact
+      option(value="General Comments About Student") General Comments About Student
+      option(value="Discipline") Discipline
+      option(value="Student Focus Notes") Student Focus Notes
+    label(for="comments") comments
+    input(type="text" name="comments" value=studentFocus.comments)
+    if studentFocus.student
+      .search__input
+        input(name="student" id="id" value=studentFocus.student._id hidden)
+    else
+      .search__input
+      input(name="student" id="id" value=studentFocus.student hidden)
+    
+    input(type="submit" value="Save →" class="button")
