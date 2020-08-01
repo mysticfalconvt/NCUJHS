@@ -3,6 +3,7 @@ const User = mongoose.model("User");
 const Callback = mongoose.model("Callback");
 const promisify = require("es6-promisify");
 const { TRUE } = require("node-sass");
+const { findOneAndUpdate } = require("../models/User");
 
 updateCheck = (body) => {
   if (body.ta) {
@@ -12,6 +13,7 @@ updateCheck = (body) => {
       ta: body.ta,
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
+      parent: body.parent || null,
       math: body.math || null,
       languageArts: body.languageArts || null,
       science: body.science || null,
@@ -137,6 +139,14 @@ exports.register = async (req, res, next) => {
   });
   const register = promisify(User.register, User);
   await register(user, req.body.password);
+  if (user.child) {
+    const updates = { parent: user._id };
+    const student = await User.findOneAndUpdate(
+      { _id: user.child },
+      { $set: updates },
+      { new: true, runValidators: true, context: "query" },
+    );
+  }
   next(); // pass to authController.login
 };
 

@@ -35,6 +35,7 @@ const userSchema = new Schema({
     default: "",
   },
   child: mongoose.Schema.ObjectId,
+  parent: mongoose.Schema.ObjectId,
   currentAssignment: String,
   ta: mongoose.Schema.ObjectId,
   math: mongoose.Schema.ObjectId,
@@ -49,6 +50,7 @@ const userSchema = new Schema({
 
 function autopopulate(next) {
   this.populate("ta");
+  this.populate("child");
   this.populate("math");
   this.populate("languageArts");
   this.populate("science");
