@@ -1,9 +1,14 @@
 mixin userTable(users={})
     table.table
         thead
-            td=`Name   ${studentCallbackCount} students are on callback`
-            td TA 
-            td=`callback total: ${callbackCount}`
+            td
+                a(href="/user/search/name")=`Name:   ${studentCallbackCount} students are on callback ${percentageOnCallback}% of ${studentCount} students`
+            td
+                a(href="/user/search/ta") TA
+            td
+                a(href="/user/search/callbackCount")=`callback total: ${callbackCount}`
+            td
+                a(href="/user/search/parent") Parent
 
         each user in users
             tr
@@ -14,4 +19,9 @@ mixin userTable(users={})
                 else
                     td
                 td=user.callbackCount
+                if !(user.isTeacher || user.isAdmin)
+                    if user.parent
+                        td ☒
+                    else
+                        td ☐
                 
