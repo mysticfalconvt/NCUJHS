@@ -756,7 +756,7 @@ input[type="radio"]:checked + label span.radio::after {
   .table thead tr {
     background: #303030;
     color: white; }
-  .table thead a {
+  .table thead tr td a {
     background: #303030;
     color: white; }
 
