@@ -56,7 +56,8 @@ exports.searchUser = async (req, res) => {
   const category = req.params.category || "";
   let sort = {};
   sort[category] = -1;
-  users = await User.find().sort(sort);
+  sort["name"] = 1;
+  users = await User.find({ isParent: { $ne: true } }).sort(sort);
   const callbackCount = users.reduce(function (prev, current) {
     const adder = parseInt(current.callbackCount || "0", 10);
     if (current.isTeacher) {
@@ -65,11 +66,20 @@ exports.searchUser = async (req, res) => {
       return prev + adder;
     }
   }, 0);
-  // console.log(callbackCount);
+  const studentCallbackCount = users.reduce(function (prev, current) {
+    if (current.isTeacher) {
+      return prev;
+    } else if (current.callbackCount) {
+      return prev + 1;
+    } else {
+      return prev;
+    }
+  }, 0);
   res.render("searchUser", {
     title: `Search for an account by ${category}`,
     users,
     callbackCount,
+    studentCallbackCount,
   });
 };
 

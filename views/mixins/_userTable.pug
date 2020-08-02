@@ -1,7 +1,7 @@
 mixin userTable(users={})
     table.table
         thead
-            td Name
+            td=`Name   ${studentCallbackCount} students are on callback`
             td TA 
             td=`callback total: ${callbackCount}`
 
