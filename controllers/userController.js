@@ -54,14 +54,22 @@ exports.registerParentForm = async (req, res) => {
 
 exports.searchUser = async (req, res) => {
   const category = req.params.category || "";
-
-  console.log(category);
   let sort = {};
   sort[category] = -1;
   users = await User.find().sort(sort);
+  const callbackCount = users.reduce(function (prev, current) {
+    const adder = parseInt(current.callbackCount || "0", 10);
+    if (current.isTeacher) {
+      return prev;
+    } else {
+      return prev + adder;
+    }
+  }, 0);
+  // console.log(callbackCount);
   res.render("searchUser", {
     title: `Search for an account by ${category}`,
     users,
+    callbackCount,
   });
 };
 

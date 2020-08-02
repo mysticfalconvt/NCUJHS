@@ -2,13 +2,16 @@ mixin userTable(users={})
     table.table
         thead
             td Name
-            td TA
+            td TA 
+            td=`callback total: ${callbackCount}`
 
         each user in users
             tr
-                td=user.name
+                td
+                    a(href=`/user/${user._id}`) #{user.name}
                 if user.ta
                     td=user.ta.name
                 else
                     td
+                td=user.callbackCount
                 
