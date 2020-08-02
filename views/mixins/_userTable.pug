@@ -1,0 +1,14 @@
+mixin userTable(users={})
+    table.table
+        thead
+            td Name
+            td TA
+
+        each user in users
+            tr
+                td=user.name
+                if user.ta
+                    td=user.ta.name
+                else
+                    td
+                

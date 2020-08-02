@@ -75,7 +75,11 @@ router.post(
 );
 router.get("/logout", authController.logout);
 router.get("/account", authController.isLoggedIn, userController.account);
-router.get("/user", authController.isLoggedIn, userController.searchUser);
+router.get(
+  "/user/search/:category",
+  authController.isLoggedIn,
+  catchErrors(userController.searchUser),
+);
 router.get(
   "/user/edit/:_id",
   authController.isLoggedIn,

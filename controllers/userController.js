@@ -52,8 +52,17 @@ exports.registerParentForm = async (req, res) => {
   res.render("registerParent", { title: "Register", student });
 };
 
-exports.searchUser = (req, res) => {
-  res.render("searchUser", { title: "Search for an account" });
+exports.searchUser = async (req, res) => {
+  const category = req.params.category || "";
+
+  console.log(category);
+  let sort = {};
+  sort[category] = -1;
+  users = await User.find().sort(sort);
+  res.render("searchUser", {
+    title: `Search for an account by ${category}`,
+    users,
+  });
 };
 
 exports.userSearchResult = async (req, res) => {
