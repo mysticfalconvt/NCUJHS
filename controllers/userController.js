@@ -52,8 +52,35 @@ exports.registerParentForm = async (req, res) => {
   res.render("registerParent", { title: "Register", student });
 };
 
-exports.searchUser = (req, res) => {
-  res.render("searchUser", { title: "Search for an account" });
+exports.searchUser = async (req, res) => {
+  const category = req.params.category || "";
+  let sort = {};
+  sort[category] = -1;
+  sort["name"] = 1;
+  users = await User.find({ isParent: { $ne: true } }).sort(sort);
+  const callbackCount = users.reduce(function (prev, current) {
+    const adder = parseInt(current.callbackCount || "0", 10);
+    if (current.isTeacher) {
+      return prev;
+    } else {
+      return prev + adder;
+    }
+  }, 0);
+  const studentCallbackCount = users.reduce(function (prev, current) {
+    if (current.isTeacher) {
+      return prev;
+    } else if (current.callbackCount) {
+      return prev + 1;
+    } else {
+      return prev;
+    }
+  }, 0);
+  res.render("searchUser", {
+    title: `Search for an account by ${category}`,
+    users,
+    callbackCount,
+    studentCallbackCount,
+  });
 };
 
 exports.userSearchResult = async (req, res) => {

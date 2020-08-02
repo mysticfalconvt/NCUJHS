@@ -1,0 +1,17 @@
+mixin userTable(users={})
+    table.table
+        thead
+            td=`Name   ${studentCallbackCount} students are on callback`
+            td TA 
+            td=`callback total: ${callbackCount}`
+
+        each user in users
+            tr
+                td
+                    a(href=`/user/${user._id}`) #{user.name}
+                if user.ta
+                    td=user.ta.name
+                else
+                    td
+                td=user.callbackCount
+                
