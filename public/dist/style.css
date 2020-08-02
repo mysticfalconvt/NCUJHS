@@ -756,6 +756,9 @@ input[type="radio"]:checked + label span.radio::after {
   .table thead tr {
     background: #303030;
     color: white; }
+  .table thead a {
+    background: #303030;
+    color: white; }
 
 .calendars {
   display: -ms-flexbox;

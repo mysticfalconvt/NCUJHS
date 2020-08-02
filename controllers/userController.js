@@ -3,7 +3,7 @@ const User = mongoose.model("User");
 const Callback = mongoose.model("Callback");
 const promisify = require("es6-promisify");
 const { TRUE } = require("node-sass");
-const { findOneAndUpdate } = require("../models/User");
+const { findOneAndUpdate, find } = require("../models/User");
 
 updateCheck = (body) => {
   if (body.ta) {
@@ -55,9 +55,24 @@ exports.registerParentForm = async (req, res) => {
 exports.searchUser = async (req, res) => {
   const category = req.params.category || "";
   let sort = {};
+  sort["isTeacher"] = 1;
   sort[category] = -1;
   sort["name"] = 1;
-  users = await User.find({ isParent: { $ne: true } }).sort(sort);
+  const studentCount = await User.find({
+    isParent: { $ne: true },
+    isTeacher: { $ne: true },
+    isAdmin: { $ne: true },
+  }).count();
+  const onCallbackCount = await User.find({
+    isParent: { $ne: true },
+    isTeacher: { $ne: true },
+    isAdmin: { $ne: true },
+    callbackCount: { $ne: 0 },
+  }).count();
+  const percentageOnCallback = Math.round(
+    100 * (onCallbackCount / studentCount),
+  );
+  const users = await User.find({ isParent: { $ne: true } }).sort(sort);
   const callbackCount = users.reduce(function (prev, current) {
     const adder = parseInt(current.callbackCount || "0", 10);
     if (current.isTeacher) {
@@ -75,11 +90,14 @@ exports.searchUser = async (req, res) => {
       return prev;
     }
   }, 0);
+
   res.render("searchUser", {
     title: `Search for an account by ${category}`,
     users,
     callbackCount,
     studentCallbackCount,
+    percentageOnCallback,
+    studentCount,
   });
 };
 
