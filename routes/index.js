@@ -131,7 +131,7 @@ router.get(
 );
 // studentFocus routes
 router.get(
-  "/studentFocus",
+  "/studentFocus/search/:category",
   catchErrors(studentFocusController.getStudentFocus),
 );
 router.get(
