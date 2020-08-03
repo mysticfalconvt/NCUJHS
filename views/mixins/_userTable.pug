@@ -8,6 +8,8 @@ mixin userTable(users={})
             td
                 a(href="/user/search/callbackCount")=`callback total: ${callbackCount}`
             td
+                a(href="/user/search/cellPhoneCount") Cell Violations
+            td
                 a(href="/user/search/parent") Parent
 
         each user in users
@@ -18,10 +20,17 @@ mixin userTable(users={})
                     td=user.ta.name
                 else
                     td
-                td=user.callbackCount
+                if user.callbackCount
+                    td=user.callbackCount
+                else
+                    td
+                if !(user.isTeacher || user.isAdmin) && user.cellPhoneCount
+                    td=user.cellPhoneCount
+                else
+                    td
                 if !(user.isTeacher || user.isAdmin)
                     if user.parent
-                        td ☒
+                        td 🗹
                     else
                         td ☐
                 

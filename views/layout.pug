@@ -38,7 +38,7 @@ html
                       //- Student Focus
                 if user.isTeacher || user.isAdmin
                   li.nav__item
-                    a.nav__link(href="/StudentFocus/search/:created", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
+                    a.nav__link(href="/studentFocus/search/created", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
                       != h.icon('studentfocus')
                       span #{"Student Focus"}
                 else if user.isAdmin

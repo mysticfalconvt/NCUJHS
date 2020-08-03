@@ -3,17 +3,35 @@ const { findOneAndUpdate } = require("../models/User");
 const StudentFocus = mongoose.model("studentFocus");
 const User = mongoose.model("User");
 
+updateCellCount = async (student) => {
+  const cellphoneCount = await StudentFocus.find({
+    student: student,
+    category: "Cell Phone Violation",
+  }).count();
+  const user = await User.findOneAndUpdate(
+    { _id: student },
+    { cellPhoneCount: cellphoneCount },
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+};
+
 exports.addStudentFocus = (req, res) => {
   res.render("editStudentFocus", { title: "Add Student Focus" });
 };
 
 exports.getStudentFocus = async (req, res) => {
-  const categoy = req.params.category;
+  const category = req.params.category;
   let studentFocuss = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher) {
-      studentFocuss = await StudentFocus.find().sort({ category: 1 });
+    if (req.user.isTeacher || req.user.isAdmin) {
+      let sort = {};
+      sort[category] = -1;
+      sort["name"] = 1;
+      studentFocuss = await StudentFocus.find().sort(sort);
     } else {
       studentFocuss = {};
     }
@@ -31,18 +49,7 @@ exports.createStudentFocus = async (req, res) => {
   const studentFocus = await new StudentFocus(req.body).save();
   const isCellPhone = req.body.category == "Cell Phone Violation";
   if (isCellPhone) {
-    const cellphoneCount = await StudentFocus.find({
-      student: req.body.student,
-      category: "Cell Phone Violation",
-    }).count();
-    const user = await User.findOneAndUpdate(
-      { _id: req.body.student },
-      { cellPhoneCount: cellphoneCount },
-      {
-        new: true,
-        runValidators: true,
-      },
-    );
+    updateCellCount(req.body.student);
   }
   req.flash("success", `Successfully Created`);
   res.redirect(`/studentFocus/search/category`);
@@ -60,18 +67,7 @@ exports.updateStudentFocus = async (req, res) => {
   ).exec();
   const isCellPhone = req.body.category == "Cell Phone Violation";
   if (isCellPhone) {
-    const cellphoneCount = await StudentFocus.find({
-      student: req.body.student,
-      category: "Cell Phone Violation",
-    }).count();
-    const user = await User.findOneAndUpdate(
-      { _id: req.body.student },
-      { cellPhoneCount: cellphoneCount },
-      {
-        new: true,
-        runValidators: true,
-      },
-    );
+    updateCellCount(req.body.student);
   }
   // redirect to the store and tell them it worked
   req.flash(

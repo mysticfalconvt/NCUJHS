@@ -54,6 +54,7 @@ exports.registerParentForm = async (req, res) => {
 
 exports.searchUser = async (req, res) => {
   const category = req.params.category || "";
+  console.log(category);
   let sort = {};
   sort["isTeacher"] = 1;
   sort[category] = -1;
