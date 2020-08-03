@@ -5,7 +5,7 @@ block content
     .inner
         h2= title
             if user
-                if user.isTeacher
+                if (user.isTeacher || user.isAdmin)
                     a.title_link(href="/info/add") Add new 
         
         table.table     
