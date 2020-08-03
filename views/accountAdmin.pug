@@ -132,17 +132,17 @@ block content
             .radioContainer
                 if account.isAdmin
                     input(type="radio" name="isAdmin" id="isAdminTrue" checked value="true")
-                    label(for="isAdmin") 
+                    label(for="isAdminTrue") 
                         span.radio Has Admin Rights
                     input(type="radio" name="isAdmin" id="isAdminFalse" value="")
-                    label(for="isAdmin") 
+                    label(for="isAdminFalse") 
                         span.radio Not Admin
                 else
                     input(type="radio" name="isAdmin" id="isAdminTrue" value="true")
-                    label(for="isAdmin") 
+                    label(for="isAdminTrue") 
                         span.radio Has Admin Rights
                     input(type="radio" name="isAdmin" id="isAdminFalse" checked value="")
-                    label(for="isAdmin") 
+                    label(for="isAdminFalse") 
                         span.radio Not Admin
 
             input(type="hidden" name="id"  value=account._id ) 
