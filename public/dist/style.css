@@ -662,7 +662,8 @@ input[type="radio"]:checked + label span.radio::after {
           flex: 1 1 auto; }
   .nav__item {
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    max-width: 120px; }
   .nav__link {
     background: #303030;
     color: white;
@@ -742,7 +743,7 @@ input[type="radio"]:checked + label span.radio::after {
     .nav__link--logo svg {
       width: 100%; }
   .heart-count:before {
-    content: '\2665\FE0F';
+    content: "\2665\FE0F";
     margin-right: 1rem; } }
 
 .table {

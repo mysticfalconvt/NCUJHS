@@ -6,4 +6,6 @@ mixin calendarCard(calendar={})
                 a(href=`/calendar/${calendar._id}`) #{calendar.title}
                 p= calendar.Date.toDateString()
         .calendar__details
+            if calendar.link
+                a(href=`//${calendar.link}`) LINK
             p=calendar.description.split(' ').slice(0,25).join(' ')

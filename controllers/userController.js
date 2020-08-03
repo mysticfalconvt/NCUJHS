@@ -226,7 +226,7 @@ exports.adminUpdateAccount = async (req, res) => {
     { $set: updates },
     { new: true, runValidators: true, context: "query" },
   );
-  req.flash("success", `Successfulyl updated ${req.body.name}`);
+  req.flash("success", `Successfully updated ${req.body.name}`);
   res.redirect("/");
 };
 exports.updateCurrentWork = async (req, res) => {
@@ -238,7 +238,7 @@ exports.updateCurrentWork = async (req, res) => {
   );
   req.flash(
     "success",
-    `Successfulyl updated current assignment to ${req.body.currentAssignment}`,
+    `Successfully updated current assignment to ${req.body.currentAssignment}`,
   );
   res.redirect("/");
 };

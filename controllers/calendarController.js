@@ -73,7 +73,7 @@ exports.dashboard = async (req, res) => {
   let calendars = {};
   let callbacks = {};
   let students = {};
-  
+
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
@@ -115,8 +115,9 @@ exports.dashboard = async (req, res) => {
         completed: "",
       }).sort({ message: -1, date: 1 });
     } else if (req.user.isParent) {
+      const children = await User.find({ parent: req.user._id }, { _id: 1 });
       callbacks = await Callback.find({
-        $or: [{ student: req.user.child }],
+        $or: [{ student: { $in: children } }],
         completed: "",
       }).sort({ message: -1, date: 1 });
     } else {
@@ -127,15 +128,15 @@ exports.dashboard = async (req, res) => {
     }
     // if parent find student
     if (req.user.isParent) {
-      students = await User.findOne({ _id: req.user.child } )
-    };
+      students = await User.find({ parent: req.user._id });
+    }
   }
 
   res.render("dashboard", {
     title: "N.C.U.J.H.S. Dashboard ",
     calendars: calendars,
     callbacks: callbacks,
-    student: students || null
+    student: students || null,
   });
 };
 
