@@ -9,7 +9,7 @@ block content
     .inner
         h1= title
             if (user.isTeacher || user.isAdmin)
-                a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit") Attendance
+                a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit" target="_blank") Attendance
         if user
             if user.isTeacher
                 +teacherCurrentWorkForm(user)

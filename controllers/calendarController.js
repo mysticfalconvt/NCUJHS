@@ -133,7 +133,7 @@ exports.dashboard = async (req, res) => {
   }
 
   res.render("dashboard", {
-    title: "N.C.U.J.H.S. Dashboard ",
+    title: "NCUJHS Dashboard ",
     calendars: calendars,
     callbacks: callbacks,
     student: students || null,
