@@ -40,12 +40,7 @@ html
                   li.nav__item
                     a.nav__link(href="/studentFocus/search/created", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
                       != h.icon('studentfocus')
-                      span #{"Student Focus"}
-                else if user.isAdmin
-                  li.nav__item
-                    a.nav__link(href="/StudentFocus", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
-                      != h.icon('studentfocus')
-                      span #{"Student Focus"}
+                      span #{"Student Focus & Parent Contact"}
           //- .nav__section.nav__section--search
           //-   .search
           //-     input.search__input(type="text" placeholder="Search..." name="search")
