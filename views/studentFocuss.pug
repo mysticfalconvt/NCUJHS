@@ -10,11 +10,17 @@ block content
             if user.isTeacher || user.isAdmin
                 table.table     
                     thead
-                        td Category
-                        td Student
-                        td Comments
-                        td Teacher
-                        td Date
+                        td 
+                            a(href="/studentFocus/search/category") Category
+                        td 
+                            a(href="/studentFocus/search/student") Student
+                        td 
+                            a(href="/studentFocus/search/comments") Comments
+                        td 
+                            a(href="/studentFocus/search/teacher") Teacher
+                        td 
+                            a(href="/studentFocus/search/created") Date
+                        td TA
                         td edit
                     each studentFocus in studentFocuss
                         tr
@@ -23,6 +29,7 @@ block content
                             td=studentFocus.comments
                             td=studentFocus.teacher.name
                             td=studentFocus.created.toDateString()
+                            td=studentFocus.student.ta.name
                             if (user._id.equals(studentFocus.teacher._id)) || user.isAdmin
                                 td 
                                     a(href=`/studentFocus/${studentFocus._id}`) EDIT
