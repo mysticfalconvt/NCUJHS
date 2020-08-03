@@ -30,21 +30,17 @@ html
                     a.nav__link(href="/ta", class=(currentPath.startsWith('/ta') ? 'nav__link--active' : ''))
                       != h.icon('ta')
                       span #{"My TA"}
-                  li.nav__item
-                    a.nav__link(href="/user/search/ta", class=(currentPath.startsWith('/user') ? 'nav__link--active' : ''))
-                      != h.icon('searchUser')
-                      span #{"Finder"}
 
                       //- Student Focus
                 if user.isTeacher || user.isAdmin
                   li.nav__item
+                    a.nav__link(href="/user/search/ta", class=(currentPath.startsWith('/user') ? 'nav__link--active' : ''))
+                      != h.icon('searchUser')
+                      span #{"Finder"}
+                  li.nav__item
                     a.nav__link(href="/studentFocus/search/created", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
                       != h.icon('studentfocus')
                       span #{"Student Focus & Parent Contact"}
-          //- .nav__section.nav__section--search
-          //-   .search
-          //-     input.search__input(type="text" placeholder="Search..." name="search")
-          //-     .search__results
           .nav__section.nav__section--user
             if user
               li.nav__item: a.nav__link(href="/logout", class=(currentPath.startsWith('/logout') ? 'nav__link--active' : ''))
