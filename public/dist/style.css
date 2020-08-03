@@ -737,7 +737,8 @@ input[type="radio"]:checked + label span.radio::after {
   .nav__item {
     width: 33.333333%; }
   .nav__link {
-    width: 100%; }
+    width: 100%;
+    max-width: 120px; }
     .nav__link svg {
       max-width: 100%; }
     .nav__link--logo svg {
@@ -824,7 +825,7 @@ input[type="radio"]:checked + label span.radio::after {
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(45deg, #2101d6 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #0059ff 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, rgba(180, 13, 35, 0.767) 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, rgba(255, 0, 21, 0.719) 100%, rgba(5, 225, 41, 0) 70%);
+    background: linear-gradient(45deg, black 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #c8ff00 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, rgba(180, 13, 35, 0.767) 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, rgba(255, 0, 21, 0.719) 100%, rgba(5, 225, 41, 0) 70%);
     opacity: 0.6;
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
