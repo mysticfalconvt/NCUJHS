@@ -27,7 +27,7 @@ exports.isLoggedIn = (req, res, next) => {
   res.redirect("/login");
 };
 exports.isTeacher = (req, res, next) => {
-  if (req.user.isTeacher || req.user.isAdmin) {
+  if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
     next();
     return;
   }

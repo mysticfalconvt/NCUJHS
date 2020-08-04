@@ -13,7 +13,7 @@ exports.getInfo = async (req, res) => {
   let infos = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin) {
+    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       infos = await Info.find().sort(sort);
     } else {
       infos = await Info.find({

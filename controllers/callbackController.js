@@ -28,14 +28,6 @@ recountCallback = async (id) => {
 };
 
 exports.addCallback = (req, res) => {
-  // const users = await User.find(
-  //   { isTeacher: false, isAdmin: false },
-  //   { name: 1 },
-  // ).sort({ name: 1 });
-  // studentList = users.map(function (singleUser) {
-  //   return singleUser["name"];
-  // });
-
   res.render("editCallback", { title: "Add Callback" });
 };
 
