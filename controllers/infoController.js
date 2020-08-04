@@ -7,15 +7,18 @@ exports.addInfo = (req, res) => {
 };
 
 exports.getInfo = async (req, res) => {
+  const category = req.params.category || "category";
+  let sort = {};
+  sort[category] = 1;
   let infos = {};
   if (req.user) {
     // check if teacher for calendar events
     if (req.user.isTeacher || req.user.isAdmin) {
-      infos = await Info.find().sort({ category: 1 });
+      infos = await Info.find().sort(sort);
     } else {
       infos = await Info.find({
         teachersOnly: "",
-      }).sort({ category: 1 });
+      }).sort(sort);
     }
   } else {
     infos = await Info.find({
@@ -29,7 +32,7 @@ exports.createInfo = async (req, res) => {
   req.body.author = req.user.id;
   const info = await new Info(req.body).save();
   req.flash("success", `Successfully Created ${info.title}.`);
-  res.redirect(`/info`);
+  res.redirect(`/info/search/category`);
 };
 
 exports.updateInfo = async (req, res) => {
@@ -40,7 +43,7 @@ exports.updateInfo = async (req, res) => {
   }).exec();
   // redirect to the store and tell them it worked
   req.flash("success", `Sucessfully Updated <strong>${info.title}</strong>.`);
-  res.redirect(`/info`);
+  res.redirect(`/info/search/category`);
 };
 
 exports.editInfo = async (req, res) => {

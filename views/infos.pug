@@ -10,10 +10,14 @@ block content
         
         table.table     
             thead
-                td Category
-                td Title
-                td Description
-                td Link
+                td 
+                    a(href="/info/search/category") Category
+                td 
+                    a(href="/info/search/title") Title
+                td 
+                    a(href="/info/search/description") Description
+                td 
+                    a(href="/info/search/linkTitle") Link
                 if user
                     if user.isAdmin
                         td edit

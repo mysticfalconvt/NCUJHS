@@ -110,6 +110,7 @@ router.post(
 );
 
 // info routes
+router.get("/info/search/:category", catchErrors(infoController.getInfo));
 router.get("/info", catchErrors(infoController.getInfo));
 router.get("/info/add", authController.isLoggedIn, infoController.addInfo);
 router.post(
