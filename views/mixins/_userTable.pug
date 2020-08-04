@@ -28,7 +28,7 @@ mixin userTable(users={})
                     td=user.cellPhoneCount
                 else
                     td
-                if !(user.isTeacher || user.isAdmin)
+                if !(user.isTeacher || user.isAdmin || user.isPara)
                     if user.parent
                         td 🗹
                     else

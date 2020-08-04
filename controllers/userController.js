@@ -34,6 +34,7 @@ updateCheck = (body) => {
       email: body.email,
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
+      isPara: body.isPara,
       ta: body.ta || null,
     };
   }

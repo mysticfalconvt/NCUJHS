@@ -27,7 +27,7 @@ exports.getStudentFocus = async (req, res) => {
   let studentFocuss = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin) {
+    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       let sort = {};
       sort[category] = -1;
       sort["name"] = 1;
