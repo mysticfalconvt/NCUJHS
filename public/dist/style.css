@@ -433,7 +433,7 @@ template {
   display: none; }
 
 @font-face {
-  font-family: 'panama';
+  font-family: "panama";
   src: url("/fonts/panama-bold-webfont.woff2") format("woff2"), url("/fonts/panama-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
@@ -445,9 +445,14 @@ body {
   font-size: 1.5rem;
   color: #303030; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 5rem;
-  font-family: 'Panama';
+  font-family: "Panama";
   font-weight: 600;
   letter-spacing: -1px; }
 
@@ -476,7 +481,7 @@ p {
   .title--long {
     font-size: 30px; }
   .title:before {
-    content: '';
+    content: "";
     width: 50px;
     left: 0;
     top: 0;
@@ -491,8 +496,18 @@ p {
     background-image: linear-gradient(to right, rgba(255, 196, 14, 0.8) 100%, rgba(255, 196, 14, 0.8) 50%); }
 
 .title_link {
-  color: rgba(82, 0, 0, 0.575);
-  font-size: 2.5rem; }
+  font-size: 2.5rem;
+  margin-left: 25px;
+  padding-bottom: 100px;
+  height: 25px;
+  background: #812a24;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
+  box-shadow: 2px 3px 4px #860202; }
 
 .title--single {
   max-width: 600px;
