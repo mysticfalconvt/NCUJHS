@@ -6,6 +6,7 @@ mixin infoForm(info = {})
     textarea(name="description")= info.description
     label(for="category") Category
     select(type="text" name="category" value=`${info.category || "General Info"}`)
+      option(value="Attendance") Attendance
       option(value="General Info") General Info
       option(value="Remote Learning") Remote Learning
       option(value="Discipline") Discipline
