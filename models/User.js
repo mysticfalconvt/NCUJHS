@@ -38,6 +38,10 @@ const userSchema = new Schema({
     type: String,
     default: "",
   },
+  isPbis: {
+    type: String,
+    default: "",
+  },
   child: mongoose.Schema.ObjectId,
   parent: mongoose.Schema.ObjectId,
   currentAssignment: String,
@@ -58,6 +62,10 @@ const userSchema = new Schema({
     default: 0,
   },
   pbisCount: {
+    type: Number,
+    default: 0,
+  },
+  taPbisCount: {
     type: Number,
     default: 0,
   },
