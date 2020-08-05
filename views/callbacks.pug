@@ -6,11 +6,11 @@ block content
         h2= "You have " + user.callbackCount + " items on callback"
             if user.isTeacher
                 a.title_link(href="/callback/add") Add Callback Assignment
-        p 
+        p.tags
             if currentPath.startsWith('/callback/teacher/old')
-                a(href="/callback/teacher") Only incomplete Callback
+                a.textLinks.button(href="/callback/teacher") Only incomplete Callback
             else 
-                a(href="/callback/teacher/old") Include Completed Callback
+                a.textLinks.button(href="/callback/teacher/old") Include Completed Callback
         .callbacks
             each callback in callbacks
                 +callbackCard(callback)
