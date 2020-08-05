@@ -13,7 +13,9 @@ block content
                     if (user.isTeacher || user.isAdmin)
                         a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit" target="_blank") ** Attendance **
                     if (user.isTeacher || user.isAdmin ||user.isPara)
-                        a.title_link(href="/pbis/add") PBIS!!
+                        a.title_link(href="/pbis/add") Add PBIS!!
+                    if (user.isTeacher || user.isAdmin ||user.isPara)
+                        a.title_link(href="/pbis/search/category") PBIS DATA
 
         if user
             if user.isTeacher

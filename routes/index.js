@@ -118,6 +118,12 @@ router.post(
   authController.isTeacher,
   catchErrors(pbisController.createPbis),
 );
+router.get(
+  "/pbis/search/:category",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.getPbis),
+);
 // info routes
 router.get("/info/search/:category", catchErrors(infoController.getInfo));
 router.get("/info", catchErrors(infoController.getInfo));

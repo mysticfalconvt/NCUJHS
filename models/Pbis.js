@@ -24,6 +24,10 @@ const pbisSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  category: {
+    type: String,
+    default: "",
+  },
 });
 
 function autopopulate(next) {
