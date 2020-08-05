@@ -8,7 +8,7 @@ block content
     .inner
         h2= title
         if user
-           
+           p=`${user.name}'s TA has ${user.taPbisCount} Business Cards`
             .callbacks
                 each callback in callbacks
                     +callbackCard(callback)

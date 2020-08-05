@@ -10,6 +10,8 @@ mixin userTable(users={})
             td
                 a(href="/user/search/cellPhoneCount") Cell Violations
             td
+                a(href="/user/search/pbisCount") Business Cards
+            td
                 a(href="/user/search/parent") Parent
 
         each user in users
@@ -28,6 +30,10 @@ mixin userTable(users={})
                     td=user.cellPhoneCount
                 else
                     td
+                if !(user.isTeacher || user.isAdmin || user.isAdmin)
+                    td=user.pbisCount
+                else
+                    td=user.taPbisCount
                 if !(user.isTeacher || user.isAdmin || user.isPara)
                     if user.parent
                         td 🗹

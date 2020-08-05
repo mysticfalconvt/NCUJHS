@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { userSearchResult } = require("./userController");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
 
@@ -23,10 +24,16 @@ exports.getPbis = async (req, res) => {
 exports.createPbis = async (req, res) => {
   req.body.teacher = req.user.id;
   const pbis = await new Pbis(req.body).save();
-  pbisCount = await Pbis.find({ student: pbis.student._id }).count();
-  student = await User.findOneAndUpdate(
+  const pbisCount = await Pbis.find({ student: pbis.student._id }).count();
+  const student = await User.findOneAndUpdate(
     { _id: pbis.student },
     { pbisCount: pbisCount },
+  );
+  const taStudents = await User.find({ ta: student.ta._id }, { _id: 1 });
+  const taNumbers = await Pbis.find({ student: { $in: taStudents } }).count();
+  const taTeacher = await User.findOneAndUpdate(
+    { _id: student.ta._id },
+    { taPbisCount: taNumbers },
   );
   req.flash("success", `Successfully Created !!`);
   res.redirect(`/`);
