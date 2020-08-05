@@ -515,6 +515,16 @@ p {
   font-size: 8rem;
   text-align: center; }
 
+.textLinks {
+  display: -ms-flexbox;
+  display: flex;
+  background: #812a24;
+  color: white;
+  margin-left: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px; }
+
 input,
 textarea {
   width: 100%;

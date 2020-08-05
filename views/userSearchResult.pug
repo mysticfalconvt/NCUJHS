@@ -6,13 +6,11 @@ block content
     .inner
         h2= title
         if user.isAdmin
-            p
-                a(href=`/user/edit/${account._id}`) Edit this account
-            p
-                a(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
-        if user.isAdmin || user.isTeacher        
-            p
-                a(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
+            p.tags
+                a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
+                a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
+                if user.isAdmin || user.isTeacher        
+                    a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
         hr
         .calendars
             each callback in callbacks

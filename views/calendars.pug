@@ -7,12 +7,12 @@ block content
             if user
                 if (user.isTeacher || user.isAdmin)
                     a.title_link(href="/add") Add Event
-        p
+        p.tags
             if user
                 if currentPath.startsWith("/allCalendars")
-                    a(href="/calendars") Upcoming events only
+                    a.textLinks.button(href="/calendars") Upcoming events only
                 else 
-                    a(href="/allCalendars") Include all events
+                    a.textLinks.button(href="/allCalendars") Include all events
         .calendars
             each calendar in calendars
                 +calendarCard(calendar)
