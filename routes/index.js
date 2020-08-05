@@ -112,6 +112,7 @@ router.post(
 
 // PBIS routes
 router.get("/pbis/add", pbisController.addPbis);
+router.get("/pbis/weekly", catchErrors(pbisController.getWeeklyPbis));
 router.post(
   "/pbis/add",
   authController.isLoggedIn,

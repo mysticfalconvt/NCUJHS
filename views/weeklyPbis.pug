@@ -1,0 +1,17 @@
+extends layout
+
+
+block content
+    .inner
+        h2= title
+        Table.table     
+            thead
+                td TA Teacher
+                td Business Card Count
+                td winner
+            each teacher in teachers
+                tr
+                    td=teacher.name
+                    td=teacher.taPbisCount
+                    td=teacher.winnerName
+                    

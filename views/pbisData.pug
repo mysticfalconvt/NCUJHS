@@ -4,6 +4,7 @@ extends layout
 block content
     .inner
         h2= title
+            a.title_link(href="/pbis/weekly") Check-in PBIS
         Table.table     
             thead
                 td 
@@ -14,9 +15,12 @@ block content
                     a(href="/pbis/search/message") Message
                 td 
                     a(href="/pbis/search/teacher") Teacher
+                td 
+                    a(href="/pbis/search/date") Date
             each pbis in pbiss
                 tr
                     td=pbis.student.name
                     td=pbis.category
                     td=pbis.message
                     td=pbis.teacher.name
+                    td=pbis.date.toDateString()
