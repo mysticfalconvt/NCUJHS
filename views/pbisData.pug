@@ -12,9 +12,11 @@ block content
                     a(href="/pbis/search/category") Category
                 td 
                     a(href="/pbis/search/message") Message
-                
+                td 
+                    a(href="/pbis/search/teacher") Teacher
             each pbis in pbiss
                 tr
                     td=pbis.student.name
                     td=pbis.category
                     td=pbis.message
+                    td=pbis.teacher.name
