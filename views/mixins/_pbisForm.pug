@@ -19,4 +19,15 @@ mixin pbisForm(pbis = {})
         label(for="message") Message
         textarea(name="message")= pbis.message
 
+        .radioContainer
+            input(type="radio" name="category" id="Respect" checked value="Respect")
+            label(for="Respect") 
+                span.radio Respect
+            input(type="radio" name="category" id="Responsabilty" value="Responsabilty")
+            label(for="Responsabilty") 
+                span.radio Responsabilty
+            input(type="radio" name="category" id="Perserverance" value="Perserverance")
+            label(for="Perserverance") 
+                span.radio Perserverance
+
         input(type="submit" value="Save →" class="button")

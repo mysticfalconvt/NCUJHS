@@ -6,31 +6,28 @@ exports.addPbis = (req, res) => {
   res.render("pbisForm", { title: "Add PBIS" });
 };
 
-exports.getInfo = async (req, res) => {
+exports.getPbis = async (req, res) => {
   const category = req.params.category || "category";
   let sort = {};
   sort[category] = 1;
-  let infos = {};
+  let pbiss = {};
   if (req.user) {
     // check if teacher for calendar events
     if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
-      infos = await Info.find().sort(sort);
-    } else {
-      infos = await Info.find({
-        teachersOnly: "",
-      }).sort(sort);
+      pbiss = await Pbis.find().sort(sort);
     }
-  } else {
-    infos = await Info.find({
-      teachersOnly: "",
-    }).sort({ category: 1 });
   }
-  res.render("infos", { title: "Important Links & Documents", infos: infos });
+  res.render("pbisData", { title: "PBIS Data", pbiss: pbiss });
 };
 
 exports.createPbis = async (req, res) => {
   req.body.teacher = req.user.id;
   const pbis = await new Pbis(req.body).save();
+  pbisCount = await Pbis.find({ student: pbis.student._id }).count();
+  student = await User.findOneAndUpdate(
+    { _id: pbis.student },
+    { pbisCount: pbisCount },
+  );
   req.flash("success", `Successfully Created !!`);
   res.redirect(`/`);
 };

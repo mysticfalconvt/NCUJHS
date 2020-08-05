@@ -1,0 +1,19 @@
+extends layout
+
+
+block content
+    .inner
+        h2= title
+        Table.table     
+            thead
+                td 
+                    a(href="/pbis/search/student") Student
+                td 
+                    a(href="/pbis/search/category") Category
+                td 
+                    a(href="/pbis/search/message") Message
+            each pbis in pbiss
+                tr
+                    td=pbis.student.name
+                    td=pbis.category
+                    td=pbis.message
