@@ -31,6 +31,7 @@ require("./models/Calendar");
 require("./models/User");
 require("./models/Info");
 require("./models/studentFocus");
+require("./models/Pbis");
 
 // Start our app!
 const app = require("./app");

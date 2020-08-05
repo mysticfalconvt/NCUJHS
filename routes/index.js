@@ -8,6 +8,7 @@ const infoController = require("../controllers/infoController");
 const studentFocusController = require("../controllers/studentFocusController");
 const mailController = require("../controllers/mailController");
 const taController = require("../controllers/taController");
+const pbisController = require("../controllers/pbisController");
 const { catchErrors } = require("../handlers/errorHandlers");
 
 // Do work here
@@ -109,6 +110,14 @@ router.post(
   catchErrors(authController.update),
 );
 
+// PBIS routes
+router.get("/pbis/add", pbisController.addPbis);
+router.post(
+  "/pbis/add",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.createPbis),
+);
 // info routes
 router.get("/info/search/:category", catchErrors(infoController.getInfo));
 router.get("/info", catchErrors(infoController.getInfo));
