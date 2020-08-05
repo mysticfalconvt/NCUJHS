@@ -144,6 +144,21 @@ block content
                     input(type="radio" name="isAdmin" id="isAdminFalse" checked value="")
                     label(for="isAdminFalse") 
                         span.radio Not Admin
+            .radioContainer
+                if account.isPara
+                    input(type="radio" name="isPara" id="isParaTrue" checked value="true")
+                    label(for="isParaTrue") 
+                        span.radio Para
+                    input(type="radio" name="isPara" id="isParaFalse" value="")
+                    label(for="isParaFalse") 
+                        span.radio Not Para
+                else
+                    input(type="radio" name="isPara" id="isParaTrue" value="true")
+                    label(for="isParaTrue") 
+                        span.radio Para
+                    input(type="radio" name="isPara" id="isParaFalse" checked value="")
+                    label(for="isParaFalse") 
+                        span.radio Not Para
 
             input(type="hidden" name="id"  value=account._id ) 
             input.button(type="submit" value=`Update ${account.name}'s Account`)

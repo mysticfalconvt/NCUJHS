@@ -24,7 +24,7 @@ exports.getEvents = async (req, res) => {
   let calendars = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin) {
+    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset },
       })
@@ -55,7 +55,7 @@ exports.getAllEvents = async (req, res) => {
   let calendars = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin) {
+    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       calendars = await Calendar.find().sort({ Date: 1 });
     } else {
       calendars = await Calendar.find({
@@ -77,7 +77,7 @@ exports.dashboard = async (req, res) => {
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin) {
+    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
       }).sort({ Date: 1 });

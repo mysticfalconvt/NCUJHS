@@ -34,6 +34,10 @@ const userSchema = new Schema({
     type: String,
     default: "",
   },
+  isPara: {
+    type: String,
+    default: "",
+  },
   child: mongoose.Schema.ObjectId,
   parent: mongoose.Schema.ObjectId,
   currentAssignment: String,
