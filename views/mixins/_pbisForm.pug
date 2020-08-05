@@ -1,0 +1,22 @@
+mixin pbisForm(pbis = {})
+    form(action=`/pbis/add/${pbis._id || ''}` method="POST" class="card" )
+        label(for="studentName") student Name
+        .student
+            if pbis.student
+                input(name="studentName" value=pbis.student.name disabled="disabled")
+            else
+                input(name="studentName" id="search" type="text" value=pbis.student)
+            .search
+                .search__results
+
+        if pbis.student
+            .search__input
+                input(name="student" id="id" value=pbis.student._id hidden)
+        else
+            .search__input
+                input(name="student" id="id" value=pbis.student hidden)
+
+        label(for="message") Message
+        textarea(name="message")= pbis.message
+
+        input(type="submit" value="Save →" class="button")
