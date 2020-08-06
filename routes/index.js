@@ -111,8 +111,24 @@ router.post(
 );
 
 // PBIS routes
-router.get("/pbis/add", pbisController.addPbis);
-router.get("/pbis/weekly", catchErrors(pbisController.getWeeklyPbis));
+router.get(
+  "/pbis/add",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  pbisController.addPbis,
+);
+router.get(
+  "/pbis/weekly",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.getWeeklyPbis),
+);
+router.get(
+  "/pbis/resetCounts",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.resetPbisCount),
+);
 router.post(
   "/pbis/add",
   authController.isLoggedIn,

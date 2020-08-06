@@ -4,6 +4,8 @@ extends layout
 block content
     .inner
         h2= title
+        .tags
+            a.button(href="/pbis/resetCounts") ** DO NOT CLICK THIS, THIS RESETS PBIS COUNTS **
         Table.table     
             thead
                 td TA Teacher
@@ -13,5 +15,5 @@ block content
                 tr
                     td=teacher.name
                     td=teacher.taPbisCount
-                    td=teacher.winnerName
+                    td=teacher.winner
                     

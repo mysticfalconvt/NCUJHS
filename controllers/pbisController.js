@@ -12,7 +12,7 @@ resetPbisCounts = async () => {
   users = await User.update(
     {},
     { taPbisCount: 0, pbisCount: 0 },
-    { mulit: true },
+    { multi: true },
   );
 };
 
@@ -30,7 +30,7 @@ getStudentWinner = async (teacher, index) => {
       { _id: winner[0].student },
       { name: 1 },
     );
-    teacher.winnerName = winnerName.name;
+    // teacher.winnerName = winnerName.name;
     return winnerName.name;
   } else {
     return "No Winner";
@@ -82,13 +82,24 @@ exports.createPbis = async (req, res) => {
 };
 
 exports.getWeeklyPbis = async (req, res) => {
-  const teachers = await User.find({ isTeacher: { $ne: "" } });
-  for (const teacher of teachers) {
+  let teachers = await User.find({ isTeacher: { $ne: "" } });
+  let teachersWithWinners = [];
+  for (let teacher of teachers) {
     const winner = await getStudentWinner(teacher._id);
-    // console.log(teacher._id);
+    teacherWithWinner = {
+      name: teacher.name,
+      taPbisCount: teacher.taPbisCount,
+      winner: winner,
+    };
+    teachersWithWinners.push(teacherWithWinner);
   }
   res.render("weeklyPbis", {
     title: "PBIS Counts since last collection",
-    teachers: teachers,
+    teachers: teachersWithWinners,
   });
+};
+
+exports.resetPbisCount = async (req, res) => {
+  await resetPbisCounts();
+  res.redirect("/pbis/weekly");
 };

@@ -4,7 +4,8 @@ extends layout
 block content
     .inner
         h2= title
-            a.title_link(href="/pbis/weekly") Check-in PBIS
+            if (user.isPbis)
+                a.title_link(href="/pbis/weekly") Check-in PBIS
         Table.table     
             thead
                 td 
