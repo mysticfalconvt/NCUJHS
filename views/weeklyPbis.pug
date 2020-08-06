@@ -1,0 +1,19 @@
+extends layout
+
+
+block content
+    .inner
+        h2= title
+        .tags
+            a.button(href="/pbis/resetCounts") ** DO NOT CLICK THIS, THIS RESETS PBIS COUNTS **
+        Table.table     
+            thead
+                td TA Teacher
+                td Business Card Count
+                td winner
+            each teacher in teachers
+                tr
+                    td=teacher.name
+                    td=teacher.taPbisCount
+                    td=teacher.winner
+                    

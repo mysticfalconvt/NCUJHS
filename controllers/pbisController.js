@@ -3,6 +3,40 @@ const { userSearchResult } = require("./userController");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
 
+resetPbisCounts = async () => {
+  pbis = await Pbis.update(
+    { counted: "" },
+    { counted: "true" },
+    { multi: true },
+  );
+  users = await User.update(
+    {},
+    { taPbisCount: 0, pbisCount: 0 },
+    { multi: true },
+  );
+};
+
+getStudentWinner = async (teacher, index) => {
+  const taStudents = await User.find({ ta: teacher }, { _id: 1 }).distinct(
+    "_id",
+  );
+  const winner = await Pbis.aggregate([
+    { $match: { student: { $in: taStudents }, counted: "" } },
+    { $sample: { size: 1 } },
+  ]);
+  let winnerName = {};
+  if (winner[0]) {
+    const winnerName = await User.findOne(
+      { _id: winner[0].student },
+      { name: 1 },
+    );
+    // teacher.winnerName = winnerName.name;
+    return winnerName.name;
+  } else {
+    return "No Winner";
+  }
+};
+
 exports.addPbis = (req, res) => {
   res.render("pbisForm", { title: "Add PBIS" });
 };
@@ -15,7 +49,7 @@ exports.getPbis = async (req, res) => {
   if (req.user) {
     // check if teacher for calendar events
     if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
-      pbiss = await Pbis.find().sort(sort);
+      pbiss = await Pbis.find({ counted: "" }).sort(sort);
     }
   }
   res.render("pbisData", { title: "PBIS Data", pbiss: pbiss });
@@ -24,13 +58,21 @@ exports.getPbis = async (req, res) => {
 exports.createPbis = async (req, res) => {
   req.body.teacher = req.user.id;
   const pbis = await new Pbis(req.body).save();
-  const pbisCount = await Pbis.find({ student: pbis.student._id }).count();
+  // get count for student and save
+  const pbisCount = await Pbis.find({
+    student: pbis.student._id,
+    counted: "",
+  }).count();
   const student = await User.findOneAndUpdate(
     { _id: pbis.student },
     { pbisCount: pbisCount },
   );
+  // get count for students TA and update TA teachers count
   const taStudents = await User.find({ ta: student.ta._id }, { _id: 1 });
-  const taNumbers = await Pbis.find({ student: { $in: taStudents } }).count();
+  const taNumbers = await Pbis.find({
+    student: { $in: taStudents },
+    counted: "",
+  }).count();
   const taTeacher = await User.findOneAndUpdate(
     { _id: student.ta._id },
     { taPbisCount: taNumbers },
@@ -39,26 +81,25 @@ exports.createPbis = async (req, res) => {
   res.redirect(`/`);
 };
 
-exports.updateInfo = async (req, res) => {
-  // find and update store
-  const info = await Info.findOneAndUpdate({ _id: req.params._id }, req.body, {
-    new: true,
-    runValidators: true,
-  }).exec();
-  // redirect to the store and tell them it worked
-  req.flash("success", `Sucessfully Updated <strong>${info.title}</strong>.`);
-  res.redirect(`/info/search/category`);
+exports.getWeeklyPbis = async (req, res) => {
+  let teachers = await User.find({ isTeacher: { $ne: "" } });
+  let teachersWithWinners = [];
+  for (let teacher of teachers) {
+    const winner = await getStudentWinner(teacher._id);
+    teacherWithWinner = {
+      name: teacher.name,
+      taPbisCount: teacher.taPbisCount,
+      winner: winner,
+    };
+    teachersWithWinners.push(teacherWithWinner);
+  }
+  res.render("weeklyPbis", {
+    title: "PBIS Counts since last collection",
+    teachers: teachersWithWinners,
+  });
 };
 
-exports.editInfo = async (req, res) => {
-  //find the event given id
-  const info = await Info.findOne({ _id: req.params._id });
-
-  //confirm they are owner of the event or admin
-  if (!req.user.isAdmin) {
-    confirmOwner(info, req.user);
-  }
-
-  //render out the edit form so they can edit
-  res.render("editInfo", { title: `edit ${info.title}`, info });
+exports.resetPbisCount = async (req, res) => {
+  await resetPbisCounts();
+  res.redirect("/pbis/weekly");
 };
