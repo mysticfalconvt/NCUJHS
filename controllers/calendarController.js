@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Calendar = mongoose.model("Calendar");
 const Callback = mongoose.model("Callback");
+const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
 // get yesterday's date
 const today = new Date();
@@ -73,6 +74,7 @@ exports.dashboard = async (req, res) => {
   let calendars = {};
   let callbacks = {};
   let students = {};
+  let pbis = {};
 
   // check if logged in
   if (req.user) {
@@ -86,6 +88,7 @@ exports.dashboard = async (req, res) => {
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
         teachersOnly: "",
       }).sort({ Date: 1 });
+      pbis = await Pbis.find({ student: req.user._id });
     }
     // if (req.user.isTeacher) {
     //   ids = await User.find({ ta: req.user._id });
@@ -137,6 +140,7 @@ exports.dashboard = async (req, res) => {
     calendars: calendars,
     callbacks: callbacks,
     student: students || null,
+    pbis: pbis,
   });
 };
 
