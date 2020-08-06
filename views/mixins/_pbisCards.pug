@@ -1,0 +1,14 @@
+mixin pbisCards(pbiss={})
+    p=`You have ${user.pbisCount} Business Cards for the current collection`
+    table.table
+        thead
+            td Teacher
+            td Category
+            td Message
+            td Date
+        each pbis in pbiss
+            tr
+                td=pbis.teacher.name
+                td=pbis.category
+                td=pbis.message
+                td=pbis.date.toDateString()
