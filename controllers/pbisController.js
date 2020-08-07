@@ -38,7 +38,7 @@ getStudentWinner = async (teacher, index) => {
 };
 
 exports.addPbis = (req, res) => {
-  res.render("pbisForm", { title: "Add PBIS" });
+  res.render("pbisForm", { title: "Virtual PBIS Business Card" });
 };
 
 exports.getPbis = async (req, res) => {
