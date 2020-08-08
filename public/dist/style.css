@@ -1287,4 +1287,32 @@ pre.error {
   line-height: 3;
   white-space: pre-line; }
 
+.PBIS_Container {
+  height: 100%;
+  width: -webkit-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
+  position: fixed;
+  z-index: 1;
+  top: 200px;
+  right: 100px;
+  background-color: #303030;
+  transition: 0.5s;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px #e6e6e6; }
+
+.PBIS_Title {
+  color: #FFC40E;
+  display: block;
+  text-align: center;
+  font-size: 1.1em; }
+
+.PBIS_Counter {
+  color: #EE7297;
+  display: block;
+  text-align: center;
+  font-size: 2em; }
+
 /*# sourceMappingURL=style.css.map*/

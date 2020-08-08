@@ -75,7 +75,7 @@ exports.dashboard = async (req, res) => {
   let callbacks = {};
   let students = {};
   let pbis = {};
-
+  const pbisSchoolCount = await Pbis.find().count();
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
@@ -88,7 +88,6 @@ exports.dashboard = async (req, res) => {
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
         teachersOnly: "",
       }).sort({ Date: 1 });
-      pbis = await Pbis.find({ student: req.user._id });
     }
     // if (req.user.isTeacher) {
     //   ids = await User.find({ ta: req.user._id });
@@ -128,6 +127,12 @@ exports.dashboard = async (req, res) => {
         $or: [{ student: req.user._id }],
         completed: "",
       }).sort({ message: -1, date: 1 });
+      pbis = await Pbis.find({
+        student: req.user._id,
+        message: { $ne: "" },
+      })
+        .sort({ date: 1 })
+        .limit(10);
     }
     // if parent find student
     if (req.user.isParent) {
@@ -141,6 +146,7 @@ exports.dashboard = async (req, res) => {
     callbacks: callbacks,
     student: students || null,
     pbis: pbis,
+    pbisSchoolCount: pbisSchoolCount,
   });
 };
 

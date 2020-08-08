@@ -17,7 +17,10 @@ block content
                         a.title_link(href="/pbis/add") PBIS Business Card
                     if ( user.isPbis || user.isAdmin)
                         a.title_link(href="/pbis/search/category") PBIS DATA
-
+        .PBIS_Container
+            span.PBIS_Title School Wide PBIS Total!!
+            span.PBIS_Counter=pbisSchoolCount
+            span.PBIS_Title Next School Wide Reward at XXXX Cards
         if user
             if user.isTeacher
                 +teacherCurrentWorkForm(user)

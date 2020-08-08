@@ -1,6 +1,6 @@
 mixin pbisForm(pbis = {})
     form(action=`/pbis/add/${pbis._id || ''}` method="POST" class="card" )
-        label(for="studentName") student Name
+        label(for="studentName") Student Name
         .student
             if pbis.student
                 input(name="studentName" value=pbis.student.name disabled="disabled")
