@@ -8,11 +8,13 @@ block content
     .inner
         h2= title
         if user
-           p=`${user.name}'s TA has ${user.taPbisCount} Business Cards`
-            .callbacks
-                each callback in callbacks
-                    +callbackCard(callback)
-            if !user.isTeacher
-                +showCurrentWork(user)
-            each taStudent in taStudents
-                +showCurrentWork(taStudent)
+            p
+                a.button(href=`/pbis/ta/${user._id}`) Log TA Business Cards
+            p=`${user.name}'s TA has ${user.taPbisCount} Business Cards`
+                .callbacks
+                    each callback in callbacks
+                        +callbackCard(callback)
+                if !user.isTeacher
+                    +showCurrentWork(user)
+                each taStudent in taStudents
+                    +showCurrentWork(taStudent)

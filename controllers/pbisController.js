@@ -2,6 +2,28 @@ const mongoose = require("mongoose");
 const { userSearchResult } = require("./userController");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
+const { catchErrors } = require("../handlers/errorHandlers");
+
+updatePbisCounts = async (student) => {
+  const pbisCount = await Pbis.find({
+    student: student,
+    counted: "",
+  }).count();
+  const updatedStudent = await User.findOneAndUpdate(
+    { _id: student },
+    { pbisCount: pbisCount },
+  );
+  const taStudents = await User.find({ ta: updatedStudent.ta._id }, { _id: 1 });
+
+  const taNumbers = await Pbis.find({
+    student: { $in: taStudents },
+    counted: "",
+  }).count();
+  const taTeacher = await User.findOneAndUpdate(
+    { _id: updatedStudent.ta._id },
+    { taPbisCount: taNumbers },
+  );
+};
 
 resetPbisCounts = async () => {
   pbis = await Pbis.update(
@@ -107,4 +129,22 @@ exports.getWeeklyPbis = async (req, res) => {
 exports.resetPbisCount = async (req, res) => {
   await resetPbisCounts();
   res.redirect("/pbis/weekly");
+};
+
+exports.taPbis = async (req, res) => {
+  const taStudents = await User.find({ ta: req.params._id }, { name: 1 });
+  res.render("taPbisList", { title: "TA PBIS Entry", taStudents });
+};
+
+exports.bulkPbisCard = async (req, res) => {
+  const card = {
+    student: req.params._id,
+    teacher: req.user._id,
+    category: "Physical Card",
+  };
+  for (let i = 0; i < req.body.numberOfCards; i++) {
+    const pbis = await new Pbis(card).save();
+  }
+  catchErrors(updatePbisCounts(req.params._id));
+  res.redirect("back");
 };
