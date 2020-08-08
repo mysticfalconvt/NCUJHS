@@ -88,7 +88,7 @@ exports.getWeeklyPbis = async (req, res) => {
   for (let teacher of teachers) {
     const taStudentCount = await User.find({ ta: teacher._id }).count();
     const winner = await getStudentWinner(teacher._id);
-    const cardsPerStudent = teacher.pbisCount / taStudentCount;
+    const cardsPerStudent = teacher.taPbisCount / taStudentCount;
     teacherWithWinner = {
       name: teacher.name,
       taPbisCount: teacher.taPbisCount,
