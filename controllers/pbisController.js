@@ -47,7 +47,7 @@ exports.getPbis = async (req, res) => {
   sort[category] = 1;
   let pbiss = {};
   if (req.user) {
-    // check if teacher for calendar events
+    // check if teacher for PBIS
     if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       pbiss = await Pbis.find({ counted: "" }).sort(sort);
     }
@@ -69,6 +69,7 @@ exports.createPbis = async (req, res) => {
   );
   // get count for students TA and update TA teachers count
   const taStudents = await User.find({ ta: student.ta._id }, { _id: 1 });
+
   const taNumbers = await Pbis.find({
     student: { $in: taStudents },
     counted: "",
@@ -85,11 +86,15 @@ exports.getWeeklyPbis = async (req, res) => {
   let teachers = await User.find({ isTeacher: { $ne: "" } });
   let teachersWithWinners = [];
   for (let teacher of teachers) {
+    const taStudentCount = await User.find({ ta: teacher._id }).count();
     const winner = await getStudentWinner(teacher._id);
+    const cardsPerStudent = teacher.pbisCount / taStudentCount;
     teacherWithWinner = {
       name: teacher.name,
       taPbisCount: teacher.taPbisCount,
       winner: winner,
+      taStudentCount: taStudentCount,
+      cardsPerStudent: cardsPerStudent,
     };
     teachersWithWinners.push(teacherWithWinner);
   }

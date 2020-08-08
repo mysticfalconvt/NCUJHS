@@ -1,0 +1,29 @@
+.PBIS_Container {
+  height: 100%;
+  width: fit-content;
+  height: fit-content;
+  position: fixed;
+  z-index: 1;
+  top: 200px;
+  right: 100px;
+  background-color: $black;
+  //   overflow-x: hidden;
+  transition: 0.5s;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px 3px $grey;
+  //   display: inline-block;
+}
+.PBIS_Title {
+  color: $yellow;
+  display: block;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.PBIS_Counter {
+  color: $pink;
+  display: block;
+  text-align: center;
+  font-size: 2em;
+}
