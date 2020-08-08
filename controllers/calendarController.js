@@ -3,6 +3,8 @@ const Calendar = mongoose.model("Calendar");
 const Callback = mongoose.model("Callback");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
+const pbisCelebration = 125;
+
 // get yesterday's date
 const today = new Date();
 const yesterday = new Date(today);
@@ -147,6 +149,7 @@ exports.dashboard = async (req, res) => {
     student: students || null,
     pbis: pbis,
     pbisSchoolCount: pbisSchoolCount,
+    pbisCelebration: pbisCelebration,
   });
 };
 
