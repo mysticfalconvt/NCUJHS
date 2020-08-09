@@ -763,6 +763,8 @@ input[type="radio"]:checked + label span.radio::after {
         display: none; }
   .nav__item {
     width: 33.333333%; }
+    .nav__item svg {
+      display: none; }
   .nav__link {
     width: 100%;
     max-width: 120px; }
@@ -770,6 +772,13 @@ input[type="radio"]:checked + label span.radio::after {
       max-width: 100%; }
     .nav__link--logo svg {
       width: 100%; }
+  .nav--vertical {
+    -ms-writing-mode: tb-lr;
+        writing-mode: vertical-lr;
+    text-orientation: upright;
+    max-height: 163px;
+    width: -webkit-min-content;
+    width: min-content; }
   .heart-count:before {
     content: "\2665\FE0F";
     margin-right: 1rem; } }
@@ -1291,6 +1300,8 @@ pre.error {
   height: 100%;
   width: -webkit-fit-content;
   width: fit-content;
+  max-width: -webkit-max-content;
+  max-width: max-content;
   height: -webkit-fit-content;
   height: fit-content;
   position: fixed;
@@ -1305,6 +1316,19 @@ pre.error {
   -ms-flex-pack: center;
       justify-content: center;
   box-shadow: 3px 3px 3px 3px #e6e6e6; }
+  @media all and (max-width: 900px) {
+    .PBIS_Container {
+      display: -ms-flexbox;
+      display: flex;
+      right: 50px;
+      top: 220px;
+      max-width: 80%; } }
+  @media all and (max-width: 650px) {
+    .PBIS_Container {
+      display: -ms-flexbox;
+      display: flex;
+      right: auto;
+      width: 80%; } }
 
 .PBIS_Title {
   color: #FFC40E;
