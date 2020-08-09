@@ -32,6 +32,7 @@ require("./models/User");
 require("./models/Info");
 require("./models/studentFocus");
 require("./models/Pbis");
+require("./models/PbisCheckIn");
 
 // Start our app!
 const app = require("./app");

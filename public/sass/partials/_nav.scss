@@ -115,6 +115,9 @@
     }
     &__item {
       width: 33.333333%;
+      svg {
+        display: none;
+      }
     }
     &__link {
       width: 100%;
@@ -128,6 +131,12 @@
           width: 100%;
         }
       }
+    }
+    &--vertical {
+      writing-mode: vertical-lr;
+      text-orientation: upright;
+      max-height: 163px;
+      width: min-content;
     }
   }
   .heart-count:before {

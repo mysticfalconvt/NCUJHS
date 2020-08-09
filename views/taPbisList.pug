@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .inner
+        h1=title
+        table.table
+            thead
+                td Student
+                td Cards
+                td Update
+            each student in taStudents
+                tr
+                    form(action=`/pbis/student/${student._id}`, method="post")
+                        td=student.name 
+                        td
+                            input(type="number" name="numberOfCards" min="0")
+                        td
+                            input.button(type="submit", value="Submit →")
