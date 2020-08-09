@@ -27,7 +27,7 @@ block content
                     +calendarCard(calendar)
                 each callback in callbacks
                     +callbackCard(callback)
-            if !(user.isTeacher || user.isAdmin || user.isPara)
+            if !(user.isTeacher || user.isAdmin || user.isPara || isParent)
                 +showCurrentWork(user)
                 +pbisCards(pbis)
 
