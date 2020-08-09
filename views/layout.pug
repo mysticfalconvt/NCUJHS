@@ -16,29 +16,29 @@ html
                 if user
                     span #{user.name}
               each item in h.menu
-                li.nav__item
+                li.nav__item.nav--vertical
                   a.nav__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'nav__link--active' : ''))
                     != h.icon(item.icon)
                     span #{item.title}
               if user
                 if user.isTeacher
-                  li.nav__item
+                  li.nav__item.nav--vertical
                     a.nav__link(href="/callback/teacher", class=(currentPath.startsWith('/callback/teacher') ? 'nav__link--active' : ''))
                       != h.icon('tag')
                       span #{"My Callback"}
-                  li.nav__item
+                  li.nav__item.nav--vertical
                     a.nav__link(href="/ta", class=(currentPath.startsWith('/ta') ? 'nav__link--active' : ''))
                       != h.icon('ta')
                       span #{"My TA"}
 
                       //- Student Focus
                 if user.isTeacher || user.isAdmin || user.isPara
-                  li.nav__item
+                  li.nav__item.nav--vertical
                     a.nav__link(href="/user/search/ta", class=(currentPath.startsWith('/user') ? 'nav__link--active' : ''))
                       != h.icon('searchUser')
                       span #{"Finder"}
                   if !user.isPara
-                    li.nav__item
+                    li.nav__item.nav--vertical
                       a.nav__link(href="/studentFocus/search/created", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
                         != h.icon('studentfocus')
                         span #{"Student Focus & Parent Contact"}
