@@ -1314,8 +1314,7 @@ pre.error {
   padding: 5px;
   border-radius: 5px;
   -ms-flex-pack: center;
-      justify-content: center;
-  box-shadow: 3px 3px 3px 3px #e6e6e6; }
+      justify-content: center; }
   @media all and (max-width: 900px) {
     .PBIS_Container {
       display: -ms-flexbox;
@@ -1344,12 +1343,7 @@ pre.error {
 
 .PBIS_Progress {
   width: 90%;
-  text-align: center;
-  display: inline-block;
   margin: auto;
-  height: 20px;
-  background-color: #FFC40E;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
+  height: 30px; }
 
 /*# sourceMappingURL=style.css.map*/

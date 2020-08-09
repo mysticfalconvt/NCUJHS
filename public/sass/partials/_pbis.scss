@@ -14,7 +14,7 @@
   padding: 5px;
   border-radius: 5px;
   justify-content: center;
-  box-shadow: 3px 3px 3px 3px $grey;
+  // box-shadow: 3px 3px 3px 3px $grey;
   @media all and (max-width: 900px) {
     display: flex;
     right: 50px;
@@ -44,12 +44,12 @@
 
 .PBIS_Progress {
   width: 90%;
-  text-align: center;
-  display: inline-block;
+  // text-align: center;
+  // display: inline-block;
   margin: auto;
   // width: 250px;
-  height: 20px;
-  background-color: $yellow;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  height: 30px;
+  // background-color: $yellow;
+  // border-radius: 8px;
+  // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
