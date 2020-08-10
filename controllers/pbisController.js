@@ -145,6 +145,11 @@ exports.bulkPbisCard = async (req, res) => {
   for (let i = 0; i < req.body.numberOfCards; i++) {
     const pbis = await new Pbis(card).save();
   }
+  const student = await User.findOne({ _id: req.params._id }, { name: 1 });
   catchErrors(updatePbisCounts(req.params._id));
+  req.flash(
+    "success",
+    `Successfully counted ${req.body.numberOfCards} Cards for ${student.name}`,
+  );
   res.redirect("back");
 };
