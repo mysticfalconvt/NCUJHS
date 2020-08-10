@@ -153,6 +153,39 @@ router.post(
   authController.isTeacher,
   catchErrors(pbisController.bulkPbisCard),
 );
+
+// PBIS Team Routes
+router.get(
+  "/pbis/team/add",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  pbisController.addPbisTeam,
+);
+router.get(
+  "/pbis/teamList",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.taTeamList),
+);
+router.get(
+  "/pbis/team/:_id",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.editPbisTeam),
+);
+router.post(
+  "/pbis/team/add",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.createPbisTeam),
+);
+router.post(
+  "/pbis/team/:_id",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.updatePbisTeam),
+);
+
 // info routes
 router.get("/info/search/:category", catchErrors(infoController.getInfo));
 router.get("/info", catchErrors(infoController.getInfo));

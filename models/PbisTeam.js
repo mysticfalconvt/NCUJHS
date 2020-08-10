@@ -1,0 +1,50 @@
+const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+
+const pbisTeamSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    default: "",
+  },
+  teacher1: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: "You must supply a teacher1!",
+  },
+  teacher2: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: "You must supply a teacher2!",
+  },
+  totalCards: {
+    type: Number,
+    default: 0,
+  },
+  currentUncountedCards: {
+    type: Number,
+    default: 0,
+  },
+  numberOfStudents: {
+    type: Number,
+    default: 0,
+  },
+  currentLevel: {
+    type: Number,
+    default: 0,
+  },
+  averageCardsPerStudent: {
+    type: Number,
+    default: 0,
+  },
+});
+
+function autopopulate(next) {
+  this.populate("teacher1");
+  this.populate("teacher2");
+  next();
+}
+
+pbisTeamSchema.pre("find", autopopulate);
+pbisTeamSchema.pre("findOne", autopopulate);
+
+module.exports = mongoose.model("PbisTeam", pbisTeamSchema);

@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    .inner
+        h1=title
+        form(action=`/pbis/team/${pbisTeam._id || 'add'}` method="POST" class="card" )
+            
+            .teacher1TeacherSearch
+                label(for="name") Team Name
+                input(type="text" id="search" name="name" value=pbisTeam.name)
+                if pbisTeam.teacher1
+                    label(for="teacher1name") Teacher #1
+                    input(type="text" id="search" name="teacher1Name" value=pbisTeam.teacher1.name)
+                    .search
+                        .search__results
+                    input(type="hidden" id="teacher1" name="teacher1" readonly="readonly" value=pbisTeam.teacher1._id)
+                else
+                    label(for="teacher1name") Teacher #1
+                    input(type="text" id="search" name="teacher1Name" value=pbisTeam.teacher1)
+                    .search
+                        .search__results
+                    input(type="hidden" id="teacher1" name="teacher1"  value=pbisTeam.teacher1)
+            .teacher2TeacherSearch
+                if pbisTeam.teacher2
+                    label(for="teacher2name") Teacher #2
+                    input(type="text" id="search" name="teacher2Name" value=pbisTeam.teacher2.name)
+                    .search
+                        .search__results
+                    input(type="hidden" id="teacher2" name="teacher2" readonly="readonly" value=pbisTeam.teacher2._id)
+                else
+                    label(for="teacher2name") Teacher #2
+                    input(type="text" id="search" name="teacher2Name" value=pbisTeam.teacher2)
+                    .search
+                        .search__results
+                    input(type="hidden" id="teacher2" name="teacher2"  value=pbisTeam.teacher2)
+            input(type="submit" value="Save →" class="button")
