@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const { userSearchResult } = require("./userController");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
+const PbisTeam = mongoose.model("PbisTeam");
 const { catchErrors } = require("../handlers/errorHandlers");
+const { findOneAndUpdate } = require("../models/User");
+const averageCardsPerLevel = 15;
 
 updatePbisCounts = async (student) => {
   const pbisCount = await Pbis.find({
@@ -23,6 +26,49 @@ updatePbisCounts = async (student) => {
     { _id: updatedStudent.ta._id },
     { taPbisCount: taNumbers },
   );
+};
+
+updateTeamPbis = async (team) => {
+  const teacherIds = [team.teacher1._id, team.teacher2._id];
+  const teachers = await User.find({ _id: { $in: teacherIds } });
+  const taTeamStudents = await User.find(
+    { ta: { $in: teacherIds } },
+    { _id: 1 },
+  );
+  const numberOfStudents = await User.find({ ta: { $in: teacherIds } }).count();
+  // numberOfStudents = taTeamStudents.length();
+  const taTeamUncounted = await Pbis.find({
+    student: { $in: taTeamStudents },
+    counted: "",
+  }).count();
+  const taTeamTotalCards = await Pbis.find({
+    student: { $in: taTeamStudents },
+  }).count();
+  const currentAverageCardsPerStudent = taTeamUncounted / numberOfStudents;
+  const newAverageCardsPerStudent =
+    team.averageCardsPerStudent + currentAverageCardsPerStudent;
+  const currentLevel = Math.floor(
+    newAverageCardsPerStudent / averageCardsPerLevel,
+  );
+  const teamUpdates = {
+    numberOfStudents,
+    currentUncountedCards: taTeamUncounted,
+    averageCardsPerStudent: newAverageCardsPerStudent || 0,
+    currentLevel: currentLevel || 0,
+    totalCards: taTeamTotalCards || 0,
+  };
+
+  const updatedPbisTeam = await PbisTeam.findOneAndUpdate(
+    { _id: team._id },
+    teamUpdates,
+  );
+};
+
+checkInTeamCards = async () => {
+  const listOfTaTeams = await PbisTeam.find({ schoolWide: false });
+  for (let team of listOfTaTeams) {
+    await updateTeamPbis(team);
+  }
 };
 
 resetPbisCounts = async () => {
@@ -57,6 +103,49 @@ getStudentWinner = async (teacher, index) => {
   } else {
     return "No Winner";
   }
+};
+
+getGoal = (lowestLevel) => {
+  if (lowestLevel < 2) {
+    return 2;
+  } else if (lowestLevel < 4) {
+    return 4;
+  } else if (lowestLevel < 7) {
+    return 7;
+  } else if (lowestLevel < 10) {
+    return 10;
+  }
+};
+
+updateSchoolWidePbis = async () => {
+  const numberofTeams = await PbisTeam.find({
+    schoolWide: false,
+  }).countDocuments();
+  const pbisTeams = await PbisTeam.find({ schoolWide: false });
+  let lowestLevel = 20;
+  pbisTeams.forEach(function (data, index) {
+    if (data.currentLevel < lowestLevel) {
+      lowestLevel = data.currentLevel;
+    }
+  });
+  let teamsAtGoal = 0;
+  const nextGoal = getGoal(lowestLevel);
+  pbisTeams.forEach(function (data, index) {
+    if (data.currentLevel >= nextGoal) {
+      teamsAtGoal++;
+    }
+  });
+
+  const update = {
+    totalTeams: numberofTeams,
+    lowestLevel: lowestLevel,
+    nextGoal: nextGoal,
+    teamsAtGoal: teamsAtGoal,
+  };
+  const schoolwideUpdate = await PbisTeam.findOneAndUpdate(
+    { schoolWide: true },
+    update,
+  );
 };
 
 exports.addPbis = (req, res) => {
@@ -126,10 +215,10 @@ exports.getWeeklyPbis = async (req, res) => {
   });
 };
 
-exports.resetPbisCount = async (req, res) => {
-  await resetPbisCounts();
-  res.redirect("/pbis/weekly");
-};
+// exports.resetPbisCount = async (req, res) => {
+//   await resetPbisCounts();
+//   res.redirect("/pbis/weekly");
+// };
 
 exports.taPbis = async (req, res) => {
   const taStudents = await User.find({ ta: req.params._id }, { name: 1 });
@@ -152,4 +241,40 @@ exports.bulkPbisCard = async (req, res) => {
     `Successfully counted ${req.body.numberOfCards} Cards for ${student.name}`,
   );
   res.redirect("back");
+};
+
+exports.addPbisTeam = (req, res) => {
+  const pbisTeam = {};
+  res.render("editPbisTeam", { title: "Add a new PBIS Team", pbisTeam });
+};
+
+exports.taTeamList = async (req, res) => {
+  const listOfTeams = await PbisTeam.find({ schoolWide: false });
+  res.render("pbisTeamList", { title: "PBIS Teams", listOfTeams });
+};
+
+exports.createPbisTeam = async (req, res) => {
+  const pbisTeam = await new PbisTeam(req.body).save();
+  res.redirect("/pbis/teamList");
+};
+exports.editPbisTeam = async (req, res) => {
+  const pbisTeam = await PbisTeam.findOne({ _id: req.params._id });
+  res.render("editPbisTeam", {
+    title: `Edit Team ${pbisTeam.name}`,
+    pbisTeam,
+  });
+};
+exports.updatePbisTeam = async (req, res) => {
+  const pbisTeam = await PbisTeam.findOneAndUpdate(
+    { _id: req.params._id },
+    req.body,
+  );
+  res.redirect("/pbis/teamList");
+};
+
+exports.weeklyPbisCheckIn = async (req, res) => {
+  await checkInTeamCards();
+  await resetPbisCounts();
+  await updateSchoolWidePbis();
+  res.redirect("/pbis/teamList");
 };

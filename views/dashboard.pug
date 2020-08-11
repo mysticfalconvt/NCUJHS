@@ -18,10 +18,10 @@ block content
                     if ( user.isPbis || user.isAdmin)
                         a.title_link(href="/pbis/search/category") PBIS DATA
         .PBIS_Container
-            progress.PBIS_Progress(value=pbisSchoolCount max=pbisCelebration)
+            progress.PBIS_Progress(value=schoolWidePbisData.teamsAtGoal max=schoolWidePbisData.totalTeams)
             span.PBIS_Title School Wide PBIS Card Total!!
             span.PBIS_Counter=pbisSchoolCount
-            span.PBIS_Title Next School Wide Reward at #{pbisCelebration} Cards
+            span.PBIS_Title #{schoolWidePbisData.teamsAtGoal} out of #{schoolWidePbisData.totalTeams} teams have reached level #{schoolWidePbisData.nextGoal}
         if user
             if user.isTeacher
                 +teacherCurrentWorkForm(user)

@@ -14,4 +14,6 @@ typeAheadTeacher($(".socialStudiesTeacherSearch"), "socialStudies");
 typeAheadTeacher($(".trimester1TeacherSearch"), "trimester1");
 typeAheadTeacher($(".trimester2TeacherSearch"), "trimester2");
 typeAheadTeacher($(".trimester3TeacherSearch"), "trimester3");
+typeAheadTeacher($(".teacher1TeacherSearch"), "teacher1");
+typeAheadTeacher($(".teacher2TeacherSearch"), "teacher2");
 typeAheadUser($(".userSearch"));

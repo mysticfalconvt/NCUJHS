@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .inner
+        h1=title
+            a.title_link(href="/pbis/team/add") Add a new PBIS Team
+        
+        table.table
+            thead
+                td Team Name
+                td Teacher 1
+                td Teacher 2
+                td Current Level
+                td Current Cards per student
+                td Students in Team
+                
+            each team in listOfTeams
+                tr
+                    td
+                        a(href=`/pbis/team/${team._id}`)=team.name
+                    td=team.teacher1.name
+                    td=team.teacher2.name
+                    td=team.currentLevel
+                    td=team.averageCardsPerStudent
+                    td=team.numberOfStudents

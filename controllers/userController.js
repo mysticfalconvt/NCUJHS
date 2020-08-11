@@ -270,6 +270,7 @@ exports.searchStudent = async (req, res) => {
       },
       isTeacher: "",
       isAdmin: "",
+      isParent: "",
     },
     {
       score: { $meta: "textScore" },

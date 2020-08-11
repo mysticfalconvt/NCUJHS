@@ -32,7 +32,7 @@ require("./models/User");
 require("./models/Info");
 require("./models/studentFocus");
 require("./models/Pbis");
-require("./models/PbisCheckIn");
+require("./models/PbisTeam");
 
 // Start our app!
 const app = require("./app");

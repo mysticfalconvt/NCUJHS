@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
+const PbisTeam = require("../models/PbisTeam");
 const Calendar = mongoose.model("Calendar");
 const Callback = mongoose.model("Callback");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
-const pbisCelebration = 125;
 
 // get yesterday's date
 const today = new Date();
@@ -77,7 +77,8 @@ exports.dashboard = async (req, res) => {
   let callbacks = {};
   let students = {};
   let pbis = {};
-  const pbisSchoolCount = await Pbis.find().count();
+  const schoolWidePbisData = await PbisTeam.findOne({ schoolWide: true });
+  const pbisSchoolCount = await Pbis.find().estimatedDocumentCount();
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
@@ -149,7 +150,7 @@ exports.dashboard = async (req, res) => {
     student: students || null,
     pbis: pbis,
     pbisSchoolCount: pbisSchoolCount,
-    pbisCelebration: pbisCelebration,
+    schoolWidePbisData: schoolWidePbisData,
   });
 };
 
