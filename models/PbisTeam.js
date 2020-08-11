@@ -16,6 +16,10 @@ const pbisTeamSchema = new mongoose.Schema({
     ref: "User",
     required: "You must supply a teacher2!",
   },
+  teacher3: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+  },
   totalCards: {
     type: Number,
     default: 0,
@@ -36,6 +40,14 @@ const pbisTeamSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  schoolWide: {
+    type: Boolean,
+    default: false,
+  },
+  lowestLevel: Number,
+  nextGoal: Number,
+  teamsAtGoal: Number,
+  totalTeams: Number,
 });
 
 function autopopulate(next) {

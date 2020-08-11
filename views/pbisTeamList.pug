@@ -12,6 +12,7 @@ block content
                 td Teacher 2
                 td Current Level
                 td Current Cards per student
+                td Students in Team
                 
             each team in listOfTeams
                 tr
@@ -21,3 +22,4 @@ block content
                     td=team.teacher2.name
                     td=team.currentLevel
                     td=team.averageCardsPerStudent
+                    td=team.numberOfStudents
