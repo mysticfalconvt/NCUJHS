@@ -41,6 +41,9 @@ updateTeamPbis = async (team) => {
     student: { $in: taTeamStudents },
     counted: "",
   }).count();
+  const taTeamTotalCards = await Pbis.find({
+    student: { $in: taTeamStudents },
+  }).count();
   const currentAverageCardsPerStudent = taTeamUncounted / numberOfStudents;
   const newAverageCardsPerStudent =
     team.averageCardsPerStudent + currentAverageCardsPerStudent;
@@ -50,14 +53,22 @@ updateTeamPbis = async (team) => {
   const teamUpdates = {
     numberOfStudents,
     currentUncountedCards: taTeamUncounted,
-    averageCardsPerStudent: newAverageCardsPerStudent,
-    currentLevel,
+    averageCardsPerStudent: newAverageCardsPerStudent || 0,
+    currentLevel: currentLevel || 0,
+    totalCards: taTeamTotalCards || 0,
   };
 
   const updatedPbisTeam = await PbisTeam.findOneAndUpdate(
     { _id: team._id },
     teamUpdates,
   );
+};
+
+checkInTeamCards = async () => {
+  const listOfTaTeams = await PbisTeam.find();
+  for (let team of listOfTaTeams) {
+    await updateTeamPbis(team);
+  }
 };
 
 resetPbisCounts = async () => {
@@ -215,6 +226,12 @@ exports.updatePbisTeam = async (req, res) => {
     { _id: req.params._id },
     req.body,
   );
-  await updateTeamPbis(pbisTeam);
+  await checkInTeamCards();
+  res.redirect("/pbis/teamList");
+};
+
+exports.weeklyPbisCheckIn = async (req, res) => {
+  await checkInTeamCards();
+  await resetPbisCounts();
   res.redirect("/pbis/teamList");
 };

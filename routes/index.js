@@ -127,7 +127,7 @@ router.get(
   "/pbis/resetCounts",
   authController.isLoggedIn,
   authController.isTeacher,
-  catchErrors(pbisController.resetPbisCount),
+  catchErrors(pbisController.weeklyPbisCheckIn),
 );
 router.post(
   "/pbis/add",
