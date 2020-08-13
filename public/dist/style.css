@@ -507,7 +507,8 @@ p {
   color: white;
   font-weight: bold;
   line-height: 25px;
-  box-shadow: 2px 3px 4px #860202; }
+  box-shadow: 2px 3px 4px #860202;
+  white-space: nowrap; }
 
 .title--single {
   max-width: 600px;
@@ -1304,11 +1305,9 @@ pre.error {
   max-width: max-content;
   height: -webkit-fit-content;
   height: fit-content;
-  position: fixed;
+  margin-top: auto;
   z-index: 1;
   text-align: center;
-  top: 200px;
-  right: 100px;
   background-color: #303030;
   transition: 0.5s;
   padding: 5px;
@@ -1345,5 +1344,13 @@ pre.error {
   width: 90%;
   margin: auto;
   height: 30px; }
+
+.titleContainer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
 
 /*# sourceMappingURL=style.css.map*/

@@ -8,20 +8,21 @@ include mixins/_pbisCards
 
 block content
     .inner
-        h1= title
-            if user
-                p
-                    if (user.isTeacher || user.isAdmin)
-                        a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit" target="_blank") ** Attendance **
-                    if (user.isTeacher || user.isAdmin ||user.isPara)
-                        a.title_link(href="/pbis/add") PBIS Business Card
-                    if ( user.isPbis || user.isAdmin)
-                        a.title_link(href="/pbis/search/category") PBIS DATA
-        .PBIS_Container
-            progress.PBIS_Progress(value=schoolWidePbisData.teamsAtGoal max=schoolWidePbisData.totalTeams)
-            span.PBIS_Title School Wide PBIS Card Total!!
-            span.PBIS_Counter=pbisSchoolCount
-            span.PBIS_Title #{schoolWidePbisData.teamsAtGoal} out of #{schoolWidePbisData.totalTeams} teams have reached level #{schoolWidePbisData.nextGoal}
+        .titleContainer
+            h1= title
+                if user
+                    p
+                        if (user.isTeacher || user.isAdmin)
+                            a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit" target="_blank") ** Attendance **
+                        if (user.isTeacher || user.isAdmin ||user.isPara)
+                            a.title_link(href="/pbis/add") PBIS Business Card
+                        if ( user.isPbis || user.isAdmin)
+                            a.title_link(href="/pbis/search/category") PBIS DATA
+            .PBIS_Container
+                progress.PBIS_Progress(value=schoolWidePbisData.teamsAtGoal max=schoolWidePbisData.totalTeams)
+                span.PBIS_Title School Wide PBIS Card Total!!
+                span.PBIS_Counter=pbisSchoolCount
+                span.PBIS_Title #{schoolWidePbisData.teamsAtGoal} out of #{schoolWidePbisData.totalTeams} teams have reached level #{schoolWidePbisData.nextGoal}
         if user
             if user.isTeacher
                 +teacherCurrentWorkForm(user)

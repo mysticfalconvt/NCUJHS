@@ -3,11 +3,12 @@
   width: fit-content;
   max-width: max-content;
   height: fit-content;
-  position: fixed;
+  margin-top: auto;
+  // position: fixed;
   z-index: 1;
   text-align: center;
-  top: 200px;
-  right: 100px;
+  // top: 200px;
+  // right: 100px;
   background-color: $black;
   //   overflow-x: hidden;
   transition: 0.5s;
@@ -52,4 +53,10 @@
   // background-color: $yellow;
   // border-radius: 8px;
   // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+.titleContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
