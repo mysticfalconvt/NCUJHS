@@ -15,7 +15,7 @@
   transition: 0.5s;
   padding: 5px;
   border-radius: 5px;
-  justify-content: center;
+  justify-content: space-around;
   // box-shadow: 3px 3px 3px 3px $grey;
   @media all and (max-width: 900px) {
     display: flex;
@@ -61,4 +61,5 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 1em;
+  align-items: flex-start;
 }
