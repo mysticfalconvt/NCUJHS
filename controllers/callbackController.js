@@ -148,5 +148,10 @@ exports.getCallbackByID = async (req, res, next) => {
   if (!callback) return next();
   const editable = callback.teacher.equals(req.user._id);
   const owner = editable || callback.student.equals(req.user._id);
-  res.render("callback", { callback, editable, owner, title: callback.title });
+  res.render("callback", {
+    callback,
+    editable,
+    owner,
+    title: callback.assignment,
+  });
 };
