@@ -3,7 +3,8 @@
   width: fit-content;
   max-width: max-content;
   height: fit-content;
-  margin-top: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
   // position: fixed;
   z-index: 1;
   text-align: center;
@@ -59,4 +60,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 1em;
 }

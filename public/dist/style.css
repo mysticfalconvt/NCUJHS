@@ -1305,7 +1305,8 @@ pre.error {
   max-width: max-content;
   height: -webkit-fit-content;
   height: fit-content;
-  margin-top: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
   z-index: 1;
   text-align: center;
   background-color: #303030;
@@ -1351,6 +1352,7 @@ pre.error {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -ms-flex-pack: justify;
-      justify-content: space-between; }
+      justify-content: space-between;
+  margin-bottom: 1em; }
 
 /*# sourceMappingURL=style.css.map*/
