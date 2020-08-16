@@ -6,7 +6,7 @@ block content
         form(action=`/pbis/team/${pbisTeam._id || 'add'}` method="POST" class="card" )
             
             .teacher1TeacherSearch
-                label(for="name") Team Name
+                label(for="name") Team Slogan
                 input(type="text" id="search" name="name" value=pbisTeam.name)
                 if pbisTeam.teacher1
                     label(for="teacher1name") Teacher #1

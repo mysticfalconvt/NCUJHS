@@ -14,5 +14,28 @@ block content
                 else 
                     a.textLinks.button(href="/allCalendars") Include all events
         .calendars
-            each calendar in calendars
-                +calendarCard(calendar)
+            if currentPath.startsWith("/calendars")
+                each calendar in calendars
+                    +calendarCard(calendar)
+            if currentPath.startsWith("/allCalendars")
+                table.table
+                    thead 
+                        td Date
+                        td Event
+                        td Info
+                        td Link
+                    each calendar in calendars
+                            tr
+                                
+                                td
+                                    a(href=`/calendar/${calendar._id}`)=calendar.Date.toLocaleDateString()
+                                td
+                                    a(href=`/calendar/${calendar._id}`)=calendar.title
+                                td
+                                    a(href=`/calendar/${calendar._id}`)=calendar.description
+                                if calendar.link
+                                    td
+                                        a(href=`/calendar/${calendar._id}`) Link
+                                else 
+                                    td 
+
