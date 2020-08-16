@@ -32,14 +32,14 @@ exports.getEvents = async (req, res) => {
         Date: { $gte: new Date() - timeOffset },
       })
         .sort({ Date: 1 })
-        .limit(8);
+        .limit(12);
     } else {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset },
         teachersOnly: "",
       })
         .sort({ Date: 1 })
-        .limit(8);
+        .limit(12);
     }
   } else {
     calendars = await Calendar.find({
@@ -47,7 +47,7 @@ exports.getEvents = async (req, res) => {
       teachersOnly: "",
     })
       .sort({ Date: 1 })
-      .limit(8);
+      .limit(12);
   }
   res.render("calendars", { title: "Calendar", calendars: calendars });
 };
