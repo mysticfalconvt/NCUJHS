@@ -7,5 +7,8 @@ mixin calendarCard(calendar={})
                 p= calendar.Date.toDateString()
         .calendar__details
             if calendar.link
-                a(href=`//${calendar.link}`) LINK
+                if calendar.link.startsWith('http')
+                    a(href=`${calendar.link}`) Link to: #{calendar.linkTitle|| 'LINK'}
+                else
+                    a(href=`//${calendar.link}`) Link to: #{calendar.linkTitle || 'LINK'}
             p=calendar.description.split(' ').slice(0,25).join(' ')

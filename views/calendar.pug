@@ -15,6 +15,10 @@ block content
 
     .single.details.inner
         p= calendar.description
-        a(href=`//${calendar.link}`) Link to: #{calendar.linkTitle}
+        if calendar.link
+            if calendar.link.startsWith('http')
+                a(href=`${calendar.link}`) Link to: #{calendar.linkTitle}
+            else
+                a(href=`//${calendar.link}`) Link to: #{calendar.linkTitle || 'LINK'}
         p= "Date added to calendar: "+ calendar.created.getMonth() +"/"+ calendar.created.getDate() +"/" + calendar.created.getFullYear()
         p= "Event created by: " + calendar.author.name
