@@ -56,24 +56,33 @@ exports.registerParentForm = async (req, res) => {
 exports.searchUser = async (req, res) => {
   const category = req.params.category || "";
   let sort = {};
-  sort["isTeacher"] = 1;
   sort[category] = -1;
+  // sort["isTeacher"] = 1;
+  // sort["isAdmin"] = 1;
+  // sort["isPara"] = 1;
   sort["name"] = 1;
   const studentCount = await User.find({
     isParent: { $ne: true },
     isTeacher: { $ne: true },
     isAdmin: { $ne: true },
+    isPara: { $ne: true },
   }).count();
   const onCallbackCount = await User.find({
     isParent: { $ne: true },
     isTeacher: { $ne: true },
     isAdmin: { $ne: true },
+    isPara: { $ne: true },
     callbackCount: { $ne: 0 },
   }).count();
   const percentageOnCallback = Math.round(
     100 * (onCallbackCount / studentCount),
   );
-  const users = await User.find({ isParent: { $ne: true } }).sort(sort);
+  const users = await User.find({
+    isParent: { $ne: true },
+    isTeacher: { $ne: true },
+    isAdmin: { $ne: true },
+    isPara: { $ne: true },
+  }).sort(sort);
   const callbackCount = users.reduce(function (prev, current) {
     const adder = parseInt(current.callbackCount || "0", 10);
     if (current.isTeacher) {

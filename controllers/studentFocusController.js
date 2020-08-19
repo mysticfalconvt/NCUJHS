@@ -88,7 +88,7 @@ exports.editStudentFocus = async (req, res) => {
 
   //render out the edit form so they can edit
   res.render("editStudentFocus", {
-    title: `edit ${studentFocus.title}`,
+    title: `edit ${studentFocus.student.name}'s ${studentFocus.category}`,
     studentFocus,
   });
 };
