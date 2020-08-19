@@ -27,7 +27,11 @@ block content
                     td=info.title
                     td=info.description
                     td
-                        a(href=`${info.link}` target="_blank")=info.linkTitle
+                        if info.link
+                            if info.link.startsWith('http')
+                                a(href=`${info.link}` target="_blank")=(info.linkTitle || 'link')
+                            else 
+                                a(href=`//${info.link}` target="_blank")=(info.linkTitle || 'link')
                     if user
                         if user.isAdmin
                             td 

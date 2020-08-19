@@ -16,7 +16,7 @@ mixin studentFocusForm(studentFocus = {})
       option(value="Cell Phone Violation") Cell Phone Violation
       option(value="Student Focus Notes") Student Focus Notes
     label(for="comments") comments
-    input(type="text" name="comments" value=studentFocus.comments)
+    textarea(rows="10" type="text" name="comments" value=studentFocus.comments)=studentFocus.comments
     if studentFocus.student
       .search__input
         input(name="student" id="id" value=studentFocus.student._id hidden)
