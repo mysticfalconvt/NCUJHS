@@ -131,7 +131,10 @@ exports.userSearchResult = async (req, res) => {
   } else {
     // find their callback
 
-    const callbacks = await Callback.find({ student: req.params._id });
+    const callbacks = await Callback.find({
+      student: req.params._id,
+      completed: "",
+    });
     // find their callback
     // const ta = await User.find({ ta: req.params._id });
     //render out the edit form so they can edit

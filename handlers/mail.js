@@ -35,6 +35,7 @@ exports.send = async (options) => {
     subject: options.subject,
     html: html,
     text: text,
+    replyTo: options.replyTo,
   };
 
   const sendMail = promisify(transport.sendMail, transport);
