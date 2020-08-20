@@ -15,6 +15,7 @@ exports.sendParentSignup = async (req, res) => {
 
   mail.send({
     email: req.body.email,
+    replyTo: req.user.email,
     filename: "parentSignup",
     subject: `Signup for a NCUJHS dashboard account for ${user.name}`,
     signupURL,
