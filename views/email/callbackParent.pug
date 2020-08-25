@@ -2,7 +2,9 @@ extends email-layout
 
 block content
   h2= subject
-  p Hello, Parent or guardian of #{name}. Your child has #{callbackCount} items on callback.  Please work with #{name} to get this work completed.
+  p Hello, Parent or guardian of #{name}. Your child has 
+    strong #{callbackCount} 
+    span items on callback.  Please work with #{name} to get this work completed.
   p Please login to NCUJHS.tech to see what the assignments are.
   +button('//ncujhs.tech', 'NCUJHS.Tech')
   p Sincerly, #{teacher}
