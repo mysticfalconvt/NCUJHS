@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const promisify = require("es6-promisify");
 const mail = require("../handlers/mail");
+const StudentFocus = mongoose.model("studentFocus");
 
 exports.sendParentSignup = async (req, res) => {
   // 1. see if the email exists
@@ -38,4 +39,35 @@ exports.parentSignup = async (req, res) => {
   } else {
     res.redirect("back");
   }
+};
+
+exports.sendParentCallbackCount = async (req, res) => {
+  // 1. see if the email exists
+  const user = await User.findOne({ _id: req.params._id });
+  const parent = await User.findOne({ _id: user.parent });
+  if (!user) {
+    req.flash("error", "No account with that email exists");
+    return res.redirect("/");
+  }
+  // 3. Send them an email
+  mail.send({
+    email: parent.email,
+    replyTo: req.user.email,
+    filename: "callbackParent",
+    subject: `Callback update for ${user.name}`,
+    name: user.name,
+    callbackCount: user.callbackCount,
+    teacher: req.user.name,
+  });
+
+  const studentFocus = await new StudentFocus({
+    teacher: req.user._id,
+    student: user._id,
+    comments: `Sent parent email about ${user.callbackCount} items on callback`,
+    category: "Parent Contact",
+  }).save();
+
+  req.flash("success", `you have emailed ${user.name}'s parent or guardian`);
+  // 4. Redirect to login page
+  res.redirect(`/user/${req.params._id}`);
 };

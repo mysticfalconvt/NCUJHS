@@ -9,8 +9,11 @@ block content
             p.tags
                 a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
                 a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
-                if user.isAdmin || user.isTeacher        
-                    a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
+                if (user.isAdmin || user.isTeacher)
+                    if !account.parent        
+                        a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
+                    if account.parent
+                        a.textLinks.button(href=`/email/callbackCount/${account._id}`) Send a parent callback update for #{account.name}
         hr
         .calendars
             each callback in callbacks
