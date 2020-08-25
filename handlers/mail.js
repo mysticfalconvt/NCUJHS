@@ -30,7 +30,7 @@ exports.send = async (options) => {
   const html = generateHTML(options.filename, options);
   const text = htmlToText.fromString(html);
   const mailOptions = {
-    from: "Rob Boskind <robert.boskind@ncsuvt.org>",
+    from: "Automated <ncujhs.tech@ncsuvt.org>",
     to: options.email,
     subject: options.subject,
     html: html,
