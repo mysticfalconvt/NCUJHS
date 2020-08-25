@@ -66,14 +66,14 @@ exports.searchUser = async (req, res) => {
     isTeacher: { $ne: true },
     isAdmin: { $ne: true },
     isPara: { $ne: true },
-  }).count();
+  }).countDocuments();
   const onCallbackCount = await User.find({
     isParent: { $ne: true },
     isTeacher: { $ne: true },
     isAdmin: { $ne: true },
     isPara: { $ne: true },
     callbackCount: { $ne: 0 },
-  }).count();
+  }).countDocuments();
   const percentageOnCallback = Math.round(
     100 * (onCallbackCount / studentCount),
   );

@@ -257,6 +257,12 @@ router.post(
   authController.isTeacher,
   catchErrors(mailController.sendParentSignup),
 );
+router.get(
+  `/email/callbackCount/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(mailController.sendParentCallbackCount),
+);
 
 /* 
 	API
