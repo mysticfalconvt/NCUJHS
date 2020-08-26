@@ -33,4 +33,17 @@ block content
                     .search
                         .search__results
                     input(type="hidden" id="teacher2" name="teacher2"  value=pbisTeam.teacher2)
+            .teacher3TeacherSearch
+                if pbisTeam.teacher3
+                    label(for="teacher3name") Teacher #3
+                    input(type="text" id="search" name="teacher3Name" value=pbisTeam.teacher3.name)
+                    .search
+                        .search__results
+                    input(type="hidden" id="teacher3" name="teacher3" readonly="readonly" value=pbisTeam.teacher3._id)
+                else
+                    label(for="teacher3name") Teacher #3
+                    input(type="text" id="search" name="teacher3Name" value=pbisTeam.teacher3)
+                    .search
+                        .search__results
+                    input(type="hidden" id="teacher3" name="teacher3"  value=pbisTeam.teacher3)
             input(type="submit" value="Save →" class="button")

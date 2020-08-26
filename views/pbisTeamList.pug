@@ -10,6 +10,7 @@ block content
                 td Team Slogan
                 td Teacher 1
                 td Teacher 2
+                td Teacher 3
                 td Current Level
                 td Current Cards per student
                 td Students in Team
@@ -20,6 +21,10 @@ block content
                         a(href=`/pbis/team/${team._id}`)=team.name
                     td=team.teacher1.name
                     td=team.teacher2.name
+                    if team.teacher3
+                        td=team.teacher3.name 
+                    else 
+                        td 
                     td=team.currentLevel
                     td=team.averageCardsPerStudent
                     td=team.numberOfStudents
