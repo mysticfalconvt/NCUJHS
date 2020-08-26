@@ -3073,6 +3073,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".trimester3TeacherSearch"), "trimester3");
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher1TeacherSearch"), "teacher1");
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher2TeacherSearch"), "teacher2");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher3TeacherSearch"), "teacher3");
 (0, _typeAheadUser2.default)((0, _bling.$)(".userSearch"));
 
 /***/ })

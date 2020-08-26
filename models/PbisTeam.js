@@ -53,6 +53,7 @@ const pbisTeamSchema = new mongoose.Schema({
 function autopopulate(next) {
   this.populate("teacher1");
   this.populate("teacher2");
+  this.populate("teacher3");
   next();
 }
 
