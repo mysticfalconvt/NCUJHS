@@ -22,7 +22,11 @@ exports.taDashboard = async (req, res) => {
   }).sort({ student: 1, date: 1 });
 
   const taTeam = await PbisTeam.find({
-    $or: [{ teacher1: req.user._id }, { teacher2: req.user._id }],
+    $or: [
+      { teacher1: req.user._id },
+      { teacher2: req.user._id },
+      { teacher3: req.user._id },
+    ],
   });
 
   res.render("taDashboard", {
