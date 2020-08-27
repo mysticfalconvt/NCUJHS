@@ -69,6 +69,10 @@ const userSchema = new Schema({
     type: Number,
     default: 0,
   },
+  yearPbisCount: {
+    type: Number,
+    default: 0,
+  },
 });
 
 function autopopulate(next) {
