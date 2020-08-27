@@ -29,7 +29,11 @@ updatePbisCounts = async (student) => {
 };
 
 updateTeamPbis = async (team) => {
-  const teacherIds = [team.teacher1._id, team.teacher2._id, team.teacher3._id];
+  const teacherIds = [team.teacher1._id, team.teacher2._id];
+  if (team.teacher3) {
+    teacherIds.push(team.teacher3._id);
+  }
+
   const teachers = await User.find({ _id: { $in: teacherIds } });
   const taTeamStudents = await User.find(
     { ta: { $in: teacherIds } },
