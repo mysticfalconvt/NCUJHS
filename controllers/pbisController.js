@@ -12,10 +12,13 @@ updatePbisCounts = async (student) => {
     student: student,
     counted: "",
   }).countDocuments();
+  const yearPbisCount = await Pbis.find({
+    student: student,
+  }).estimatedDocumentCount();
 
   const updatedStudent = await User.findOneAndUpdate(
     { _id: student },
-    { pbisCount: pbisCount },
+    { pbisCount: pbisCount, yearPbisCount: yearPbisCount },
   );
   const taStudents = await User.find({ ta: updatedStudent.ta._id }, { _id: 1 });
 
