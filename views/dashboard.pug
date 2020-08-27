@@ -26,6 +26,8 @@ block content
                         a.title_link(href="/pbis/search/category") PBIS DATA
                     if user.isParent
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSexsbbbxO00gE9nJTfxbQzoh211eys7tgnjcDgt7BI07M8o6A/viewform?usp=sf_link" target="blank") Covid Survey
+                    if !(user.isTeacher || user.isAdmin ||user.isPara || user.isParent)
+                        a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSex56-bP4lKBW8jVZooDk6s2G14I7mr4wzpDoc_6g_0Lye8Cw/viewform?usp=sf_link" target="blank") Covid Survey
         if user
             if user.isTeacher
                 +teacherCurrentWorkForm(user)
