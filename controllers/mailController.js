@@ -63,12 +63,12 @@ exports.sendParentCallbackCount = async (req, res) => {
     });
   });
 
-  // const studentFocus = await new StudentFocus({
-  //   teacher: req.user._id,
-  //   student: user._id,
-  //   comments: `Sent parent email about ${user.callbackCount} items on callback`,
-  //   category: "Parent Contact",
-  // }).save();
+  const studentFocus = await new StudentFocus({
+    teacher: req.user._id,
+    student: user._id,
+    comments: `Sent parent email about ${user.callbackCount} items on callback`,
+    category: "Parent Contact",
+  }).save();
 
   req.flash("success", `you have emailed ${user.name}'s parent or guardian`);
   // 4. Redirect to login page
