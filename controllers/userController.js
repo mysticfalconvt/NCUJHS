@@ -301,6 +301,7 @@ exports.searchAll = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
+      isParent: "",
     },
     {
       score: { $meta: "textScore" },
