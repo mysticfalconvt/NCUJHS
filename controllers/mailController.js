@@ -44,28 +44,31 @@ exports.parentSignup = async (req, res) => {
 exports.sendParentCallbackCount = async (req, res) => {
   // 1. see if the email exists
   const user = await User.findOne({ _id: req.params._id });
-  const parent = await User.findOne({ _id: user.parent });
+  const parents = await User.find({ _id: { $in: user.parent } });
   if (!user) {
     req.flash("error", "No account with that email exists");
     return res.redirect("/");
   }
-  // 3. Send them an email
-  mail.send({
-    email: parent.email,
-    replyTo: req.user.email,
-    filename: "callbackParent",
-    subject: `Callback update for ${user.name}`,
-    name: user.name,
-    callbackCount: user.callbackCount,
-    teacher: req.user.name,
+  parents.forEach((parent) => {
+    console.log(parent.name);
+    // 3. Send them an email
+    mail.send({
+      email: parent.email,
+      replyTo: req.user.email,
+      filename: "callbackParent",
+      subject: `Callback update for ${user.name}`,
+      name: user.name,
+      callbackCount: user.callbackCount,
+      teacher: req.user.name,
+    });
   });
 
-  const studentFocus = await new StudentFocus({
-    teacher: req.user._id,
-    student: user._id,
-    comments: `Sent parent email about ${user.callbackCount} items on callback`,
-    category: "Parent Contact",
-  }).save();
+  // const studentFocus = await new StudentFocus({
+  //   teacher: req.user._id,
+  //   student: user._id,
+  //   comments: `Sent parent email about ${user.callbackCount} items on callback`,
+  //   category: "Parent Contact",
+  // }).save();
 
   req.flash("success", `you have emailed ${user.name}'s parent or guardian`);
   // 4. Redirect to login page

@@ -121,6 +121,7 @@ exports.dashboard = async (req, res) => {
       }).sort({ message: -1, date: 1 });
     } else if (req.user.isParent) {
       const children = await User.find({ parent: req.user._id }, { _id: 1 });
+      console.log(children);
       callbacks = await Callback.find({
         $or: [{ student: { $in: children } }],
         completed: "",
@@ -140,9 +141,9 @@ exports.dashboard = async (req, res) => {
     // if parent find student
     if (req.user.isParent) {
       students = await User.find({ parent: req.user._id });
+      console.log("sadfasdfsadf");
     }
   }
-
   res.render("dashboard", {
     title: "NCUJHS Dashboard ",
     calendars: calendars,
