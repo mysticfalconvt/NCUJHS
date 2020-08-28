@@ -3,7 +3,7 @@ mixin showCurrentWork(user = {})
     if user.ta
                 hr
                 p=`Current Classwork for ${user.name}. They have ${user.callbackCount} items on callback, and ${user.pbisCount} PBIS Cards this week and ${user.yearPbisCount} total cards`
-                if !user.parent && currentPath.startsWith('/ta')
+                if  currentPath.startsWith('/ta')
                     p
                         a(href=`/email/parent/${user._id}`) Send a parent account signup email for #{user.name}
                 table.table

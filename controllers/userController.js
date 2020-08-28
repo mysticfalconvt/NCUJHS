@@ -201,7 +201,7 @@ exports.register = async (req, res, next) => {
     const updates = { parent: user._id };
     const student = await User.findOneAndUpdate(
       { _id: user.child },
-      { $set: updates },
+      { $push: updates },
       { new: true, runValidators: true, context: "query" },
     );
   }
