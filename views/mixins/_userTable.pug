@@ -42,7 +42,8 @@ mixin userTable(users={})
                     td
                 if !(user.isTeacher || user.isAdmin || user.isPara)
                     if user.parent
-                        td 🗹
-                    else
-                        td ☐
+                        if user.parent[0]
+                            td 🗹
+                        else
+                            td ☐
                 
