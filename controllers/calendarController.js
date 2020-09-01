@@ -78,7 +78,7 @@ exports.dashboard = async (req, res) => {
   let students = {};
   let pbis = {};
   const schoolWidePbisData = await PbisTeam.findOne({ schoolWide: true });
-  const pbisSchoolCount = await Pbis.find().estimatedDocumentCount();
+  const pbisSchoolCount = await Pbis.find().countDocuments();
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
