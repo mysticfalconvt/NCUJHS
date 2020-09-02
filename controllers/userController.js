@@ -13,7 +13,6 @@ updateCheck = (body) => {
       ta: body.ta,
       isTeacher: body.isTeacher,
       isAdmin: body.isAdmin,
-      parent: body.parent || null,
       math: body.math || null,
       languageArts: body.languageArts || null,
       science: body.science || null,
@@ -301,7 +300,7 @@ exports.searchAll = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      isParent: "",
+      isParent: { $ne: "true" },
     },
     {
       score: { $meta: "textScore" },
