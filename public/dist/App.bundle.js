@@ -1785,7 +1785,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function searchResultsHTML(users) {
   return users.map(function (user) {
-    return "<p class=\"search__result\">\n               " + user.name + "\n        </p>";
+    return "<p style=\"cursor: pointer\" class=\"search__result\">\n               " + user.name + "\n        </p>";
   }).join("");
 }
 
@@ -1871,12 +1871,12 @@ function typeAheadStudent(search) {
     searchResults.style.display = "none";
     fillId(searchInput);
   });
-  searchResults.on("touchstart", function (e) {
-    var studentName = document.getElementById("search");
-    studentName.value = e.path[0].innerHTML.trim();
-    searchResults.style.display = "none";
-    fillId(searchInput);
-  });
+  // searchResults.on("tap", (e) => {
+  //   const studentName = document.getElementById("search");
+  //   studentName.value = e.path[0].innerHTML.trim();
+  //   searchResults.style.display = "none";
+  //   fillId(searchInput);
+  // });
 }
 
 exports.default = typeAheadStudent;

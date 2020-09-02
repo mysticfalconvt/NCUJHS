@@ -4,7 +4,7 @@ import dompurify from "dompurify";
 function searchResultsHTML(users) {
   return users
     .map((user) => {
-      return `<p class="search__result">
+      return `<p style="cursor: pointer" class="search__result">
                ${user.name}
         </p>`;
     })
@@ -101,12 +101,12 @@ function typeAheadStudent(search) {
     searchResults.style.display = "none";
     fillId(searchInput);
   });
-  searchResults.on("touchstart", (e) => {
-    const studentName = document.getElementById("search");
-    studentName.value = e.path[0].innerHTML.trim();
-    searchResults.style.display = "none";
-    fillId(searchInput);
-  });
+  // searchResults.on("tap", (e) => {
+  //   const studentName = document.getElementById("search");
+  //   studentName.value = e.path[0].innerHTML.trim();
+  //   searchResults.style.display = "none";
+  //   fillId(searchInput);
+  // });
 }
 
 export default typeAheadStudent;
