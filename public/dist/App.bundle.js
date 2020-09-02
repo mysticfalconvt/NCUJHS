@@ -1871,6 +1871,12 @@ function typeAheadStudent(search) {
     searchResults.style.display = "none";
     fillId(searchInput);
   });
+  searchResults.on("touchstart", function (e) {
+    var studentName = document.getElementById("search");
+    studentName.value = e.path[0].innerHTML.trim();
+    searchResults.style.display = "none";
+    fillId(searchInput);
+  });
 }
 
 exports.default = typeAheadStudent;
