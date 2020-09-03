@@ -43,4 +43,4 @@ mixin infoForm(info = {})
   if info.title
     form(action=`/info/add/${info._id || ''}` method="POST" class="calendar" )
       input(type="hidden" name="deleted" value="true")
-      input.inner(type="submit" value="Delete Event" class="button")
+      input.inner(type="submit" value="Delete Link" class="button")
