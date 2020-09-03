@@ -10,13 +10,25 @@ block content
                 a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
                 a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
             
-                if !account.parent[0]        
-                    a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
-                if account.parent[0]
-                    a.textLinks.button(href=`/email/callbackCount/${account._id}`) Send a parent callback update for #{account.name} Check Student Focus First!
         hr
         p #{account.name} has #{account.callbackCount} assigned callback assignments.  
-        p 
+        table.table
+            thead
+                td Assigned Callback
+                td Completed Callback
+                td Total Callback
+                td Total Virtual Cards Given
+                td Respect
+                td Responsibility
+                td Perserverance
+            tr
+                td=account.callbackCount
+                td=completedCallback
+                td=totalCallback
+                td=pbisCardCount
+                td=respect
+                td=responsibility
+                td=perserverance
         .calendars
             each callback in callbacks
                 +callbackCard(callback)
