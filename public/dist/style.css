@@ -558,6 +558,8 @@ label {
   float: left; }
   .radioContainer input[type="radio"] {
     display: none; }
+  .radioContainer input[type="checkbox"] {
+    display: none; }
 
 .radioContainer label {
   position: relative;

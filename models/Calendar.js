@@ -33,6 +33,10 @@ const calendarSchema = new mongoose.Schema({
     type: String,
     default: "true",
   },
+  deleted: {
+    type: String,
+    default: "",
+  },
 });
 
 function autopopulate(next) {
