@@ -4,7 +4,7 @@ mixin calendarCard(calendar={})
             img(src=`/uploads/calendar.png`)
             h2.title
                 a(href=`/calendar/${calendar._id}`) #{calendar.title}
-                p= calendar.Date.toDateString()
+                p= (calendar.Date).toDateString()
         .calendar__details
             if calendar.link
                 if calendar.link.startsWith('http')

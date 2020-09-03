@@ -880,6 +880,9 @@ input[type="radio"]:checked + label span.radio::after {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
 
+.calendar__join {
+  margin-left: 0; }
+
 .callbacks {
   display: -ms-flexbox;
   display: flex;
