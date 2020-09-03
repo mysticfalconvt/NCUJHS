@@ -30,6 +30,7 @@ exports.getEvents = async (req, res) => {
     if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset },
+        deleted: { $ne: "true" },
       })
         .sort({ Date: 1 })
         .limit(12);
@@ -37,6 +38,7 @@ exports.getEvents = async (req, res) => {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset },
         teachersOnly: "",
+        deleted: { $ne: "true" },
       })
         .sort({ Date: 1 })
         .limit(12);
@@ -45,6 +47,7 @@ exports.getEvents = async (req, res) => {
     calendars = await Calendar.find({
       Date: { $gte: new Date() - timeOffset },
       teachersOnly: "",
+      deleted: { $ne: "true" },
     })
       .sort({ Date: 1 })
       .limit(12);
@@ -59,10 +62,13 @@ exports.getAllEvents = async (req, res) => {
   if (req.user) {
     // check if teacher for calendar events
     if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
-      calendars = await Calendar.find().sort({ Date: 1 });
+      calendars = await Calendar.find({ deleted: { $ne: "true" } }).sort({
+        Date: 1,
+      });
     } else {
       calendars = await Calendar.find({
         teachersOnly: "",
+        deleted: { $ne: "true" },
       }).sort({ Date: 1 });
     }
   }
@@ -85,11 +91,13 @@ exports.dashboard = async (req, res) => {
     if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
+        deleted: { $ne: "true" },
       }).sort({ Date: 1 });
     } else {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
         teachersOnly: "",
+        deleted: { $ne: "true" },
       }).sort({ Date: 1 });
     }
     // if (req.user.isTeacher) {
@@ -198,6 +206,7 @@ exports.searchEvent = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
+      deleted: { $ne: "true" },
     },
     {
       score: { $meta: "textScore" },

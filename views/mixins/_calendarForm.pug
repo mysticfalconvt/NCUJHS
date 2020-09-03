@@ -30,5 +30,8 @@ mixin calendarForm(calendar = {})
           input(type="radio" name="teachersOnly" id="teacherFalse" checked value="")
           label(for="teacherFalse") 
             span.radio Event for everyone
-    hr
+    
     input(type="submit" value="Save →" class="button")
+  form(action=`/add/${calendar._id || ''}` method="POST" class="calendar" )
+    input(type="hidden" name="deleted" value="true")
+    input.inner(type="submit" value="Delete Event" class="button")
