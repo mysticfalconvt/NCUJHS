@@ -19,8 +19,8 @@ mixin infoForm(info = {})
       option(value="Forms") Forms
     label(for="link") Link
     input(type="text" name="link" value=`${info.link || ""}`)
-    label(for="linkTitle") Link Title
-    input(type="text" name="linkTitle" value=`${info.linkTitle || ""}`)
+    //- label(for="linkTitle") Link Title
+    //- input(type="text" name="linkTitle" value=`${info.linkTitle || ""}`)
     hr
     if info
       .radioContainer
