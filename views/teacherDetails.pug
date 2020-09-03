@@ -1,0 +1,23 @@
+extends layout
+
+include mixins/_callbackCard
+include mixins/_showCurrentWork
+block content
+    .inner
+        h2= title
+        if user.isAdmin
+            p.tags
+                a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
+                a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
+            
+                if !account.parent[0]        
+                    a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
+                if account.parent[0]
+                    a.textLinks.button(href=`/email/callbackCount/${account._id}`) Send a parent callback update for #{account.name} Check Student Focus First!
+        hr
+        p #{account.name} has #{account.callbackCount} assigned callback assignments.  
+        p 
+        .calendars
+            each callback in callbacks
+                +callbackCard(callback)
+        +showCurrentWork(account)

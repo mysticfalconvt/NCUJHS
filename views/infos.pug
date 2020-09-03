@@ -16,22 +16,28 @@ block content
                     a(href="/info/search/title") Title
                 td 
                     a(href="/info/search/description") Description
-                td 
-                    a(href="/info/search/linkTitle") Link
+                //- td 
+                //-     a(href="/info/search/linkTitle") Link
                 if user
                     if user.isAdmin
                         td edit
             each info in infos
                 tr
                     td=info.category
-                    td=info.title
-                    td=info.description
                     td
                         if info.link
                             if info.link.startsWith('http')
-                                a(href=`${info.link}` target="_blank")=(info.linkTitle || 'link')
+                                a(href=`${info.link}` target="_blank")=(info.title)
                             else 
-                                a(href=`//${info.link}` target="_blank")=info.linkTitle
+                                a(href=`//${info.link}` target="_blank")=info.title
+                    
+                    td=info.description
+                    //- td
+                    //-     if info.link
+                    //-         if info.link.startsWith('http')
+                    //-             a(href=`${info.link}` target="_blank")=(info.linkTitle || 'link')
+                    //-         else 
+                    //-             a(href=`//${info.link}` target="_blank")=info.linkTitle
                     if user
                         if user.isAdmin
                             td 
