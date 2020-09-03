@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
+const { stringify } = require("uuid");
 mongoose.Promise = global.Promise;
-
 
 const infoSchema = new mongoose.Schema({
   created: {
@@ -33,7 +33,10 @@ const infoSchema = new mongoose.Schema({
     type: String,
     default: "General Info",
   },
-
+  deleted: {
+    type: String,
+    default: "",
+  },
 });
 
 function autopopulate(next) {

@@ -14,15 +14,17 @@ exports.getInfo = async (req, res) => {
   if (req.user) {
     // check if teacher for calendar events
     if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
-      infos = await Info.find().sort(sort);
+      infos = await Info.find({ deleted: { $ne: "true" } }).sort(sort);
     } else {
       infos = await Info.find({
         teachersOnly: "",
+        deleted: { $ne: "true" },
       }).sort(sort);
     }
   } else {
     infos = await Info.find({
       teachersOnly: "",
+      deleted: { $ne: "true" },
     }).sort({ category: 1 });
   }
   res.render("infos", { title: "Important Links & Documents", infos: infos });
