@@ -5,10 +5,11 @@ include mixins/_showCurrentWork
 block content
     .inner
         h2= title
-        if user.isAdmin
+        if user
             p.tags
-                a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
-                a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
+                if user.isAdmin || user._id.equals(account.ta._id)
+                    a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
+                    a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
                 if (user.isAdmin || user.isTeacher)
                     if !account.parent[0]        
                         a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}

@@ -1,0 +1,35 @@
+extends layout
+
+include mixins/_callbackCard
+include mixins/_showCurrentWork
+block content
+    .inner
+        h2= title
+        if user.isAdmin
+            p.tags
+                a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
+                a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
+            
+        hr
+        p #{account.name} has #{account.callbackCount} assigned callback assignments.  
+        table.table
+            thead
+                td Assigned Callback
+                td Completed Callback
+                td Total Callback
+                td Total Virtual Cards Given
+                td Respect
+                td Responsibility
+                td Perserverance
+            tr
+                td=account.callbackCount
+                td=completedCallback
+                td=totalCallback
+                td=pbisCardCount
+                td=respect
+                td=responsibility
+                td=perserverance
+        .calendars
+            each callback in callbacks
+                +callbackCard(callback)
+        +showCurrentWork(account)

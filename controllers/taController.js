@@ -11,7 +11,7 @@ exports.taDashboard = async (req, res) => {
   }
 
   // find TA students
-  taStudents = await User.find({ ta: req.user._id });
+  taStudents = await User.find({ ta: req.user._id }).sort({ name: 1 });
   idArray = taStudents.map(function (id) {
     return id._id;
   });

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const Pbis = mongoose.model("Pbis");
 const Callback = mongoose.model("Callback");
 const promisify = require("es6-promisify");
 const { TRUE } = require("node-sass");
@@ -114,16 +115,42 @@ exports.userSearchResult = async (req, res) => {
   // find the account
   const account = await User.findOne({ _id: req.params._id });
   // check if teacher
-  if (account.isTeacher) {
+  if (account.isTeacher || account.isAdmin || account.isPara) {
     // find their callback
-    const callbacks = await Callback.find({ teacher: req.params._id });
-    // find their callback
-    // const ta = await User.find({ ta: req.params._id });
+    const callbacks = await Callback.find({ teacher: account._id }).sort({
+      completed: 1,
+    });
+    const completedCallback = await Callback.countDocuments({
+      teacher: account._id,
+      completed: "true",
+    });
+    const totalCallback = (account.callbackCount | 0) + (completedCallback | 0);
+    const respect = await Pbis.countDocuments({
+      teacher: account._id,
+      category: "Respect",
+    });
+    const responsibility = await Pbis.countDocuments({
+      teacher: account._id,
+      category: "Responsibility",
+    });
+    const perserverance = await Pbis.countDocuments({
+      teacher: account._id,
+      category: "Perserverance",
+    });
+    const pbisCardCount =
+      (respect | 0) + (responsibility | 0) + (perserverance | 0);
+
     //render out the edit form so they can edit
-    res.render("userSearchResult", {
-      title: `${account.name}'s assigned callback`,
+    res.render("teacherDetails", {
+      title: `${account.name}'s Details`,
       account,
       callbacks,
+      pbisCardCount,
+      respect,
+      responsibility,
+      perserverance,
+      completedCallback,
+      totalCallback,
       // ta,
     });
     // student
@@ -141,6 +168,7 @@ exports.userSearchResult = async (req, res) => {
       title: `${account.name}'s details`,
       account,
       callbacks,
+
       // ta,
     });
   }
