@@ -30,6 +30,8 @@ block content
                                 a(href=`${info.link}` target="_blank")=(info.title)
                             else 
                                 a(href=`//${info.link}` target="_blank")=info.title
+                        else
+                            =info.title
                     
                     td=info.description
                     //- td

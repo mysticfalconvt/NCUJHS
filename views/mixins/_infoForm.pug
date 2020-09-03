@@ -40,3 +40,7 @@ mixin infoForm(info = {})
             span.radio Link for everyone
     hr
     input(type="submit" value="Save →" class="button")
+  if info.title
+    form(action=`/info/add/${info._id || ''}` method="POST" class="calendar" )
+      input(type="hidden" name="deleted" value="true")
+      input.inner(type="submit" value="Delete Event" class="button")
