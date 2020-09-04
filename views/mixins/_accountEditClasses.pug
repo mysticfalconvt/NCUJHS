@@ -1,9 +1,10 @@
 mixin accountEditClasses(account = {})
     form(action=`/user/edit/:${account._id}` method="post" class="card")
-        label(for="name") Name
-        input(type="text" readonly name="name" value=account.name) 
-        label(for="email") Email Address
-        input(type="text" readonly name="email" value=account.email)
+        //- label(for="name") Name
+        //- input(type="text" readonly name="name" value=account.name) 
+        //- label(for="email") Email Address
+        //- input(type="text" readonly name="email" value=account.email)
+        strong= account.name + "   -   "  + account.email
         .teacherSearch
             if account.ta
                 label(for="taName") TA Teacher
