@@ -48,3 +48,8 @@ mixin showCurrentWork(user = {})
                             td trimester3
                             td= user.trimester3.name
                             td= user.trimester3.currentAssignment
+                    if !currentPath.startsWith('/ta')
+                        if user.ta
+                            tr
+                                td TA
+                                td=user.ta.name
