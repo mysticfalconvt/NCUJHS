@@ -210,7 +210,13 @@ router.get(
 // studentFocus routes
 router.get(
   "/studentFocus/search/:category",
+  authController.isTeacher,
   catchErrors(studentFocusController.getStudentFocus),
+);
+router.get(
+  "/studentFocus/user/:_id",
+  authController.isTeacher,
+  catchErrors(studentFocusController.getOneStudentFocus),
 );
 router.get(
   "/studentFocus/add",
