@@ -3066,6 +3066,10 @@ var _typeAheadUser = __webpack_require__(14);
 
 var _typeAheadUser2 = _interopRequireDefault(_typeAheadUser);
 
+var _typeAheadInfo = __webpack_require__(35);
+
+var _typeAheadInfo2 = _interopRequireDefault(_typeAheadInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _typeAheadStudent2.default)((0, _bling.$)(".student"));
@@ -3081,6 +3085,128 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher2TeacherSearch"), "teacher2");
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher3TeacherSearch"), "teacher3");
 (0, _typeAheadUser2.default)((0, _bling.$)(".userSearch"));
+(0, _typeAheadInfo2.default)((0, _bling.$)(".infoSearch"));
+
+/***/ }),
+/* 34 */,
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _axios = __webpack_require__(1);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _dompurify = __webpack_require__(2);
+
+var _dompurify2 = _interopRequireDefault(_dompurify);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function searchResultsHTML(infos) {
+  return infos.map(function (info) {
+    return "<p style=\"cursor: pointer\" class=\"search__result\">\n               <a href=\"" + info.link + "\">" + info.title + "</a>\n        </p>";
+  }).join("");
+}
+
+// function fillId(search) {
+//   const id = document.getElementById("infoSearch");
+//   axios
+//     .get(`/api/searchInfos?q=${search.value}`)
+//     .then((res) => {
+//       id.value = res.data[0]._id;
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// }
+
+function typeAheadInfo(search) {
+  if (!search) return;
+
+  var searchInput = search.querySelector('input[name="infoSearch"]');
+  var searchResults = search.querySelector(".search__results");
+
+  searchInput.on("input", function () {
+    var _this = this;
+
+    if (!this.value) {
+      searchResults.style.display = "none";
+      return;
+    }
+    searchResults.style.display = "block";
+    searchResults.style.innerHTML = "";
+    _axios2.default.get("/api/searchInfos?q=" + this.value).then(function (res) {
+      if (res.data.length) {
+        searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
+        return;
+      }
+      searchResults.innerHTML = _dompurify2.default.sanitize("<div class=\"search__result\">No results for " + _this.value + " found!</div>");
+    }).catch(function (err) {
+      console.error(err);
+    });
+  });
+
+  //handle keyboard input
+
+  //stop enter on search
+  document.getElementById("infoSearch").onkeypress = function (e) {
+    var key = e.charCode || e.keyCode || 0;
+    if (key == 13) {
+      e.preventDefault();
+    }
+  };
+
+  //   Keyboard controls
+  searchInput.on("keyup", function (e) {
+    var studentName = document.getElementById("search");
+    if (![38, 40, 13].includes(e.keyCode)) {
+      return;
+    }
+    var activeClass = "search__result--active";
+    var current = search.querySelector("." + activeClass);
+    var items = search.querySelectorAll(".search__result");
+    var next = void 0;
+
+    if (e.keyCode === 40 && current) {
+      next = current.nextElementSibling || items[0];
+    } else if (e.keyCode === 40) {
+      next = items[0];
+    } else if (e.keyCode === 38 && current) {
+      next = current.previousElementSibling || items[items.length - 1];
+    } else if (e.keyCode === 38) {
+      next = items[items.length - 1];
+    } else if (e.keyCode === 13) {
+      current.click();
+      return;
+    }
+    if (current) {
+      current.classList.remove(activeClass);
+    }
+    next.classList.add(activeClass);
+  });
+  // click on name to
+  //   searchResults.on("click", (e) => {
+  //     const studentName = document.getElementById("search");
+  //     studentName.value = e.path[0].innerHTML.trim();
+  //     searchResults.style.display = "none";
+  //     fillId(searchInput);
+  //   });
+  // searchResults.on("tap", (e) => {
+  //   const studentName = document.getElementById("search");
+  //   studentName.value = e.path[0].innerHTML.trim();
+  //   searchResults.style.display = "none";
+  //   fillId(searchInput);
+  // });
+}
+
+exports.default = typeAheadInfo;
 
 /***/ })
 /******/ ]);

@@ -47,4 +47,9 @@ function autopopulate(next) {
 infoSchema.pre("find", autopopulate);
 infoSchema.pre("findOne", autopopulate);
 
+infoSchema.index({
+  title: "text",
+  description: "text",
+});
+
 module.exports = mongoose.model("Info", infoSchema);

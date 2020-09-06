@@ -1,5 +1,6 @@
 extends layout
 include mixins/_infoTable
+include mixins/_infoSearch
 
 block content
     .inner
@@ -7,4 +8,5 @@ block content
             if user
                 if (user.isTeacher || user.isAdmin)
                     a.title_link(href="/info/add") Add new 
+        +infoSearch()
         +infoTable(infos,path="/info/search/")

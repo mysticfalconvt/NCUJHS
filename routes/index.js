@@ -281,5 +281,6 @@ router.get(
   catchErrors(userController.searchStudent),
 );
 router.get("/api/searchTeacher", catchErrors(userController.searchTeacher));
+router.get("/api/searchInfos", catchErrors(infoController.searchInfos));
 
 module.exports = router;

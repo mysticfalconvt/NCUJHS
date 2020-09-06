@@ -4,6 +4,7 @@ import { $, $$ } from "./modules/bling";
 import typeAheadStudent from "./modules/typeAheadStudent";
 import typeAheadTeacher from "./modules/typeAheadTeacher";
 import typeAheadUser from "./modules/typeAheadUser";
+import typeAheadInfo from "./modules/typeAheadInfo";
 
 typeAheadStudent($(".student"));
 typeAheadTeacher($(".teacherSearch"), "ta");
@@ -18,3 +19,4 @@ typeAheadTeacher($(".teacher1TeacherSearch"), "teacher1");
 typeAheadTeacher($(".teacher2TeacherSearch"), "teacher2");
 typeAheadTeacher($(".teacher3TeacherSearch"), "teacher3");
 typeAheadUser($(".userSearch"));
+typeAheadInfo($(".infoSearch"));
