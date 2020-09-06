@@ -214,7 +214,7 @@ router.get(
   catchErrors(studentFocusController.getStudentFocus),
 );
 router.get(
-  "/studentFocus/user/:_id",
+  "/studentFocus/search/:category/:_id",
   authController.isTeacher,
   catchErrors(studentFocusController.getOneStudentFocus),
 );

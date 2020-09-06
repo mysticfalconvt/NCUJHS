@@ -1,0 +1,45 @@
+mixin infoTable(infos = {}, path = "")
+  table.table     
+            thead
+                td 
+                    a(href=`${path}category`) Category
+                td 
+                    a(href=`${path}title`) Title
+                td 
+                    a(href=`${path}description`) Description
+                //- td 
+                //-     a(href=`${path}linkTitle`) Link
+                if user
+                    if user.isAdmin
+                        td edit
+            each info in infos
+                tr
+                    td=info.category
+                    td
+                        if info.link
+                            if info.link.startsWith('http')
+                                a(href=`${info.link}` target="_blank")=(info.title)
+                            else 
+                                a(href=`//${info.link}` target="_blank")=info.title
+                        else
+                            =info.title
+                    
+                    td
+                        if info.link
+                            if info.link.startsWith('http')
+                                a(href=`${info.link}` target="_blank")=(info.description)
+                            else 
+                                a(href=`//${info.link}` target="_blank")=info.description
+                        else
+                            =info.description  
+                    
+                    //- td
+                    //-     if info.link
+                    //-         if info.link.startsWith('http')
+                    //-             a(href=`${info.link}` target="_blank")=(info.linkTitle || 'link')
+                    //-         else 
+                    //-             a(href=`//${info.link}` target="_blank")=info.linkTitle
+                    if user
+                        if user.isAdmin
+                            td 
+                                a(href=`/info/${info._id}`) EDIT

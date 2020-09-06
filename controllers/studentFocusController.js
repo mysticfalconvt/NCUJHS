@@ -41,10 +41,12 @@ exports.getStudentFocus = async (req, res) => {
   res.render("studentFocuss", {
     title: "Student Focus",
     studentFocuss: studentFocuss,
+    id: "",
   });
 };
 exports.getOneStudentFocus = async (req, res) => {
   const category = req.params.category;
+  const id = req.params._id || "";
   let studentFocuss = {};
   if (req.user) {
     // check if teacher for calendar events
@@ -64,6 +66,7 @@ exports.getOneStudentFocus = async (req, res) => {
   res.render("studentFocuss", {
     title: "Student Focus",
     studentFocuss: studentFocuss,
+    id: id,
   });
 };
 

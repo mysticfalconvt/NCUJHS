@@ -15,7 +15,7 @@ block content
                         a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
                     if account.parent[0]
                         a.textLinks.button(href=`/email/callbackCount/${account._id}`) Send a parent callback update for #{account.name} Check Student Focus First!
-                    a.textLinks.button(href=`/studentFocus/user/${account._id}`) Student Focus
+                    a.textLinks.button(href=`/studentFocus/search/created/${account._id}`) Student Focus
         hr
         .calendars
             each callback in callbacks

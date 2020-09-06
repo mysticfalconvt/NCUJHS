@@ -1,0 +1,28 @@
+mixin studentFocusTable(studentFocuss = {}, path = "", id)
+    table.table     
+                        thead
+                            td 
+                                a(href=`${path}category/${id}`) Category
+                            td 
+                                a(href=`${path}student/${id}`) Student
+                            td 
+                                a(href=`${path}comments/${id}`) Comments
+                            td 
+                                a(href=`${path}teacher/${id}`) Teacher
+                            td 
+                                a(href=`${path}created/${id}`) Date
+                            td TA
+                            td edit
+                        each studentFocus in studentFocuss
+                            tr
+                                td=studentFocus.category
+                                td
+                                    a(href=`${path}created/${studentFocus.student._id}`)=studentFocus.student.name
+                                td=studentFocus.comments
+                                td
+                                    a(href=`${path}created/${studentFocus.teacher._id}`)=studentFocus.teacher.name
+                                td=studentFocus.created.toDateString()
+                                td=studentFocus.student.ta.name
+                                if (user._id.equals(studentFocus.teacher._id)) || user.isAdmin
+                                    td 
+                                        a(href=`/studentFocus/${studentFocus._id}`) EDIT
