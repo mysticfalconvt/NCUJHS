@@ -210,7 +210,13 @@ router.get(
 // studentFocus routes
 router.get(
   "/studentFocus/search/:category",
+  authController.isTeacher,
   catchErrors(studentFocusController.getStudentFocus),
+);
+router.get(
+  "/studentFocus/search/:category/:_id",
+  authController.isTeacher,
+  catchErrors(studentFocusController.getOneStudentFocus),
 );
 router.get(
   "/studentFocus/add",
@@ -275,5 +281,6 @@ router.get(
   catchErrors(userController.searchStudent),
 );
 router.get("/api/searchTeacher", catchErrors(userController.searchTeacher));
+router.get("/api/searchInfos", catchErrors(infoController.searchInfos));
 
 module.exports = router;

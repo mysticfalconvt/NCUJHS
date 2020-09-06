@@ -41,6 +41,32 @@ exports.getStudentFocus = async (req, res) => {
   res.render("studentFocuss", {
     title: "Student Focus",
     studentFocuss: studentFocuss,
+    id: "",
+  });
+};
+exports.getOneStudentFocus = async (req, res) => {
+  const category = req.params.category;
+  const id = req.params._id || "";
+  let studentFocuss = {};
+  if (req.user) {
+    // check if teacher for calendar events
+    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+      let sort = {};
+      sort[category] = -1;
+      sort["name"] = 1;
+      studentFocuss = await StudentFocus.find({
+        $or: [{ student: req.params._id }, { teacher: req.params._id }],
+      }).sort(sort);
+    } else {
+      studentFocuss = {};
+    }
+  } else {
+    studentFocuss = {};
+  }
+  res.render("studentFocuss", {
+    title: "Student Focus",
+    studentFocuss: studentFocuss,
+    id: id,
   });
 };
 

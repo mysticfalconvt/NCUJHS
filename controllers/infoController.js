@@ -60,3 +60,26 @@ exports.editInfo = async (req, res) => {
   //render out the edit form so they can edit
   res.render("editInfo", { title: `edit ${info.title}`, info });
 };
+
+// API
+
+exports.searchInfos = async (req, res) => {
+  const teacher = req.user.isTeacher || req.user.isAdmin || req.user.isPara;
+  console.log(teacher);
+  const infos = await Info.find(
+    {
+      $text: {
+        $search: req.query.q,
+      },
+      $or: [{ teachersOnly: teacher }, { teachersOnly: "" }],
+    },
+    {
+      score: { $meta: "textScore" },
+    },
+  )
+    .sort({
+      score: { $meta: "textScore" },
+    })
+    .limit(10);
+  res.json(infos);
+};
