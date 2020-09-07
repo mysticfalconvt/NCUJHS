@@ -65,7 +65,6 @@ exports.editInfo = async (req, res) => {
 
 exports.searchInfos = async (req, res) => {
   const teacher = req.user.isTeacher || req.user.isAdmin || req.user.isPara;
-  console.log(teacher);
   const infos = await Info.find(
     {
       $text: {

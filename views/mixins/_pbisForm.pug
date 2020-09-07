@@ -5,7 +5,7 @@ mixin pbisForm(pbis = {})
             if pbis.student
                 input(name="studentName" value=pbis.student.name disabled="disabled")
             else
-                input(name="studentName" id="search" type="text" value=pbis.student)
+                input(name="studentName" id="search" type="text" autofocus value=pbis.student)
             .search
                 .search__results
 
