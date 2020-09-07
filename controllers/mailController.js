@@ -50,7 +50,6 @@ exports.sendParentCallbackCount = async (req, res) => {
     return res.redirect("/");
   }
   parents.forEach((parent) => {
-    console.log(parent.name);
     // 3. Send them an email
     mail.send({
       email: parent.email,

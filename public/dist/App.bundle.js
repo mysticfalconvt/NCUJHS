@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 33);
+/******/ 	return __webpack_require__(__webpack_require__.s = 34);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -419,7 +419,7 @@ module.exports = {
 "use strict";
 
 
-module.exports = __webpack_require__(16);
+module.exports = __webpack_require__(17);
 
 /***/ }),
 /* 2 */
@@ -1242,11 +1242,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(23);
+var settle = __webpack_require__(24);
 var buildURL = __webpack_require__(10);
-var buildFullPath = __webpack_require__(20);
-var parseHeaders = __webpack_require__(30);
-var isURLSameOrigin = __webpack_require__(28);
+var buildFullPath = __webpack_require__(21);
+var parseHeaders = __webpack_require__(31);
+var isURLSameOrigin = __webpack_require__(29);
 var createError = __webpack_require__(6);
 
 module.exports = function xhrAdapter(config) {
@@ -1343,7 +1343,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(26);
+      var cookies = __webpack_require__(27);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
@@ -1461,7 +1461,7 @@ module.exports = function isCancel(value) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(22);
+var enhanceError = __webpack_require__(23);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1555,7 +1555,7 @@ module.exports = function mergeConfig(config1, config2) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(29);
+var normalizeHeaderName = __webpack_require__(30);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1643,7 +1643,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 });
 
 module.exports = defaults;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33)))
 
 /***/ }),
 /* 9 */
@@ -1783,6 +1783,126 @@ var _dompurify2 = _interopRequireDefault(_dompurify);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function searchResultsHTML(infos) {
+  return infos.map(function (info) {
+    return "<p style=\"cursor: pointer\" class=\"search__result\">\n               <a href=\"" + info.link + "\">" + info.title + "</a>\n        </p>";
+  }).join("");
+}
+
+// function fillId(search) {
+//   const id = document.getElementById("infoSearch");
+//   axios
+//     .get(`/api/searchInfos?q=${search.value}`)
+//     .then((res) => {
+//       id.value = res.data[0]._id;
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// }
+
+function typeAheadInfo(search) {
+  if (!search) return;
+
+  var searchInput = search.querySelector('input[name="infoSearch"]');
+  var searchResults = search.querySelector(".search__results");
+
+  searchInput.on("input", function () {
+    var _this = this;
+
+    if (!this.value) {
+      searchResults.style.display = "none";
+      return;
+    }
+    searchResults.style.display = "block";
+    searchResults.style.innerHTML = "";
+    _axios2.default.get("/api/searchInfos?q=" + this.value).then(function (res) {
+      if (res.data.length) {
+        searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
+        return;
+      }
+      searchResults.innerHTML = _dompurify2.default.sanitize("<div class=\"search__result\">No results for " + _this.value + " found!</div>");
+    }).catch(function (err) {
+      console.error(err);
+    });
+  });
+
+  //handle keyboard input
+
+  //stop enter on search
+  document.getElementById("infoSearch").onkeypress = function (e) {
+    var key = e.charCode || e.keyCode || 0;
+    if (key == 13) {
+      e.preventDefault();
+    }
+  };
+
+  //   Keyboard controls
+  searchInput.on("keyup", function (e) {
+    var studentName = document.getElementById("search");
+    if (![38, 40, 13].includes(e.keyCode)) {
+      return;
+    }
+    var activeClass = "search__result--active";
+    var current = search.querySelector("." + activeClass);
+    var items = search.querySelectorAll(".search__result");
+    var next = void 0;
+
+    if (e.keyCode === 40 && current) {
+      next = current.nextElementSibling || items[0];
+    } else if (e.keyCode === 40) {
+      next = items[0];
+    } else if (e.keyCode === 38 && current) {
+      next = current.previousElementSibling || items[items.length - 1];
+    } else if (e.keyCode === 38) {
+      next = items[items.length - 1];
+    } else if (e.keyCode === 13) {
+      current.click();
+      return;
+    }
+    if (current) {
+      current.classList.remove(activeClass);
+    }
+    next.classList.add(activeClass);
+  });
+  // click on name to
+  //   searchResults.on("click", (e) => {
+  //     const studentName = document.getElementById("search");
+  //     studentName.value = e.path[0].innerHTML.trim();
+  //     searchResults.style.display = "none";
+  //     fillId(searchInput);
+  //   });
+  // searchResults.on("tap", (e) => {
+  //   const studentName = document.getElementById("search");
+  //   studentName.value = e.path[0].innerHTML.trim();
+  //   searchResults.style.display = "none";
+  //   fillId(searchInput);
+  // });
+}
+
+exports.default = typeAheadInfo;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _axios = __webpack_require__(1);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _dompurify = __webpack_require__(2);
+
+var _dompurify2 = _interopRequireDefault(_dompurify);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function searchResultsHTML(users) {
   return users.map(function (user) {
     return "<p style=\"cursor: pointer\" class=\"search__result\">\n               " + user.name + "\n        </p>";
@@ -1882,7 +2002,7 @@ function typeAheadStudent(search) {
 exports.default = typeAheadStudent;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1995,7 +2115,7 @@ function typeAheadTeacher(search, field) {
 exports.default = typeAheadTeacher;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2096,13 +2216,13 @@ function typeAheadUser(search) {
 exports.default = typeAheadUser;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2110,7 +2230,7 @@ exports.default = typeAheadUser;
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(9);
-var Axios = __webpack_require__(18);
+var Axios = __webpack_require__(19);
 var mergeConfig = __webpack_require__(7);
 var defaults = __webpack_require__(8);
 
@@ -2146,14 +2266,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(4);
-axios.CancelToken = __webpack_require__(17);
+axios.CancelToken = __webpack_require__(18);
 axios.isCancel = __webpack_require__(5);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(31);
+axios.spread = __webpack_require__(32);
 
 module.exports = axios;
 
@@ -2161,7 +2281,7 @@ module.exports = axios;
 module.exports.default = axios;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2224,7 +2344,7 @@ CancelToken.source = function source() {
 module.exports = CancelToken;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2232,8 +2352,8 @@ module.exports = CancelToken;
 
 var utils = __webpack_require__(0);
 var buildURL = __webpack_require__(10);
-var InterceptorManager = __webpack_require__(19);
-var dispatchRequest = __webpack_require__(21);
+var InterceptorManager = __webpack_require__(20);
+var dispatchRequest = __webpack_require__(22);
 var mergeConfig = __webpack_require__(7);
 
 /**
@@ -2324,7 +2444,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = Axios;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2382,14 +2502,14 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 module.exports = InterceptorManager;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(27);
-var combineURLs = __webpack_require__(25);
+var isAbsoluteURL = __webpack_require__(28);
+var combineURLs = __webpack_require__(26);
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -2408,14 +2528,14 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 };
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(24);
+var transformData = __webpack_require__(25);
 var isCancel = __webpack_require__(5);
 var defaults = __webpack_require__(8);
 
@@ -2474,7 +2594,7 @@ module.exports = function dispatchRequest(config) {
 };
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2523,7 +2643,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2548,7 +2668,7 @@ module.exports = function settle(resolve, reject, response) {
 };
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2574,7 +2694,7 @@ module.exports = function transformData(data, headers, fns) {
 };
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2593,7 +2713,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 };
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2652,7 +2772,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2674,7 +2794,7 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2743,7 +2863,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2761,7 +2881,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2817,7 +2937,7 @@ module.exports = function parseHeaders(headers) {
 };
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2851,7 +2971,7 @@ module.exports = function spread(callback) {
 };
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3044,29 +3164,29 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(15);
+__webpack_require__(16);
 
 var _bling = __webpack_require__(11);
 
-var _typeAheadStudent = __webpack_require__(12);
+var _typeAheadStudent = __webpack_require__(13);
 
 var _typeAheadStudent2 = _interopRequireDefault(_typeAheadStudent);
 
-var _typeAheadTeacher = __webpack_require__(13);
+var _typeAheadTeacher = __webpack_require__(14);
 
 var _typeAheadTeacher2 = _interopRequireDefault(_typeAheadTeacher);
 
-var _typeAheadUser = __webpack_require__(14);
+var _typeAheadUser = __webpack_require__(15);
 
 var _typeAheadUser2 = _interopRequireDefault(_typeAheadUser);
 
-var _typeAheadInfo = __webpack_require__(35);
+var _typeAheadInfo = __webpack_require__(12);
 
 var _typeAheadInfo2 = _interopRequireDefault(_typeAheadInfo);
 
@@ -3086,127 +3206,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher3TeacherSearch"), "teacher3");
 (0, _typeAheadUser2.default)((0, _bling.$)(".userSearch"));
 (0, _typeAheadInfo2.default)((0, _bling.$)(".infoSearch"));
-
-/***/ }),
-/* 34 */,
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _axios = __webpack_require__(1);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _dompurify = __webpack_require__(2);
-
-var _dompurify2 = _interopRequireDefault(_dompurify);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function searchResultsHTML(infos) {
-  return infos.map(function (info) {
-    return "<p style=\"cursor: pointer\" class=\"search__result\">\n               <a href=\"" + info.link + "\">" + info.title + "</a>\n        </p>";
-  }).join("");
-}
-
-// function fillId(search) {
-//   const id = document.getElementById("infoSearch");
-//   axios
-//     .get(`/api/searchInfos?q=${search.value}`)
-//     .then((res) => {
-//       id.value = res.data[0]._id;
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//     });
-// }
-
-function typeAheadInfo(search) {
-  if (!search) return;
-
-  var searchInput = search.querySelector('input[name="infoSearch"]');
-  var searchResults = search.querySelector(".search__results");
-
-  searchInput.on("input", function () {
-    var _this = this;
-
-    if (!this.value) {
-      searchResults.style.display = "none";
-      return;
-    }
-    searchResults.style.display = "block";
-    searchResults.style.innerHTML = "";
-    _axios2.default.get("/api/searchInfos?q=" + this.value).then(function (res) {
-      if (res.data.length) {
-        searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
-        return;
-      }
-      searchResults.innerHTML = _dompurify2.default.sanitize("<div class=\"search__result\">No results for " + _this.value + " found!</div>");
-    }).catch(function (err) {
-      console.error(err);
-    });
-  });
-
-  //handle keyboard input
-
-  //stop enter on search
-  document.getElementById("infoSearch").onkeypress = function (e) {
-    var key = e.charCode || e.keyCode || 0;
-    if (key == 13) {
-      e.preventDefault();
-    }
-  };
-
-  //   Keyboard controls
-  searchInput.on("keyup", function (e) {
-    var studentName = document.getElementById("search");
-    if (![38, 40, 13].includes(e.keyCode)) {
-      return;
-    }
-    var activeClass = "search__result--active";
-    var current = search.querySelector("." + activeClass);
-    var items = search.querySelectorAll(".search__result");
-    var next = void 0;
-
-    if (e.keyCode === 40 && current) {
-      next = current.nextElementSibling || items[0];
-    } else if (e.keyCode === 40) {
-      next = items[0];
-    } else if (e.keyCode === 38 && current) {
-      next = current.previousElementSibling || items[items.length - 1];
-    } else if (e.keyCode === 38) {
-      next = items[items.length - 1];
-    } else if (e.keyCode === 13) {
-      current.click();
-      return;
-    }
-    if (current) {
-      current.classList.remove(activeClass);
-    }
-    next.classList.add(activeClass);
-  });
-  // click on name to
-  //   searchResults.on("click", (e) => {
-  //     const studentName = document.getElementById("search");
-  //     studentName.value = e.path[0].innerHTML.trim();
-  //     searchResults.style.display = "none";
-  //     fillId(searchInput);
-  //   });
-  // searchResults.on("tap", (e) => {
-  //   const studentName = document.getElementById("search");
-  //   studentName.value = e.path[0].innerHTML.trim();
-  //   searchResults.style.display = "none";
-  //   fillId(searchInput);
-  // });
-}
-
-exports.default = typeAheadInfo;
 
 /***/ })
 /******/ ]);
