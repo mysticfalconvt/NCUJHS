@@ -157,6 +157,7 @@ exports.userSearchResult = async (req, res) => {
   } else {
     // find their callback
 
+    const parents = await User.find({ _id: account.parent });
     const callbacks = await Callback.find({
       student: req.params._id,
       completed: "",
@@ -168,7 +169,7 @@ exports.userSearchResult = async (req, res) => {
       title: `${account.name}'s details`,
       account,
       callbacks,
-
+      parents,
       // ta,
     });
   }

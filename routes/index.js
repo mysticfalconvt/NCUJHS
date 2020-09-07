@@ -99,6 +99,7 @@ router.post(
 router.get(
   "/user/:_id",
   authController.isLoggedIn,
+  authController.isTeacher,
   userController.userSearchResult,
 );
 router.post("/account", catchErrors(userController.updateAccount));

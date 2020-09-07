@@ -17,6 +17,11 @@ block content
                         a.textLinks.button(href=`/email/callbackCount/${account._id}`) Send a parent callback update for #{account.name} Check Student Focus First!
                     a.textLinks.button(href=`/studentFocus/search/created/${account._id}`) Student Focus
         hr
+        strong Parent Contacts
+        each parent in parents
+            p 
+                span #{parent.name}
+                span    -   #{parent.email}
         .calendars
             each callback in callbacks
                 +callbackCard(callback)
