@@ -11,7 +11,8 @@ block content
                 a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
             
         hr
-        p #{account.name} has #{account.callbackCount} assigned callback assignments.  
+        p #{account.name} has #{account.callbackCount} assigned callback assignments. 
+        p Current Assignment: #{user.currentAssignment}
         table.table
             thead
                 td Assigned Callback
