@@ -26,9 +26,10 @@ block content
                         a.title_link(href="/pbis/search/category") PBIS DATA
                     if user.isParent
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSexsbbbxO00gE9nJTfxbQzoh211eys7tgnjcDgt7BI07M8o6A/viewform?usp=sf_link" target="blank") Covid Survey
-                    if !(user.isTeacher || user.isAdmin ||user.isPara || user.isParent)
+                    if !user.isParent
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSfFiuoTMfIc0Hqt0WuSK4C5RPdVX3DW2BU2RC6qwxfoZ1cgAg/viewform?usp=sf_link") Breakfast
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSeCliqTjM_oYNcUTZbmS9Sb-qEwWXV4mPx01A4NrRNL90-aug/viewform?usp=sf_link") Lunch
+                    if !(user.isTeacher || user.isAdmin ||user.isPara || user.isParent)
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSex56-bP4lKBW8jVZooDk6s2G14I7mr4wzpDoc_6g_0Lye8Cw/viewform?usp=sf_link" target="blank") Covid Survey
                         a.title_link(href="https://forms.gle/GRhwiaQsFvfiWGmdA") Athletic Signup
         if user
