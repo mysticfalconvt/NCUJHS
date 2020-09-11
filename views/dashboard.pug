@@ -45,7 +45,7 @@ block content
                     +callbackCard(callback)
             if !(user.isTeacher || user.isAdmin || user.isPara || user.isParent)
                 +showCurrentWork(user)
-                +pbisCards(pbis)
+                +pbisCards(pbis, user)
 
             if user.isParent
                 each child in student
