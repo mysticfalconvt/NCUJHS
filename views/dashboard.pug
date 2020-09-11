@@ -45,11 +45,12 @@ block content
                     +callbackCard(callback)
             if !(user.isTeacher || user.isAdmin || user.isPara || user.isParent)
                 +showCurrentWork(user)
-                +pbisCards(pbis)
+                +pbisCards(pbis, user)
 
             if user.isParent
                 each child in student
                     +showCurrentWork(child)
+                +pbisCards(pbis,user)
         else
             p Welcome to the NCUJHS Dashboard.  Please login.  
             p If you are a parent or guardian please contact the school to setup an account to monitor your child's progress.

@@ -158,11 +158,14 @@ exports.userSearchResult = async (req, res) => {
     // find their callback
 
     const parents = await User.find({ _id: account.parent });
+    // find their callback
     const callbacks = await Callback.find({
       student: req.params._id,
       completed: "",
     });
-    // find their callback
+    const pbis = await Pbis.find({ student: req.params._id })
+      .sort({ date: 1 })
+      .limit(10);
     // const ta = await User.find({ ta: req.params._id });
     //render out the edit form so they can edit
     res.render("userSearchResult", {
@@ -170,6 +173,7 @@ exports.userSearchResult = async (req, res) => {
       account,
       callbacks,
       parents,
+      pbis,
       // ta,
     });
   }
@@ -308,9 +312,9 @@ exports.searchStudent = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      isTeacher: "",
-      isAdmin: "",
-      isParent: "",
+      isTeacher: { $ne: "true" },
+      isAdmin: { $ne: "true" },
+      isParent: { $ne: "true" },
     },
     {
       score: { $meta: "textScore" },

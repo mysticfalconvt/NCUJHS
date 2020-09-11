@@ -148,6 +148,9 @@ exports.dashboard = async (req, res) => {
     // if parent find student
     if (req.user.isParent) {
       students = await User.find({ parent: req.user._id });
+      pbis = await Pbis.find({ student: { $in: students } })
+        .sort({ date: 1 })
+        .limit(10);
     }
   }
   res.render("dashboard", {
