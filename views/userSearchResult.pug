@@ -2,6 +2,7 @@ extends layout
 
 include mixins/_callbackCard
 include mixins/_showCurrentWork
+include mixins/_pbisCards
 block content
     .inner
         h2= title
@@ -26,3 +27,4 @@ block content
             each callback in callbacks
                 +callbackCard(callback)
         +showCurrentWork(account)
+        +pbisCards(pbis,account)
