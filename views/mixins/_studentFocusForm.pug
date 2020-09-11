@@ -11,10 +11,10 @@ mixin studentFocusForm(studentFocus = {})
     label(for="category") Category
     select(type="text" name="category" )
       option(value="Parent Contact" selected) Parent Contact
-      option(value="General Comments About Student") General Comments About Student
-      option(value="Discipline") Discipline
+      option(value="General Comments About Student" selected= studentFocus.category === "General Comments About Student") General Comments About Student
+      option(value="Discipline" selected= studentFocus.category === "Discipline") Discipline
       option(value="Cell Phone Violation" selected= studentFocus.category === "Cell Phone Violation") Cell Phone Violation
-      option(value="Student Focus Notes") Student Focus Notes
+      option(value="Student Focus Notes" selected= studentFocus.category === "Student Focus Notes") Student Focus Notes
     label(for="comments") comments
     textarea(rows="10" type="text" name="comments" value=studentFocus.comments)=studentFocus.comments
     if studentFocus.student
