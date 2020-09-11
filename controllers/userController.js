@@ -308,9 +308,9 @@ exports.searchStudent = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      isTeacher: "",
-      isAdmin: "",
-      isParent: "",
+      isTeacher: { $ne: "true" },
+      isAdmin: { $ne: "true" },
+      isParent: { $ne: "true" },
     },
     {
       score: { $meta: "textScore" },
