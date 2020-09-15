@@ -163,7 +163,10 @@ exports.userSearchResult = async (req, res) => {
       student: req.params._id,
       completed: "",
     });
-    const pbis = await Pbis.find({ student: req.params._id })
+    const pbis = await Pbis.find({
+      student: req.params._id,
+      category: { $ne: "Physical Card" },
+    })
       .sort({ date: 1 })
       .limit(10);
     // const ta = await User.find({ ta: req.params._id });
