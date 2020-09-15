@@ -11,7 +11,7 @@ block content
             if taTeam
                 p
                     a.button(href=`/pbis/ta/${user._id}`) Log TA Business Cards
-                p=`${user.name}'s TA has ${user.taPbisCount} Business Cards and is on level ${taTeam[0].currentLevel || '0'} with ${taTeam[0].averageCardsPerStudent || '0'} cards per student`
+                p=`${user.name}'s TA has ${user.taPbisCount} Business Cards and is on level ${taTeam.currentLevel || '0'} with ${taTeam.averageCardsPerStudent || '0'} cards per student`
             .callbacks
                 each callback in callbacks
                     +callbackCard(callback)
