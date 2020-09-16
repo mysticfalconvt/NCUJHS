@@ -141,6 +141,7 @@ exports.dashboard = async (req, res) => {
       pbis = await Pbis.find({
         student: req.user._id,
         message: { $ne: "" },
+        category: { $ne: "Physical Card" },
       })
         .sort({ date: 1 })
         .limit(10);
@@ -148,7 +149,10 @@ exports.dashboard = async (req, res) => {
     // if parent find student
     if (req.user.isParent) {
       students = await User.find({ parent: req.user._id });
-      pbis = await Pbis.find({ student: { $in: students } })
+      pbis = await Pbis.find({
+        student: { $in: students },
+        category: { $ne: "Physical Card" },
+      })
         .sort({ date: 1 })
         .limit(10);
     }
