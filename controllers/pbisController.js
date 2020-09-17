@@ -256,6 +256,18 @@ exports.bulkPbisCard = async (req, res) => {
   res.redirect("back");
 };
 
+exports.quickCard = async (req, res) => {
+  const card = {
+    student: req.params._id,
+    teacher: req.user._id,
+    category: "Quick Card",
+  };
+  const pbis = await new Pbis(card).save();
+
+  catchErrors(updatePbisCounts(req.params._id));
+  res.redirect("back");
+};
+
 exports.addPbisTeam = (req, res) => {
   const pbisTeam = {};
   res.render("editPbisTeam", { title: "Add a new PBIS Team", pbisTeam });

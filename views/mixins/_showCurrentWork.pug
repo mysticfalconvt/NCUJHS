@@ -8,6 +8,8 @@ mixin showCurrentWork(user = {})
                 if  currentPath.startsWith('/ta') 
                     p
                         a(href=`/email/parent/${user._id}`) Send a parent account signup email for #{user.name}
+                        span= `  -  `
+                        a(href=`/pbis/add/student/${user._id}`) Quick Pbis
                 table.table
                     thead 
                         td Class
