@@ -102,7 +102,7 @@ exports.searchUser = async (req, res) => {
   }, 0);
 
   res.render("searchUser", {
-    title: `Search for an account by ${category}`,
+    title: `Search for an account Sorted by ${category}`,
     users,
     callbackCount,
     studentCallbackCount,

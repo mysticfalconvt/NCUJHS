@@ -187,6 +187,13 @@ router.post(
   catchErrors(pbisController.updatePbisTeam),
 );
 
+router.get(
+  "/pbis/add/student/:_id",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.quickCard),
+);
+
 // info routes
 router.get("/info/search/:category", catchErrors(infoController.getInfo));
 router.get("/info", catchErrors(infoController.getInfo));
