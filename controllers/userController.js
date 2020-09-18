@@ -167,7 +167,7 @@ exports.userSearchResult = async (req, res) => {
       student: req.params._id,
       category: { $ne: "Physical Card" },
     })
-      .sort({ date: 1 })
+      .sort({ date: -1 })
       .limit(10);
     // const ta = await User.find({ ta: req.params._id });
     //render out the edit form so they can edit

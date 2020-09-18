@@ -143,7 +143,7 @@ exports.dashboard = async (req, res) => {
         message: { $ne: "" },
         category: { $ne: "Physical Card" },
       })
-        .sort({ date: 1 })
+        .sort({ date: -1 })
         .limit(10);
     }
     // if parent find student
