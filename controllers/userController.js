@@ -166,6 +166,7 @@ exports.userSearchResult = async (req, res) => {
     const pbis = await Pbis.find({
       student: req.params._id,
       category: { $ne: "Physical Card" },
+      message: { $ne: "" },
     })
       .sort({ date: -1 })
       .limit(10);

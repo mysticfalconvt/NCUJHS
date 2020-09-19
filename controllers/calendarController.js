@@ -151,7 +151,7 @@ exports.dashboard = async (req, res) => {
       students = await User.find({ parent: req.user._id });
       pbis = await Pbis.find({
         student: { $in: students },
-        category: { $ne: "Physical Card" },
+        message: { $ne: "" },
       })
         .sort({ date: 1 })
         .limit(10);
