@@ -7,7 +7,7 @@ updateCellCount = async (student) => {
   const cellphoneCount = await StudentFocus.find({
     student: student,
     category: "Cell Phone Violation",
-  }).count();
+  }).countDocuments();
   const user = await User.findOneAndUpdate(
     { _id: student },
     { cellPhoneCount: cellphoneCount },

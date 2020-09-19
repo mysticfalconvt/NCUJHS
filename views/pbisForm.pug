@@ -4,4 +4,13 @@ block content
     .inner 
         h2 #{title}
         +pbisForm(pbis)
+        each student in students
+            p=student.name 
+                span
+                    span=" - "
+                    a(href=`/pbis/add/student/${user._id}/Respect`) Respect
+                    span=" - "
+                    a(href=`/pbis/add/student/${user._id}/Responsibility`) Responsibility
+                    span=" - "
+                    a(href=`/pbis/add/student/${user._id}/Perserverance`) Perserverance
 

@@ -4,7 +4,7 @@ import dompurify from "dompurify";
 function searchResultsHTML(users) {
   return users
     .map((user) => {
-      return `<p style="cursor: pointer" class="search__result">
+      return `<p class="search__result">
                ${user.name}
         </p>`;
     })
