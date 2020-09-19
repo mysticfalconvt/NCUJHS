@@ -116,7 +116,7 @@ router.get(
   "/pbis/add",
   authController.isLoggedIn,
   authController.isTeacher,
-  pbisController.addPbis,
+  catchErrors(pbisController.addPbis),
 );
 router.get(
   "/pbis/weekly",
@@ -155,6 +155,13 @@ router.post(
   catchErrors(pbisController.bulkPbisCard),
 );
 
+router.get(
+  "/pbis/add/student/:_id/:category",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(pbisController.quickCard),
+);
+
 // PBIS Team Routes
 router.get(
   "/pbis/team/add",
@@ -185,13 +192,6 @@ router.post(
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(pbisController.updatePbisTeam),
-);
-
-router.get(
-  "/pbis/add/student/:_id",
-  authController.isLoggedIn,
-  authController.isTeacher,
-  catchErrors(pbisController.quickCard),
 );
 
 // info routes

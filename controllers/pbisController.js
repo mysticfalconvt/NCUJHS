@@ -25,7 +25,7 @@ updatePbisCounts = async (student) => {
   const taNumbers = await Pbis.find({
     student: { $in: taStudents },
     counted: "",
-  }).count();
+  }).countDocuments();
   const taTeacher = await User.findOneAndUpdate(
     { _id: updatedStudent.ta._id },
     { taPbisCount: taNumbers },
@@ -43,15 +43,17 @@ updateTeamPbis = async (team) => {
     { ta: { $in: teacherIds } },
     { _id: 1 },
   );
-  const numberOfStudents = await User.find({ ta: { $in: teacherIds } }).count();
+  const numberOfStudents = await User.find({
+    ta: { $in: teacherIds },
+  }).countDocuments();
   // numberOfStudents = taTeamStudents.length();
   const taTeamUncounted = await Pbis.find({
     student: { $in: taTeamStudents },
     counted: "",
-  }).count();
+  }).countDocuments();
   const taTeamTotalCards = await Pbis.find({
     student: { $in: taTeamStudents },
-  }).count();
+  }).countDocuments();
   const currentAverageCardsPerStudent = taTeamUncounted / numberOfStudents;
   const newAverageCardsPerStudent =
     team.averageCardsPerStudent + currentAverageCardsPerStudent;
@@ -156,8 +158,23 @@ updateSchoolWidePbis = async () => {
   );
 };
 
-exports.addPbis = (req, res) => {
-  res.render("pbisForm", { title: "Virtual PBIS Business Card" });
+exports.addPbis = async (req, res) => {
+  if (req.user.isTeacher) {
+    const students = await User.find({
+      $or: [
+        { math: req.user._id },
+        { science: req.user._id },
+        { languageArts: req.user._id },
+        { socialStudies: req.user._id },
+        { trimester1: req.user._id },
+        { trimester2: req.user._id },
+        { trimester3: req.user._id },
+      ],
+    });
+    res.render("pbisForm", { title: "Virtual PBIS Business Card", students });
+  } else {
+    res.render("pbisForm", { title: "Virtual PBIS Business Card" });
+  }
 };
 
 exports.getPbis = async (req, res) => {
@@ -197,7 +214,7 @@ exports.createPbis = async (req, res) => {
   const taNumbers = await Pbis.find({
     student: { $in: taStudents },
     counted: "",
-  }).count();
+  }).countDocuments();
   const taTeacher = await User.findOneAndUpdate(
     { _id: student.ta._id },
     { taPbisCount: taNumbers },
@@ -210,7 +227,9 @@ exports.getWeeklyPbis = async (req, res) => {
   let teachers = await User.find({ isTeacher: { $ne: "" } });
   let teachersWithWinners = [];
   for (let teacher of teachers) {
-    const taStudentCount = await User.find({ ta: teacher._id }).count();
+    const taStudentCount = await User.find({
+      ta: teacher._id,
+    }).countDocuments();
     const winner = await getStudentWinner(teacher._id);
     const cardsPerStudent = teacher.taPbisCount / taStudentCount;
     teacherWithWinner = {
@@ -260,7 +279,7 @@ exports.quickCard = async (req, res) => {
   const card = {
     student: req.params._id,
     teacher: req.user._id,
-    category: "Quick Card",
+    category: req.params.category,
   };
   const pbis = await new Pbis(card).save();
 

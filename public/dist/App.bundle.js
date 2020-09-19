@@ -1905,7 +1905,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function searchResultsHTML(users) {
   return users.map(function (user) {
-    return "<p style=\"cursor: pointer\" class=\"search__result\">\n               " + user.name + "\n        </p>";
+    return "<p class=\"search__result\">\n               " + user.name + "\n        </p>";
   }).join("");
 }
 

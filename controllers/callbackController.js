@@ -12,11 +12,11 @@ recountCallback = async (id) => {
   const teacherCount = await Callback.find({
     teacher: callback.teacher,
     completed: "",
-  }).count();
+  }).countDocuments();
   const studentCount = await Callback.find({
     student: callback.student,
     completed: "",
-  }).count();
+  }).countDocuments();
   const teacher = await User.findOneAndUpdate(
     { _id: callback.teacher },
     { callbackCount: teacherCount },

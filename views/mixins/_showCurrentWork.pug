@@ -9,7 +9,7 @@ mixin showCurrentWork(user = {})
                     p
                         a(href=`/email/parent/${user._id}`) Send a parent account signup email for #{user.name}
                         span= `  -  `
-                        a(href=`/pbis/add/student/${user._id}`) Quick Pbis
+                        a(href=`/pbis/add/student/${user._id}/quick`) Quick Pbis
                 table.table
                     thead 
                         td Class
