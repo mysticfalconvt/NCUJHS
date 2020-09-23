@@ -1,12 +1,12 @@
-mixin userTable(users={})
+mixin studentInfoTable(users={},group="")
     table.table
         thead
             td
-                a(href="/user/search/name")=`Name:   ${studentCallbackCount} students are on callback ${percentageOnCallback}% of ${studentCount} students`
+                a(href="/user/search/name")=group
             td
                 a(href="/user/search/ta") TA
             td
-                a(href="/user/search/callbackCount")=`callback total: ${callbackCount}`
+                a(href="/user/search/callbackCount")=`callback`
             td
                 a(href="/user/search/cellPhoneCount") Cell Violations
             td
