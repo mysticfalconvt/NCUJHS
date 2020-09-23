@@ -3,6 +3,7 @@ extends layout
 include mixins/_callbackCard
 include mixins/_callbackTable
 include mixins/_showCurrentWork
+include mixins/_studentInfoTable
 block content
     .inner
         h2= title
@@ -32,6 +33,11 @@ block content
                 td=responsibility
                 td=perserverance
         +callbackTable(callbacks)
+        
+        p
+            +studentInfoTable(taStudents,"TA Students")
+            +studentInfoTable(classStudents, "Class Students")
+
         //- .calendars
         //-     each callback in callbacks
         //-         +callbackCard(callback)

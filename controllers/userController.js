@@ -142,7 +142,19 @@ exports.userSearchResult = async (req, res) => {
     });
     const pbisCardCount =
       (respect | 0) + (responsibility | 0) + (perserverance | 0);
-
+    const taStudents = await User.find({ ta: account._id });
+    const classStudents = await User.find({
+      $or: [
+        { math: account._id },
+        { languageArts: account._id },
+        { socialStudies: account._id },
+        { science: account._id },
+        { trimester1: account._id },
+        { trimester2: account._id },
+        { trimester3: account._id },
+      ],
+    });
+    // const students = [...taStudents, ...classStudents];
     //render out the edit form so they can edit
     res.render("teacherDetails", {
       title: `${account.name}'s Details`,
@@ -154,6 +166,8 @@ exports.userSearchResult = async (req, res) => {
       perserverance,
       completedCallback,
       totalCallback,
+      taStudents,
+      classStudents,
       // ta,
     });
     // student
