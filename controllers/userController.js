@@ -117,8 +117,11 @@ exports.userSearchResult = async (req, res) => {
   // check if teacher
   if (account.isTeacher || account.isAdmin || account.isPara) {
     // find their callback
-    const callbacks = await Callback.find({ teacher: account._id }).sort({
-      completed: 1,
+    const callbacks = await Callback.find({
+      teacher: account._id,
+      completed: "",
+    }).sort({
+      assigned: 1,
     });
     const completedCallback = await Callback.countDocuments({
       teacher: account._id,

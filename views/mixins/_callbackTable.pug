@@ -1,0 +1,16 @@
+mixin callbackTable(callbacks={})
+    p <strong> Assigned Callback </strong>
+    table.table
+        thead
+            td Student
+            td Assignment
+            //- td Description
+            td Date Assigned
+        each callback in callbacks
+            tr
+                td
+                    a(href=`/user/${callback.student._id}`)=callback.student.name
+                td
+                    a(href=`/callback/${callback._id}`)=callback.assignment
+                //- td=callback.description
+                td=callback.assigned.toDateString()

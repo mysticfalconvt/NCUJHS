@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/_callbackCard
+include mixins/_callbackTable
 include mixins/_showCurrentWork
 block content
     .inner
@@ -11,7 +12,7 @@ block content
                 a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
             
         hr
-        p #{account.name} has #{account.callbackCount} assigned callback assignments. 
+        //- p #{account.name} has #{account.callbackCount} assigned callback assignments. 
         p Current Assignment: #{account.currentAssignment}
         table.table
             thead
@@ -30,8 +31,9 @@ block content
                 td=respect
                 td=responsibility
                 td=perserverance
-        .calendars
-            each callback in callbacks
-                +callbackCard(callback)
-        +showCurrentWork(account)
+        +callbackTable(callbacks)
+        //- .calendars
+        //-     each callback in callbacks
+        //-         +callbackCard(callback)
+        //- +showCurrentWork(account)
         
