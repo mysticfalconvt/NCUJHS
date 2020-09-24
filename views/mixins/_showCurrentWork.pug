@@ -3,7 +3,10 @@ mixin showCurrentWork(user = {})
     if user.ta
                 hr
                 p Current Classwork for 
-                    a(href=`/user/${user._id}`) <strong> #{user.name}.</strong> 
+                    if currentPath.startsWith("/ta")
+                        a(href=`/user/${user._id}`) <strong> #{user.name}.</strong> 
+                    else
+                        strong=user.name
                     span They have #{user.callbackCount} items on callback, and #{user.pbisCount} PBIS Cards this week and #{user.yearPbisCount} total cards
                 if  currentPath.startsWith('/ta') 
                     p
