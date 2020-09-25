@@ -7,6 +7,7 @@ mixin teacherTable(users={})
                 a(href="/teacher/search/callbackCount")=`Callback Assignments`
             td
                 a(href="/teacher/search/taPbisCount") TA Business Cards
+            td Current Assignment
 
         each user in users
             tr
@@ -17,4 +18,5 @@ mixin teacherTable(users={})
                 else
                     td
                 td=user.taPbisCount
+                td=user.currentAssignment
                 
