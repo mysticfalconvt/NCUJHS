@@ -111,6 +111,26 @@ exports.searchUser = async (req, res) => {
   });
 };
 
+exports.searchTeachers = async (req, res) => {
+  const category = req.params.category || "";
+  let sort = {};
+  sort["isTeacher"] = "-1";
+  sort[category] = -1;
+  // sort["isTeacher"] = 1;
+  // sort["isAdmin"] = 1;
+  // sort["isPara"] = 1;
+  sort["name"] = 1;
+
+  const teachers = await User.find({
+    $or: [{ isTeacher: "true" }, { isAdmin: "true" }, { isPara: "true" }],
+  }).sort(sort);
+
+  res.render("searchTeacher", {
+    title: `Search for an account Sorted by ${category}`,
+    teachers,
+  });
+};
+
 exports.userSearchResult = async (req, res) => {
   // find the account
   const account = await User.findOne({ _id: req.params._id });
