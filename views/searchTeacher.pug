@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_userSearch
+include mixins/_teacherTable
+
+block content 
+    .inner 
+        h2 #{title}
+        +userSearch()
+        hr
+        +teacherTable(teachers)
+        

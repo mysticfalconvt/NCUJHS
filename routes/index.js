@@ -63,7 +63,12 @@ router.get("/callback/:_id", catchErrors(callbackController.getCallbackByID));
 //Account Routes
 router.get("/login", userController.loginForm);
 router.post("/login", authController.login);
-router.get("/register", userController.registerForm);
+router.get(
+  "/register",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  userController.registerForm,
+);
 router.get(
   "/parent/register/:_id",
   catchErrors(userController.registerParentForm),
@@ -80,6 +85,11 @@ router.get(
   "/user/search/:category",
   authController.isLoggedIn,
   catchErrors(userController.searchUser),
+);
+router.get(
+  "/teacher/search/:category",
+  authController.isLoggedIn,
+  catchErrors(userController.searchTeachers),
 );
 router.get(
   "/user/edit/:_id",

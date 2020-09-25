@@ -1,0 +1,20 @@
+mixin teacherTable(users={})
+    table.table
+        thead
+            td
+                a(href="/teacher/search/name")=`Name:`
+            td
+                a(href="/teacher/search/callbackCount")=`Callback Assignments`
+            td
+                a(href="/teacher/search/taPbisCount") TA Business Cards
+
+        each user in users
+            tr
+                td
+                    a(href=`/user/${user._id}`) #{user.name}
+                if user.callbackCount
+                    td=user.callbackCount
+                else
+                    td
+                td=user.taPbisCount
+                
