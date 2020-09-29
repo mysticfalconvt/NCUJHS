@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/_callbackCard
+include mixins/_callbackTable
 block content
     .inner
         h2= "You have " + user.callbackCount + " items on callback"
@@ -11,6 +12,9 @@ block content
                 a.textLinks.button(href="/callback/teacher") Only incomplete Callback
             else 
                 a.textLinks.button(href="/callback/teacher/old") Include Completed Callback
-        .callbacks
-            each callback in callbacks
-                +callbackCard(callback)
+        if Object.keys(callbacks).length <9
+            .callbacks
+                each callback in callbacks
+                    +callbackCard(callback)
+        else 
+            +callbackTable(callbacks)
