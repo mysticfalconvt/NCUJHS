@@ -266,8 +266,10 @@ exports.taPbis = async (req, res) => {
   if (taTeam.teacher3) {
     teachers.push(taTeam.teacher3._id);
   }
-  console.log(teachers);
-  const taStudents = await User.find({ ta: { $in: teachers } }, { name: 1 });
+  const taStudents = await User.find(
+    { ta: { $in: teachers } },
+    { name: 1 },
+  ).sort({ name: 1 });
   res.render("taPbisList", { title: "TA PBIS Entry", taStudents });
 };
 
