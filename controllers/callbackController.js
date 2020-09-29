@@ -44,7 +44,7 @@ exports.getCallbackByTeacher = async (req, res) => {
   const callbacks = await Callback.find({
     teacher: req.user._id,
     completed: "",
-  }).sort({ Date: 1 });
+  }).sort({ student: 1 });
   res.render("callbacks", { title: "callback", callbacks: callbacks });
 };
 
