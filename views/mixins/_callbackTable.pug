@@ -5,7 +5,9 @@ mixin callbackTable(callbacks={})
             td Student
             td Assignment
             //- td Description
+            td Message
             td Date Assigned
+            td Completed
         each callback in callbacks
             tr
                 td
@@ -13,4 +15,18 @@ mixin callbackTable(callbacks={})
                 td
                     a(href=`/callback/${callback._id}`)=callback.assignment
                 //- td=callback.description
+                td
+                    a(href=`/callback/${callback._id}`)=callback.message
                 td=callback.assigned.toDateString()
+                td
+                    if user._id.equals(callback.teacher._id)
+                        if callback.completed
+                            span Completed
+                        else
+                            form(action=`/callback/add/${callback._id || ''}` method="POST" class="" )
+                            input(type="radio" name="completed" checked value="true" hidden)
+                            input(type="submit" value="Mark Completed ✅" class="")
+                    else
+                        if callback.completed
+                            span Completed
+                        
