@@ -253,7 +253,21 @@ exports.getWeeklyPbis = async (req, res) => {
 // };
 
 exports.taPbis = async (req, res) => {
-  const taStudents = await User.find({ ta: req.params._id }, { name: 1 });
+  const taTeam = await PbisTeam.findOne({
+    $or: [
+      { teacher1: req.params._id },
+      { teacher2: req.params._id },
+      { teacher3: req.params._id },
+    ],
+  });
+  const teachers = [];
+  teachers.push(taTeam.teacher1._id);
+  teachers.push(taTeam.teacher2._id);
+  if (taTeam.teacher3) {
+    teachers.push(taTeam.teacher3._id);
+  }
+  console.log(teachers);
+  const taStudents = await User.find({ ta: { $in: teachers } }, { name: 1 });
   res.render("taPbisList", { title: "TA PBIS Entry", taStudents });
 };
 
