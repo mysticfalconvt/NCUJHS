@@ -24,8 +24,8 @@ mixin callbackTable(callbacks={})
                             span Completed
                         else
                             form(action=`/callback/add/${callback._id || ''}` method="POST" class="" )
-                            input(type="radio" name="completed" checked value="true" hidden)
-                            input(type="submit" value="Mark Completed ✅" class="")
+                                input(type="radio" name="completed" checked value="true" hidden)
+                                input(type="submit" value="Mark Completed ✅" class="")
                     else
                         if callback.completed
                             span Completed
