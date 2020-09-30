@@ -19,6 +19,7 @@ const pbisTeamSchema = new mongoose.Schema({
   teacher3: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
+    default: null,
   },
   totalCards: {
     type: Number,
