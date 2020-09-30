@@ -325,6 +325,9 @@ exports.editPbisTeam = async (req, res) => {
   });
 };
 exports.updatePbisTeam = async (req, res) => {
+  if (!req.body.teacher3) {
+    req.body.teacher3 = null;
+  }
   const pbisTeam = await PbisTeam.findOneAndUpdate(
     { _id: req.params._id },
     req.body,
