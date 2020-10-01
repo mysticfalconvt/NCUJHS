@@ -41,13 +41,13 @@ block content
                         input(type="checkbox" id=choice value=choice name="studentConductTeacher" checked=(studentConductTeacher.includes(choice)))
                         label(for=choice) #{choice}
 
-            label(for="teacherAction") Teacher Actions
+            label(for="teacherActions") Teacher Actions
             - const teacherActionChoices = ['Verbal Warning', 'Buddy Room', 'Conference with student', 'Parent Contact [email or call]', 'Planning Room Referral', 'Follow up plan', 'Loss of privelege', 'Detention with teacher', 'Individualized Instruction', 'Guidance Referral', 'Refer to Administrator', 'Other Action']
-            - const teacherAction = discipline.teacherAction || []
+            - const teacherActions = discipline.teacherActions || []
             ul.tags
                 each teacherChoice in teacherActionChoices
                     .tag.tag__choice
-                        input(type="checkbox" id=teacherChoice value=teacherChoice name="teacherAction" checked=(teacherAction.includes(teacherChoice)))
+                        input(type="checkbox" id=teacherChoice value=teacherChoice name="teacherActions" checked=(teacherActions.includes(teacherChoice)))
                         label(for=teacherChoice) #{teacherChoice}
 
             label(for="others") Others Involved (Be Specific)

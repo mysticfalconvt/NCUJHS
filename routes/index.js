@@ -305,7 +305,7 @@ router.post(
   authController.isTeacher,
   catchErrors(disciplineController.createDiscipline),
 );
-router.post(
+router.get(
   `/discipline/:_id`,
   authController.isLoggedIn,
   authController.isTeacher,
