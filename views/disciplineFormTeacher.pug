@@ -1,0 +1,34 @@
+extends layout
+
+include mixins/_callbackForm
+
+block content 
+    .inner 
+        h2 #{title}
+        form(action=`/discipline/add/${discipline._id || ''}` method="POST" class="card" )
+            label(for="studentName") Student Name
+            .student
+                if discipline.student
+                    input(name="studentName" value=discipline.student.name disabled="disabled")
+                else
+                    input(name="studentName" id="search" type="text" autofocus value=discipline.student)
+                .search
+                    .search__results
+            if discipline.student
+                .search__input
+                    input(name="student" id="id" value=discipline.student._id hidden)
+            else
+                .search__input
+                    input(name="student" id="id" value=discipline.student hidden)
+
+            label(for="Date") Event Date
+            input(type="date" name="date" value=discipline.date.toISOString().split('T')[0])
+            label(for="location") Location
+            - const locationChoices = ['Gym', 'Library', 'Cafeteria', 'Classroom', 'Hallway', 'Bus', 'Other']
+            - const location = discipline.location || []
+            ul.tags
+                each choice in locationChoices
+                    .tag.tag__choice
+                        input(type="checkbox" id=choice value=choice name="location" checked=(location.includes(choice)))
+                        label(for=choice) #{choice}
+            input(type="submit" value="Save →" class="button")

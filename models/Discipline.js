@@ -16,7 +16,7 @@ const disciplineSchema = new mongoose.Schema({
     ref: "User",
     required: "You must supply a student!",
   },
-  assignment: {
+  comments: {
     type: String,
     required: "You must have an assignment!",
   },

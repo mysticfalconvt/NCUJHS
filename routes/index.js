@@ -9,6 +9,7 @@ const studentFocusController = require("../controllers/studentFocusController");
 const mailController = require("../controllers/mailController");
 const taController = require("../controllers/taController");
 const pbisController = require("../controllers/pbisController");
+const disciplineController = require("../controllers/disciplineController");
 const { catchErrors } = require("../handlers/errorHandlers");
 
 // Do work here
@@ -286,6 +287,17 @@ router.get(
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(mailController.sendParentCallbackCount),
+);
+
+/* 
+	Discipline 
+*/
+
+router.get(
+  `/discipline/addNew`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  disciplineController.addDiscipline,
 );
 
 /* 
