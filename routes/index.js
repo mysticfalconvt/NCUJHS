@@ -299,6 +299,18 @@ router.get(
   authController.isTeacher,
   disciplineController.addDiscipline,
 );
+router.post(
+  `/discipline/add`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.createDiscipline),
+);
+router.post(
+  `/discipline/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewDiscipline),
+);
 
 /* 
 	API

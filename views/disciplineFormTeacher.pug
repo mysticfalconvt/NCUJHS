@@ -21,14 +21,43 @@ block content
                 .search__input
                     input(name="student" id="id" value=discipline.student hidden)
 
-            label(for="Date") Event Date
+            label(for="Date") Date
             input(type="date" name="date" value=discipline.date.toISOString().split('T')[0])
             label(for="location") Location
-            - const locationChoices = ['Gym', 'Library', 'Cafeteria', 'Classroom', 'Hallway', 'Bus', 'Other']
+            - const locationChoices = ['Gym', 'Library', 'Cafeteria', 'Classroom', 'Hallway', 'Bus', 'Other Location']
             - const location = discipline.location || []
             ul.tags
                 each choice in locationChoices
                     .tag.tag__choice
                         input(type="checkbox" id=choice value=choice name="location" checked=(location.includes(choice)))
                         label(for=choice) #{choice}
+            
+            label(for="studentConductTeacher") Inappropriate Student Conduct
+            - const studentConductTeacherChoices = ['Inapropriate Language', 'Physical Conduct', 'Non-Compliance', 'Disruption', 'Property Misuse', 'Other Conduct']
+            - const studentConductTeacher = discipline.studentConductTeacher || []
+            ul.tags
+                each choice in studentConductTeacherChoices
+                    .tag.tag__choice
+                        input(type="checkbox" id=choice value=choice name="studentConductTeacher" checked=(studentConductTeacher.includes(choice)))
+                        label(for=choice) #{choice}
+
+            label(for="teacherAction") Teacher Actions
+            - const teacherActionChoices = ['Verbal Warning', 'Buddy Room', 'Conference with student', 'Parent Contact [email or call]', 'Planning Room Referral', 'Follow up plan', 'Loss of privelege', 'Detention with teacher', 'Individualized Instruction', 'Guidance Referral', 'Refer to Administrator', 'Other Action']
+            - const teacherAction = discipline.teacherAction || []
+            ul.tags
+                each teacherChoice in teacherActionChoices
+                    .tag.tag__choice
+                        input(type="checkbox" id=teacherChoice value=teacherChoice name="teacherAction" checked=(teacherAction.includes(teacherChoice)))
+                        label(for=teacherChoice) #{teacherChoice}
+
+            label(for="others") Others Involved (Be Specific)
+            - const othersChoices = ['None','Peers','Teacher','Substitute','Unknown', 'Others Involved']
+            - const others = discipline.others || []
+            ul.tags
+                each choice in othersChoices
+                    .tag.tag__choice
+                        input(type="checkbox" id=choice value=choice name="others" checked=(others.includes(choice)))
+                        label(for=choice) #{choice}
+            label(for="teacherComments") Facts regarding the incident
+            textarea(name="teacherComments", cols="30", rows="8")
             input(type="submit" value="Save →" class="button")
