@@ -1,0 +1,18 @@
+mixin disciplineTeacherDetails(discipline={})
+    strong Reported on #{discipline.date.toDateString()} by #{discipline.teacher.name}
+    p 
+        strong Location: 
+        =discipline.location
+    p 
+        strong Student Conduct: 
+        =discipline.studentConductTeacher
+    p 
+        strong Teacher Actions: 
+        =discipline.teacherActions
+    p 
+        strong Others Involved: 
+        =discipline.others
+    p 
+        strong Facts about the incident: 
+        =discipline.teacherComments
+    

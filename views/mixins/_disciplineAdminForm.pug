@@ -1,0 +1,17 @@
+mixin disciplineAdminForm(discipline={})
+    form(action=`/discipline/edit/${discipline._id}` method="POST" class="card" )
+        label(for="adminComments") Facts about the incident (For Parents)
+        textarea(name="adminComments", id="adminComments" cols="30", rows="6")=(discipline.adminComments || discipline.teacherComments)
+
+        label(for="studentConductAdmin") Inappropriate Student Conduct (Admin)
+            - const studentConductAdminChoices = ['Inapropriate Language', 'Physical Conduct', 'Non-Compliance', 'Disruption', 'Property Misuse', 'Other Conduct']
+            - const studentConductAdmin = discipline.studentConductAdmin || []
+            ul.tags
+                each choice in studentConductAdminChoices
+                    .tag.tag__choice
+                        input(type="checkbox" id=choice value=choice name="studentConductAdmin" checked=(studentConductAdmin.includes(choice)))
+                        label(for=choice) #{choice}
+
+        label(for="adminFollowUp") Admin Followup
+        textarea(name="adminFollowUp", id="adminFollowUp" cols="30", rows="6")=discipline.adminFollowUp
+        input(type="submit" value="Save →" class="button")

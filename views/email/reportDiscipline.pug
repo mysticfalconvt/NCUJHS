@@ -1,0 +1,6 @@
+extends email-layout
+
+block content
+  h2= subject
+  p #{teacherName} has submitted a new referal for #{studentName} on #{date}
+  a(href="http://ncujhs.tech") View on Dashboard

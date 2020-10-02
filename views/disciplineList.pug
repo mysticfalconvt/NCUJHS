@@ -1,0 +1,22 @@
+extends layout
+
+block content 
+    .inner 
+        h2 #{title}
+        if user.isTeacher
+                a.title_link(href="/discipline/addNew") Add Student Conduct Referal
+                hr
+        table.table
+            thead
+                td Date
+                td Student Name
+                td Teacher
+            tbody
+                each discipline in disciplines
+                    tr
+                        td
+                            a(href=`/discipline/${discipline._id}`)=discipline.date.toDateString()
+                        td
+                            a(href=`/discipline/${discipline._id}`)=discipline.student.name
+                        td
+                            a(href=`/discipline/${discipline._id}`)=discipline.teacher.name

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const promisify = require("es6-promisify");
 const mail = require("../handlers/mail");
+const Discipline = mongoose.model("Discipline");
 const StudentFocus = mongoose.model("studentFocus");
 
 exports.sendParentSignup = async (req, res) => {
@@ -72,4 +73,17 @@ exports.sendParentCallbackCount = async (req, res) => {
   req.flash("success", `you have emailed ${user.name}'s parent or guardian`);
   // 4. Redirect to login page
   res.redirect(`/user/${req.params._id}`);
+};
+
+exports.reportDisciplineToAdmin = async (disciplineId) => {
+  const discipline = await Discipline.findOne({ _id: disciplineId });
+  mail.send({
+    email: "colleen.storrings@ncsuvt.org",
+    replyTo: discipline.teacher.email,
+    filename: "reportDiscipline",
+    subject: `New Student Conduct Referal for ${discipline.student.name}`,
+    teacherName: discipline.teacher.name,
+    studentName: discipline.student.name,
+    date: discipline.date.toDateString(),
+  });
 };

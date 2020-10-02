@@ -1,0 +1,18 @@
+extends layout
+
+include mixins/_disciplineTeacherDetails
+include mixins/_disciplineAdminForm
+
+block content
+    .inner
+        if (user.name.search("Colleen Storrings") >= 0) || (user.name.search("Mr. Boskind") >= 0)
+            p
+                a(href=`/discipline/print/${discipline._id}`) Printable
+        .card
+            h1=discipline.student.name
+            
+            +disciplineTeacherDetails(discipline)
+            if (user.name.search("Colleen Storrings") >= 0) || (user.name.search("Mr. Boskind") >= 0)
+                +disciplineAdminForm(discipline)
+
+                
