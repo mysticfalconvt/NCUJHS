@@ -317,6 +317,12 @@ router.get(
   authController.isTeacher,
   catchErrors(disciplineController.viewDiscipline),
 );
+router.get(
+  `/discipline/print/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewDisciplinePrintable),
+);
 router.post(
   `/discipline/edit/:_id`,
   authController.isLoggedIn,

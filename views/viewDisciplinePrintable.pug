@@ -1,0 +1,40 @@
+include mixins/_disciplineTeacherDetails
+include mixins/_disciplineAdminForm
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='/dist/style.css')
+    link(rel="shortcut icon" type="image/png" href="/images/icons/falconlogo.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+
+
+    block content
+        .inner
+        
+            .card
+                h1=discipline.student.name
+                strong Reported on #{discipline.date.toDateString()} by #{discipline.teacher.name}
+                p 
+                    strong Location: 
+                    =discipline.location
+                p 
+                    strong Student Conduct: 
+                    =discipline.studentConductTeacher
+                p 
+                    strong Teacher Actions: 
+                    =discipline.teacherActions
+                p 
+                    strong Others Involved: 
+                    =discipline.others
+                p 
+                    strong Facts about the incident: 
+                    =discipline.adminComments
+                p 
+                    strong Student Conduct(admin): 
+                    =discipline.studentConductAdmin
+                p 
+                    strong Admin Followup 
+                    =discipline.adminFollowUp
+                                

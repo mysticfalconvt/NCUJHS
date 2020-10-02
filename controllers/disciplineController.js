@@ -33,6 +33,13 @@ exports.viewDiscipline = async (req, res) => {
     discipline,
   });
 };
+exports.viewDisciplinePrintable = async (req, res) => {
+  const discipline = await Discipline.findOne({ _id: req.params._id });
+  res.render("viewDisciplinePrintable", {
+    title: `View Incident for ${discipline.student.name}`,
+    discipline,
+  });
+};
 
 exports.viewDisciplineList = async (req, res) => {
   if (req.user.isAdmin) {
