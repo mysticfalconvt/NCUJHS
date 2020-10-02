@@ -19,6 +19,9 @@ const disciplineSchema = new mongoose.Schema({
   teacherComments: {
     type: String,
   },
+  adminComments: {
+    type: String,
+  },
   class: String,
   description: {
     type: String,

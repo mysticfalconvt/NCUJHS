@@ -306,16 +306,22 @@ router.post(
   catchErrors(disciplineController.createDiscipline),
 );
 router.get(
+  `/discipline/list`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewDisciplineList),
+);
+router.get(
   `/discipline/:_id`,
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(disciplineController.viewDiscipline),
 );
-router.get(
-  `/discipline/list`,
+router.post(
+  `/discipline/edit/:_id`,
   authController.isLoggedIn,
   authController.isTeacher,
-  catchErrors(disciplineController.viewDisciplineList),
+  catchErrors(disciplineController.updateDiscipline),
 );
 
 /* 

@@ -1,6 +1,7 @@
 extends layout
 
 include mixins/_disciplineTeacherDetails
+include mixins/_disciplineAdminForm
 
 block content
     .inner
@@ -9,4 +10,7 @@ block content
             h1=discipline.student.name
             
             +disciplineTeacherDetails(discipline)
+            if (user.name.search("Colleen Storrings") >= 0) || (user.name.search("Mr. Boskind") >= 0)
+                +disciplineAdminForm(discipline)
+
                 

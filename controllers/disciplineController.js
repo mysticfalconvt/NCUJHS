@@ -16,6 +16,13 @@ exports.createDiscipline = async (req, res) => {
   const discipline = await new Discipline(req.body).save();
   res.redirect(`/discipline/${discipline._id}`);
 };
+exports.updateDiscipline = async (req, res) => {
+  const discipline = await Discipline.findOneAndUpdate(
+    { _id: req.params._id },
+    req.body,
+  );
+  res.redirect(`/discipline/${discipline._id}`);
+};
 
 exports.viewDiscipline = async (req, res) => {
   const discipline = await Discipline.findOne({ _id: req.params._id });

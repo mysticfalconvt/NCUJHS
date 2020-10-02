@@ -24,7 +24,7 @@ block content
             label(for="Date") Date
             input(type="date" name="date" value=discipline.date.toISOString().split('T')[0])
             label(for="location") Location
-            - const locationChoices = ['Gym', 'Library', 'Cafeteria', 'Classroom', 'Hallway', 'Bus', 'Other Location']
+            - const locationChoices = ['Gym', 'Library', 'Cafeteria', 'Classroom', 'Hallway', 'Bus', 'Outdoor Classroom','Other Location']
             - const location = discipline.location || []
             ul.tags
                 each choice in locationChoices
