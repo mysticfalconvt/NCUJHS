@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_disciplineTeacherDetails
+
+block content
+    .inner
+       
+        .card
+            h1=discipline.student.name
+            
+            +disciplineTeacherDetails(discipline)
+                
