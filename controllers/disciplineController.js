@@ -23,3 +23,21 @@ exports.viewDiscipline = async (req, res) => {
     title: `View Incident for ${discipline.student.name}`,
   });
 };
+
+exports.viewDisciplineList = async (req, res) => {
+  if (req.user.isAdmin) {
+    const disciplines = await Discipline.find().sort({ date: -1 });
+    res.render("disciplineList", {
+      title: "Discipline Referal List",
+      disciplines,
+    });
+  } else {
+    const disciplines = await Discipline.find({ teacher: req.user._id }).sort({
+      date: -1,
+    });
+    res.render("disciplineList", {
+      title: "Discipline Referal List",
+      disciplines,
+    });
+  }
+};

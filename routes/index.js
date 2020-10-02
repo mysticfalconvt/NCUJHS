@@ -305,11 +305,17 @@ router.post(
   authController.isTeacher,
   catchErrors(disciplineController.createDiscipline),
 );
-router.post(
+router.get(
   `/discipline/:_id`,
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(disciplineController.viewDiscipline),
+);
+router.get(
+  `/discipline/list`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewDisciplineList),
 );
 
 /* 
