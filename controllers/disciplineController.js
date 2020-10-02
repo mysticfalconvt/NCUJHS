@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { getStudents } = require("./userController");
+const { reportDisciplineToAdmin } = require("./mailController");
 const Discipline = mongoose.model("Discipline");
 const User = mongoose.model("User");
 
@@ -14,6 +15,7 @@ exports.addDiscipline = (req, res) => {
 exports.createDiscipline = async (req, res) => {
   req.body.teacher = req.user._id;
   const discipline = await new Discipline(req.body).save();
+  reportDisciplineToAdmin(discipline._id);
   res.redirect(`/discipline/${discipline._id}`);
 };
 exports.updateDiscipline = async (req, res) => {
