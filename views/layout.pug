@@ -42,7 +42,7 @@ html
                       a.nav__link(href="/studentFocus/search/created", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
                         != h.icon('studentfocus')
                         span #{"Student Focus & Parent Contact"}
-                  if (user.name.search("Colleen Storrings") >= 0) || (user.name.search("Mr. Boskind") >= 0)
+                  if (user.isTeacher || user.isAdmin || user.isPara)
                     li.nav__item.nav--vertical
                       a.nav__link(href="/discipline/list", class=(currentPath.startsWith('/discipline') ? 'nav__link--active' : ''))
                         != h.icon('studentfocus')
