@@ -87,3 +87,16 @@ exports.reportDisciplineToAdmin = async (disciplineId) => {
     date: discipline.date.toDateString(),
   });
 };
+exports.reportPhoneToAdmin = async (StudentFocusId) => {
+  const studentFocus = await StudentFocus.findOne({ _id: StudentFocusId });
+  mail.send({
+    email: "colleen.storrings@ncsuvt.org",
+    replyTo: studentFocus.teacher.email,
+    filename: "reportPhone",
+    subject: `New Phone Violation for ${studentFocus.student.name}`,
+    teacherName: studentFocus.teacher.name,
+    studentName: studentFocus.student.name,
+    date: studentFocus.created.toDateString(),
+    comments: studentFocus.comments,
+  });
+};

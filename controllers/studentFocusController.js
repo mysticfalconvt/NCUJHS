@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { findOneAndUpdate } = require("../models/User");
 const StudentFocus = mongoose.model("studentFocus");
 const User = mongoose.model("User");
+const { reportPhoneToAdmin } = require("./mailController");
 
 updateCellCount = async (student) => {
   const cellphoneCount = await StudentFocus.find({
@@ -76,6 +77,7 @@ exports.createStudentFocus = async (req, res) => {
   const isCellPhone = req.body.category == "Cell Phone Violation";
   if (isCellPhone) {
     updateCellCount(req.body.student);
+    reportPhoneToAdmin(studentFocus);
   }
   req.flash("success", `Successfully Created`);
   res.redirect(`/studentFocus/search/category`);
