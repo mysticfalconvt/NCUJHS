@@ -1,0 +1,8 @@
+extends email-layout
+
+block content
+  h2= subject
+  p #{teacherName} has submitted a new phone violation for #{studentName} on #{date}
+  p
+  p=comments
+  a(href="http://ncujhs.tech") View on Dashboard
