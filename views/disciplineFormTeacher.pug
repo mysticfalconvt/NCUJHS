@@ -42,7 +42,7 @@ block content
                         label(for=choice) #{choice}
 
             label(for="teacherActions") Teacher Actions
-            - const teacherActionChoices = ['Verbal Warning', 'Buddy Room', 'Conference with student', 'Parent Contact [email or call]', 'Planning Room Referral', 'Follow up plan', 'Loss of privelege', 'Detention with teacher', 'Individualized Instruction', 'Guidance Referral', 'Refer to Administrator', 'Other Action']
+            - const teacherActionChoices = ['Verbal Warning', 'Buddy Room', 'Conference with student', 'Parent Contact [email or call]', 'Planning Room Referral', 'Follow up plan', 'Loss of privilege', 'Detention with teacher', 'Individualized Instruction', 'Guidance Referral', 'Refer to Administrator', 'Other Action']
             - const teacherActions = discipline.teacherActions || []
             ul.tags
                 each teacherChoice in teacherActionChoices
