@@ -69,14 +69,38 @@ exports.viewDisciplineList = async (req, res) => {
 exports.addBullying = (req, res) => {
   const today = new Date();
   res.render("bullyingForm", {
-    title: "New HHB Referal",
-    discipline: { date: today },
+    title: `New HHB Referal Form: ${req.user.bullyingRole || "staff"}`,
+    bullying: { date: today, authorName: req.user.name },
+    role: req.user.bullyingRole || "none",
   });
 };
 
 exports.createBullying = async (req, res) => {
-  req.body.teacher = req.user._id;
+  req.body.author = req.user._id;
+  req.body.dateReported = new Date();
   const bullying = await new Bullying(req.body).save();
   reportBullyingToAdmin(bullying._id);
   res.redirect(`/bullying/${bullying._id}`);
+};
+
+exports.viewBullyingList = async (req, res) => {
+  if (
+    (req.user.name.search("Colleen Storrings") >= 0) |
+    (req.user.name.search("Mr. Boskind") >= 0) |
+    (req.user.name.search("Nicole Corbett") >= 0)
+  ) {
+    const bullyings = await Bullying.find().sort({ date: -1 });
+    res.render("bullyingList", {
+      title: "HHB Referal List",
+      bullyings,
+    });
+  } else {
+    const bullyings = await Bullying.find({ teacher: req.user._id }).sort({
+      date: -1,
+    });
+    res.render("bullyingList", {
+      title: "HHB Referal List",
+      bullyings,
+    });
+  }
 };

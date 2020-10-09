@@ -1,2 +1,18 @@
 mixin bullyingAdminForm(bullying = {})
-    p Admin
+    form(action=`/bullying/add/${bullying._id || ''}` method="POST" class="card" )
+        label(for="studentName") Identity of Alleged Student Offender
+        .student
+            if bullying.offender
+                input(name="studentName" value=bullying.offender.name disabled="disabled")
+            else
+                input(name="studentName" id="search" type="text" autofocus value=bullying.offender)
+            .search
+                .search__results
+        if bullying.offender
+            .search__input
+                input(name="offender" id="id" value=bullying.offender._id hidden)
+        else
+            .search__input
+                input(name="offender" id="id" value=bullying.offender hidden)
+
+        input(type="submit" value="Save →" class="button")

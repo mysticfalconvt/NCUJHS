@@ -6,4 +6,12 @@ include mixins/_bullyingStaffForm
 
 block content
     .inner
-        +bullyingDesigneeForm(bullying)
+        h2 #{title}
+        if "admin".includes(role)
+            +bullyingAdminForm(bullying)
+        else if "designee".includes(role)
+            +bullyingDesigneeForm(bullying)
+        else if "staff".includes(role)
+            +bullyingStaffForm(bullying)
+        else
+            P User not valid to access form

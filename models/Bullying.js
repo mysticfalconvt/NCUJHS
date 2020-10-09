@@ -22,6 +22,7 @@ const bullyingSchema = new mongoose.Schema({
     ref: "User",
   },
   incidentDate: Date,
+  incidentTime: String,
 
   description: {
     type: String,

@@ -324,6 +324,12 @@ router.get(
   catchErrors(disciplineController.viewDisciplineList),
 );
 router.get(
+  `/bullying/list`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewBullyingList),
+);
+router.get(
   `/discipline/:_id`,
   authController.isLoggedIn,
   authController.isTeacher,
