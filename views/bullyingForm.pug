@@ -1,0 +1,7 @@
+extends layout
+
+include mixins/_callbackForm
+
+block content
+    .inner
+        form(action=`/discipline/add/${discipline._id || ''}` method="POST" class="card" )

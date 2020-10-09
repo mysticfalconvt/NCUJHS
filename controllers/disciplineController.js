@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { getStudents } = require("./userController");
 const { reportDisciplineToAdmin } = require("./mailController");
 const Discipline = mongoose.model("Discipline");
+const Bullying = mongoose.model("Bullying");
 const User = mongoose.model("User");
 
 exports.addDiscipline = (req, res) => {
@@ -61,4 +62,21 @@ exports.viewDisciplineList = async (req, res) => {
       disciplines,
     });
   }
+};
+
+// Hazing Harrassment Bullying
+
+exports.addBullying = (req, res) => {
+  const today = new Date();
+  res.render("bullyingForm", {
+    title: "New HHB Referal",
+    discipline: { date: today },
+  });
+};
+
+exports.createBullying = async (req, res) => {
+  req.body.teacher = req.user._id;
+  const bullying = await new Bullying(req.body).save();
+  reportBullyingToAdmin(bullying._id);
+  res.redirect(`/bullying/${bullying._id}`);
 };

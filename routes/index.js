@@ -306,6 +306,18 @@ router.post(
   catchErrors(disciplineController.createDiscipline),
 );
 router.get(
+  `/bullying/addNew`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  disciplineController.addBullying,
+);
+router.post(
+  `/bullying/add`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.createBullying),
+);
+router.get(
   `/discipline/list`,
   authController.isLoggedIn,
   authController.isTeacher,
