@@ -1,7 +1,9 @@
 extends layout
 
-include mixins/_callbackForm
+include mixins/_bullyingAdminForm
+include mixins/_bullyingDesigneeForm
+include mixins/_bullyingStaffForm
 
 block content
     .inner
-        form(action=`/discipline/add/${discipline._id || ''}` method="POST" class="card" )
+        +bullyingDesigneeForm(bullying)
