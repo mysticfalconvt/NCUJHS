@@ -90,14 +90,17 @@ exports.reportDisciplineToAdmin = async (disciplineId) => {
 };
 exports.reportBullyingToAdmin = async (bullyingID) => {
   const bullying = await Bullying.findOne({ _id: bullyingID });
-  mail.send({
-    email: "robert.boskind@ncsuvt.org",
-    replyTo: bullying.author.email,
-    filename: "reportDiscipline",
-    subject: `New HHB Referal for ${bullying.offender.name} from ${bullying.author.name}`,
-    teacherName: bullying.author.name,
-    studentName: bullying.offender.name,
-    date: bullying.dateReported.toDateString(),
+  console.log(JSON.parse(process.env.ADMIN_EMAIL));
+  JSON.parse(process.env.ADMIN_EMAIL).forEach((adminEmail) => {
+    mail.send({
+      email: adminEmail,
+      replyTo: bullying.author.email,
+      filename: "reportDiscipline",
+      subject: `New HHB Referal for ${bullying.offender.name} from ${bullying.author.name}`,
+      teacherName: bullying.author.name,
+      studentName: bullying.offender.name,
+      date: bullying.dateReported.toDateString(),
+    });
   });
 };
 exports.reportPhoneToAdmin = async (StudentFocusId) => {
