@@ -104,3 +104,11 @@ exports.viewBullyingList = async (req, res) => {
     });
   }
 };
+
+exports.updateBullying = async (req, res) => {
+  const bullying = await Bullying.findOneAndUpdate(
+    { _id: req.params._id },
+    req.body,
+  );
+  res.redirect(`/bullying/${bullying._id}`);
+};
