@@ -6,6 +6,9 @@ const bullyingSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  investigationDate: {
+    type: Date,
+  },
   author: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
@@ -32,6 +35,11 @@ const bullyingSchema = new mongoose.Schema({
   studentsInterviewed: String,
   initialActions: String,
   nextSteps: String,
+  reporter: String,
+  determinationYN: String,
+  determinationExplination: String,
+  determinationDate: Date,
+  assignmentInvestigator: String,
 });
 
 function autopopulate(next) {

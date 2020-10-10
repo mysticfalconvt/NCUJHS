@@ -14,5 +14,32 @@ mixin bullyingAdminForm(bullying = {})
         else
             .search__input
                 input(name="offender" id="id" value=bullying.offender hidden)
-
+        label(for="witnessed") Witnessed:
+        select(type="text" name="witnessed" ) 
+            option(value="Yes" selected) Yes
+            option(value="No" selected= bullying.witnessed === "No") No
+        label(for="reporter") Reported by:
+        input(name="reporter" type="text" value=bullying.reporter)
+        label(for="incidentDate" ) Incident Date/Time
+        input(name="incidentDate" type="text" value=`${bullying.incidentDate || bullying.date.toLocaleString()}`)
+        label(for="studentWitness") Student Witness:
+        input(name="studentWitness" type="text" value=bullying.studentWitness)
+        label(for="employeeWitness") District Employee Witness:
+        input(name="employeeWitness" type="text" value=bullying.employeeWitness)
+        
+        label(for="initialActions") Initial Actions Taken by Administrator – if witnessed event:
+        textarea(rows="3" type="text" name="initialActions" value=bullying.initialActions)=bullying.initialActions
+        label(for="determinationYN") Determination by Administrator that information is conduct which May constitute HHB: (insert explanation for both)
+        select(type="text" name="determinationYN" ) 
+            option(value="Yes" selected) Yes
+            option(value="No" selected= bullying.determinationYN === "No") No
+        input(name="determinationExplination" value=bullying.determinationExplination)
+        label(for="determinationDate") Date of Determination
+        input(name="determinationDate" type="text" value=`${bullying.determinationDate || bullying.date.toDateString()}`)
+        label(for="assignmentInvestigator") Assignment Investigator
+        input(name="assignmentInvestigator" type="text" value=bullying.assignmentInvestigator)
+        label(for="investigationDate") Date of Investigation launched: [No later than 1 day from notice to DE]
+        input(name="investigationDate" type="text" value=`${bullying.investigationDate || bullying.date.toDateString()}`)
+        label(for="description") Description of the Conduct reported:
+        textarea(rows="10" type="text" name="description" value=bullying.description)=bullying.description
         input(type="submit" value="Save →" class="button")

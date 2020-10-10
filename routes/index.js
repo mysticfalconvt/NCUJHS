@@ -348,10 +348,16 @@ router.post(
   catchErrors(disciplineController.updateDiscipline),
 );
 router.post(
-  `/bullying/edit/:_id`,
+  `/bullying/add/:_id`,
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(disciplineController.updateBullying),
+);
+router.get(
+  `/bullying/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewBullying),
 );
 
 /* 
