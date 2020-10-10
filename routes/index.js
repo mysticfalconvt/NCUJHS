@@ -306,10 +306,28 @@ router.post(
   catchErrors(disciplineController.createDiscipline),
 );
 router.get(
+  `/bullying/addNew`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  disciplineController.addBullying,
+);
+router.post(
+  `/bullying/add`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.createBullying),
+);
+router.get(
   `/discipline/list`,
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(disciplineController.viewDisciplineList),
+);
+router.get(
+  `/bullying/list`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewBullyingList),
 );
 router.get(
   `/discipline/:_id`,
@@ -328,6 +346,18 @@ router.post(
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(disciplineController.updateDiscipline),
+);
+router.post(
+  `/bullying/add/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.updateBullying),
+);
+router.get(
+  `/bullying/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewBullying),
 );
 
 /* 

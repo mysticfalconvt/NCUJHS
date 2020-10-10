@@ -1,0 +1,25 @@
+extends layout
+
+block content 
+    .inner 
+        h2 #{title}
+        if user.isTeacher
+                a.title_link(href="/bullying/addNew") Add HHB Referal
+                hr
+        table.table
+            thead
+                td Date Reported
+                td Date Of Offense
+                td Offender Name
+                td Author
+            tbody
+                each bullying in bullyings
+                    tr
+                        td
+                            a(href=`/bullying/${bullying._id}`)=bullying.dateReported.toLocaleString()
+                        td
+                            a(href=`/bullying/${bullying._id}`)=bullying.incidentDate.toLocaleString()
+                        td
+                            a(href=`/bullying/${bullying._id}`)=bullying.offender.name
+                        td
+                            a(href=`/bullying/${bullying._id}`)=bullying.author.name

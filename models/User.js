@@ -73,6 +73,9 @@ const userSchema = new Schema({
     type: Number,
     default: 0,
   },
+  bullyingRole: {
+    enum: ["admin", "designee", "staff", null],
+  },
 });
 
 function autopopulate(next) {
