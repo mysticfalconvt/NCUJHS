@@ -90,7 +90,6 @@ exports.reportDisciplineToAdmin = async (disciplineId) => {
 };
 exports.reportBullyingToAdmin = async (bullyingID) => {
   const bullying = await Bullying.findOne({ _id: bullyingID });
-  console.log(JSON.parse(process.env.ADMIN_EMAIL));
   JSON.parse(process.env.ADMIN_EMAIL).forEach((adminEmail) => {
     mail.send({
       email: adminEmail,
