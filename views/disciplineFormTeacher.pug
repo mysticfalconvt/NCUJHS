@@ -5,6 +5,8 @@ include mixins/_callbackForm
 block content 
     .inner 
         h2 #{title}
+        p
+            a(href="/bullying/addNew") Was this incident related to HHB?  Click Here
         form(action=`/discipline/add/${discipline._id || ''}` method="POST" class="card" )
             label(for="studentName") Student Name
             .student
