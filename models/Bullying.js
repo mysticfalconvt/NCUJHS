@@ -40,6 +40,7 @@ const bullyingSchema = new mongoose.Schema({
   determinationExplination: String,
   determinationDate: Date,
   assignmentInvestigator: String,
+  formType: String,
 });
 
 function autopopulate(next) {

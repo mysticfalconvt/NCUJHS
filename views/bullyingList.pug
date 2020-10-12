@@ -12,6 +12,7 @@ block content
                 td Date Of Offense
                 td Offender Name
                 td Author
+                td Printable View
             tbody
                 each bullying in bullyings
                     tr
@@ -23,3 +24,5 @@ block content
                             a(href=`/bullying/${bullying._id}`)=bullying.offender.name
                         td
                             a(href=`/bullying/${bullying._id}`)=bullying.author.name
+                        td
+                            a(href=`/bullying/print/${bullying._id}`) Printable View

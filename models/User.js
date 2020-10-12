@@ -74,7 +74,7 @@ const userSchema = new Schema({
     default: 0,
   },
   bullyingRole: {
-    enum: ["admin", "designee", "staff", null],
+    type: String,
   },
 });
 
