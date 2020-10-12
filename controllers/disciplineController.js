@@ -120,7 +120,7 @@ exports.viewBullying = async (req, res) => {
   res.render("viewBullying", {
     title: `View Incident for ${bullying.offender.name}`,
     bullying,
-    role: bullying.author.bullyingRole,
+    role: bullying.formType,
   });
 };
 exports.viewPrintBullying = async (req, res) => {
@@ -128,6 +128,6 @@ exports.viewPrintBullying = async (req, res) => {
   res.render("viewBullyingPrintable", {
     title: `View Incident for ${bullying.offender.name}`,
     bullying,
-    role: bullying.author.bullyingRole,
+    role: bullying.formType,
   });
 };
