@@ -10,7 +10,7 @@ block content
             thead
                 td Date Reported
                 td Date Of Offense
-                td Student Name
+                td Offender Name
                 td Author
             tbody
                 each bullying in bullyings
@@ -20,6 +20,6 @@ block content
                         td
                             a(href=`/bullying/${bullying._id}`)=bullying.incidentDate.toLocaleString()
                         td
-                            a(href=`/bullying/${bullying._id}`)=bullying.student.name
+                            a(href=`/bullying/${bullying._id}`)=bullying.offender.name
                         td
-                            a(href=`/bullying/${bullying._id}`)=bullying.teacher.name
+                            a(href=`/bullying/${bullying._id}`)=bullying.author.name

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { getStudents } = require("./userController");
 const { reportDisciplineToAdmin } = require("./mailController");
+const { reportBullyingToAdmin } = require("./mailController");
 const Discipline = mongoose.model("Discipline");
 const Bullying = mongoose.model("Bullying");
 const User = mongoose.model("User");
@@ -80,7 +81,7 @@ exports.createBullying = async (req, res) => {
   req.body.dateReported = new Date();
   const bullying = await new Bullying(req.body).save();
   reportBullyingToAdmin(bullying._id);
-  res.redirect(`/bullying/${bullying._id}`);
+  res.redirect(`/bullying/list`);
 };
 
 exports.viewBullyingList = async (req, res) => {
@@ -103,4 +104,21 @@ exports.viewBullyingList = async (req, res) => {
       bullyings,
     });
   }
+};
+
+exports.updateBullying = async (req, res) => {
+  const bullying = await Bullying.findOneAndUpdate(
+    { _id: req.params._id },
+    req.body,
+  );
+  res.redirect(`/bullying/list`);
+};
+
+exports.viewBullying = async (req, res) => {
+  const bullying = await Bullying.findOne({ _id: req.params._id });
+  res.render("viewBullying", {
+    title: `View Incident for ${bullying.offender.name}`,
+    bullying,
+    role: bullying.author.bullyingRole,
+  });
 };

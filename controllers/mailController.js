@@ -4,6 +4,7 @@ const promisify = require("es6-promisify");
 const mail = require("../handlers/mail");
 const Discipline = mongoose.model("Discipline");
 const StudentFocus = mongoose.model("studentFocus");
+const Bullying = mongoose.model("Bullying");
 
 exports.sendParentSignup = async (req, res) => {
   // 1. see if the email exists
@@ -85,6 +86,20 @@ exports.reportDisciplineToAdmin = async (disciplineId) => {
     teacherName: discipline.teacher.name,
     studentName: discipline.student.name,
     date: discipline.date.toDateString(),
+  });
+};
+exports.reportBullyingToAdmin = async (bullyingID) => {
+  const bullying = await Bullying.findOne({ _id: bullyingID });
+  JSON.parse(process.env.ADMIN_EMAIL).forEach((adminEmail) => {
+    mail.send({
+      email: adminEmail,
+      replyTo: bullying.author.email,
+      filename: "reportDiscipline",
+      subject: `New HHB Referal for ${bullying.offender.name} from ${bullying.author.name}`,
+      teacherName: bullying.author.name,
+      studentName: bullying.offender.name,
+      date: bullying.dateReported.toDateString(),
+    });
   });
 };
 exports.reportPhoneToAdmin = async (StudentFocusId) => {

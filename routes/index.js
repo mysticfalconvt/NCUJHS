@@ -347,6 +347,18 @@ router.post(
   authController.isTeacher,
   catchErrors(disciplineController.updateDiscipline),
 );
+router.post(
+  `/bullying/add/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.updateBullying),
+);
+router.get(
+  `/bullying/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewBullying),
+);
 
 /* 
 	API
