@@ -359,6 +359,12 @@ router.get(
   authController.isTeacher,
   catchErrors(disciplineController.viewBullying),
 );
+router.get(
+  `/bullying/print/:_id`,
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(disciplineController.viewPrintBullying),
+);
 
 /* 
 	API

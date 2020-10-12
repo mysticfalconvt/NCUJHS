@@ -79,6 +79,7 @@ exports.addBullying = (req, res) => {
 exports.createBullying = async (req, res) => {
   req.body.author = req.user._id;
   req.body.dateReported = new Date();
+  req.body.formType = req.user.bullyingRole || "staff";
   const bullying = await new Bullying(req.body).save();
   reportBullyingToAdmin(bullying._id);
   res.redirect(`/bullying/list`);
@@ -117,6 +118,14 @@ exports.updateBullying = async (req, res) => {
 exports.viewBullying = async (req, res) => {
   const bullying = await Bullying.findOne({ _id: req.params._id });
   res.render("viewBullying", {
+    title: `View Incident for ${bullying.offender.name}`,
+    bullying,
+    role: bullying.author.bullyingRole,
+  });
+};
+exports.viewPrintBullying = async (req, res) => {
+  const bullying = await Bullying.findOne({ _id: req.params._id });
+  res.render("viewBullyingPrintable", {
     title: `View Incident for ${bullying.offender.name}`,
     bullying,
     role: bullying.author.bullyingRole,

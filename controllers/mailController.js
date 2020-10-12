@@ -88,6 +88,7 @@ exports.reportDisciplineToAdmin = async (disciplineId) => {
     date: discipline.date.toDateString(),
   });
 };
+
 exports.reportBullyingToAdmin = async (bullyingID) => {
   const bullying = await Bullying.findOne({ _id: bullyingID });
   JSON.parse(process.env.ADMIN_EMAIL).forEach((adminEmail) => {
@@ -102,6 +103,7 @@ exports.reportBullyingToAdmin = async (bullyingID) => {
     });
   });
 };
+
 exports.reportPhoneToAdmin = async (StudentFocusId) => {
   const studentFocus = await StudentFocus.findOne({ _id: StudentFocusId });
   mail.send({
