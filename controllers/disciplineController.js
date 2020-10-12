@@ -95,7 +95,7 @@ exports.viewBullyingList = async (req, res) => {
       bullyings,
     });
   } else {
-    const bullyings = await Bullying.find({ teacher: req.user._id }).sort({
+    const bullyings = await Bullying.find({ author: req.user._id }).sort({
       date: -1,
     });
     res.render("bullyingList", {
