@@ -24,6 +24,8 @@ mixin bullyingStaffForm(bullying = {})
         input(name="studentsInterviewed" type="text" value=bullying.studentsInterviewed)
         label(for="incidentDate" ) Incident Date/Time
         input(name="incidentDate" type="text" value=`${bullying.incidentDate || bullying.date.toLocaleString()}`)
+        label(for="dateReported" ) Date/Time Reported by Student or Third-Party
+        input(name="dateReported" type="text" value=`${bullying.dateReported || bullying.date.toLocaleString()}`)
         label(for="studentWitness") Student Witness:
         input(name="studentWitness" type="text" value=bullying.studentWitness)
         label(for="employeeWitness") District Employee Witness:

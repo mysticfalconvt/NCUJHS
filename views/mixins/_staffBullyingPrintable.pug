@@ -7,7 +7,8 @@ mixin staffBullyingPrintable(bullying={})
         if bullying.reporter
             p Student Reporter: #{bullying.reporter}
         p Date of incident: #{bullying.incidentDate.toLocaleString()}
-        p Date of report by student or third party: #{bullying.dateReported.toLocaleString()}
+        if bullying.dateReported
+            p Date of report by student or third party: #{bullying.dateReported.toLocaleString()}
         p Description of conduct reported: #{bullying.description}
         if bullying.studentWitness
             p Student Witness: #{bullying.studentWitness}
