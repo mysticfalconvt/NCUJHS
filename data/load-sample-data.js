@@ -2,7 +2,11 @@ require("dotenv").config({ path: __dirname + "/../variables.env" });
 const fs = require("fs");
 
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE);
+mongoose.connect(process.env.DATABASE, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 
 // import all of our models - they need to be imported only once
@@ -45,8 +49,26 @@ async function loadData() {
     process.exit();
   }
 }
+async function updateData() {
+  try {
+    for (const user of users) {
+      console.log(user.email);
+      userUpdate = await User.findOne({ email: user.email });
+      console.log(userUpdate.name);
+    }
+
+    console.log("👍👍👍👍👍👍👍👍 Done!");
+    process.exit();
+  } catch (e) {
+    console.log("\n👎👎👎👎👎👎👎👎 Error! The Error info is below");
+    console.log(e);
+    process.exit();
+  }
+}
 if (process.argv.includes("--delete")) {
   deleteData();
+} else if (process.argv.includes("--update")) {
+  updateData();
 } else {
   loadData();
 }
