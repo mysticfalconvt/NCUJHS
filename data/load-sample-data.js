@@ -53,7 +53,21 @@ async function updateData() {
   try {
     for (const user of users) {
       console.log(user.email);
-      userUpdate = await User.findOne({ email: user.email });
+      const updateData = {
+        block1: user.block1 || null,
+        block2: user.block2 || null,
+        block3: user.block3 || null,
+        block4: user.block4 || null,
+        block5: user.block5 || null,
+        block6: user.block6 || null,
+        block7: user.block7 || null,
+        block8: user.block8 || null,
+        block9: user.block9 || null,
+      };
+      userUpdate = await User.findOneAndUpdate(
+        { email: user.email },
+        updateData,
+      );
       console.log(userUpdate.name);
     }
 
