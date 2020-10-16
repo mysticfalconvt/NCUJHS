@@ -85,6 +85,7 @@ const userSchema = new Schema({
   block7: mongoose.Schema.ObjectId,
   block8: mongoose.Schema.ObjectId,
   block9: mongoose.Schema.ObjectId,
+  teacherSubject: String,
 });
 
 function autopopulate(next) {

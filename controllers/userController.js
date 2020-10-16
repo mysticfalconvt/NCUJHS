@@ -21,6 +21,15 @@ updateCheck = (body) => {
       trimester1: body.trimester1 || null,
       trimester2: body.trimester2 || null,
       trimester3: body.trimester3 || null,
+      block1: body.block1 || null,
+      block2: body.block2 || null,
+      block3: body.block3 || null,
+      block4: body.block4 || null,
+      block5: body.block5 || null,
+      block6: body.block6 || null,
+      block7: body.block7 || null,
+      block8: body.block8 || null,
+      block9: body.block9 || null,
     };
   } else if (body.currentAssignment) {
     return {
@@ -276,6 +285,15 @@ exports.register = async (req, res, next) => {
     trimester1: req.body.trimester1 || null,
     trimester2: req.body.trimester2 || null,
     trimester3: req.body.trimester3 || null,
+    block1: body.block1 || null,
+    block2: body.block2 || null,
+    block3: body.block3 || null,
+    block4: body.block4 || null,
+    block5: body.block5 || null,
+    block6: body.block6 || null,
+    block7: body.block7 || null,
+    block8: body.block8 || null,
+    block9: body.block9 || null,
   });
   const register = promisify(User.register, User);
   await register(user, req.body.password);
