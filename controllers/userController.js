@@ -172,6 +172,15 @@ exports.userSearchResult = async (req, res) => {
         { trimester1: account._id },
         { trimester2: account._id },
         { trimester3: account._id },
+        { block1: account._id },
+        { block2: account._id },
+        { block3: account._id },
+        { block4: account._id },
+        { block5: account._id },
+        { block6: account._id },
+        { block7: account._id },
+        { block8: account._id },
+        { block9: account._id },
       ],
     });
     // const students = [...taStudents, ...classStudents];
