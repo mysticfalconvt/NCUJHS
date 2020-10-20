@@ -76,18 +76,30 @@ const userSchema = new Schema({
   bullyingRole: {
     type: String,
   },
+  block1: mongoose.Schema.ObjectId,
+  block2: mongoose.Schema.ObjectId,
+  block3: mongoose.Schema.ObjectId,
+  block4: mongoose.Schema.ObjectId,
+  block5: mongoose.Schema.ObjectId,
+  block6: mongoose.Schema.ObjectId,
+  block7: mongoose.Schema.ObjectId,
+  block8: mongoose.Schema.ObjectId,
+  block9: mongoose.Schema.ObjectId,
+  teacherSubject: String,
 });
 
 function autopopulate(next) {
   this.populate("ta");
   this.populate("child");
-  this.populate("math");
-  this.populate("languageArts");
-  this.populate("science");
-  this.populate("socialStudies");
-  this.populate("trimester1");
-  this.populate("trimester2");
-  this.populate("trimester3");
+  this.populate("block1");
+  this.populate("block2");
+  this.populate("block3");
+  this.populate("block4");
+  this.populate("block5");
+  this.populate("block6");
+  this.populate("block7");
+  this.populate("block8");
+  this.populate("block9");
   next();
 }
 

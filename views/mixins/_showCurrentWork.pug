@@ -15,46 +15,68 @@ mixin showCurrentWork(user = {})
                         a(href=`/pbis/add/student/${user._id}/quick`) Quick Pbis
                 table.table
                     thead 
+                        td Block
                         td Class
                         td Teacher
                         td Current Assignment to work on 
-                    if user.math
+                    if user.block1
                         tr
-                            td Math
-                            td= user.math.name
-                            td= user.math.currentAssignment
-                    if user.languageArts
+                            td block1
+                            td= user.block1.teacherSubject
+                            td= user.block1.name
+                            td= user.block1.currentAssignment
+                    if user.block2
                         tr
-                            td languageArts
-                            td= user.languageArts.name
-                            td= user.languageArts.currentAssignment
-                    if user.science
+                            td block2
+                            td= user.block2.teacherSubject
+                            td= user.block2.name
+                            td= user.block2.currentAssignment
+                    if user.block3
                         tr
-                            td science
-                            td= user.science.name
-                            td= user.science.currentAssignment
-                    if user.socialStudies
+                            td block3
+                            td= user.block3.teacherSubject
+                            td= user.block3.name
+                            td= user.block3.currentAssignment
+                    if user.block4
                         tr
-                            td socialStudies
-                            td= user.socialStudies.name
-                            td= user.socialStudies.currentAssignment
-                    if user.trimester1
+                            td block4
+                            td= user.block4.teacherSubject
+                            td= user.block4.name
+                            td= user.block4.currentAssignment
+                    if user.block5
                         tr
-                            td trimester1
-                            td= user.trimester1.name
-                            td= user.trimester1.currentAssignment
-                    if user.trimester2
+                            td block5
+                            td= user.block5.teacherSubject
+                            td= user.block5.name
+                            td= user.block5.currentAssignment
+                    if user.block6
                         tr
-                            td trimester2
-                            td= user.trimester2.name
-                            td= user.trimester2.currentAssignment
-                    if user.trimester3
+                            td block6
+                            td= user.block6.teacherSubject
+                            td= user.block6.name
+                            td= user.block6.currentAssignment
+                    if user.block7
                         tr
-                            td trimester3
-                            td= user.trimester3.name
-                            td= user.trimester3.currentAssignment
+                            td block7
+                            td= user.block7.teacherSubject
+                            td= user.block7.name
+                            td= user.block7.currentAssignment
+                    if user.block8
+                        tr
+                            td block8
+                            td= user.block8.teacherSubject
+                            td= user.block8.name
+                            td= user.block8.currentAssignment
+                    if user.block9
+                        tr
+                            td block9
+                            td= user.block9.teacherSubject
+                            td= user.block9.name
+                            td= user.block9.currentAssignment
+                 
                     if !currentPath.startsWith('/ta')
                         if user.ta
                             tr
                                 td TA
+                                td
                                 td=user.ta.name
