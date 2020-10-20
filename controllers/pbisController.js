@@ -323,6 +323,9 @@ exports.taTeamList = async (req, res) => {
 };
 
 exports.createPbisTeam = async (req, res) => {
+  if (!req.body.teacher3) {
+    req.body.teacher3 = null;
+  }
   const pbisTeam = await new PbisTeam(req.body).save();
   res.redirect("/pbis/teamList");
 };
