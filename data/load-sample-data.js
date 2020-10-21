@@ -37,7 +37,7 @@ async function loadData() {
   try {
     // await Store.insertMany(stores);
     // await Review.insertMany(reviews);
-    await User.insertMany(users);
+    // await User.insertMany(users);
     // await Calendar.insertMany(calendars);
     console.log("👍👍👍👍👍👍👍👍 Done!");
     process.exit();
@@ -52,23 +52,12 @@ async function loadData() {
 async function updateData() {
   try {
     for (const user of users) {
-      console.log(user.email);
+      console.log(user._id);
       const updateData = {
-        block1: user.block1 || null,
-        block2: user.block2 || null,
-        block3: user.block3 || null,
-        block4: user.block4 || null,
-        block5: user.block5 || null,
-        block6: user.block6 || null,
-        block7: user.block7 || null,
-        block8: user.block8 || null,
-        block9: user.block9 || null,
+        teacherSubject: user.teacherSubject,
       };
-      userUpdate = await User.findOneAndUpdate(
-        { email: user.email },
-        updateData,
-      );
-      console.log(userUpdate.name);
+      userUpdate = await User.findOneAndUpdate({ _id: user._id }, updateData);
+      console.log(userUpdate.teacherSubject);
     }
 
     console.log("👍👍👍👍👍👍👍👍 Done!");
