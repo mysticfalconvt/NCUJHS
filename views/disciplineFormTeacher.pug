@@ -35,7 +35,7 @@ block content
                         label(for=choice) #{choice}
             
             label(for="studentConductTeacher") Inappropriate Student Conduct
-            - const studentConductTeacherChoices = ['Inapropriate Language', 'Physical Conduct', 'Non-Compliance', 'Disruption', 'Property Misuse', 'Other Conduct']
+            - const studentConductTeacherChoices = ['Inappropriate  Language', 'Physical Conduct', 'Non-Compliance', 'Disruption', 'Property Misuse', 'Other Conduct']
             - const studentConductTeacher = discipline.studentConductTeacher || []
             ul.tags
                 each choice in studentConductTeacherChoices

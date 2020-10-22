@@ -52,12 +52,18 @@ async function loadData() {
 async function updateData() {
   try {
     for (const user of users) {
-      console.log(user._id);
+      console.log(user.email);
       const updateData = {
-        teacherSubject: user.teacherSubject,
+        block6: user.block6,
+        block7: user.block7,
+        block8: user.block8,
+        block9: user.block9,
       };
-      userUpdate = await User.findOneAndUpdate({ _id: user._id }, updateData);
-      console.log(userUpdate.teacherSubject);
+      userUpdate = await User.findOneAndUpdate(
+        { email: user.email },
+        updateData,
+      );
+      console.log(userUpdate.name);
     }
 
     console.log("👍👍👍👍👍👍👍👍 Done!");
