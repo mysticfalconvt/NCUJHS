@@ -104,7 +104,11 @@ exports.updateStudentFocus = async (req, res) => {
   );
   res.redirect(`/studentFocus/search/category`);
 };
-
+const confirmOwner = (calendar, user) => {
+  if (!calendar.author.equals(user._id)) {
+    throw Error("You must own an event in order to edit it!");
+  }
+};
 exports.editStudentFocus = async (req, res) => {
   //find the event given id
   const studentFocus = await StudentFocus.findOne({ _id: req.params._id });
