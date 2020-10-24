@@ -1,4 +1,6 @@
 include mixins/_staffBullyingPrintable
+include mixins/_adminBullyingPrintable
+//- include mixins/_designeeBullyingPrintable
 doctype html
 html
   head
@@ -14,8 +16,8 @@ html
             .card
                 h1=bullying.offender.name
                 if "admin".includes(role)
-                    +bullyingAdminForm(bullying)
+                    +adminBullyingPrintable(bullying)
                 else if "designee".includes(role)
-                    +bullyingDesigneeForm(bullying)
+                    +designeeBullyingPrintable(bullying)
                 else 
                     +staffBullyingPrintable(bullying)
