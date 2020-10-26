@@ -233,7 +233,10 @@ exports.createPbis = async (req, res) => {
 };
 
 exports.getWeeklyPbis = async (req, res) => {
-  let teachers = await User.find({ isTeacher: { $ne: "" } });
+  let teachers = await User.find({
+    $and: [{ isTeacher: "true" }, { taPbisCount: { $gt: 0 } }],
+  });
+  console.log(teachers);
   let teachersWithWinners = [];
   for (let teacher of teachers) {
     const taStudentCount = await User.find({
