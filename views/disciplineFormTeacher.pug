@@ -5,6 +5,8 @@ include mixins/_callbackForm
 block content 
     .inner 
         h2 #{title}
+        p
+            a(href="/bullying/addNew") Was this incident related to HHB?  Click Here
         form(action=`/discipline/add/${discipline._id || ''}` method="POST" class="card" )
             label(for="studentName") Student Name
             .student
@@ -33,7 +35,7 @@ block content
                         label(for=choice) #{choice}
             
             label(for="studentConductTeacher") Inappropriate Student Conduct
-            - const studentConductTeacherChoices = ['Inapropriate Language', 'Physical Conduct', 'Non-Compliance', 'Disruption', 'Property Misuse', 'Other Conduct']
+            - const studentConductTeacherChoices = ['Inappropriate  Language', 'Physical Conduct', 'Non-Compliance', 'Disruption', 'Property Misuse', 'Other Conduct']
             - const studentConductTeacher = discipline.studentConductTeacher || []
             ul.tags
                 each choice in studentConductTeacherChoices
@@ -42,7 +44,7 @@ block content
                         label(for=choice) #{choice}
 
             label(for="teacherActions") Teacher Actions
-            - const teacherActionChoices = ['Verbal Warning', 'Buddy Room', 'Conference with student', 'Parent Contact [email or call]', 'Planning Room Referral', 'Follow up plan', 'Loss of privelege', 'Detention with teacher', 'Individualized Instruction', 'Guidance Referral', 'Refer to Administrator', 'Other Action']
+            - const teacherActionChoices = ['Verbal Warning', 'Buddy Room', 'Conference with student', 'Parent Contact [email or call]', 'Planning Room Referral', 'Follow up plan', 'Loss of privilege', 'Detention with teacher', 'Individualized Instruction', 'Guidance Referral', 'Refer to Administrator', 'Other Action']
             - const teacherActions = discipline.teacherActions || []
             ul.tags
                 each teacherChoice in teacherActionChoices

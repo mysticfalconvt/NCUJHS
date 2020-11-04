@@ -3204,6 +3204,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher1TeacherSearch"), "teacher1");
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher2TeacherSearch"), "teacher2");
 (0, _typeAheadTeacher2.default)((0, _bling.$)(".teacher3TeacherSearch"), "teacher3");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block1TeacherSearch"), "block1");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block2TeacherSearch"), "block2");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block3TeacherSearch"), "block3");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block4TeacherSearch"), "block4");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block5TeacherSearch"), "block5");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block6TeacherSearch"), "block6");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block7TeacherSearch"), "block7");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block8TeacherSearch"), "block8");
+(0, _typeAheadTeacher2.default)((0, _bling.$)(".block9TeacherSearch"), "block9");
 (0, _typeAheadUser2.default)((0, _bling.$)(".userSearch"));
 (0, _typeAheadInfo2.default)((0, _bling.$)(".infoSearch"));
 

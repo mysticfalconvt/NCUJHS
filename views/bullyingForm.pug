@@ -1,0 +1,15 @@
+extends layout
+
+include mixins/_bullyingAdminForm
+include mixins/_bullyingDesigneeForm
+include mixins/_bullyingStaffForm
+
+block content
+    .inner
+        h2 #{title}
+        if "admin".includes(role)
+            +bullyingAdminForm(bullying)
+        else if "designee".includes(role)
+            +bullyingDesigneeForm(bullying)
+        else 
+            +bullyingStaffForm(bullying)

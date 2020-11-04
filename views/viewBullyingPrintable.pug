@@ -1,0 +1,23 @@
+include mixins/_staffBullyingPrintable
+include mixins/_adminBullyingPrintable
+//- include mixins/_designeeBullyingPrintable
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='/dist/style.css')
+    link(rel="shortcut icon" type="image/png" href="/images/icons/falconlogo.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+
+
+    block content
+        .inner
+            .card
+                h1=bullying.offender.name
+                if "admin".includes(role)
+                    +adminBullyingPrintable(bullying)
+                else if "designee".includes(role)
+                    +designeeBullyingPrintable(bullying)
+                else 
+                    +staffBullyingPrintable(bullying)

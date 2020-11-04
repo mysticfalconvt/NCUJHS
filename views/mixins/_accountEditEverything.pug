@@ -17,19 +17,19 @@ mixin accountEditEverything(account = {})
                 .search
                     .search__results
                 input(type="hidden" id="ta" name="ta"  value=account.ta)
-        .mathTeacherSearch
-            if account.math
-                label(for="mathName") Math Teacher
-                input(type="text" id="search" name="mathName" value=account.math.name)
+        .block1TeacherSearch
+            if account.block1
+                label(for="block1Name") block1 Teacher
+                input(type="text" id="search" name="block1Name" value=account.block1.name)
                 .search
                     .search__results
-                input(type="hidden" id="math" name="math" readonly="readonly" value=account.math._id)
+                input(type="hidden" id="block1" name="block1" readonly="readonly" value=account.block1._id)
             else
-                label(for="mathName") Math Teacher
-                input(type="text" id="search" name="mathName" value=account.math)
+                label(for="block1Name") block1 Teacher
+                input(type="text" id="search" name="block1Name" value=account.block1)
                 .search
                     .search__results
-                input(type="hidden" id="math" name="math"  value=account.math)
+                input(type="hidden" id="block1" name="block1"  value=account.block1)
         .languageArtsTeacherSearch
             if account.languageArts
                 label(for="languageArtsName") languageArts Teacher

@@ -47,7 +47,11 @@ exports.updateInfo = async (req, res) => {
   req.flash("success", `Sucessfully Updated <strong>${info.title}</strong>.`);
   res.redirect(`/info/search/category`);
 };
-
+const confirmOwner = (calendar, user) => {
+  if (!calendar.author.equals(user._id)) {
+    throw Error("You must own an event in order to edit it!");
+  }
+};
 exports.editInfo = async (req, res) => {
   //find the event given id
   const info = await Info.findOne({ _id: req.params._id });

@@ -8,7 +8,7 @@ mixin calendarCard(calendar={})
         .calendar__details
             if calendar.link
                 if calendar.link.startsWith('http')
-                    a(href=`${calendar.link}`) Link to: #{calendar.linkTitle|| 'LINK'}
+                    a(href=`${calendar.link}` target="_blank") Link to: #{calendar.linkTitle|| 'LINK'}
                 else
-                    a(href=`//${calendar.link}`) Link to: #{calendar.linkTitle || 'LINK'}
+                    a(href=`//${calendar.link}` target="_blank") Link to: #{calendar.linkTitle || 'LINK'}
             p=calendar.description.split(' ').slice(0,25).join(' ')

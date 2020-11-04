@@ -2,6 +2,8 @@ mixin userSearch(student = {})
   form(action=`/user/${id || ''}` method="get" class="card" )
 
     label(for="userName") Search for an account
+    if (user.isteacher || user.isAdmin)
+      a.button(href="/teacher/search/name") View Teachers
     .userSearch
       input(name="userName" id="userName" type="text" )
       .search

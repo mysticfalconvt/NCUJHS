@@ -162,13 +162,22 @@ exports.addPbis = async (req, res) => {
   if (req.user.isTeacher) {
     const students = await User.find({
       $or: [
-        { math: req.user._id },
-        { science: req.user._id },
-        { languageArts: req.user._id },
-        { socialStudies: req.user._id },
-        { trimester1: req.user._id },
-        { trimester2: req.user._id },
-        { trimester3: req.user._id },
+        // { math: req.user._id },
+        // { science: req.user._id },
+        // { languageArts: req.user._id },
+        // { socialStudies: req.user._id },
+        // { trimester1: req.user._id },
+        // { trimester2: req.user._id },
+        // { trimester3: req.user._id },
+        { block1: req.user._id },
+        { block2: req.user._id },
+        { block3: req.user._id },
+        { block4: req.user._id },
+        { block5: req.user._id },
+        { block6: req.user._id },
+        { block7: req.user._id },
+        { block8: req.user._id },
+        { block9: req.user._id },
       ],
     });
     res.render("pbisForm", { title: "Virtual PBIS Business Card", students });
@@ -224,7 +233,10 @@ exports.createPbis = async (req, res) => {
 };
 
 exports.getWeeklyPbis = async (req, res) => {
-  let teachers = await User.find({ isTeacher: { $ne: "" } });
+  let teachers = await User.find({
+    $and: [{ isTeacher: "true" }, { taPbisCount: { $gt: 0 } }],
+  });
+  console.log(teachers);
   let teachersWithWinners = [];
   for (let teacher of teachers) {
     const taStudentCount = await User.find({
@@ -314,6 +326,9 @@ exports.taTeamList = async (req, res) => {
 };
 
 exports.createPbisTeam = async (req, res) => {
+  if (!req.body.teacher3) {
+    req.body.teacher3 = null;
+  }
   const pbisTeam = await new PbisTeam(req.body).save();
   res.redirect("/pbis/teamList");
 };

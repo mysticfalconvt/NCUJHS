@@ -1,0 +1,28 @@
+mixin adminBullyingPrintable(bullying={})
+    p Staff HHB Form
+    .card
+        p Alleged Student Offender: <strong>#{bullying.offender.name}</Strong>
+        p District Employee Author: <strong>#{bullying.author.name}</Strong>
+        p Direct Witness: #{bullying.witnessed}
+        if bullying.reporter
+            p Reporter: #{bullying.reporter}
+        p Date of incident: #{bullying.incidentDate.toLocaleString()}
+        if bullying.dateReported
+            p Date of report by student or third party: #{bullying.dateReported.toLocaleString()}
+        p Description of conduct reported: #{bullying.description}
+        if bullying.studentWitness
+            p Student Witness: #{bullying.studentWitness}
+        if bullying.employeeWitness
+            p District Employee Witness: #{bullying.employeeWitness}
+        if bullying.studentsInterviewed
+            p Students Interviewed: #{bullying.studentsInterviewed}
+        if bullying.initialActions
+            p Initial Actions by Administrator - if witnessed event: #{bullying.initialActions}
+        if bullying.nextSteps
+            p Next Steps to be taken by Employee Author: #{bullying.nextSteps}
+        p Reported to Building Administrator: #{bullying.dateReported.toLocaleString()}
+        P Signature of Designee or Building Administrator acknowledging receipt:
+        p
+        
+        p
+            hr

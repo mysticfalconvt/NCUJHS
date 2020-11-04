@@ -3,8 +3,9 @@ extends layout
 block content 
     .inner 
         h2 #{title}
-        if user.isTeacher
+        if user.isTeacher || user.isAdmin || user.isPara
                 a.title_link(href="/discipline/addNew") Add Student Conduct Referal
+                a.title_link(href="/bullying/list") View Hazing Harassment Bullying
                 hr
         table.table
             thead

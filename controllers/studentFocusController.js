@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { findOneAndUpdate } = require("../models/User");
 const StudentFocus = mongoose.model("studentFocus");
 const User = mongoose.model("User");
+const { reportPhoneToAdmin } = require("./mailController");
 
 updateCellCount = async (student) => {
   const cellphoneCount = await StudentFocus.find({
@@ -76,6 +77,7 @@ exports.createStudentFocus = async (req, res) => {
   const isCellPhone = req.body.category == "Cell Phone Violation";
   if (isCellPhone) {
     updateCellCount(req.body.student);
+    reportPhoneToAdmin(studentFocus);
   }
   req.flash("success", `Successfully Created`);
   res.redirect(`/studentFocus/search/category`);
@@ -102,7 +104,11 @@ exports.updateStudentFocus = async (req, res) => {
   );
   res.redirect(`/studentFocus/search/category`);
 };
-
+const confirmOwner = (calendar, user) => {
+  if (!calendar.teacher.equals(user._id)) {
+    throw Error("You must own an event in order to edit it!");
+  }
+};
 exports.editStudentFocus = async (req, res) => {
   //find the event given id
   const studentFocus = await StudentFocus.findOne({ _id: req.params._id });

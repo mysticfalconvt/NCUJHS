@@ -1,0 +1,40 @@
+mixin bullyingStaffForm(bullying = {})
+    form(action=`/bullying/add/${bullying._id || ''}` method="POST" class="card" )
+        label(for="studentName") Identity of Alleged Student Offender
+        .student
+            if bullying.offender
+                input(name="studentName" value=bullying.offender.name disabled="disabled")
+            else
+                input(name="studentName" id="search" type="text" autofocus value=bullying.offender)
+            .search
+                .search__results
+        if bullying.offender
+            .search__input
+                input(name="offender" id="id" value=bullying.offender._id hidden)
+        else
+            .search__input
+                input(name="offender" id="id" value=bullying.offender hidden)
+        label(for="witnessed") Witnessed:
+        select(type="text" name="witnessed" ) 
+            option(value="Yes" selected) Yes
+            option(value="No" selected= bullying.witnessed === "No") No
+        label(for="reporter") Reported by:
+        input(name="reporter" type="text" value=bullying.reporter)
+        label(for="studentsInterviewed") Students Interviewed
+        input(name="studentsInterviewed" type="text" value=bullying.studentsInterviewed)
+        label(for="incidentDate" ) Incident Date/Time
+        input(name="incidentDate" type="text" value=`${bullying.incidentDate || bullying.date.toLocaleString()}`)
+        label(for="dateReported" ) Date/Time Reported by Student or Third-Party
+        input(name="dateReported" type="text" value=`${bullying.dateReported || bullying.date.toLocaleString()}`)
+        label(for="studentWitness") Student Witness:
+        input(name="studentWitness" type="text" value=bullying.studentWitness)
+        label(for="employeeWitness") District Employee Witness:
+        input(name="employeeWitness" type="text" value=bullying.employeeWitness)
+        
+        label(for="initialActions") Initial Actions Taken by Employee Author if witness to events:
+        textarea(rows="3" type="text" name="initialActions" value=bullying.initialActions)=bullying.initialActions
+        label(for="nextSteps") Next Steps to be taken by Employee author:
+        textarea(rows="3" type="text" name="nextSteps" value=bullying.nextSteps)=bullying.nextSteps
+        label(for="description") Description of the Conduct reported:
+        textarea(rows="10" type="text" name="description" value=bullying.description)=bullying.description
+        input(type="submit" value="Save →" class="button")

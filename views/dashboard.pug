@@ -19,19 +19,19 @@ block content
                 .hero
                     if (user.isTeacher || user.isAdmin)
                         a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit" target="_blank") ** Attendance **
-                        a.title_link(href="https://forms.gle/rV7J3M7pv48NrgZL9" target="_blank") Discipline
+                        a.title_link(href="/discipline/addNew") Discipline
                     if (user.isTeacher || user.isAdmin ||user.isPara)
                         a.title_link(href="/pbis/add") PBIS Business Card
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSeUuCOIQ4ccf3rfHiIcK7a46cSQtN_s3hl4hmmY1Zm9d6C3fw/viewform?usp=sf_link" target="_blank") Covid Survey
                     if ( user.isPbis || user.isAdmin)
                         a.title_link(href="/pbis/search/category") PBIS DATA
                     if user.isParent
-                        a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSexsbbbxO00gE9nJTfxbQzoh211eys7tgnjcDgt7BI07M8o6A/viewform?usp=sf_link" target="blank") Covid Survey
+                        a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSexsbbbxO00gE9nJTfxbQzoh211eys7tgnjcDgt7BI07M8o6A/viewform?usp=sf_link" target="_blank") Covid Survey
                     if !user.isParent
-                        a.title_link(href="https://forms.gle/EddqxuGvcyDATRXB9") Weekly Meals
+                        a.title_link(href="https://forms.gle/EddqxuGvcyDATRXB9" target="_blank") Weekly Meals
                     if !(user.isTeacher || user.isAdmin ||user.isPara || user.isParent)
-                        a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSex56-bP4lKBW8jVZooDk6s2G14I7mr4wzpDoc_6g_0Lye8Cw/viewform?usp=sf_link" target="blank") Covid Survey
-                        a.title_link(href="https://forms.gle/GRhwiaQsFvfiWGmdA") Athletic Signup
+                        a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSex56-bP4lKBW8jVZooDk6s2G14I7mr4wzpDoc_6g_0Lye8Cw/viewform?usp=sf_link" target="_blank") Covid Survey
+                        a.title_link(href="https://forms.gle/GRhwiaQsFvfiWGmdA" target="_blank") Athletic Signup
         if user
             
 
