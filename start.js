@@ -34,6 +34,7 @@ require("./models/studentFocus");
 require("./models/Pbis");
 require("./models/PbisTeam");
 require("./models/Discipline");
+require("./models/Progress");
 
 // Start our app!
 const app = require("./app");
