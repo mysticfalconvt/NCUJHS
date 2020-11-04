@@ -47,6 +47,7 @@ exports.viewDisciplineList = async (req, res) => {
   if (
     (req.user.name.search("Colleen Storrings") >= 0) |
     (req.user.name.search("Mr. Boskind") >= 0) |
+    (req.user.name.search("Meghan Corbett") >= 0) |
     (req.user.name.search("Nicole Corbett") >= 0)
   ) {
     const disciplines = await Discipline.find().sort({ date: -1 });
