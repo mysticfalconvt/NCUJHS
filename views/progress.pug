@@ -1,0 +1,9 @@
+extends layout
+include mixins/_progressForm
+block content
+    .inner
+        h1=title    
+        form.form(action="/progress" method="POST")
+            each student in students
+                +progressForm(student)
+            input.button(type="submit" value="Submit →")

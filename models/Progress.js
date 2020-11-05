@@ -17,15 +17,16 @@ const progressSchema = new mongoose.Schema({
     ref: "User",
     required: "You must supply a student!",
   },
-  rating: [
-    {
-      rating: Number,
-      date: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
+  rating: Number,
+  //  [
+  //   {
+  //     rating: Number,
+  //     date: {
+  //       type: Date,
+  //       default: Date.now,
+  //     },
+  //   },
+  // ],
 });
 
 function autopopulate(next) {
