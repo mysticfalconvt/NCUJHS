@@ -28,7 +28,6 @@ exports.updateProgress = async (req, res) => {
     if (req.body.hasOwnProperty(key)) {
       item = req.body[key];
       if (item > 0) {
-        console.log(item);
         const update = {
           teacher: req.user._id,
           student: key,
@@ -39,11 +38,20 @@ exports.updateProgress = async (req, res) => {
       }
     }
   }
-  console.log(updates);
   const progressUpdates = await Progress.insertMany(updates);
-  res.json(progressUpdates);
+  res.redirect("/myProgress");
   // res.render("progress", {
   //   title: "Progress Report",
   //   student: students,
   // });
+};
+
+exports.displayProgresses = async (req, res) => {
+  progressUpdates = await Progress.find({ teacher: req.user._id }).sort({
+    created: -1,
+  });
+  res.render("progressDisplay", {
+    title: "Progress Reports",
+    progresses: progressUpdates,
+  });
 };

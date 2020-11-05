@@ -1,0 +1,8 @@
+extends layout
+include mixins/_progressDisplay
+block content
+    .inner
+        h1=title    
+        if progresses
+            each progress in progresses
+                +progressDisplay(progress)
