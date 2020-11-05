@@ -18,6 +18,7 @@ const progressSchema = new mongoose.Schema({
     required: "You must supply a student!",
   },
   rating: Number,
+  class: String,
   //  [
   //   {
   //     rating: Number,

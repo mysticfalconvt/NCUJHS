@@ -5,11 +5,21 @@ const Progress = mongoose.model("Progress");
 const User = mongoose.model("User");
 
 exports.addProgress = async (req, res) => {
-  students = await User.find({ math: req.user._id });
-  res.render("progress", {
-    title: "Progress Report",
-    student: students,
-  });
+  const block = req.params.block;
+  const sort = {};
+  sort[block] = req.user._id;
+  const students = await User.find(sort);
+  if (Boolean(students[0])) {
+    res.render("progress", {
+      title: "Progress Report",
+      students: students,
+    });
+  } else {
+    res.render("progress", {
+      title: "Progress Report",
+      students: false,
+    });
+  }
 };
 
 exports.updateProgress = async (req, res) => {
@@ -18,8 +28,13 @@ exports.updateProgress = async (req, res) => {
     if (req.body.hasOwnProperty(key)) {
       item = req.body[key];
       if (item > 0) {
-        console.log("stuffffff");
-        update = { teacher: req.user._id, student: key, rating: item };
+        console.log(item);
+        const update = {
+          teacher: req.user._id,
+          student: key,
+          rating: item,
+          class: req.user.teacherSubject,
+        };
         updates.push(update);
       }
     }
