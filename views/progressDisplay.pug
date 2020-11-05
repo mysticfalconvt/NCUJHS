@@ -4,5 +4,6 @@ block content
     .inner
         h1=title    
         if progresses
-            each progress in progresses
-                +progressDisplay(progress)
+            .titleContainer
+                each progress in progresses
+                    +progressDisplay(progress)
