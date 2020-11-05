@@ -1,0 +1,20 @@
+extends layout
+include mixins/_progressForm
+block content
+    .inner
+        h1=title    
+        if students
+
+            form.form(action="/progress" method="POST")
+                each student in students
+                    +progressForm(student)
+                input.button(type="submit" value="Submit →")
+        else
+            p
+                a(href="/progress/block6") Block 1
+            p
+                a(href="/progress/block7") Block 2
+            p
+                a(href="/progress/block8") Block 3
+            p
+                a(href="/progress/block9") Block 4

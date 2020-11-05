@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { getStudents } = require("./userController");
 const { reportDisciplineToAdmin } = require("./mailController");
 const { reportBullyingToAdmin } = require("./mailController");
 const Discipline = mongoose.model("Discipline");

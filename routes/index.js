@@ -10,6 +10,7 @@ const mailController = require("../controllers/mailController");
 const taController = require("../controllers/taController");
 const pbisController = require("../controllers/pbisController");
 const disciplineController = require("../controllers/disciplineController");
+const progressController = require("../controllers/progressController");
 const { catchErrors } = require("../handlers/errorHandlers");
 
 // Do work here
@@ -287,6 +288,29 @@ router.get(
   authController.isLoggedIn,
   authController.isTeacher,
   catchErrors(mailController.sendParentCallbackCount),
+);
+
+/*
+  Progress Report Routes
+*/
+
+router.get(
+  "/progress",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(progressController.addProgress),
+);
+router.get(
+  "/progress/:block",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(progressController.addProgress),
+);
+router.post(
+  "/progress",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(progressController.updateProgress),
 );
 
 /* 
