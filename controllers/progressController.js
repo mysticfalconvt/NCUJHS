@@ -27,7 +27,7 @@ exports.updateProgress = async (req, res) => {
   for (const key in req.body) {
     if (req.body.hasOwnProperty(key)) {
       item = req.body[key];
-      if (item > 0) {
+      if (item >= 0) {
         const update = {
           teacher: req.user._id,
           student: key,
