@@ -39,9 +39,19 @@ exports.updateProgress = async (req, res) => {
     }
   }
   const progressUpdates = await Progress.insertMany(updates);
-  res.json(progressUpdates);
+  res.redirect("/myProgress");
   // res.render("progress", {
   //   title: "Progress Report",
   //   student: students,
   // });
+};
+
+exports.displayProgresses = async (req, res) => {
+  progressUpdates = await Progress.find({ teacher: req.user._id }).sort({
+    created: -1,
+  });
+  res.render("progressDisplay", {
+    title: "Progress Reports",
+    progresses: progressUpdates,
+  });
 };

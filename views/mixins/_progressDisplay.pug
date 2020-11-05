@@ -1,0 +1,6 @@
+mixin progressDisplay(progress={})
+    .PBIS_Container
+        progress.PBIS_Progress(value=progress.rating max="5")
+        span.PBIS_Title=progress.student.name
+        span.PBIS_Title=progress.class
+        span.PBIS_Title=progress.created.toLocaleDateString()
