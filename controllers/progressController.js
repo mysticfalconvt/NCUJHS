@@ -11,12 +11,12 @@ exports.addProgress = async (req, res) => {
   const students = await User.find(sort);
   if (Boolean(students[0])) {
     res.render("progress", {
-      title: "Progress Report",
+      title: "Log Progress Report",
       students: students,
     });
   } else {
     res.render("progress", {
-      title: "Progress Report",
+      title: "Progress Reporting",
       students: false,
     });
   }
@@ -51,7 +51,7 @@ exports.displayProgresses = async (req, res) => {
     created: -1,
   });
   res.render("progressDisplay", {
-    title: "Progress Reports",
+    title: "View Progress Reports",
     progresses: progressUpdates,
   });
 };

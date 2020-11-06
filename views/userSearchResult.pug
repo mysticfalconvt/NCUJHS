@@ -3,6 +3,7 @@ extends layout
 include mixins/_callbackCard
 include mixins/_showCurrentWork
 include mixins/_pbisCards
+include mixins/_progressDisplay
 block content
     .inner
         h2= title
@@ -28,3 +29,7 @@ block content
                 +callbackCard(callback)
         +showCurrentWork(account)
         +pbisCards(pbis,account)
+        if progresses
+            .titleContainer
+                each progress in progresses
+                    +progressDisplay(progress)
