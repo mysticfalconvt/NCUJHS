@@ -1,5 +1,7 @@
 mixin progressDisplay(progress={})
     .PBIS_Container
+        progress.PBIS_Progress(value=progress.average max="5")
+        span.PBIS_Title=typeof(progress.average)
         progress.PBIS_Progress(value=progress.rating max="5")
         span.PBIS_Title Pretending to Try   -   trying    -   Sycophant
         span.PBIS_Title=progress.student.name

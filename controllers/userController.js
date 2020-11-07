@@ -6,7 +6,8 @@ const Progress = mongoose.model("Progress");
 const promisify = require("es6-promisify");
 const { TRUE } = require("node-sass");
 const { findOneAndUpdate, find } = require("../models/User");
-
+const { getLatestProgresses } = require("../controllers/progressController");
+const { catchErrors } = require("../handlers/errorHandlers");
 updateCheck = (body) => {
   if (body.ta) {
     return {
@@ -226,10 +227,10 @@ exports.userSearchResult = async (req, res) => {
     })
       .sort({ date: -1 })
       .limit(10);
-    const progresses = await Progress.find({ student: account._id });
+    const progresses = await getLatestProgresses(account._id);
+
     // const ta = await User.find({ ta: req.params._id });
     //render out the edit form so they can edit
-    console.log(typeof progresses);
     res.render("userSearchResult", {
       title: `${account.name}'s details`,
       account,
