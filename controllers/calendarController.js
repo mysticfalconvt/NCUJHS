@@ -163,7 +163,7 @@ exports.dashboard = async (req, res) => {
         const progress = await getLatestProgresses(student._id);
         progresses.push(...progress);
       }
-      console.log(progresses);
+      // console.log(progresses);
     }
   }
 

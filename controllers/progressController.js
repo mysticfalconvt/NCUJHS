@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { update } = require("../models/User");
-const { userSearchResult } = require("./userController");
+// const { update } = require("../models/User");
+// const { userSearchResult } = require("./userController");
 const Progress = mongoose.model("Progress");
 const User = mongoose.model("User");
 
@@ -73,14 +73,15 @@ const getLatestProgressAndAverage = async (studentId, className) => {
 };
 
 exports.getLatestProgresses = async (studentId) => {
-  let progresses = [];
+  let getProgresses = [];
+  console.log("sdfasdfasdfasdffsa");
 
   const classNames = await Progress.distinct("class", { student: studentId });
   for (let className of classNames) {
     const latest = await getLatestProgressAndAverage(studentId, className);
-    progresses.push(latest);
+    getProgresses.push(latest);
   }
-  return progresses;
+  return getProgresses;
 };
 
 exports.displayAllProgresses = async (req, res) => {
