@@ -43,6 +43,10 @@ block content
                     +calendarCard(calendar)
                 each callback in callbacks
                     +callbackCard(callback)
+            if progresses
+                .titleContainer
+                    each progress in progresses
+                        +progressDisplay(progress)
             if !(user.isTeacher || user.isAdmin || user.isPara || user.isParent)
                 +showCurrentWork(user)
                 +pbisCards(pbis, user)

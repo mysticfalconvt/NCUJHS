@@ -68,23 +68,17 @@ const getLatestProgressAndAverage = async (studentId, className) => {
   })
     .sort({ created: 1 })
     .limit(1);
-  latestClassProgress.average = averageRating;
-  return latestClassProgress;
+  latestClassProgress[0].average = averageRating;
+  return latestClassProgress[0];
 };
 
 exports.getLatestProgresses = async (studentId) => {
-  let progresses = {};
+  let progresses = [];
 
   const classNames = await Progress.distinct("class", { student: studentId });
-  console.log(classNames);
   for (let className of classNames) {
     const latest = await getLatestProgressAndAverage(studentId, className);
-    console.log("sadfsadf" + latest.average + "sdfaasdf");
-    progresses = latest;
+    progresses.push(latest);
   }
-  // const latest = await getLatestProgressAndAverage(studentId, "math");
-  // progresses.push(latest);
-  // console.log("stuff" + latest + "stuff");
-  console.log(progresses);
   return progresses;
 };
