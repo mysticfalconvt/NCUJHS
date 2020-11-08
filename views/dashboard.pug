@@ -5,6 +5,7 @@ include mixins/_callbackCard
 include mixins/_teacherCurrentWorkForm
 include mixins/_showCurrentWork
 include mixins/_pbisCards
+include mixins/_progressDisplay
 
 block content
     .inner
@@ -45,6 +46,7 @@ block content
                     +callbackCard(callback)
             if progresses
                 .titleContainer
+                    br  
                     each progress in progresses
                         +progressDisplay(progress)
             if !(user.isTeacher || user.isAdmin || user.isPara || user.isParent)

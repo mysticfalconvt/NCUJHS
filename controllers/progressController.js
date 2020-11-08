@@ -82,3 +82,14 @@ exports.getLatestProgresses = async (studentId) => {
   }
   return progresses;
 };
+
+exports.displayAllProgresses = async (req, res) => {
+  const progresses = await Progress.find({
+    student: req.params._id,
+    class: req.params.className,
+  }).sort({ created: -1 });
+  res.render("progressDisplay", {
+    title: `View Progress Reports for ${req.params.className}`,
+    progresses,
+  });
+};

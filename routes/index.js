@@ -307,6 +307,11 @@ router.get(
   catchErrors(progressController.displayProgresses),
 );
 router.get(
+  "/myProgress/:className/:_id",
+  authController.isLoggedIn,
+  catchErrors(progressController.displayAllProgresses),
+);
+router.get(
   "/progress/:block",
   authController.isLoggedIn,
   authController.isTeacher,

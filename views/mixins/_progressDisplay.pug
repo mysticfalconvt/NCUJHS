@@ -1,9 +1,10 @@
 mixin progressDisplay(progress={})
-    .PBIS_Container
-        if progress.average
-            progress.PBIS_Progress(value=progress.average max="5")
-            span.PBIS_Title Average rating #{progress.average}
-        progress.PBIS_Progress(value=progress.rating max="5")
-        span.PBIS_Title Latest rating #{progress.rating}
-        span.PBIS_Title=progress.student.name + "  -  " + progress.class
-        span.PBIS_Title="Updated - " + progress.created.toLocaleDateString()
+    a(href=`/myProgress/${progress.class}/${progress.student._id}`)
+        .PBIS_Container
+            if progress.average
+                progress.PBIS_Progress(value=progress.average max="5")
+                span.PBIS_Title Average rating #{progress.average}
+            progress.PBIS_Progress(value=progress.rating max="5")
+            span.PBIS_Title Latest rating #{progress.rating}
+            span.PBIS_Title=progress.student.name + "  -  " + progress.class
+            span.PBIS_Title="Updated - " + progress.created.toLocaleDateString()
