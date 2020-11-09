@@ -74,7 +74,7 @@ const getLatestProgressAndAverage = async (studentId, className) => {
 
 exports.getLatestProgresses = async (studentId) => {
   let getProgresses = [];
-  console.log("sdfasdfasdfasdffsa");
+  // console.log("sdfasdfasdfasdffsa");
 
   const classNames = await Progress.distinct("class", { student: studentId });
   for (let className of classNames) {

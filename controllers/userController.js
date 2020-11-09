@@ -227,7 +227,7 @@ exports.userSearchResult = async (req, res) => {
     })
       .sort({ date: -1 })
       .limit(10);
-    console.log("stupid error");
+    // console.log("stupid error");
     const progresses = await getLatestProgresses(account._id);
 
     // const ta = await User.find({ ta: req.params._id });
