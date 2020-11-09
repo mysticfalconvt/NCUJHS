@@ -1,0 +1,65 @@
+.Progress_Container {
+  height: 100%;
+  width: fit-content;
+  max-width: max-content;
+  height: fit-content;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+  // position: fixed;
+  z-index: 1;
+  text-align: center;
+  // top: 200px;
+  // right: 100px;
+  background-color: $black;
+  //   overflow-x: hidden;
+  transition: 0.5s;
+  padding: 5px;
+  border-radius: 5px;
+  justify-content: space-around;
+  // box-shadow: 3px 3px 3px 3px $grey;
+  @media all and (max-width: 900px) {
+    display: flex;
+    right: 50px;
+    top: 220px;
+    max-width: 80%;
+  }
+  @media all and (max-width: 650px) {
+    display: flex;
+    right: auto;
+
+    width: 80%;
+  }
+}
+.Progress_Title {
+  color: $grey;
+  display: block;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.Progress_Counter {
+  color: $pink;
+  display: block;
+  text-align: center;
+  font-size: 2em;
+}
+
+.Progress_Progress {
+  width: 90%;
+  // text-align: center;
+  // display: inline-block;
+  margin: auto;
+  // width: 250px;
+  height: 30px;
+}
+
+.ProgressContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  align-items: flex-start;
+}
