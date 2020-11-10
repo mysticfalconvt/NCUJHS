@@ -33,17 +33,16 @@
   }
 }
 .Progress_Title {
+  color: $yellow;
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+}
+.Progress_Text {
   color: $grey;
   display: block;
   text-align: center;
   font-size: 1.1em;
-}
-
-.Progress_Counter {
-  color: $pink;
-  display: block;
-  text-align: center;
-  font-size: 2em;
 }
 
 .Progress_Progress {

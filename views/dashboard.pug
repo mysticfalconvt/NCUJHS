@@ -20,6 +20,7 @@ block content
                 .hero
                     if (user.isTeacher || user.isAdmin)
                         a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit" target="_blank") ** Attendance **
+                        a.title_link(href="/progress") Engagement
                         a.title_link(href="/discipline/addNew") Discipline
                     if (user.isTeacher || user.isAdmin ||user.isPara)
                         a.title_link(href="/pbis/add") PBIS Business Card

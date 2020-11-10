@@ -1397,16 +1397,16 @@ pre.error {
       width: 80%; } }
 
 .Progress_Title {
+  color: #FFC40E;
+  display: block;
+  text-align: center;
+  font-size: 1.2em; }
+
+.Progress_Text {
   color: #e6e6e6;
   display: block;
   text-align: center;
   font-size: 1.1em; }
-
-.Progress_Counter {
-  color: #EE7297;
-  display: block;
-  text-align: center;
-  font-size: 2em; }
 
 .Progress_Progress {
   width: 90%;

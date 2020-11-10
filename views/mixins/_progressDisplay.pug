@@ -1,10 +1,12 @@
 mixin progressDisplay(progress={})
     a(href=`/myProgress/${progress.class}/${progress.student._id}`)
         .Progress_Container
-            if progress.average
-                progress.Progress_Progress(value=progress.average max="5")
-                span.Progress_Title Average rating #{progress.average}
+            span.Progress_Title • #{progress.rating} •
             progress.Progress_Progress(value=progress.rating max="5")
-            span.Progress_Title Latest rating #{progress.rating}
-            span.Progress_Title=progress.student.name + "  -  " + progress.class
-            span.Progress_Title="Updated - " + progress.created.toLocaleDateString()
+            if progress.average
+                span.Progress_Text Average rating #{Math.round(10*progress.average)/10}
+                progress.Progress_Progress(value=progress.average max="5")
+                span.Progress_Text="Updated - " + progress.created.toLocaleDateString()
+            else
+                span.Progress_Text=progress.created.toLocaleDateString()
+            span.Progress_Text=progress.student.name + "  -  " + progress.class
