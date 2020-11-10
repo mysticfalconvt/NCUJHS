@@ -1362,4 +1362,67 @@ pre.error {
   -ms-flex-align: start;
       align-items: flex-start; }
 
+.Progress_Container {
+  height: 100%;
+  width: -webkit-fit-content;
+  width: fit-content;
+  max-width: -webkit-max-content;
+  max-width: max-content;
+  height: -webkit-fit-content;
+  height: fit-content;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+  z-index: 1;
+  text-align: center;
+  background-color: #303030;
+  transition: 0.5s;
+  padding: 5px;
+  border-radius: 5px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+  @media all and (max-width: 900px) {
+    .Progress_Container {
+      display: -ms-flexbox;
+      display: flex;
+      right: 50px;
+      top: 220px;
+      max-width: 80%; } }
+  @media all and (max-width: 650px) {
+    .Progress_Container {
+      display: -ms-flexbox;
+      display: flex;
+      right: auto;
+      width: 80%; } }
+
+.Progress_Title {
+  color: #FFC40E;
+  display: block;
+  text-align: center;
+  font-size: 1.2em; }
+
+.Progress_Text {
+  color: #e6e6e6;
+  display: block;
+  text-align: center;
+  font-size: 1.1em; }
+
+.Progress_Progress {
+  width: 90%;
+  margin: auto;
+  height: 30px; }
+
+.ProgressContainer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  -ms-flex-align: start;
+      align-items: flex-start; }
+
 /*# sourceMappingURL=style.css.map*/

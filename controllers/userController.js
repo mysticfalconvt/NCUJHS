@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const Pbis = mongoose.model("Pbis");
 const Callback = mongoose.model("Callback");
+// const Progress = mongoose.model("Progress");
 const promisify = require("es6-promisify");
-const { TRUE } = require("node-sass");
-const { findOneAndUpdate, find } = require("../models/User");
-
+// const { TRUE } = require("node-sass");
+// const { findOneAndUpdate, find } = require("../models/User");
+const { getLatestProgresses } = require("../controllers/progressController");
+// const { catchErrors } = require("../handlers/errorHandlers");
 updateCheck = (body) => {
   if (body.ta) {
     return {
@@ -225,14 +227,17 @@ exports.userSearchResult = async (req, res) => {
     })
       .sort({ date: -1 })
       .limit(10);
+    // console.log("stupid error");
+    const progresses = await getLatestProgresses(account._id);
+
     // const ta = await User.find({ ta: req.params._id });
-    //render out the edit form so they can edit
     res.render("userSearchResult", {
       title: `${account.name}'s details`,
       account,
       callbacks,
       parents,
       pbis,
+      progresses,
       // ta,
     });
   }

@@ -1,7 +1,12 @@
 mixin progressDisplay(progress={})
-    .PBIS_Container
-        progress.PBIS_Progress(value=progress.rating max="5")
-        span.PBIS_Title Pretending to Try   -   trying    -   Sycophant
-        span.PBIS_Title=progress.student.name
-        span.PBIS_Title=progress.class
-        span.PBIS_Title=progress.created.toLocaleDateString()
+    a(href=`/myProgress/${progress.class}/${progress.student._id}`)
+        .Progress_Container
+            span.Progress_Title • #{progress.rating} •
+            progress.Progress_Progress(value=progress.rating max="5")
+            if progress.average
+                span.Progress_Text Average rating #{Math.round(10*progress.average)/10}
+                progress.Progress_Progress(value=progress.average max="5")
+                span.Progress_Text="Updated - " + progress.created.toLocaleDateString()
+            else
+                span.Progress_Text=progress.created.toLocaleDateString()
+            span.Progress_Text=progress.student.name + "  -  " + progress.class

@@ -1,6 +1,6 @@
 mixin progressForm(student = {})
     label(for=`${student._id}`)=student.name + " - "
-            select(type="text" name=`${student._id}` )
+            select(type="text" name=`${student._id}` autofocus)
                 option(value="-1" selected) None
                 option(value="0" ) 0
                 option(value="1" ) 1

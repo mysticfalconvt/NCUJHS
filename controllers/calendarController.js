@@ -4,7 +4,7 @@ const Calendar = mongoose.model("Calendar");
 const Callback = mongoose.model("Callback");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
-
+const { getLatestProgresses } = require("../controllers/progressController");
 // get yesterday's date
 const today = new Date();
 const yesterday = new Date(today);
@@ -85,6 +85,7 @@ exports.dashboard = async (req, res) => {
   let pbis = {};
   const schoolWidePbisData = await PbisTeam.findOne({ schoolWide: true });
   const pbisSchoolCount = await Pbis.find().countDocuments();
+  let progresses = [];
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
@@ -145,6 +146,7 @@ exports.dashboard = async (req, res) => {
       })
         .sort({ date: -1 })
         .limit(10);
+      progresses = await getLatestProgresses(req.user ? req.user._id : null);
     }
     // if parent find student
     if (req.user.isParent) {
@@ -155,8 +157,16 @@ exports.dashboard = async (req, res) => {
       })
         .sort({ date: 1 })
         .limit(10);
+      // console.log(progresses);
+      for (let student of students) {
+        // console.log(student._id);
+        const progress = await getLatestProgresses(student._id);
+        progresses.push(...progress);
+      }
+      // console.log(progresses);
     }
   }
+
   res.render("dashboard", {
     title: "NCUJHS Dashboard ",
     calendars: calendars,
@@ -165,6 +175,7 @@ exports.dashboard = async (req, res) => {
     pbis: pbis,
     pbisSchoolCount: pbisSchoolCount,
     schoolWidePbisData: schoolWidePbisData,
+    progresses,
   });
 };
 

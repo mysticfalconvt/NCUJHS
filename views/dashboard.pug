@@ -5,6 +5,7 @@ include mixins/_callbackCard
 include mixins/_teacherCurrentWorkForm
 include mixins/_showCurrentWork
 include mixins/_pbisCards
+include mixins/_progressDisplay
 
 block content
     .inner
@@ -19,6 +20,7 @@ block content
                 .hero
                     if (user.isTeacher || user.isAdmin)
                         a.title_link(href="https://docs.google.com/spreadsheets/d/1UH-OrTKDwtKV1jPIf3t10wOHOZxsvKPAc3_XV_08KKw/edit" target="_blank") ** Attendance **
+                        a.title_link(href="/progress") Engagement
                         a.title_link(href="/discipline/addNew") Discipline
                     if (user.isTeacher || user.isAdmin ||user.isPara)
                         a.title_link(href="/pbis/add") PBIS Business Card
@@ -43,6 +45,11 @@ block content
                     +calendarCard(calendar)
                 each callback in callbacks
                     +callbackCard(callback)
+            if progresses
+                .ProgressContainer
+                    br  
+                    each progress in progresses
+                        +progressDisplay(progress)
             if !(user.isTeacher || user.isAdmin || user.isPara || user.isParent)
                 +showCurrentWork(user)
                 +pbisCards(pbis, user)

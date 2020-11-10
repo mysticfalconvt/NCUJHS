@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { update } = require("../models/User");
-const { userSearchResult } = require("./userController");
+// const { update } = require("../models/User");
+// const { userSearchResult } = require("./userController");
 const Progress = mongoose.model("Progress");
 const User = mongoose.model("User");
 
@@ -11,12 +11,12 @@ exports.addProgress = async (req, res) => {
   const students = await User.find(sort);
   if (Boolean(students[0])) {
     res.render("progress", {
-      title: "Progress Report",
+      title: "Log Progress Report",
       students: students,
     });
   } else {
     res.render("progress", {
-      title: "Progress Report",
+      title: "Progress Reporting",
       students: false,
     });
   }
@@ -51,7 +51,46 @@ exports.displayProgresses = async (req, res) => {
     created: -1,
   });
   res.render("progressDisplay", {
-    title: "Progress Reports",
+    title: "View Progress Reports",
     progresses: progressUpdates,
+  });
+};
+
+const getLatestProgressAndAverage = async (studentId, className) => {
+  const numberOfProgresses = await Progress.aggregate([
+    { $match: { student: studentId, class: className } },
+    { $group: { _id: null, average: { $avg: "$rating" } } },
+  ]);
+  const averageRating = numberOfProgresses[0].average;
+  const latestClassProgress = await Progress.find({
+    student: studentId,
+    class: className,
+  })
+    .sort({ created: 1 })
+    .limit(1);
+  latestClassProgress[0].average = averageRating;
+  return latestClassProgress[0];
+};
+
+exports.getLatestProgresses = async (studentId) => {
+  let getProgresses = [];
+  // console.log("sdfasdfasdfasdffsa");
+
+  const classNames = await Progress.distinct("class", { student: studentId });
+  for (let className of classNames) {
+    const latest = await getLatestProgressAndAverage(studentId, className);
+    getProgresses.push(latest);
+  }
+  return getProgresses;
+};
+
+exports.displayAllProgresses = async (req, res) => {
+  const progresses = await Progress.find({
+    student: req.params._id,
+    class: req.params.className,
+  }).sort({ created: -1 });
+  res.render("progressDisplay", {
+    title: `View Progress Reports for ${req.params.className}`,
+    progresses,
   });
 };
