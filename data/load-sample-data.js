@@ -58,6 +58,7 @@ async function updateData() {
         block7: user.block7,
         block8: user.block8,
         block9: user.block9,
+        ta: user.ta,
       };
       userUpdate = await User.findOneAndUpdate(
         { email: user.email },
