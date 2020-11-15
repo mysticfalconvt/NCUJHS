@@ -5,9 +5,10 @@ block content
         h1=title    
         if students
 
-            form.form.progressForm(action="/progress" method="POST")
-                each student in students
-                    +progressForm(student)
+            form.form(action="/progress" method="POST")
+                .progressForm
+                    each student in students
+                        +progressForm(student)
                 input.button(type="submit" value="Submit →")
         else
             p
