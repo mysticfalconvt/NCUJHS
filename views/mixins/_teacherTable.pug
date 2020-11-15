@@ -8,6 +8,7 @@ mixin teacherTable(users={})
             td
                 a(href="/teacher/search/taPbisCount") TA Business Cards
             td Current Assignment
+            td Last PBIS Winner
 
         each user in users
             tr
@@ -19,4 +20,5 @@ mixin teacherTable(users={})
                     td
                 td=user.taPbisCount
                 td=user.currentAssignment
+                td=user.previousPbisWinner ? user.previousPbisWinner.name : ""
                 
