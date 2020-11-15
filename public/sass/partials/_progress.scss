@@ -37,6 +37,12 @@
   //   width: 80%;
   // }
 }
+.progressForm {
+  display: grid;
+  align-items: center;
+  justify-items: left;
+  grid-template-columns: minmax(300px, 30%) 200px;
+}
 .Progress_Title {
   color: $yellow;
   display: block;

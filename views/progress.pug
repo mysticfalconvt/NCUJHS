@@ -5,7 +5,7 @@ block content
         h1=title    
         if students
 
-            form.form(action="/progress" method="POST")
+            form.form.progressForm(action="/progress" method="POST")
                 each student in students
                     +progressForm(student)
                 input.button(type="submit" value="Submit →")
