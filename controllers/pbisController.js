@@ -99,7 +99,15 @@ getStudentWinner = async (teacher, index) => {
     "_id",
   );
   const winner = await Pbis.aggregate([
-    { $match: { student: { $in: taStudents }, counted: "" } },
+    {
+      $match: {
+        $and: [
+          { student: { $in: taStudents } },
+          { student: { $ne: teacher.previousPbisWinner } },
+        ],
+        counted: "",
+      },
+    },
     { $sample: { size: 1 } },
   ]);
   let winnerName = {};
@@ -109,6 +117,10 @@ getStudentWinner = async (teacher, index) => {
       { name: 1 },
     );
     // teacher.winnerName = winnerName.name;
+    const updatePreviousWinner = await User.findByIdAndUpdate(
+      { _id: winnerName.ta._id },
+      { previousPbisWinner: winnerName._id },
+    );
     return winnerName.name;
   } else {
     return "No Winner";

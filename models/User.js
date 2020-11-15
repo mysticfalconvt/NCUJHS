@@ -86,6 +86,7 @@ const userSchema = new Schema({
   block8: mongoose.Schema.ObjectId,
   block9: mongoose.Schema.ObjectId,
   teacherSubject: String,
+  previousPbisWinner: mongoose.Schema.ObjectId,
 });
 
 function autopopulate(next) {
