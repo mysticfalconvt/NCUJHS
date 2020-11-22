@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
-const { userSearchResult } = require("./userController");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
 const PbisTeam = mongoose.model("PbisTeam");
 const { catchErrors } = require("../handlers/errorHandlers");
-const { findOneAndUpdate } = require("../models/User");
 const averageCardsPerLevel = 15;
 
-updatePbisCounts = async (student) => {
+exports.updatePbisCounts = async (student) => {
   const pbisCount = await Pbis.find({
     student: student,
     counted: "",
