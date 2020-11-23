@@ -5,7 +5,7 @@ const PbisTeam = mongoose.model("PbisTeam");
 const { catchErrors } = require("../handlers/errorHandlers");
 const averageCardsPerLevel = 15;
 
-exports.updatePbisCounts = async (student) => {
+updatePbisCounts = async (student) => {
   const pbisCount = await Pbis.find({
     student: student,
     counted: "",
