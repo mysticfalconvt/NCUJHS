@@ -80,7 +80,7 @@ exports.createStudentFocus = async (req, res) => {
     reportPhoneToAdmin(studentFocus);
   }
   req.flash("success", `Successfully Created`);
-  res.redirect(`/studentFocus/search/category`);
+  res.redirect(`/studentFocus/search/created`);
 };
 
 exports.updateStudentFocus = async (req, res) => {
@@ -102,7 +102,7 @@ exports.updateStudentFocus = async (req, res) => {
     "success",
     `Sucessfully Updated <strong>${studentFocus.category}</strong>.`,
   );
-  res.redirect(`/studentFocus/search/category`);
+  res.redirect(`/studentFocus/search/created`);
 };
 const confirmOwner = (calendar, user) => {
   if (!calendar.teacher.equals(user._id)) {
