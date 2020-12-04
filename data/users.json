@@ -2,22 +2,22 @@
   {
     "email": "kalvin.abair@ncsuvt.org",
     "block6": "5f46b081dcdb65022cdd63ed",
-    "block7": "5f3d38712cbabf1d04391728",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
     "ta": "5f2ac6955174f661244725a9"
   },
   {
     "email": "kyra.abel@ncsuvt.org",
-    "block6": "5f29c7a7028a2138547aae96",
-    "block7": "5f3d38712cbabf1d04391727",
-    "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
-    "ta": "5f29c7a7028a2138547aae98"
+    "block6": "5f0859fae648410017540957",
+    "block7": "5f29c7a7028a2138547aae97",
+    "block8": "5f46b081dcdb65022cdd63ed",
+    "block9": "5f46a9acabb4671f109351ee",
+    "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "parker.allen@ncsuvt.org",
-    "block6": "5f46a9acabb4671f109351ee",
+    "block6": "5f3d38712cbabf1d0439172b",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
@@ -25,7 +25,7 @@
   },
   {
     "email": "riley.allen@ncsuvt.org",
-    "block6": "5f2ac6955174f661244725a9",
+    "block6": "5f3d38712cbabf1d0439173a",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -36,7 +36,7 @@
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f3d38712cbabf1d0439172c"
   },
   {
@@ -44,13 +44,13 @@
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f2ac6955174f661244725a9"
   },
   {
     "email": "colby.ashman@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
     "ta": "5f29c7a7028a2138547aae97"
@@ -59,21 +59,21 @@
     "email": "ava.atherton@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f2ac6955174f661244725a9"
   },
   {
     "email": "alisa.bailey@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f3d38712cbabf1d0439173c"
   },
   {
     "email": "kyle.baker@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
@@ -82,7 +82,7 @@
   {
     "email": "jonah.baraw@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f46ae30dcdb65022cdd63e8"
@@ -90,7 +90,7 @@
   {
     "email": "george.barrett@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
     "ta": "5f3d38712cbabf1d04391738"
@@ -99,14 +99,14 @@
     "email": "brooke.bartley@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f3d38712cbabf1d04391738"
   },
   {
     "email": "colton.bartley@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391734",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
     "ta": "5f1cb4d06bb5f40017093922"
@@ -114,14 +114,14 @@
   {
     "email": "abigail.bathalon@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f29c7a7028a2138547aae96"
   },
   {
     "email": "gage.beaumont@ncsuvt.org",
-    "block6": "5f2ac6955174f661244725a9",
+    "block6": "5f3d38712cbabf1d0439173a",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -131,7 +131,7 @@
     "email": "lily.beauvais@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
-    "block8": "5f3d38712cbabf1d04391732",
+    "block8": "5f2ac6955174f661244725a9",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5efe227b821ebd07800f8afc"
   },
@@ -139,7 +139,7 @@
     "email": "summer.bennett@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439172b",
+    "block8": "5f3d38712cbabf1d04391732",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f3d38712cbabf1d0439172b"
   },
@@ -147,7 +147,7 @@
     "email": "emma.bergeron@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f29c7a7028a2138547aae98"
   },
@@ -155,13 +155,13 @@
     "email": "ella.berthiaume@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f2ac6955174f661244725a9"
   },
   {
     "email": "taylor.bingham@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
@@ -172,13 +172,13 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "riley.blaisdell@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
     "ta": "5f3d38712cbabf1d04391732"
@@ -186,7 +186,7 @@
   {
     "email": "hayden.boivin@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f3d38712cbabf1d0439172b"
@@ -196,14 +196,14 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "ava.bouchard@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d0439172b",
+    "block8": "5f3d38712cbabf1d04391732",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f3d38712cbabf1d0439172e"
   },
@@ -212,21 +212,14 @@
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f2ac6955174f661244725a9",
+    "block9": "5f3d38712cbabf1d0439173a",
     "ta": "5f29c7a7028a2138547aae98"
   },
-  {
-    "email": "evan.branche@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
-    "block8": "5f29c7a7028a2138547aae98",
-    "block9": "5f3d38712cbabf1d04391733",
-    "ta": "5f0859fae648410017540957"
-  },
+
   {
     "email": "aiden.briggs@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f0859fae648410017540957"
@@ -237,7 +230,7 @@
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f3d38712cbabf1d04391733"
   },
   {
@@ -245,21 +238,21 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "sierra.brown@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f3d38712cbabf1d0439173c"
   },
   {
     "email": "benjamin.brownlow@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
     "ta": "5f3d38712cbabf1d0439173a"
@@ -267,7 +260,7 @@
   {
     "email": "sabine.brueck@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f46a8f9abb4671f109351ed"
@@ -277,12 +270,12 @@
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f0859fae648410017540957"
   },
   {
     "email": "natalie.bryant@ncsuvt.org",
-    "block6": "5f2ac6955174f661244725a9",
+    "block6": "5f3d38712cbabf1d0439173a",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
@@ -292,14 +285,14 @@
     "email": "brodie.bussell@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f46ae30dcdb65022cdd63e8"
   },
 
   {
     "email": "armand.capron@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -308,7 +301,7 @@
   {
     "email": "mckayla.carpenter@ncsuvt.org",
     "block6": "5f46b081dcdb65022cdd63ed",
-    "block7": "5f3d38712cbabf1d04391728",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
     "ta": "5f0859fae648410017540957"
@@ -318,12 +311,12 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "peyton.chaffee@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391728",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f46b081dcdb65022cdd63ed",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
@@ -333,14 +326,14 @@
     "email": "jacob.cheshire@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f3d38712cbabf1d0439171f"
   },
   {
     "email": "haidin.chilafoux@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f3d38712cbabf1d0439173c"
@@ -350,7 +343,7 @@
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f3d38712cbabf1d04391728"
   },
   {
@@ -358,12 +351,12 @@
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f2ac6955174f661244725a9",
+    "block9": "5f3d38712cbabf1d0439173a",
     "ta": "5f3d38712cbabf1d0439173a"
   },
   {
     "email": "willow.clements@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
@@ -372,7 +365,7 @@
   {
     "email": "sydney.coburn@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
     "ta": "5f3d38712cbabf1d04391732"
@@ -382,14 +375,14 @@
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f3d38712cbabf1d04391722"
   },
   {
     "email": "heidi.cole@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
-    "block8": "5f3d38712cbabf1d04391732",
+    "block8": "5f2ac6955174f661244725a9",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f46aa7fabb4671f109351ef"
   },
@@ -399,21 +392,21 @@
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5efe227b821ebd07800f8afc"
   },
   {
     "email": "hayden.cote@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d0439172b",
-    "block9": "5f3d38712cbabf1d04391722",
+    "block8": "5f3d38712cbabf1d04391732",
+    "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f29c7a7028a2138547aae97"
   },
   {
     "email": "myah.couture@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f3d38712cbabf1d0439172e"
@@ -422,13 +415,13 @@
     "email": "logan.cross@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f3d38712cbabf1d0439173c"
   },
   {
     "email": "danivyn.daggett@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
@@ -438,7 +431,7 @@
     "email": "madison.davio@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d0439172b",
+    "block8": "5f3d38712cbabf1d04391732",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f3d38712cbabf1d0439172c"
   },
@@ -446,7 +439,7 @@
     "email": "morgan.davio@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f3d38712cbabf1d04391728"
   },
@@ -455,20 +448,20 @@
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f2ac6955174f661244725a9",
+
     "ta": "5f3d38712cbabf1d04391732"
   },
   {
     "email": "isabella.deloach@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
     "ta": "5f0859fae648410017540957"
   },
   {
     "email": "ryder.descheneau@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
@@ -477,14 +470,14 @@
   {
     "email": "cameron.desrochers@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f3d38712cbabf1d0439172c"
   },
   {
     "email": "abigail.dunn@ncsuvt.org",
-    "block6": "5f2ac6955174f661244725a9",
+    "block6": "5f3d38712cbabf1d0439173a",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
@@ -494,7 +487,7 @@
     "email": "keagan.dunn@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5efe227b821ebd07800f8afc"
   },
@@ -503,12 +496,12 @@
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f3d38712cbabf1d04391732"
   },
   {
     "email": "kaylee.farnsworth@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
@@ -517,7 +510,7 @@
   {
     "email": "bethany.fillmore@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f29c7a7028a2138547aae96"
@@ -525,7 +518,7 @@
   {
     "email": "jazmyn.fletcher@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f46aa7fabb4671f109351ef"
@@ -533,7 +526,7 @@
   {
     "email": "aliyah.flynn@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391734",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
     "ta": "5f46aa7fabb4671f109351ef"
@@ -543,7 +536,7 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
@@ -551,13 +544,13 @@
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439172e",
+    "block9": "5f3d38712cbabf1d0439173a",
     "ta": "5f29c7a7028a2138547aae97"
   },
   {
     "email": "josephine.fortin@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f3d38712cbabf1d04391733"
@@ -567,12 +560,12 @@
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f3d38712cbabf1d04391738"
   },
   {
     "email": "kaylana.fournier@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391728",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f46b081dcdb65022cdd63ed",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
@@ -583,12 +576,20 @@
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f29c7a7028a2138547aae98"
   },
   {
+    "email": "amelia.french@ncsuvt.org",
+    "block6": "5f46a9acabb4671f109351ee",
+    "block7": "5f46b081dcdb65022cdd63ed",
+    "block8": "5f3d38712cbabf1d04391727",
+    "block9": "5f29c7a7028a2138547aae96",
+    "ta": "5f3d38712cbabf1d0439172b"
+  },
+  {
     "email": "isabel.gaudreau@ncsuvt.org",
-    "block6": "5f2ac6955174f661244725a9",
+    "block6": "5f3d38712cbabf1d0439173a",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
@@ -597,7 +598,7 @@
   {
     "email": "ty.george@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f3d38712cbabf1d0439173a"
@@ -606,7 +607,7 @@
     "email": "emerson.gilson@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f46a9acabb4671f109351ee"
   },
@@ -615,14 +616,14 @@
     "email": "alex.giroux@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d04391732",
-    "block9": "5efe227b821ebd07800f8afc",
+    "block8": "5f2ac6955174f661244725a9",
+    "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f46a8f9abb4671f109351ed"
   },
   {
     "email": "wyatt.glodgett@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f1cb4d06bb5f40017093922"
@@ -630,7 +631,7 @@
   {
     "email": "nicole.gochie@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391734",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f29c7a7028a2138547aae98"
@@ -639,7 +640,7 @@
     "email": "natasha.godfrey@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f3d38712cbabf1d0439172b"
   },
@@ -648,14 +649,14 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "gabriella.good@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f3d38712cbabf1d04391728"
   },
@@ -663,13 +664,13 @@
     "email": "gretchen.goodwin@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f3d38712cbabf1d0439171f"
   },
   {
     "email": "caleb.grenier@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
@@ -678,7 +679,7 @@
   {
     "email": "gabrielle.griffith@ncsuvt.org",
     "block6": "5f46b081dcdb65022cdd63ed",
-    "block7": "5f3d38712cbabf1d04391728",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
     "ta": "5f2ac6955174f661244725a9"
@@ -688,12 +689,12 @@
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f2ac6955174f661244725a9",
+    "block9": "5f3d38712cbabf1d0439173a",
     "ta": "5f29c7a7028a2138547aae98"
   },
   {
     "email": "ryan.guillette@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
@@ -704,14 +705,14 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "jaymison.harbison@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f1cb4d06bb5f40017093922"
   },
@@ -719,13 +720,13 @@
     "email": "preston.harris@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
-    "block8": "5f2ac6955174f661244725a9",
+    "block8": "5f3d38712cbabf1d0439173a",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f46aa7fabb4671f109351ef"
   },
   {
     "email": "jazmyn.hastings@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172e",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
@@ -733,7 +734,7 @@
   },
   {
     "email": "william.hathaway@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
@@ -743,14 +744,14 @@
     "email": "bentley.hawley@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
-    "block8": "5f3d38712cbabf1d04391732",
-    "block9": "5efe227b821ebd07800f8afc",
+    "block8": "5f2ac6955174f661244725a9",
+    "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f3d38712cbabf1d0439173a"
   },
   {
     "email": "grace.hinton@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f46a8f9abb4671f109351ed"
@@ -758,7 +759,7 @@
   {
     "email": "mathias.hipes@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439171f",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
     "ta": "5f3d38712cbabf1d0439173a"
@@ -767,7 +768,7 @@
     "email": "giada.hodges@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f46aa7fabb4671f109351ef"
   },
@@ -775,14 +776,14 @@
     "email": "zylus.hodges@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f46a9acabb4671f109351ee"
   },
   {
     "email": "sienna.hopkins@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439171f",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
     "ta": "5f3d38712cbabf1d04391732"
@@ -790,7 +791,7 @@
   {
     "email": "kamryn.huntington@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
     "ta": "5f29c7a7028a2138547aae96"
@@ -799,7 +800,7 @@
     "email": "joshua.isabelle@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d0439172b",
+    "block8": "5f3d38712cbabf1d04391732",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f3d38712cbabf1d0439172e"
   },
@@ -808,13 +809,13 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "nicholas.jenness@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
     "ta": "5f3d38712cbabf1d0439171f"
@@ -824,20 +825,20 @@
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f2ac6955174f661244725a9"
   },
   {
     "email": "briana.johansen@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5efe227b821ebd07800f8afc"
   },
   {
     "email": "kaydence.johnson@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
@@ -845,7 +846,7 @@
   },
   {
     "email": "kaden.jones@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
@@ -854,7 +855,7 @@
   {
     "email": "norah.jones@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5efe227b821ebd07800f8afc"
@@ -862,7 +863,7 @@
   {
     "email": "riah.jones@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
     "ta": "5f3d38712cbabf1d04391733"
@@ -872,30 +873,30 @@
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5f29c7a7028a2138547aae96"
   },
   {
     "email": "kaiden.kennison@ncsuvt.org",
-    "block6": "5f46a9acabb4671f109351ee",
+    "block6": "5f3d38712cbabf1d0439172b",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
-    "ta": "5f3d38712cbabf1d0439172c"
+    "ta": "5f3d38712cbabf1d04391728"
   },
   {
     "email": "andrew.kerwin@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f29c7a7028a2138547aae98"
   },
   {
     "email": "brooke.king@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f3d38712cbabf1d0439172c"
   },
@@ -903,7 +904,7 @@
     "email": "elias.king@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
-    "block8": "5f3d38712cbabf1d0439172e",
+    "block8": "5f3d38712cbabf1d04391728",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f46a9acabb4671f109351ee"
   },
@@ -912,7 +913,7 @@
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5f3d38712cbabf1d04391732"
   },
   {
@@ -920,13 +921,13 @@
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f1cb4d06bb5f40017093922"
   },
   {
     "email": "taylor.ladouceur@ncsuvt.org",
     "block6": "5f46b081dcdb65022cdd63ed",
-    "block7": "5f3d38712cbabf1d04391728",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
     "ta": "5f3d38712cbabf1d04391733"
@@ -935,21 +936,21 @@
     "email": "finneas.lagoy@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d0439173a",
+    "block8": "5f3d38712cbabf1d0439172e",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f46a8f9abb4671f109351ed"
   },
   {
     "email": "maddox.lakin@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
     "ta": "5f3d38712cbabf1d04391733"
   },
   {
     "email": "adrien.lantagne@ncsuvt.org",
-    "block6": "5f46a9acabb4671f109351ee",
+    "block6": "5f3d38712cbabf1d0439172b",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -959,7 +960,7 @@
     "email": "logan.lantagne@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439172b",
+    "block8": "5f3d38712cbabf1d04391732",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f3d38712cbabf1d04391722"
   },
@@ -968,7 +969,7 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
@@ -976,28 +977,28 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "kathleen.larsen@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f29c7a7028a2138547aae96"
   },
   {
     "email": "sausha-nicole.lathe@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439171f",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f3d38712cbabf1d0439172b"
   },
   {
     "email": "wyatt.laymon@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
@@ -1008,7 +1009,7 @@
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f1cb4d06bb5f40017093922"
   },
   {
@@ -1016,12 +1017,12 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "ryan.leonard@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
@@ -1029,7 +1030,7 @@
   },
   {
     "email": "mckayla.lewis@ncsuvt.org",
-    "block6": "5f2ac6955174f661244725a9",
+    "block6": "5f3d38712cbabf1d0439173a",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -1040,7 +1041,7 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
@@ -1048,13 +1049,13 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "carson.limlaw@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f3d38712cbabf1d04391733"
@@ -1063,7 +1064,7 @@
     "email": "emma.lucier@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f0859fae648410017540957"
   },
@@ -1072,12 +1073,12 @@
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5f29c7a7028a2138547aae96"
   },
   {
     "email": "ursala.mahoney@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391728",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f46b081dcdb65022cdd63ed",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
@@ -1085,7 +1086,7 @@
   },
   {
     "email": "mykayla.malshuk@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
@@ -1093,15 +1094,15 @@
   },
   {
     "email": "sophie.malshuk@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
-    "block7": "5f3d38712cbabf1d04391722",
-    "block8": "5f3d38712cbabf1d04391727",
-    "block9": "5f29c7a7028a2138547aae96",
-    "ta": "5f3d38712cbabf1d0439173a"
+    "block6": "5f0859fae648410017540957",
+    "block7": "5f29c7a7028a2138547aae97",
+    "block8": "5f46b081dcdb65022cdd63ed",
+    "block9": "5f46a9acabb4671f109351ee",
+    "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "kiera.marcotte@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
@@ -1109,7 +1110,7 @@
   },
   {
     "email": "emma.marquis@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
@@ -1119,7 +1120,7 @@
   {
     "email": "annabelle.martin@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439171f",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f46af38dcdb65022cdd63ea",
     "block9": "5f3d38712cbabf1d0439173c",
     "ta": "5f3d38712cbabf1d04391729"
@@ -1128,7 +1129,7 @@
     "email": "connor.mayhew@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
-    "block8": "5f3d38712cbabf1d04391732",
+    "block8": "5f2ac6955174f661244725a9",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f3d38712cbabf1d04391722"
   },
@@ -1137,20 +1138,20 @@
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f29c7a7028a2138547aae97"
   },
   {
     "email": "madeline.mcgillivray@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f3d38712cbabf1d04391728"
   },
   {
     "email": "abram.mckenny@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
@@ -1158,18 +1159,18 @@
   },
   {
     "email": "claire.mead@ncsuvt.org",
-    "block6": "5f29c7a7028a2138547aae97",
-    "block7": "5f0859fae648410017540957",
-    "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f2ac6955174f661244725a9",
-    "ta": "5f3d38712cbabf1d04391738"
+    "block6": "5f3d38712cbabf1d04391733",
+    "block7": "5f29c7a7028a2138547aae98",
+    "block8": "5f3d38712cbabf1d04391728",
+    "block9": "5efe227b821ebd07800f8afc",
+    "ta": "5f3d38712cbabf1d0439172e"
   },
   {
     "email": "jayden.mercier@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f2ac6955174f661244725a9",
+    "block9": "5f3d38712cbabf1d0439173a",
     "ta": "5f3d38712cbabf1d04391738"
   },
   {
@@ -1177,7 +1178,7 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
@@ -1185,21 +1186,21 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "olivia.moore@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
-    "block8": "5f3d38712cbabf1d0439172e",
+    "block8": "5f3d38712cbabf1d04391732",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f3d38712cbabf1d04391727"
   },
   {
     "email": "brady.morse@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
     "ta": "5f3d38712cbabf1d04391728"
@@ -1209,12 +1210,12 @@
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5efe227b821ebd07800f8afc"
   },
   {
     "email": "vincent.mutter@ncsuvt.org",
-    "block6": "5f46a9acabb4671f109351ee",
+    "block6": "5f3d38712cbabf1d0439172b",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
@@ -1224,14 +1225,14 @@
     "email": "lailah.nadeau@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f3d38712cbabf1d04391727"
   },
   {
     "email": "jadon.navin@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f46a8f9abb4671f109351ed"
@@ -1241,13 +1242,13 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "michael.nemeth@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f1cb4d06bb5f40017093922"
@@ -1255,7 +1256,7 @@
   {
     "email": "solan.o'connor@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
     "ta": "5f3d38712cbabf1d04391729"
@@ -1263,7 +1264,7 @@
   {
     "email": "clariane.o'keefe@ncsuvt.org",
     "block6": "5f46b081dcdb65022cdd63ed",
-    "block7": "5f3d38712cbabf1d04391728",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
     "ta": "5f3d38712cbabf1d04391722"
@@ -1273,7 +1274,7 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
@@ -1281,12 +1282,12 @@
     "block6": "5f0859fae648410017540957",
     "block7": "5f29c7a7028a2138547aae97",
     "block8": "5f46b081dcdb65022cdd63ed",
-    "block9": "5f3d38712cbabf1d04391728",
+    "block9": "5f46a9acabb4671f109351ee",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "enrique.ortiz@ncsuvt.org",
-    "block6": "5f46a9acabb4671f109351ee",
+    "block6": "5f3d38712cbabf1d0439172b",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -1296,13 +1297,13 @@
     "email": "jaiden.parris@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
-    "block8": "5f3d38712cbabf1d0439172e",
+    "block8": "5f3d38712cbabf1d04391728",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f3d38712cbabf1d04391729"
   },
   {
     "email": "treyton.patten@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -1313,13 +1314,13 @@
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f3d38712cbabf1d0439171f"
   },
   {
     "email": "jason.pelletier@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d0439173a",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f3d38712cbabf1d0439172b"
@@ -1329,14 +1330,14 @@
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f29c7a7028a2138547aae97"
   },
   {
     "email": "briana.pessini@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
-    "block8": "5f3d38712cbabf1d04391732",
+    "block8": "5f2ac6955174f661244725a9",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f29c7a7028a2138547aae97"
   },
@@ -1344,7 +1345,7 @@
     "email": "emily.phillabaum@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f46ae30dcdb65022cdd63e8"
   },
@@ -1354,20 +1355,20 @@
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
     "block8": "5f3d38712cbabf1d04391722",
-    "block9": "5f3d38712cbabf1d0439172b",
+    "block9": "5f3d38712cbabf1d04391732",
     "ta": "5f3d38712cbabf1d04391738"
   },
   {
     "email": "symon.poplin@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d04391732",
+    "block8": "5f2ac6955174f661244725a9",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f3d38712cbabf1d0439173c"
   },
   {
     "email": "maya.poulin@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
@@ -1376,7 +1377,7 @@
   {
     "email": "star.poulin@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f3d38712cbabf1d04391728"
@@ -1384,14 +1385,14 @@
   {
     "email": "brady.provost@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f29c7a7028a2138547aae97"
   },
   {
     "email": "ava.prue@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
@@ -1402,12 +1403,12 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46b081dcdb65022cdd63ed"
   },
   {
     "email": "adrianna.reynard@ncsuvt.org",
-    "block6": "5f46a9acabb4671f109351ee",
+    "block6": "5f3d38712cbabf1d0439172b",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
@@ -1415,7 +1416,7 @@
   },
   {
     "email": "audrey.rhodes@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172e",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f46b081dcdb65022cdd63ed",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
@@ -1423,7 +1424,7 @@
   },
   {
     "email": "morgan.rivard@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172e",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f46b081dcdb65022cdd63ed",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
@@ -1434,13 +1435,13 @@
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439172e",
+    "block9": "5f3d38712cbabf1d0439173a",
     "ta": "5f2ac6955174f661244725a9"
   },
   {
     "email": "grace.roberge@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
     "ta": "5f3d38712cbabf1d0439172b"
@@ -1449,14 +1450,14 @@
     "email": "zachary.rooney@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d04391732",
+    "block8": "5f2ac6955174f661244725a9",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f3d38712cbabf1d0439173a"
   },
   {
     "email": "bryton.ross@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439171f",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f3d38712cbabf1d0439172c"
@@ -1465,13 +1466,13 @@
     "email": "charlotte.royer@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f3d38712cbabf1d0439171f"
   },
   {
     "email": "juliana.royer@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
@@ -1479,7 +1480,7 @@
   },
   {
     "email": "paige.runne@ncsuvt.org",
-    "block6": "5f46a9acabb4671f109351ee",
+    "block6": "5f3d38712cbabf1d0439172b",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
@@ -1487,7 +1488,7 @@
   },
   {
     "email": "liberty.russell@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
@@ -1497,21 +1498,21 @@
     "email": "madison.russell@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439172b",
+    "block8": "5f3d38712cbabf1d04391732",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f1cb4d06bb5f40017093922"
   },
   {
     "email": "maggie.ryan@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f3d38712cbabf1d0439173c"
   },
   {
     "email": "tynisha.sabens@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172e",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f46b081dcdb65022cdd63ed",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
@@ -1520,7 +1521,7 @@
   {
     "email": "collin.sanville@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f3d38712cbabf1d0439172b",
+    "block7": "5f3d38712cbabf1d04391732",
     "block8": "5f29c7a7028a2138547aae97",
     "block9": "5f0859fae648410017540957",
     "ta": "5f3d38712cbabf1d0439172c"
@@ -1528,39 +1529,31 @@
   {
     "email": "riley.sanville@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f3d38712cbabf1d04391727"
-  },
-  {
-    "email": "gabriel.sargent@ncsuvt.org",
-    "block6": "5f29c7a7028a2138547aae98",
-    "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439173a",
-    "block9": "5f1cb4d06bb5f40017093922",
-    "ta": "5f3d38712cbabf1d04391733"
   },
   {
     "email": "mia.scannell@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5f46aa7fabb4671f109351ef"
   },
   {
     "email": "morgan.shaffer@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f1cb4d06bb5f40017093922"
   },
   {
     "email": "zoey.shelp@ncsuvt.org",
     "block6": "5f46b081dcdb65022cdd63ed",
-    "block7": "5f3d38712cbabf1d04391728",
+    "block7": "5f46a9acabb4671f109351ee",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
     "ta": "5f3d38712cbabf1d0439172e"
@@ -1570,21 +1563,21 @@
     "block6": "5f3d38712cbabf1d04391733",
     "block7": "5f29c7a7028a2138547aae98",
     "block8": "5f1cb4d06bb5f40017093922",
-    "block9": "5f3d38712cbabf1d0439173a",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f46a9acabb4671f109351ee"
   },
   {
     "email": "brian.simpson@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439173a",
+    "block8": "5f3d38712cbabf1d0439172e",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f3d38712cbabf1d04391722"
   },
   {
     "email": "emma.simpson@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f3d38712cbabf1d04391728"
@@ -1592,7 +1585,7 @@
   {
     "email": "tyler.simpson@ncsuvt.org",
     "block6": "5f46b081dcdb65022cdd63ed",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f29c7a7028a2138547aae96",
     "block9": "5f3d38712cbabf1d04391727",
     "ta": "5f3d38712cbabf1d0439171f"
@@ -1600,14 +1593,14 @@
   {
     "email": "cheyenne.smith@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391734",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f46a8f9abb4671f109351ed"
   },
   {
     "email": "eric.smith@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
@@ -1615,7 +1608,7 @@
   },
   {
     "email": "gavynn.smith@ncsuvt.org",
-    "block6": "5f2ac6955174f661244725a9",
+    "block6": "5f3d38712cbabf1d0439173a",
     "block7": "5f3d38712cbabf1d0439172c",
     "block8": "5f0859fae648410017540957",
     "block9": "5f29c7a7028a2138547aae97",
@@ -1626,14 +1619,14 @@
     "block6": "5f29c7a7028a2138547aae96",
     "block7": "5f3d38712cbabf1d04391727",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5f3d38712cbabf1d04391727"
   },
   {
     "email": "natasha.snell@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439173a",
+    "block8": "5f3d38712cbabf1d0439172e",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f3d38712cbabf1d04391727"
   },
@@ -1641,7 +1634,7 @@
     "email": "kamryn.spaulding@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439173a",
+    "block8": "5f3d38712cbabf1d0439172e",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f3d38712cbabf1d04391727"
   },
@@ -1649,7 +1642,7 @@
     "email": "angela.stevens@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f3d38712cbabf1d0439173a",
+    "block8": "5f3d38712cbabf1d0439172e",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f1cb4d06bb5f40017093922"
   },
@@ -1657,7 +1650,7 @@
     "email": "gavin.sutton@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f3d38712cbabf1d0439172e",
+    "block8": "5f3d38712cbabf1d04391728",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f46ae30dcdb65022cdd63e8"
   },
@@ -1665,13 +1658,13 @@
     "email": "destiny.teixeira@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d0439172c",
     "ta": "5f3d38712cbabf1d0439172e"
   },
   {
     "email": "zoe.teixeira@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
@@ -1682,20 +1675,20 @@
     "block6": "5f3d38712cbabf1d04391727",
     "block7": "5f29c7a7028a2138547aae96",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5f3d38712cbabf1d0439171f"
   },
   {
     "email": "audrey.theroux@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f3d38712cbabf1d0439172e"
   },
   {
     "email": "akuei.tice@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439173a",
+    "block6": "5f3d38712cbabf1d0439172e",
     "block7": "5f1cb4d06bb5f40017093922",
     "block8": "5f29c7a7028a2138547aae98",
     "block9": "5f3d38712cbabf1d04391733",
@@ -1704,7 +1697,7 @@
   {
     "email": "winter.toulon@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f29c7a7028a2138547aae97"
@@ -1714,13 +1707,13 @@
     "block6": "5f46a8f9abb4671f109351ed",
     "block7": "5f3d38712cbabf1d04391738",
     "block8": "5efe227b821ebd07800f8afc",
-    "block9": "5f3d38712cbabf1d04391732",
+    "block9": "5f2ac6955174f661244725a9",
     "ta": "5f46af38dcdb65022cdd63ea"
   },
   {
     "email": "chloe.verdon@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f46a9acabb4671f109351ee"
@@ -1729,13 +1722,13 @@
     "email": "madison.verdon@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
-    "block8": "5f3d38712cbabf1d0439173a",
+    "block8": "5f3d38712cbabf1d0439172e",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f3d38712cbabf1d04391727"
   },
   {
     "email": "madelaine.vincent@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172e",
+    "block6": "5f46a9acabb4671f109351ee",
     "block7": "5f46b081dcdb65022cdd63ed",
     "block8": "5f3d38712cbabf1d04391727",
     "block9": "5f29c7a7028a2138547aae96",
@@ -1743,7 +1736,7 @@
   },
   {
     "email": "sarah.wainwright@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d04391732",
+    "block6": "5f2ac6955174f661244725a9",
     "block7": "5efe227b821ebd07800f8afc",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
@@ -1752,7 +1745,7 @@
   {
     "email": "naomie.walsh@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439172c",
-    "block7": "5f46a9acabb4671f109351ee",
+    "block7": "5f3d38712cbabf1d0439172b",
     "block8": "5f46a8f9abb4671f109351ed",
     "block9": "5f3d38712cbabf1d04391738",
     "ta": "5f29c7a7028a2138547aae97"
@@ -1761,7 +1754,7 @@
     "email": "briannah.waterman@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391738",
     "block7": "5f46a8f9abb4671f109351ed",
-    "block8": "5f46a9acabb4671f109351ee",
+    "block8": "5f3d38712cbabf1d0439172b",
     "block9": "5f3d38712cbabf1d04391722",
     "ta": "5f46a8f9abb4671f109351ed"
   },
@@ -1769,14 +1762,14 @@
     "email": "beckett.webster@ncsuvt.org",
     "block6": "5f3d38712cbabf1d0439173c",
     "block7": "5f46af38dcdb65022cdd63ea",
-    "block8": "5f3d38712cbabf1d04391732",
+    "block8": "5f2ac6955174f661244725a9",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f29c7a7028a2138547aae96"
   },
   {
     "email": "parish.weikel@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391734",
-    "block7": "5f3d38712cbabf1d0439172e",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f3d38712cbabf1d04391732"
@@ -1785,7 +1778,7 @@
     "email": "hunter.wells@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439173a",
+    "block8": "5f3d38712cbabf1d0439172e",
     "block9": "5f1cb4d06bb5f40017093922",
     "ta": "5f3d38712cbabf1d04391722"
   },
@@ -1793,13 +1786,13 @@
     "email": "austene.west@ncsuvt.org",
     "block6": "5f46af38dcdb65022cdd63ea",
     "block7": "5f3d38712cbabf1d0439173c",
-    "block8": "5f3d38712cbabf1d04391728",
+    "block8": "5f46a9acabb4671f109351ee",
     "block9": "5f46b081dcdb65022cdd63ed",
     "ta": "5f0859fae648410017540957"
   },
   {
     "email": "benjamin.west@ncsuvt.org",
-    "block6": "5f3d38712cbabf1d0439172b",
+    "block6": "5f3d38712cbabf1d04391732",
     "block7": "5f3d38712cbabf1d04391722",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
@@ -1808,7 +1801,7 @@
   {
     "email": "spencer.wheeler@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f3d38712cbabf1d04391722"
@@ -1817,14 +1810,14 @@
     "email": "malykie.whitaker@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439173a",
-    "block9": "5f1cb4d06bb5f40017093922",
+    "block8": "5f1cb4d06bb5f40017093922",
+    "block9": "5f3d38712cbabf1d0439172e",
     "ta": "5f2ac6955174f661244725a9"
   },
   {
     "email": "trent.whitaker@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391733",
     "block9": "5f29c7a7028a2138547aae98",
     "ta": "5f29c7a7028a2138547aae96"
@@ -1833,14 +1826,14 @@
     "email": "connor.whitehill@ncsuvt.org",
     "block6": "5f29c7a7028a2138547aae98",
     "block7": "5f3d38712cbabf1d04391733",
-    "block8": "5f3d38712cbabf1d0439172e",
+    "block8": "5f3d38712cbabf1d04391728",
     "block9": "5efe227b821ebd07800f8afc",
     "ta": "5f3d38712cbabf1d04391733"
   },
   {
     "email": "natiley.willis@ncsuvt.org",
     "block6": "5efe227b821ebd07800f8afc",
-    "block7": "5f3d38712cbabf1d04391732",
+    "block7": "5f2ac6955174f661244725a9",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f3d38712cbabf1d0439173a"
@@ -1848,7 +1841,7 @@
   {
     "email": "kymberlyn.willson@ncsuvt.org",
     "block6": "5f3d38712cbabf1d04391722",
-    "block7": "5f2ac6955174f661244725a9",
+    "block7": "5f3d38712cbabf1d04391728",
     "block8": "5f3d38712cbabf1d0439173c",
     "block9": "5f46af38dcdb65022cdd63ea",
     "ta": "5f3d38712cbabf1d0439172c"
@@ -1856,7 +1849,7 @@
   {
     "email": "camry.wright@ncsuvt.org",
     "block6": "5f1cb4d06bb5f40017093922",
-    "block7": "5f3d38712cbabf1d0439173a",
+    "block7": "5f3d38712cbabf1d0439172e",
     "block8": "5f3d38712cbabf1d04391738",
     "block9": "5f46a8f9abb4671f109351ed",
     "ta": "5f46ae30dcdb65022cdd63e8"
@@ -1866,7 +1859,7 @@
     "block6": "5f29c7a7028a2138547aae97",
     "block7": "5f0859fae648410017540957",
     "block8": "5f3d38712cbabf1d0439172c",
-    "block9": "5f46a9acabb4671f109351ee",
+    "block9": "5f3d38712cbabf1d0439172b",
     "ta": "5f1cb4d06bb5f40017093922"
   }
 ]
