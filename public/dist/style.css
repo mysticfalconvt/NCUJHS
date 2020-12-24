@@ -676,6 +676,7 @@ input[type="radio"]:checked + label span.radio::after {
     margin: 0; }
 
 .nav {
+  animation: 0.5s ease-out 0s 1 slideDown;
   display: -ms-flexbox;
   display: flex;
   list-style: none;
@@ -684,6 +685,12 @@ input[type="radio"]:checked + label span.radio::after {
   -ms-flex-pack: justify;
       justify-content: space-between;
   background: #303030; }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-200%); }
+  100% {
+    transform: translateY(0%); } }
   .nav__section {
     display: -ms-flexbox;
     display: flex; }
