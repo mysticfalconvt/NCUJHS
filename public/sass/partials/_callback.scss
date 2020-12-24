@@ -5,6 +5,15 @@
 }
 
 .callback {
+  animation: 0.5s ease-out 0s 1 slideRight;
+  @keyframes slideLeft {
+    0% {
+      transform: translatex(500%);
+    }
+    100% {
+      transform: translatex(0%);
+    }
+  }
   background: white;
   margin: 1.25em 0 0 1.25em;
   width: calc(25% - 1.25em);

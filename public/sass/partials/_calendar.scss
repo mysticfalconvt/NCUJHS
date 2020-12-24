@@ -9,6 +9,15 @@
   margin: 1.25em 0 0 1.25em;
   width: calc(25% - 1.25em);
   box-shadow: $shad;
+  animation: 0.5s ease-out 0s 1 slideLeft;
+  @keyframes slideRight {
+    0% {
+      transform: translatex(-500%);
+    }
+    100% {
+      transform: translatex(0%);
+    }
+  }
   &--wide {
     width: 100%;
   }
