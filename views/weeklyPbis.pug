@@ -9,16 +9,12 @@ block content
         Table.table     
             thead
                 td TA Teacher
-                td Business Card Count
-                td Students in TA
-                td Cards Per Student
-                td winner
+                td Winner
+                td Previous Winner
 
             each teacher in teachers
                 tr
                     td=teacher.name
-                    td=teacher.taPbisCount
-                    td=teacher.taStudentCount
-                    td=teacher.cardsPerStudent
                     td=teacher.winner
+                    td=teacher.previousPbisWinner.name
                     

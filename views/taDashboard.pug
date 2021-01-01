@@ -4,6 +4,7 @@ include mixins/_callbackCard
 include mixins/_callbackTable
 include mixins/_teacherCurrentWorkForm
 include mixins/_showCurrentWork
+include mixins/_taQuickInfoTable
 
 block content
     .inner
@@ -14,14 +15,18 @@ block content
                     a.button(href=`/pbis/ta/${user._id}`) Log TA Business Cards
                     span="   -   "                
                     a.button(href=`/pbis/teamlist`) List of PBIS Teams
-                p=`${user.name}'s TA has ${user.taPbisCount} Business Cards and is on level ${taTeam.currentLevel || '0'} with ${Math.round(taTeam.averageCardsPerStudent*10)/10 || '0'} cards per student`
+                p=`${taTeam.name} are on level ${taTeam.currentLevel || '0'} with ${Math.round(taTeam.averageCardsPerStudent*10)/10 || '0'} cards per student`
+            +taQuickInfoTable(taStudents)
+            p 
             .callbacks
                 if Object.keys(callbacks).length <9
                     each callback in callbacks
                         +callbackCard(callback)
                 else 
                    +callbackTable(callbacks)
+            if user.currentPbisWinner
+                p The latest PBIS winner was #{teacher.currentPbisWinner.name} and the one before was #{teacher.previousPbisWinner.name}
             if !user.isTeacher
                 +showCurrentWork(user)
-            each taStudent in taStudents
+            each taStudent in taTeamStudents
                 +showCurrentWork(taStudent)
