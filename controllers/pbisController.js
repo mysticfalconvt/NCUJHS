@@ -96,13 +96,13 @@ getStudentWinner = async (teacher, previousWinner) => {
   const taStudents = await User.find({ ta: teacher }, { _id: 1 }).distinct(
     "_id",
   );
-  console.log(previousWinner);
+  console.log(previousWinner.name);
   const winner = await Pbis.aggregate([
     {
       $match: {
         $and: [
           { student: { $in: taStudents } },
-          { student: { $ne: previousWinner } },
+          { student: { $ne: previousWinner._id } },
         ],
         counted: "",
       },
@@ -118,7 +118,10 @@ getStudentWinner = async (teacher, previousWinner) => {
     // teacher.winnerName = winnerName.name;
     const updatePreviousWinner = await User.findByIdAndUpdate(
       { _id: winnerName.ta._id },
-      { previousPbisWinner: winnerName._id },
+      {
+        currentPbisWinner: winnerName._id,
+        previousPbisWinner: previousWinner._id,
+      },
     );
     return winnerName.name;
   } else {
@@ -246,7 +249,9 @@ exports.createPbis = async (req, res) => {
 exports.getWeeklyPbis = async (req, res) => {
   let teachers = await User.find({
     $and: [{ isTeacher: "true" }, { taPbisCount: { $gt: 0 } }],
-  });
+  })
+    .populate("previousPbisWinner")
+    .populate("currentPbisWinner");
   // console.log(teachers);
   let teachersWithWinners = [];
   for (let teacher of teachers) {
@@ -255,7 +260,7 @@ exports.getWeeklyPbis = async (req, res) => {
     }).countDocuments();
     const winner = await getStudentWinner(
       teacher._id,
-      teacher.previousPbisWinner,
+      teacher.currentPbisWinner,
     );
     const cardsPerStudent = teacher.taPbisCount / taStudentCount;
     teacherWithWinner = {
@@ -264,6 +269,7 @@ exports.getWeeklyPbis = async (req, res) => {
       winner: winner,
       taStudentCount: taStudentCount,
       cardsPerStudent: cardsPerStudent,
+      previousPbisWinner: teacher.currentPbisWinner,
     };
     teachersWithWinners.push(teacherWithWinner);
   }

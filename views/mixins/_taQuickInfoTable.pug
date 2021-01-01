@@ -1,0 +1,23 @@
+mixin taQuickInfoTable(users={})
+    table.table
+        thead
+            td Student
+            td Callback Count
+            td PBIS Week 
+            td PBIS Year
+            td Quick Card
+
+
+        each user in users
+            tr
+                td
+                    a(href=`/user/${user._id}`) #{user.name}
+                if user.callbackCount
+                    td=user.callbackCount
+                else
+                    td
+                td=user.pbisCount
+                td=user.yearPbisCount
+                td
+                    a(href=`/pbis/add/student/${user._id}/quick`)=`Quick Card for ${user.name}`
+                

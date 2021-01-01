@@ -136,7 +136,8 @@ exports.searchTeachers = async (req, res) => {
     $or: [{ isTeacher: "true" }, { isAdmin: "true" }, { isPara: "true" }],
   })
     .sort(sort)
-    .populate("previousPbisWinner");
+    .populate("previousPbisWinner")
+    .populate("currentPbisWinner");
 
   res.render("searchTeacher", {
     title: `Search for an account Sorted by ${category}`,

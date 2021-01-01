@@ -26,7 +26,10 @@ exports.taDashboard = async (req, res) => {
   }
 
   // console.log(taTeam.teacher1._id);
-  const taStudents = await User.find({ ta: { $in: taTeamTeachers } }).sort({
+  const taTeamStudents = await User.find({ ta: { $in: taTeamTeachers } }).sort({
+    name: 1,
+  });
+  const taStudents = await User.find({ ta: req.user._id }).sort({
     name: 1,
   });
   const idArray = taStudents.map(function (id) {
@@ -37,11 +40,16 @@ exports.taDashboard = async (req, res) => {
     student: { $in: idArray },
     completed: "",
   }).sort({ student: 1, date: 1 });
-
+  const teacher = await User.findOne({ _id: req.user._id })
+    .populate("previousPbisWinner")
+    .populate("currentPbisWinner");
+  console.log(teacher);
   res.render("taDashboard", {
     title: `${req.user.name}'s TA Dashboard `,
     taStudents: taStudents,
     callbacks: callbacks,
     taTeam: taTeam,
+    taTeamStudents: taTeamStudents,
+    teacher: teacher,
   });
 };
