@@ -3,6 +3,7 @@ const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
 const PbisTeam = mongoose.model("PbisTeam");
 const { catchErrors } = require("../handlers/errorHandlers");
+const { sendPbisWinners } = require("./mailController");
 const averageCardsPerLevel = 15;
 
 updatePbisCounts = async (student) => {
@@ -96,13 +97,12 @@ getStudentWinner = async (teacher, previousWinner) => {
   const taStudents = await User.find({ ta: teacher }, { _id: 1 }).distinct(
     "_id",
   );
-  console.log(previousWinner.name);
   const winner = await Pbis.aggregate([
     {
       $match: {
         $and: [
           { student: { $in: taStudents } },
-          { student: { $ne: previousWinner._id } },
+          { student: { $ne: previousWinner || null } },
         ],
         counted: "",
       },
@@ -120,7 +120,7 @@ getStudentWinner = async (teacher, previousWinner) => {
       { _id: winnerName.ta._id },
       {
         currentPbisWinner: winnerName._id,
-        previousPbisWinner: previousWinner._id,
+        previousPbisWinner: previousWinner,
       },
     );
     return winnerName.name;
@@ -258,10 +258,9 @@ exports.getWeeklyPbis = async (req, res) => {
     const taStudentCount = await User.find({
       ta: teacher._id,
     }).countDocuments();
-    const winner = await getStudentWinner(
-      teacher._id,
-      teacher.currentPbisWinner,
-    );
+    const winner = teacher.currentPbisWinner
+      ? await getStudentWinner(teacher._id, teacher.currentPbisWinner._id)
+      : await getStudentWinner(teacher._id, null);
     const cardsPerStudent = teacher.taPbisCount / taStudentCount;
     teacherWithWinner = {
       name: teacher.name,
@@ -273,6 +272,7 @@ exports.getWeeklyPbis = async (req, res) => {
     };
     teachersWithWinners.push(teacherWithWinner);
   }
+  sendPbisWinners(teachersWithWinners);
   res.render("weeklyPbis", {
     title: "PBIS Counts since last collection",
     teachers: teachersWithWinners,

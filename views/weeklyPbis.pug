@@ -16,5 +16,6 @@ block content
                 tr
                     td=teacher.name
                     td=teacher.winner
-                    td=teacher.previousPbisWinner.name
+                    if teacher.previousPbisWinner
+                        td=teacher.previousPbisWinner.name
                     
