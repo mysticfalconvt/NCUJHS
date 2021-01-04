@@ -1,23 +1,32 @@
 html {
-	font-size: 10px;
+  font-size: 10px;
 }
 
 body {
-	background: $purple;
-	background: #efefef;
-	&:before {
-		content: '';
-		display: block;
-		background: $grad;
-		height: 10px;
-		width: 100%;
-	}
+  background: $purple;
+  background: #efefef;
+  &:before {
+    content: "";
+    display: block;
+    background: $grad;
+    height: 10px;
+    width: 100%;
+  }
 }
 
 .inner {
-	max-width: 1200px;
-	margin: 0 auto;
-	@media all and (max-width: 1200px) {
-		padding: 2rem;
-	}
+  max-width: 1200px;
+  margin: 0 auto;
+  @media all and (max-width: 1200px) {
+    padding: 2rem;
+  }
+}
+
+.dashboardLinks {
+  display: flex;
+  flex-wrap: wrap;
+  a {
+    padding-bottom: 3rem;
+    margin: 1rem 1rem;
+  }
 }

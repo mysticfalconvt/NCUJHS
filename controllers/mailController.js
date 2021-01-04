@@ -5,6 +5,7 @@ const mail = require("../handlers/mail");
 const Discipline = mongoose.model("Discipline");
 const StudentFocus = mongoose.model("studentFocus");
 const Bullying = mongoose.model("Bullying");
+const Pbis = mongoose.model("Pbis");
 
 exports.sendParentSignup = async (req, res) => {
   // 1. see if the email exists
@@ -115,5 +116,22 @@ exports.reportPhoneToAdmin = async (StudentFocusId) => {
     studentName: studentFocus.student.name,
     date: studentFocus.created.toDateString(),
     comments: studentFocus.comments,
+  });
+};
+
+exports.sendPbisWinners = async (winners) => {
+  const pbisSchoolCount = await Pbis.find().countDocuments();
+  mail.send({
+    email: "robert.boskind@ncsuvt.org",
+    filename: "pbisWeeklyWinners",
+    subject: "New weekly PBIS winners",
+    winners: winners,
+    pbisSchoolCount: pbisSchoolCount,
+  });
+  mail.send({
+    email: "christiane.brown@ncsuvt.org",
+    filename: "pbisWeeklyWinners",
+    subject: "New weekly PBIS winners",
+    winners: winners,
   });
 };

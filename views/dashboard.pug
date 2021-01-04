@@ -17,7 +17,7 @@ block content
                 span.PBIS_Counter=pbisSchoolCount
                 span.PBIS_Title #{schoolWidePbisData.teamsAtGoal} out of #{schoolWidePbisData.totalTeams} teams have reached level #{schoolWidePbisData.nextGoal}
             if user
-                .hero
+                .dashboardLinks
                     if (user.isTeacher || user.isAdmin)
                         a.title_link(href="https://docs.google.com/spreadsheets/d/1SuXZeXmeW8M0yt_c8RPZuE-duT0JZSm_wOhJWt7aTvc/edit?usp=sharing" target="_blank") ** Attendance **
                         a.title_link(href="/progress") Engagement
