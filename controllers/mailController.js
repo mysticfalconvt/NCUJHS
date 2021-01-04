@@ -133,5 +133,6 @@ exports.sendPbisWinners = async (winners) => {
     filename: "pbisWeeklyWinners",
     subject: "New weekly PBIS winners",
     winners: winners,
+    pbisSchoolCount: pbisSchoolCount,
   });
 };
