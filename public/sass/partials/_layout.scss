@@ -25,6 +25,8 @@ body {
 .dashboardLinks {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   a {
     padding-bottom: 3rem;
     margin: 1rem 1rem;
