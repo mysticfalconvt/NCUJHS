@@ -24,7 +24,7 @@ block content
                         +callbackCard(callback)
                 else 
                    +callbackTable(callbacks)
-            if user.currentPbisWinner
+            if user.currentPbisWinner && user.previousPbisWinner
                 p The latest PBIS winner was #{teacher.currentPbisWinner.name} and the one before was #{teacher.previousPbisWinner.name}
             if !user.isTeacher
                 +showCurrentWork(user)
