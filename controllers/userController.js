@@ -93,6 +93,7 @@ exports.searchUser = async (req, res) => {
     isTeacher: { $ne: true },
     isAdmin: { $ne: true },
     isPara: { $ne: true },
+    ta: { $ne: "5ffdf13a07131600177cc07e" },
   }).sort(sort);
   const callbackCount = users.reduce(function (prev, current) {
     const adder = parseInt(current.callbackCount || "0", 10);
