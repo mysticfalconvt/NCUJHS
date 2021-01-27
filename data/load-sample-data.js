@@ -58,10 +58,10 @@ async function updateData() {
     for (const user of users) {
       console.log(user.email);
       const updateData = {
-        block6: user.block6,
-        block7: user.block7,
-        block8: user.block8,
-        block9: user.block9,
+        block1: user.block1,
+        block2: user.block2,
+        block3: user.block3,
+        block4: user.block4,
         ta: user.ta,
       };
       userUpdate = await User.findOneAndUpdate(
