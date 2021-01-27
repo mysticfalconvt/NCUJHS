@@ -18,58 +18,58 @@ mixin accountEditClasses(account = {})
                 .search
                     .search__results
                 input(type="hidden" id="ta" name="ta"  value=account.ta)
-        //- .block1TeacherSearch
-        //-     if account.block1
-        //-         label(for="block1Name") block1 Teacher
-        //-         input(type="text" id="search" name="block1Name" value=account.block1.name)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block1" name="block1" readonly="readonly" value=account.block1._id)
-        //-     else
-        //-         label(for="block1Name") block1 Teacher
-        //-         input(type="text" id="search" name="block1Name" value=account.block1)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block1" name="block1"  value=account.block1)
-        //- .block2TeacherSearch
-        //-     if account.block2
-        //-         label(for="block2Name") block2 Teacher
-        //-         input(type="text" id="search" name="block2Name" value=account.block2.name)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block2" name="block2" readonly="readonly" value=account.block2._id)
-        //-     else
-        //-         label(for="block2Name") block2 Teacher
-        //-         input(type="text" id="search" name="block2Name" value=account.block2)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block2" name="block2"  value=account.block2)
-        //- .block3TeacherSearch
-        //-     if account.block3
-        //-         label(for="block3Name") block3 Teacher
-        //-         input(type="text" id="search" name="block3Name" value=account.block3.name)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block3" name="block3" readonly="readonly" value=account.block3._id)
-        //-     else
-        //-         label(for="block3Name") block3 Teacher
-        //-         input(type="text" id="search" name="block3Name" value=account.block3)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block3" name="block3"  value=account.block3)
-        //- .block4TeacherSearch
-        //-     if account.block4
-        //-         label(for="block4Name") block4 Teacher
-        //-         input(type="text" id="search" name="block4Name" value=account.block4.name)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block4" name="block4" readonly="readonly" value=account.block4._id)
-        //-     else
-        //-         label(for="block4Name") block4 Teacher
-        //-         input(type="text" id="search" name="block4Name" value=account.block4)
-        //-         .search
-        //-             .search__results
-        //-         input(type="hidden" id="block4" name="block4"  value=account.block4)
+        .block1TeacherSearch
+            if account.block1
+                label(for="block1Name") block1 Teacher
+                input(type="text" id="search" name="block1Name" value=account.block1.name)
+                .search
+                    .search__results
+                input(type="hidden" id="block1" name="block1" readonly="readonly" value=account.block1._id)
+            else
+                label(for="block1Name") block1 Teacher
+                input(type="text" id="search" name="block1Name" value=account.block1)
+                .search
+                    .search__results
+                input(type="hidden" id="block1" name="block1"  value=account.block1)
+        .block2TeacherSearch
+            if account.block2
+                label(for="block2Name") block2 Teacher
+                input(type="text" id="search" name="block2Name" value=account.block2.name)
+                .search
+                    .search__results
+                input(type="hidden" id="block2" name="block2" readonly="readonly" value=account.block2._id)
+            else
+                label(for="block2Name") block2 Teacher
+                input(type="text" id="search" name="block2Name" value=account.block2)
+                .search
+                    .search__results
+                input(type="hidden" id="block2" name="block2"  value=account.block2)
+        .block3TeacherSearch
+            if account.block3
+                label(for="block3Name") block3 Teacher
+                input(type="text" id="search" name="block3Name" value=account.block3.name)
+                .search
+                    .search__results
+                input(type="hidden" id="block3" name="block3" readonly="readonly" value=account.block3._id)
+            else
+                label(for="block3Name") block3 Teacher
+                input(type="text" id="search" name="block3Name" value=account.block3)
+                .search
+                    .search__results
+                input(type="hidden" id="block3" name="block3"  value=account.block3)
+        .block4TeacherSearch
+            if account.block4
+                label(for="block4Name") block4 Teacher
+                input(type="text" id="search" name="block4Name" value=account.block4.name)
+                .search
+                    .search__results
+                input(type="hidden" id="block4" name="block4" readonly="readonly" value=account.block4._id)
+            else
+                label(for="block4Name") block4 Teacher
+                input(type="text" id="search" name="block4Name" value=account.block4)
+                .search
+                    .search__results
+                input(type="hidden" id="block4" name="block4"  value=account.block4)
         //- .block5TeacherSearch
         //-     if account.block5
         //-         label(for="block5Name") block5 Teacher
@@ -83,58 +83,58 @@ mixin accountEditClasses(account = {})
         //-         .search
         //-             .search__results
         //-         input(type="hidden" id="block5" name="block5"  value=account.block5)
-        .block6TeacherSearch
-            if account.block6
-                label(for="block6Name") block6 Teacher
-                input(type="text" id="search" name="block6Name" value=account.block6.name)
-                .search
-                    .search__results
-                input(type="hidden" id="block6" name="block6" readonly="readonly" value=account.block6._id)
-            else
-                label(for="block6Name") block6 Teacher
-                input(type="text" id="search" name="block6Name" value=account.block6)
-                .search
-                    .search__results
-                input(type="hidden" id="block6" name="block6"  value=account.block6)
-        .block7TeacherSearch
-            if account.block7
-                label(for="block7Name") block7 Teacher
-                input(type="text" id="search" name="block7Name" value=account.block7.name)
-                .search
-                    .search__results
-                input(type="hidden" id="block7" name="block7" readonly="readonly" value=account.block7._id)
-            else
-                label(for="block7Name") block7 Teacher
-                input(type="text" id="search" name="block7Name" value=account.block7)
-                .search
-                    .search__results
-                input(type="hidden" id="block7" name="block7"  value=account.block7)
-        .block8TeacherSearch
-            if account.block8
-                label(for="block8Name") block8 Teacher
-                input(type="text" id="search" name="block8Name" value=account.block8.name)
-                .search
-                    .search__results
-                input(type="hidden" id="block8" name="block8" readonly="readonly" value=account.block8._id)
-            else
-                label(for="block8Name") block8 Teacher
-                input(type="text" id="search" name="block8Name" value=account.block8)
-                .search
-                    .search__results
-                input(type="hidden" id="block8" name="block8"  value=account.block8)
-        .block9TeacherSearch
-            if account.block9
-                label(for="block9Name") block9 Teacher
-                input(type="text" id="search" name="block9Name" value=account.block9.name)
-                .search
-                    .search__results
-                input(type="hidden" id="block9" name="block9" readonly="readonly" value=account.block9._id)
-            else
-                label(for="block9Name") block9 Teacher
-                input(type="text" id="search" name="block9Name" value=account.block9)
-                .search
-                    .search__results
-                input(type="hidden" id="block9" name="block9"  value=account.block9)
+        //- .block6TeacherSearch
+        //-     if account.block6
+        //-         label(for="block6Name") block6 Teacher
+        //-         input(type="text" id="search" name="block6Name" value=account.block6.name)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block6" name="block6" readonly="readonly" value=account.block6._id)
+        //-     else
+        //-         label(for="block6Name") block6 Teacher
+        //-         input(type="text" id="search" name="block6Name" value=account.block6)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block6" name="block6"  value=account.block6)
+        //- .block7TeacherSearch
+        //-     if account.block7
+        //-         label(for="block7Name") block7 Teacher
+        //-         input(type="text" id="search" name="block7Name" value=account.block7.name)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block7" name="block7" readonly="readonly" value=account.block7._id)
+        //-     else
+        //-         label(for="block7Name") block7 Teacher
+        //-         input(type="text" id="search" name="block7Name" value=account.block7)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block7" name="block7"  value=account.block7)
+        //- .block8TeacherSearch
+        //-     if account.block8
+        //-         label(for="block8Name") block8 Teacher
+        //-         input(type="text" id="search" name="block8Name" value=account.block8.name)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block8" name="block8" readonly="readonly" value=account.block8._id)
+        //-     else
+        //-         label(for="block8Name") block8 Teacher
+        //-         input(type="text" id="search" name="block8Name" value=account.block8)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block8" name="block8"  value=account.block8)
+        //- .block9TeacherSearch
+        //-     if account.block9
+        //-         label(for="block9Name") block9 Teacher
+        //-         input(type="text" id="search" name="block9Name" value=account.block9.name)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block9" name="block9" readonly="readonly" value=account.block9._id)
+        //-     else
+        //-         label(for="block9Name") block9 Teacher
+        //-         input(type="text" id="search" name="block9Name" value=account.block9)
+        //-         .search
+        //-             .search__results
+        //-         input(type="hidden" id="block9" name="block9"  value=account.block9)
         
         hr
        
