@@ -16,12 +16,15 @@ const User = require("../models/User");
 const Calendar = require("../models/Calendar");
 const Pbis = require("../models/Pbis");
 const PbisTeam = require("../models/PbisTeam");
+const Discipline = require("../models/Discipline");
+const StudentFocus = require("../models/StudentFocus");
+const Bullying = require("../models/Bullying");
 
 const { updatePbisCounts } = require("../controllers/pbisController");
 // const stores = JSON.parse(fs.readFileSync(__dirname + '/stores.json', 'utf-8'));
 // const reviews = JSON.parse(fs.readFileSync(__dirname + '/reviews.json', 'utf-8'));
 const users = JSON.parse(fs.readFileSync(__dirname + "/users.json", "utf-8"));
-const pbis = JSON.parse(fs.readFileSync(__dirname + "/pbis.json", "utf-8"));
+// const pbis = JSON.parse(fs.readFileSync(__dirname + "/pbis.json", "utf-8"));
 // const calendars = JSON.parse(
 //   fs.readFileSync(__dirname + "/calendar.json", "utf-8"),
 // );
@@ -89,31 +92,31 @@ if (process.argv.includes("--delete")) {
   loadData();
 }
 
-async function givePbisCards() {
-  try {
-    for (const email of pbis) {
-      console.log(email.email);
-      const student = await User.findOne({ email: email.email });
+// async function givePbisCards() {
+//   try {
+//     for (const email of pbis) {
+//       console.log(email.email);
+//       const student = await User.findOne({ email: email.email });
 
-      for (var i = 0; i < 5; i++) {
-        console.log(student.email);
-        console.log(i);
-        const card = {
-          student: student._id,
-          teacher: "5f04b1a7b1cc70187c60bed2",
-          category: "Bonus Card",
-          message: "Great Job on our first remote day!!",
-        };
-        const pbis = await new Pbis(card).save();
-      }
-      updatePbisCounts(student._id);
-    }
+//       for (var i = 0; i < 5; i++) {
+//         console.log(student.email);
+//         console.log(i);
+//         const card = {
+//           student: student._id,
+//           teacher: "5f04b1a7b1cc70187c60bed2",
+//           category: "Bonus Card",
+//           message: "Great Job on our first remote day!!",
+//         };
+//         const pbis = await new Pbis(card).save();
+//       }
+//       updatePbisCounts(student._id);
+//     }
 
-    console.log("👍👍👍👍👍👍👍👍 Done!");
-    process.exit();
-  } catch (e) {
-    console.log("\n👎👎👎👎👎👎👎👎 Error! The Error info is below");
-    console.log(e);
-    process.exit();
-  }
-}
+//     console.log("👍👍👍👍👍👍👍👍 Done!");
+//     process.exit();
+//   } catch (e) {
+//     console.log("\n👎👎👎👎👎👎👎👎 Error! The Error info is below");
+//     console.log(e);
+//     process.exit();
+//   }
+// }
