@@ -36,12 +36,12 @@ block content
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSex56-bP4lKBW8jVZooDk6s2G14I7mr4wzpDoc_6g_0Lye8Cw/viewform?usp=sf_link" target="_blank") Covid Survey
                     a.title_link(href="https://forms.gle/SVurYgGcd8W54Doo9" target="_blank") After School Signups
         if user
-            
 
             if user.isTeacher
                 +teacherCurrentWorkForm(user)
                 hr
             .calendars
+                img(src="https://raw.githubusercontent.com/mysticfalconvt/NCUJHS/New-feature-creating-branch/public/images/virtual.png" width="50%" height="50%")
                 each calendar in calendars
                     +calendarCard(calendar)
                 each callback in callbacks
@@ -62,3 +62,4 @@ block content
         else
             p Welcome to the NCUJHS Dashboard.  Please login.  
             p If you are a parent or guardian please contact the school to setup an account to monitor your child's progress.
+            img(src="https://raw.githubusercontent.com/mysticfalconvt/NCUJHS/New-feature-creating-branch/public/images/virtual.png" width="70%")
