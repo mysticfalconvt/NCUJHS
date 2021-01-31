@@ -56,6 +56,77 @@ async function loadData() {
     process.exit();
   }
 }
+async function updatePermissions() {
+  try {
+    // await Store.insertMany(stores);
+    // await Review.insertMany(reviews);
+    // await User.insertMany(users);
+    // await Calendar.insertMany(calendars);
+    await User.update(
+      {},
+      { $set: { permissions: [] } },
+      { upsert: false, multi: true },
+    );
+
+    await User.update(
+      { isTeacher: "true" },
+      { $push: { permissions: "teacher" } },
+      { upsert: false, multi: true },
+    );
+    await User.update(
+      { isTeacher: "true" },
+      { $push: { permissions: "bullyingTeacher" } },
+      { upsert: false, multi: true },
+    );
+
+    await User.update(
+      { isAdmin: "true" },
+      { $push: { permissions: "admin" } },
+      { upsert: false, multi: true },
+    );
+
+    await User.update(
+      { isParent: "true" },
+      { $push: { permissions: "parent" } },
+      { upsert: false, multi: true },
+    );
+    await User.update(
+      { isPbis: "true" },
+      { $push: { permissions: "pbis" } },
+      { upsert: false, multi: true },
+    );
+    await User.update(
+      { isPara: "true" },
+      { $push: { permissions: "para" } },
+      { upsert: false, multi: true },
+    );
+    await User.update(
+      { bullyingRole: "admin" },
+      { $push: { permissions: "bullyingAdmin" } },
+      { upsert: false, multi: true },
+    );
+    await User.update(
+      { taPbisCount: { $gte: 1 } },
+      { $push: { permissions: "ta" } },
+      { upsert: false, multi: true },
+    );
+    await User.update(
+      { permissions: [] },
+      { $push: { permissions: "student" } },
+      { upsert: false, multi: true },
+    );
+
+    console.log("👍👍👍👍👍👍👍👍 Done!");
+    process.exit();
+  } catch (e) {
+    console.log(
+      "\n👎👎👎👎👎👎👎👎 Error! The Error info is below but if you are importing sample data make sure to drop the existing database first with.\n\n\t npm run blowitallaway\n\n\n",
+    );
+    console.log(e);
+    process.exit();
+  }
+}
+
 async function updateData() {
   try {
     for (const user of users) {
@@ -88,6 +159,8 @@ if (process.argv.includes("--delete")) {
   updateData();
 } else if (process.argv.includes("--pbis")) {
   givePbisCards();
+} else if (process.argv.includes("--permissions")) {
+  updatePermissions();
 } else {
   loadData();
 }

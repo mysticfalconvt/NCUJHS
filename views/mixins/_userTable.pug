@@ -29,19 +29,19 @@ mixin userTable(users={})
                     td=user.callbackCount
                 else
                     td
-                if !(user.isTeacher || user.isAdmin) && user.cellPhoneCount
+                if user.permissions.includes("student") && user.cellPhoneCount
                     td=user.cellPhoneCount
                 else
                     td
-                if !(user.isTeacher || user.isAdmin || user.isAdmin)
+                if user.permissions.includes("student")
                     td=user.pbisCount
                 else
                     td=user.taPbisCount
-                if !(user.isTeacher || user.isAdmin || user.isAdmin)
+                if user.permissions.includes("student")
                     td=user.yearPbisCount
                 else
                     td
-                if !(user.isTeacher || user.isAdmin || user.isPara)
+                if user.permissions.includes("student")
                     if user.parent
                         if user.parent[0]
                             td 🗹

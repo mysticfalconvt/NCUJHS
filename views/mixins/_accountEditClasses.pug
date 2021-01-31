@@ -138,13 +138,14 @@ mixin accountEditClasses(account = {}, permissionList=[])
         //-         input(type="hidden" id="block9" name="block9"  value=account.block9)
         
         hr
-        - const permissions = user.permissions || []
-        p Permissions:
-        ul.tags
-            each permission in permissionList
-                .tag.tag__choice
-                    input(type="checkbox" id=permission value=permission name="permissions" checked=(permissions.includes(permission)))
-                    label(for=permission) #{permission}
+        if user.permissions.includes("admin")
+            - const permissions = account.permissions || []
+            p Permissions:
+            ul.tags
+                each permission in permissionList
+                    .tag.tag__choice
+                        input(type="checkbox" id=permission value=permission name="permissions" checked=(permissions.includes(permission)))
+                        label(for=permission) #{permission}
 
         input(type="hidden" name="id"  value=account._id )
         input.button(type="submit" value=`Update ${account.name}'s Account`)

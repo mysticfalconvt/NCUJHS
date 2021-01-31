@@ -2,7 +2,6 @@ exports.permissionList = [
   "admin",
   "teacher",
   "ta",
-
   "student",
   "para",
   "parent",
@@ -11,4 +10,8 @@ exports.permissionList = [
   "bullyingAdmin",
   "bullyingTeacher",
   "bullyingDesignated",
+  "disciplineEmail",
+  "bullyingEmail",
+  "pbisEmail",
+  "phoneEmail",
 ];

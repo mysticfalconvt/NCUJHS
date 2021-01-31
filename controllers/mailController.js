@@ -79,22 +79,26 @@ exports.sendParentCallbackCount = async (req, res) => {
 
 exports.reportDisciplineToAdmin = async (disciplineId) => {
   const discipline = await Discipline.findOne({ _id: disciplineId });
-  mail.send({
-    email: "colleen.storrings@ncsuvt.org",
-    replyTo: discipline.teacher.email,
-    filename: "reportDiscipline",
-    subject: `New Student Conduct Referal for ${discipline.student.name}`,
-    teacherName: discipline.teacher.name,
-    studentName: discipline.student.name,
-    date: discipline.date.toDateString(),
+  const emailAddress = await User.find({ permissions: "disciplineEmail" });
+  emailAddress.forEach((user) => {
+    mail.send({
+      email: "colleen.storrings@ncsuvt.org",
+      replyTo: discipline.teacher.email,
+      filename: "reportDiscipline",
+      subject: `New Student Conduct Referal for ${discipline.student.name}`,
+      teacherName: discipline.teacher.name,
+      studentName: discipline.student.name,
+      date: discipline.date.toDateString(),
+    });
   });
 };
 
 exports.reportBullyingToAdmin = async (bullyingID) => {
   const bullying = await Bullying.findOne({ _id: bullyingID });
-  JSON.parse(process.env.ADMIN_EMAIL).forEach((adminEmail) => {
+  const emailAddress = await User.find({ permissions: "bullyingEmail" });
+  emailAddress.forEach((user) => {
     mail.send({
-      email: adminEmail,
+      email: user.email,
       replyTo: bullying.author.email,
       filename: "reportDiscipline",
       subject: `New HHB Referal for ${bullying.offender.name} from ${bullying.author.name}`,
@@ -107,32 +111,31 @@ exports.reportBullyingToAdmin = async (bullyingID) => {
 
 exports.reportPhoneToAdmin = async (StudentFocusId) => {
   const studentFocus = await StudentFocus.findOne({ _id: StudentFocusId });
-  mail.send({
-    email: "colleen.storrings@ncsuvt.org",
-    replyTo: studentFocus.teacher.email,
-    filename: "reportPhone",
-    subject: `New Phone Violation for ${studentFocus.student.name}`,
-    teacherName: studentFocus.teacher.name,
-    studentName: studentFocus.student.name,
-    date: studentFocus.created.toDateString(),
-    comments: studentFocus.comments,
+  const emailAddress = await User.find({ permissions: "phoneEmail" });
+  emailAddress.forEach((user) => {
+    mail.send({
+      email: user.email,
+      replyTo: studentFocus.teacher.email,
+      filename: "reportPhone",
+      subject: `New Phone Violation for ${studentFocus.student.name}`,
+      teacherName: studentFocus.teacher.name,
+      studentName: studentFocus.student.name,
+      date: studentFocus.created.toDateString(),
+      comments: studentFocus.comments,
+    });
   });
 };
 
 exports.sendPbisWinners = async (winners) => {
   const pbisSchoolCount = await Pbis.find().countDocuments();
-  mail.send({
-    email: "robert.boskind@ncsuvt.org",
-    filename: "pbisWeeklyWinners",
-    subject: "New weekly PBIS winners",
-    winners: winners,
-    pbisSchoolCount: pbisSchoolCount,
-  });
-  mail.send({
-    email: "christiane.brown@ncsuvt.org",
-    filename: "pbisWeeklyWinners",
-    subject: "New weekly PBIS winners",
-    winners: winners,
-    pbisSchoolCount: pbisSchoolCount,
+  const emailAddress = await User.find({ permissions: "pbisEmails" });
+  emailAddress.forEach((user) => {
+    mail.send({
+      email: user.email,
+      filename: "pbisWeeklyWinners",
+      subject: "New weekly PBIS winners",
+      winners: winners,
+      pbisSchoolCount: pbisSchoolCount,
+    });
   });
 };

@@ -23,6 +23,6 @@ mixin studentFocusTable(studentFocuss = {}, path = "", id)
                                     a(href=`${path}created/${studentFocus.teacher._id}`)=studentFocus.teacher.name
                                 td=studentFocus.created.toDateString()
                                 td=studentFocus.student.ta.name
-                                if (user._id.equals(studentFocus.teacher._id)) || user.isAdmin
+                                if (user._id.equals(studentFocus.teacher._id)) || user.permissions.includes("admin")
                                     td 
                                         a(href=`/studentFocus/${studentFocus._id}`) EDIT

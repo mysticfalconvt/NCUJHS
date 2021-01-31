@@ -43,14 +43,7 @@ exports.viewDisciplinePrintable = async (req, res) => {
 };
 
 exports.viewDisciplineList = async (req, res) => {
-  if (
-    (req.user.name.search("Colleen Storrings") >= 0) |
-    (req.user.name.search("Mr. Boskind") >= 0) |
-    (req.user.name.search("Meghan Corbett") >= 0) |
-    (req.user.name.search("Bobby Walls-Thumma") >= 0) |
-    (req.user.name.search("Nicole Corbett") >= 0) |
-    (req.user.name.search("Camilla McKenzie") >= 0)
-  ) {
+  if (req.user.permissions.includes("discipline")) {
     const disciplines = await Discipline.find().sort({ date: -1 });
     res.render("disciplineList", {
       title: "Discipline Referal List",

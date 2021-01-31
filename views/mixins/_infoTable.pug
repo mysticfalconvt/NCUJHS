@@ -10,7 +10,7 @@ mixin infoTable(infos = {}, path = "")
                 //- td 
                 //-     a(href=`${path}linkTitle`) Link
                 if user
-                    if user.isAdmin
+                    if user.permissions.includes("admin")
                         td edit
             each info in infos
                 tr
@@ -40,6 +40,6 @@ mixin infoTable(infos = {}, path = "")
                     //-         else 
                     //-             a(href=`//${info.link}` target="_blank")=info.linkTitle
                     if user
-                        if user.isAdmin
+                        if user.permissions.includes("admin")
                             td 
                                 a(href=`/info/${info._id}`) EDIT
