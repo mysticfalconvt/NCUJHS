@@ -27,7 +27,12 @@ exports.isLoggedIn = (req, res, next) => {
   res.redirect("/login");
 };
 exports.isTeacher = (req, res, next) => {
-  if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+  console.log(req.user.permissions);
+  if (
+    req.user.permissions.includes("teacher") ||
+    req.user.permissions.includes("admin") ||
+    req.user.permissions.includes("para")
+  ) {
     next();
     return;
   }

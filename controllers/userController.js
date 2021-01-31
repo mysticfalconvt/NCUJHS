@@ -7,15 +7,19 @@ const promisify = require("es6-promisify");
 // const { TRUE } = require("node-sass");
 // const { findOneAndUpdate, find } = require("../models/User");
 const { getLatestProgresses } = require("../controllers/progressController");
+const { permissionList } = require("../handlers/permissions");
 // const { catchErrors } = require("../handlers/errorHandlers");
 updateCheck = (body) => {
+  console.log(body);
+  let updates = {};
+
   if (body.ta) {
     return {
       name: body.name,
       email: body.email,
-      ta: body.ta,
-      isTeacher: body.isTeacher,
-      isAdmin: body.isAdmin,
+      ta: body.ta || null,
+      // isTeacher: body.isTeacher,
+      // isAdmin: body.isAdmin,
       // math: body.math || null,
       // languageArts: body.languageArts || null,
       // science: body.science || null,
@@ -43,10 +47,11 @@ updateCheck = (body) => {
     return {
       name: body.name,
       email: body.email,
-      isTeacher: body.isTeacher,
-      isAdmin: body.isAdmin,
-      isPara: body.isPara,
+      // isTeacher: body.isTeacher,
+      // isAdmin: body.isAdmin,
+      // isPara: body.isPara,
       ta: body.ta || null,
+      permissions: body.permissions,
     };
   }
 };
@@ -324,7 +329,11 @@ exports.account = (req, res) => {
 exports.editAccount = async (req, res) => {
   // find the account
   const account = await User.findOne({ _id: req.params._id });
-  res.render("accountAdmin", { title: "Edit account", account });
+  res.render("accountAdmin", {
+    title: "Edit account",
+    account,
+    permissionList,
+  });
 };
 
 exports.updateAccount = async (req, res) => {
