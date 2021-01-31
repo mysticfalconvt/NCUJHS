@@ -15,3 +15,16 @@ exports.permissionList = [
   "pbisEmail",
   "phoneEmail",
 ];
+
+exports.isStaff = (user) => {
+  console.log("teachertest");
+  if (
+    user.permissions.includes("teacher") ||
+    user.permissions.includes("admin") ||
+    user.permissions.includes("para")
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};

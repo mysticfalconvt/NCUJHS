@@ -10,7 +10,6 @@ const { getLatestProgresses } = require("../controllers/progressController");
 const { permissionList } = require("../handlers/permissions");
 // const { catchErrors } = require("../handlers/errorHandlers");
 updateCheck = (body) => {
-  console.log(body);
   let updates = {};
 
   if (body.ta) {

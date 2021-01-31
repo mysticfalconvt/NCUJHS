@@ -27,7 +27,6 @@ exports.isLoggedIn = (req, res, next) => {
   res.redirect("/login");
 };
 exports.isTeacher = (req, res, next) => {
-  console.log(req.user.permissions);
   if (
     req.user.permissions.includes("teacher") ||
     req.user.permissions.includes("admin") ||
