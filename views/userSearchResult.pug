@@ -9,11 +9,11 @@ block content
         h2= title
         if user
             p.tags
-                if user.isAdmin || user._id.equals(account.ta._id)
+                if user.permissions.includes("admin") || user._id.equals(account.ta._id)
                     a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
                     a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password
                     a.textLinks.button(href=`/email/parent/${account._id}`) Send a parent account signup email for #{account.name}
-                if (user.isAdmin || user.isTeacher)
+                if user.permissions.includes("teacher") || user.permissions.includes("admin")
                     if !account.parent[0]        
                     if account.parent[0]
                         a.textLinks.button(href=`/email/callbackCount/${account._id}`) Send a parent callback update for #{account.name} Check Student Focus First!

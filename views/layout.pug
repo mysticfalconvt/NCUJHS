@@ -38,7 +38,7 @@ html
                     a.nav__link(href="/user/search/ta", class=(currentPath.startsWith('/user') ? 'nav__link--active' : ''))
                       != h.icon('searchUser')
                       span #{"Finder"}
-                  if !user.isPara
+                  if !user.permissions.includes("para")
                     li.nav__item.nav--vertical
                       a.nav__link(href="/studentFocus/search/created", class=(currentPath.startsWith('/studentFocus') ? 'nav__link--active' : ''))
                         != h.icon('studentfocus')

@@ -82,7 +82,7 @@ exports.reportDisciplineToAdmin = async (disciplineId) => {
   const emailAddress = await User.find({ permissions: "disciplineEmail" });
   emailAddress.forEach((user) => {
     mail.send({
-      email: "colleen.storrings@ncsuvt.org",
+      email: user.email,
       replyTo: discipline.teacher.email,
       filename: "reportDiscipline",
       subject: `New Student Conduct Referal for ${discipline.student.name}`,
