@@ -14,10 +14,10 @@ exports.permissionList = [
   "bullyingEmail",
   "pbisEmail",
   "phoneEmail",
+  "deletedAccount",
 ];
 
 exports.isStaff = (user) => {
-  console.log("teachertest");
   if (
     user.permissions.includes("teacher") ||
     user.permissions.includes("admin") ||
