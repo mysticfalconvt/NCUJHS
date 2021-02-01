@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { isStaff } = require("../handlers/permissions");
 const Info = mongoose.model("Info");
 const User = mongoose.model("User");
 
@@ -13,7 +14,7 @@ exports.getInfo = async (req, res) => {
   let infos = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+    if (isStaff(req.user)) {
       infos = await Info.find({ deleted: { $ne: "true" } }).sort(sort);
     } else {
       infos = await Info.find({
@@ -57,7 +58,7 @@ exports.editInfo = async (req, res) => {
   const info = await Info.findOne({ _id: req.params._id });
 
   //confirm they are owner of the event or admin
-  if (!req.user.isAdmin) {
+  if (!req.user.permissions.include("admin")) {
     confirmOwner(info, req.user);
   }
 
@@ -68,7 +69,7 @@ exports.editInfo = async (req, res) => {
 // API
 
 exports.searchInfos = async (req, res) => {
-  const teacher = req.user.isTeacher || req.user.isAdmin || req.user.isPara;
+  const teacher = isStaff(req.user);
   const infos = await Info.find(
     {
       $text: {

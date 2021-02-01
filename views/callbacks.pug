@@ -5,7 +5,7 @@ include mixins/_callbackTable
 block content
     .inner
         h2= "You have " + user.callbackCount + " items on callback"
-            if user.isTeacher
+            if user.permissions.includes("teacher")
                 a.title_link(href="/callback/add") Add Callback Assignment
         p.tags
             if currentPath.startsWith('/callback/teacher/old')

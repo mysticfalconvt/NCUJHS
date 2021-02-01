@@ -7,22 +7,16 @@ const promisify = require("es6-promisify");
 // const { TRUE } = require("node-sass");
 // const { findOneAndUpdate, find } = require("../models/User");
 const { getLatestProgresses } = require("../controllers/progressController");
+const { permissionList, isStaff } = require("../handlers/permissions");
 // const { catchErrors } = require("../handlers/errorHandlers");
 updateCheck = (body) => {
+  let updates = {};
+
   if (body.ta) {
     return {
       name: body.name,
       email: body.email,
-      ta: body.ta,
-      isTeacher: body.isTeacher,
-      isAdmin: body.isAdmin,
-      // math: body.math || null,
-      // languageArts: body.languageArts || null,
-      // science: body.science || null,
-      // socialStudies: body.socialStudies || null,
-      // trimester1: body.trimester1 || null,
-      // trimester2: body.trimester2 || null,
-      // trimester3: body.trimester3 || null,
+      ta: body.ta || null,
       block1: body.block1 || null,
       block2: body.block2 || null,
       block3: body.block3 || null,
@@ -43,10 +37,8 @@ updateCheck = (body) => {
     return {
       name: body.name,
       email: body.email,
-      isTeacher: body.isTeacher,
-      isAdmin: body.isAdmin,
-      isPara: body.isPara,
       ta: body.ta || null,
+      permissions: body.permissions,
     };
   }
 };
@@ -68,43 +60,31 @@ exports.searchUser = async (req, res) => {
   const category = req.params.category || "";
   let sort = {};
   sort[category] = -1;
-  // sort["isTeacher"] = 1;
-  // sort["isAdmin"] = 1;
-  // sort["isPara"] = 1;
   sort["name"] = 1;
   const studentCount = await User.find({
-    isParent: { $ne: true },
-    isTeacher: { $ne: true },
-    isAdmin: { $ne: true },
-    isPara: { $ne: true },
+    permissions: "student",
   }).countDocuments();
   const onCallbackCount = await User.find({
-    isParent: { $ne: true },
-    isTeacher: { $ne: true },
-    isAdmin: { $ne: true },
-    isPara: { $ne: true },
+    permissions: "student",
     callbackCount: { $ne: 0 },
   }).countDocuments();
   const percentageOnCallback = Math.round(
     100 * (onCallbackCount / studentCount),
   );
   const users = await User.find({
-    isParent: { $ne: true },
-    isTeacher: { $ne: true },
-    isAdmin: { $ne: true },
-    isPara: { $ne: true },
+    permissions: "student",
     ta: { $ne: "5ffdf13a07131600177cc07e" },
   }).sort(sort);
   const callbackCount = users.reduce(function (prev, current) {
     const adder = parseInt(current.callbackCount || "0", 10);
-    if (current.isTeacher) {
+    if (current.permissions.includes("teacher")) {
       return prev;
     } else {
       return prev + adder;
     }
   }, 0);
   const studentCallbackCount = users.reduce(function (prev, current) {
-    if (current.isTeacher) {
+    if (current.permissions.includes("teacher")) {
       return prev;
     } else if (current.callbackCount) {
       return prev + 1;
@@ -126,15 +106,15 @@ exports.searchUser = async (req, res) => {
 exports.searchTeachers = async (req, res) => {
   const category = req.params.category || "";
   let sort = {};
-  sort["isTeacher"] = "-1";
   sort[category] = -1;
-  // sort["isTeacher"] = 1;
-  // sort["isAdmin"] = 1;
-  // sort["isPara"] = 1;
   sort["name"] = 1;
 
   const teachers = await User.find({
-    $or: [{ isTeacher: "true" }, { isAdmin: "true" }, { isPara: "true" }],
+    $or: [
+      { permissions: "teacher" },
+      { permissions: "admin" },
+      { permissions: "para" },
+    ],
   })
     .sort(sort)
     .populate("previousPbisWinner")
@@ -150,7 +130,7 @@ exports.userSearchResult = async (req, res) => {
   // find the account
   const account = await User.findOne({ _id: req.params._id });
   // check if teacher
-  if (account.isTeacher || account.isAdmin || account.isPara) {
+  if (isStaff(account)) {
     // find their callback
     const callbacks = await Callback.find({
       teacher: account._id,
@@ -324,7 +304,11 @@ exports.account = (req, res) => {
 exports.editAccount = async (req, res) => {
   // find the account
   const account = await User.findOne({ _id: req.params._id });
-  res.render("accountAdmin", { title: "Edit account", account });
+  res.render("accountAdmin", {
+    title: "Edit account",
+    account,
+    permissionList,
+  });
 };
 
 exports.updateAccount = async (req, res) => {
@@ -371,7 +355,7 @@ exports.searchTeacher = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      isTeacher: "true",
+      permissions: "teacher",
     },
     {
       score: { $meta: "textScore" },
@@ -389,9 +373,7 @@ exports.searchStudent = async (req, res) => {
       $text: {
         $search: req.query.q,
       },
-      isTeacher: { $ne: "true" },
-      isAdmin: { $ne: "true" },
-      isParent: { $ne: "true" },
+      permissions: "student",
     },
     {
       score: { $meta: "textScore" },

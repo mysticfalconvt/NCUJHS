@@ -4,7 +4,7 @@ extends layout
 block content
     .inner
         h2= title
-            if (user.isPbis)
+            if (user.permissions.includes("pbis"))
                 a.title_link(href="/pbis/weekly") Check-in PBIS
                 a.title_link(href="/pbis/teamList") List of PBIS Teams
         Table.table     

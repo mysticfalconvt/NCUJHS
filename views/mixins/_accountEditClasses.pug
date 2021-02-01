@@ -1,4 +1,5 @@
-mixin accountEditClasses(account = {})
+mixin accountEditClasses(account = {}, permissionList=[])
+    
     form(action=`/user/edit/:${account._id}` method="post" class="card")
         //- label(for="name") Name
         input(type="hidden" readonly name="name" value=account.name) 
@@ -137,7 +138,14 @@ mixin accountEditClasses(account = {})
         //-         input(type="hidden" id="block9" name="block9"  value=account.block9)
         
         hr
-       
+        if user.permissions.includes("admin")
+            - const permissions = account.permissions || []
+            p Permissions:
+            ul.tags
+                each permission in permissionList
+                    .tag.tag__choice
+                        input(type="checkbox" id=permission value=permission name="permissions" checked=(permissions.includes(permission)))
+                        label(for=permission) #{permission}
 
         input(type="hidden" name="id"  value=account._id )
         input.button(type="submit" value=`Update ${account.name}'s Account`)

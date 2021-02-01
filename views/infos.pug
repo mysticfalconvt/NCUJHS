@@ -6,7 +6,7 @@ block content
     .inner
         h2= title
             if user
-                if (user.isTeacher || user.isAdmin)
+                if user.permissions.includes("teacher") || user.permissions.includes("admin")
                     a.title_link(href="/info/add") Add new 
         +infoSearch()
         +infoTable(infos,path="/info/search/")

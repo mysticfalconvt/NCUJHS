@@ -3,6 +3,7 @@ const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
 const PbisTeam = mongoose.model("PbisTeam");
 const { catchErrors } = require("../handlers/errorHandlers");
+const { isStaff } = require("../handlers/permissions");
 const { sendPbisWinners } = require("./mailController");
 const averageCardsPerLevel = 15;
 
@@ -173,7 +174,7 @@ updateSchoolWidePbis = async () => {
 };
 
 exports.addPbis = async (req, res) => {
-  if (req.user.isTeacher) {
+  if (req.user.permissions.includes("teacher")) {
     const students = await User.find({
       $or: [
         // { math: req.user._id },
@@ -207,7 +208,7 @@ exports.getPbis = async (req, res) => {
   let pbiss = {};
   if (req.user) {
     // check if teacher for PBIS
-    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+    if (isStaff(req.user)) {
       pbiss = await Pbis.find({ counted: "" }).sort(sort);
     }
   }
@@ -248,7 +249,7 @@ exports.createPbis = async (req, res) => {
 
 exports.getWeeklyPbis = async (req, res) => {
   let teachers = await User.find({
-    $and: [{ isTeacher: "true" }, { taPbisCount: { $gt: 0 } }],
+    $and: [{ permissions: "teacher" }, { taPbisCount: { $gt: 0 } }],
   })
     .populate("previousPbisWinner")
     .populate("currentPbisWinner");

@@ -5,6 +5,7 @@ const md5 = require("md5");
 const validator = require("validator");
 const mongodbErrorHandler = require("mongoose-mongodb-errors");
 const passportLocalMongoose = require("passport-local-mongoose");
+const { permissionList } = require("../handlers/permissions");
 
 const userSchema = new Schema({
   email: {
@@ -88,6 +89,12 @@ const userSchema = new Schema({
   teacherSubject: String,
   currentPbisWinner: mongoose.Schema.ObjectId,
   previousPbisWinner: mongoose.Schema.ObjectId,
+  permissions: {
+    type: [String],
+    enum: permissionList,
+    required: true,
+    default: [],
+  },
 });
 
 function autopopulate(next) {

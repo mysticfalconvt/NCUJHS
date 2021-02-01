@@ -3,7 +3,7 @@ extends layout
 block content 
     .inner 
         h2 #{title}
-        if user.isTeacher
+        if user.permissions.includes("teacher")
                 a.title_link(href="/bullying/addNew") Add HHB Referal
                 hr
         table.table

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { isStaff } = require("../handlers/permissions");
 const { findOneAndUpdate } = require("../models/User");
 const StudentFocus = mongoose.model("studentFocus");
 const User = mongoose.model("User");
@@ -28,7 +29,7 @@ exports.getStudentFocus = async (req, res) => {
   let studentFocuss = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+    if (isStaff(req.user)) {
       let sort = {};
       sort[category] = -1;
       sort["name"] = 1;
@@ -51,7 +52,7 @@ exports.getOneStudentFocus = async (req, res) => {
   let studentFocuss = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+    if (isStaff(req.user)) {
       let sort = {};
       sort[category] = -1;
       sort["name"] = 1;
@@ -114,7 +115,7 @@ exports.editStudentFocus = async (req, res) => {
   const studentFocus = await StudentFocus.findOne({ _id: req.params._id });
 
   //confirm they are owner of the event or admin
-  if (!req.user.isAdmin) {
+  if (!req.user.permissions.includes("admin")) {
     confirmOwner(studentFocus, req.user);
   }
 

@@ -7,7 +7,7 @@ include mixins/_studentInfoTable
 block content
     .inner
         h2= title
-        if user.isAdmin
+        if user.permissions.includes("admin")
             p.tags
                 a.textLinks.button(href=`/user/edit/${account._id}`) Edit this account
                 a.textLinks.button(href=`/account/reset/${account._id}`) Reset #{account.name}'s password

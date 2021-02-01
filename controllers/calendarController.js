@@ -5,6 +5,7 @@ const Callback = mongoose.model("Callback");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
 const { getLatestProgresses } = require("../controllers/progressController");
+const { isStaff } = require("../handlers/permissions");
 // get yesterday's date
 const today = new Date();
 const yesterday = new Date(today);
@@ -27,7 +28,7 @@ exports.getEvents = async (req, res) => {
   let calendars = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+    if (isStaff(req.user)) {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset },
         deleted: { $ne: "true" },
@@ -61,7 +62,7 @@ exports.getAllEvents = async (req, res) => {
   let calendars = {};
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+    if (isStaff(req.user)) {
       calendars = await Calendar.find({ deleted: { $ne: "true" } }).sort({
         Date: 1,
       });
@@ -89,7 +90,7 @@ exports.dashboard = async (req, res) => {
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
-    if (req.user.isTeacher || req.user.isAdmin || req.user.isPara) {
+    if (isStaff(req.user)) {
       calendars = await Calendar.find({
         Date: { $gte: new Date() - timeOffset, $lte: new Date() + timeOffset },
         deleted: { $ne: "true" },
@@ -101,15 +102,9 @@ exports.dashboard = async (req, res) => {
         deleted: { $ne: "true" },
       }).sort({ Date: 1 });
     }
-    // if (req.user.isTeacher) {
-    //   ids = await User.find({ ta: req.user._id });
-    //   idArray = ids.map(function (id) {
-    //     return id._id;
-    //   });
-    // }
 
     // find TA students
-    if (req.user.isTeacher) {
+    if (req.user.permissions.includes("teacher")) {
       ids = await User.find({ ta: req.user._id });
       idArray = ids.map(function (id) {
         return id._id;
@@ -128,7 +123,7 @@ exports.dashboard = async (req, res) => {
 
         completed: "",
       }).sort({ message: -1, date: 1 });
-    } else if (req.user.isParent) {
+    } else if (req.user.permissions.includes("parent")) {
       const children = await User.find({ parent: req.user._id }, { _id: 1 });
       callbacks = await Callback.find({
         $or: [{ student: { $in: children } }],
@@ -149,7 +144,7 @@ exports.dashboard = async (req, res) => {
       progresses = await getLatestProgresses(req.user ? req.user._id : null);
     }
     // if parent find student
-    if (req.user.isParent) {
+    if (req.user.permissions.includes("parent")) {
       students = await User.find({ parent: req.user._id });
       pbis = await Pbis.find({
         student: { $in: students },
@@ -190,7 +185,7 @@ exports.editEvent = async (req, res) => {
   const calendar = await Calendar.findOne({ _id: req.params._id });
 
   //confirm they are owner of the event or admin
-  if (!req.user.isAdmin) {
+  if (!req.user.permissions.includes("admin")) {
     confirmOwner(calendar, req.user);
   }
 
@@ -239,6 +234,8 @@ exports.getEventByID = async (req, res, next) => {
   const calendar = await Calendar.findOne({ _id: req.params._id });
   if (!calendar || !calendar.author) return next();
 
-  const editable = calendar.author.equals(req.user._id) || req.user.isAdmin;
+  const editable =
+    calendar.author.equals(req.user._id) ||
+    req.user.permissions.includes("admin");
   res.render("calendar", { calendar, editable, title: calendar.title });
 };

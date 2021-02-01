@@ -26,7 +26,7 @@ block content
                    +callbackTable(callbacks)
             if user.currentPbisWinner && user.previousPbisWinner
                 p The latest PBIS winner was #{teacher.currentPbisWinner.name} and the one before was #{teacher.previousPbisWinner.name}
-            if !user.isTeacher
+            if !user.permissions.includes("teacher")
                 +showCurrentWork(user)
             each taStudent in taTeamStudents
                 +showCurrentWork(taStudent)
