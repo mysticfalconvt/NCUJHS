@@ -81,11 +81,7 @@ exports.createBullying = async (req, res) => {
 };
 
 exports.viewBullyingList = async (req, res) => {
-  if (
-    (req.user.name.search("Colleen Storrings") >= 0) |
-    (req.user.name.search("Mr. Boskind") >= 0) |
-    (req.user.name.search("Nicole Corbett") >= 0)
-  ) {
+  if (req.user.permissions.includes("bullyingAdmin")) {
     const bullyings = await Bullying.find().sort({ date: -1 });
     res.render("bullyingList", {
       title: "HHB Referal List",

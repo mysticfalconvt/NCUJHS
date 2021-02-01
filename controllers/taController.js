@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { isStaff } = require("../handlers/permissions");
 const Calendar = mongoose.model("Calendar");
 const Callback = mongoose.model("Callback");
 const PbisTeam = mongoose.model("PbisTeam");
@@ -6,7 +7,7 @@ const User = mongoose.model("User");
 
 exports.taDashboard = async (req, res) => {
   // check if teacher
-  if (!req.user.isTeacher) {
+  if (!isStaff(req.user)) {
     res.redirect("/");
   }
 
@@ -43,7 +44,7 @@ exports.taDashboard = async (req, res) => {
   const teacher = await User.findOne({ _id: req.user._id })
     .populate("previousPbisWinner")
     .populate("currentPbisWinner");
-  console.log(teacher);
+  // console.log(teacher);
   res.render("taDashboard", {
     title: `${req.user.name}'s TA Dashboard `,
     taStudents: taStudents,
