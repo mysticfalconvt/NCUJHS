@@ -128,7 +128,7 @@ exports.reportPhoneToAdmin = async (StudentFocusId) => {
 
 exports.sendPbisWinners = async (winners) => {
   const pbisSchoolCount = await Pbis.find().countDocuments();
-  const emailAddress = await User.find({ permissions: "pbisEmails" });
+  const emailAddress = await User.find({ permissions: "pbisEmail" });
   emailAddress.forEach((user) => {
     mail.send({
       email: user.email,
