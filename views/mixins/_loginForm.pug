@@ -1,12 +1,4 @@
 mixin loginForm()
-    form.form(action="/login" method="post")
-        h2 login
-        label(for="email") Email
-        input(type="email" name="email" autofocus)
-        label(for="password") Password
-        input(type="password" name="password")
-        input.button(type="submit" value="Log In")
-    
     if(process.env.DEMO_ACCOUNTS)
         div.loginDemo
             form(action="/login" method="post" )
@@ -25,3 +17,11 @@ mixin loginForm()
                 input(type="email" name="email" value="demoparent1@ncujhs.tech" hidden)
                 input(type="password" name="password" value="password" hidden)
                 input.button(type="submit" value="Parent Demo Login ➡️")
+    form.form(action="/login" method="post")
+        h2 login
+        label(for="email") Email
+        input(type="email" name="email" autofocus)
+        label(for="password") Password
+        input(type="password" name="password")
+        input.button(type="submit" value="Log In")
+    

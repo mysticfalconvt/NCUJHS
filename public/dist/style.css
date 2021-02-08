@@ -1339,6 +1339,7 @@ pre.error {
 
 .loginDemo {
   margin: 2px;
+  margin-bottom: 1rem;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: space-between;
