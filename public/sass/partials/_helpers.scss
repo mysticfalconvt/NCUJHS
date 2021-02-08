@@ -7,21 +7,21 @@
   border: 0;
   background: $yellow;
   color: $black;
-  font-family: 'Panama';
+  font-family: "Panama";
   font-weight: 600;
 }
 
 .avatar {
- min-width: 50px;
- height: 50px;
- border-radius: 50%;
- align-self: center;
+  min-width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  align-self: center;
 }
 
 .card {
   background: white;
   padding: 5rem;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 }
 
 pre.error {
@@ -29,4 +29,13 @@ pre.error {
   background: white;
   line-height: 3;
   white-space: pre-line;
+}
+.loginDemo {
+  margin: 2px;
+  display: flex;
+  align-items: space-between;
+  justify-content: space-around;
+  .button {
+    border-radius: 10px;
+  }
 }
