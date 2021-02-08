@@ -67,8 +67,8 @@ router.get("/login", userController.loginForm);
 router.post("/login", authController.login);
 router.get(
   "/register",
-  // authController.isLoggedIn,
-  // authController.isTeacher,
+  authController.isLoggedIn,
+  authController.isTeacher,
   userController.registerForm,
 );
 router.get(
