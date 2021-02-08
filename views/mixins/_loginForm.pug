@@ -1,4 +1,22 @@
 mixin loginForm()
+    if(process.env.DEMO_ACCOUNTS)
+        div.loginDemo
+            form(action="/login" method="post" )
+                input(type="email" name="email" value="demoadmin@ncujhs.tech" hidden)
+                input(type="password" name="password" value="password" hidden)
+                input.button(type="submit" value="Admin Demo Login ➡️")
+            form(action="/login" method="post" )
+                input(type="email" name="email" value="demoteachermath@ncujhs.tech" hidden)
+                input(type="password" name="password" value="password" hidden)
+                input.button(type="submit" value="Teacher Demo Login ➡️")
+            form(action="/login" method="post" )
+                input(type="email" name="email" value="demostudent1@ncujhs.tech" hidden)
+                input(type="password" name="password" value="password" hidden)
+                input.button(type="submit" value="Student Demo Login ➡️")
+            form(action="/login" method="post" )
+                input(type="email" name="email" value="demoparent1@ncujhs.tech" hidden)
+                input(type="password" name="password" value="password" hidden)
+                input.button(type="submit" value="Parent Demo Login ➡️")
     form.form(action="/login" method="post")
         h2 login
         label(for="email") Email

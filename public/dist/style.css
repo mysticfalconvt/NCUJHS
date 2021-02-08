@@ -1315,7 +1315,7 @@ input[type="radio"]:checked + label span.radio::after {
   border: 0;
   background: #FFC40E;
   color: #303030;
-  font-family: 'Panama';
+  font-family: "Panama";
   font-weight: 600; }
 
 .avatar {
@@ -1336,6 +1336,18 @@ pre.error {
   background: white;
   line-height: 3;
   white-space: pre-line; }
+
+.loginDemo {
+  margin: 2px;
+  margin-bottom: 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: space-between;
+      align-items: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+  .loginDemo .button {
+    border-radius: 10px; }
 
 .PBIS_Container {
   height: 100%;
