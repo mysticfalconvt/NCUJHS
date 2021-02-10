@@ -18,11 +18,11 @@ block content
                 span.PBIS_Title #{schoolWidePbisData.teamsAtGoal} out of #{schoolWidePbisData.totalTeams} teams have reached level #{schoolWidePbisData.nextGoal}
             if user
                 .dashboardLinks
-                    if user.permissions.includes("teacher") || user.permissions.includes("admin")
+                    if user.permissions.includes("teacher") || user.permissions.includes("admin") || user.permissions.includes("para")
                         a.title_link(href="https://docs.google.com/spreadsheets/d/1SuXZeXmeW8M0yt_c8RPZuE-duT0JZSm_wOhJWt7aTvc/edit?usp=sharing" target="_blank") ** Attendance **
                         a.title_link(href="/progress") Engagement
                         a.title_link(href="/discipline/addNew") Discipline
-                    if !user.permissions.includes("student") || !user.permissions.includes("parent")
+                    if !user.permissions.includes("student") && !user.permissions.includes("parent")
                         a.title_link(href="/pbis/add") PBIS Business Card
                         a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSeUuCOIQ4ccf3rfHiIcK7a46cSQtN_s3hl4hmmY1Zm9d6C3fw/viewform?usp=sf_link" target="_blank") Covid Survey
                     if user.permissions.includes("pbis")
@@ -32,8 +32,8 @@ block content
                     if !user.permissions.includes("parent")
                         a.title_link(href="https://forms.gle/EddqxuGvcyDATRXB9" target="_blank") Weekly Meals
                     if user.permissions.includes("student")
-                        a.title_link(href="https://forms.gle/sgqgYUrJ1MkQX2MR9" target="_blank") Basketball Survey
-                    //-     a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSex56-bP4lKBW8jVZooDk6s2G14I7mr4wzpDoc_6g_0Lye8Cw/viewform?usp=sf_link" target="_blank") Covid Survey
+                        a.title_link(href="https://docs.google.com/forms/d/e/1FAIpQLSex56-bP4lKBW8jVZooDk6s2G14I7mr4wzpDoc_6g_0Lye8Cw/viewform?usp=sf_link" target="_blank") Covid Survey
+                    //-     a.title_link(href="https://forms.gle/sgqgYUrJ1MkQX2MR9" target="_blank") Basketball Survey
                     //- a.title_link(href="https://forms.gle/SVurYgGcd8W54Doo9" target="_blank") After School Signups
         if user
 

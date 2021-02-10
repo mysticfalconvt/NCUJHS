@@ -8,5 +8,6 @@ block content
             if user
                 if user.permissions.includes("teacher") || user.permissions.includes("admin")
                     a.title_link(href="/info/add") Add new 
+                    a.title_link(href="/dashboardLinks") 🔗 Dashboard Page Links
         +infoSearch()
         +infoTable(infos,path="/info/search/")

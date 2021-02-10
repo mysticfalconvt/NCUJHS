@@ -1,0 +1,26 @@
+extends layout
+
+block content 
+    .inner
+        h2=title 
+            if user
+                if user.permissions.includes("admin")
+                    a.title_link(href="/dashboardLinks/add") Add new 
+        table.table     
+            thead
+                td Title
+                td Link
+                td Permissions
+                td edit
+            each dashboardLink in dashboardLinks
+                tr
+                    td=dashboardLink.title
+                    td=dashboardLink.link 
+                    td=dashboardLink.permissions 
+                    td
+                        a(href=`/dashboardLinks/${dashboardLink._id}`) Edit
+
+
+        .dashboardLinks
+            each link in links 
+                a.title_link(href=`${link.link}`)=link.title

@@ -227,6 +227,32 @@ router.get(
   authController.isLoggedIn,
   catchErrors(infoController.editInfo),
 );
+
+//Dashboard Links Routes
+router.get("/dashboardLinks", catchErrors(infoController.getDashboardLink));
+router.get(
+  "/dashboardLinks/add",
+  authController.isLoggedIn,
+  infoController.addDashboardLink,
+);
+router.post(
+  "/dashboardLinks/add",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(infoController.createDashboardLink),
+);
+router.post(
+  "/dashboardLinks/add/:_id",
+  authController.isLoggedIn,
+  authController.isTeacher,
+  catchErrors(infoController.updateDashboardLink),
+);
+router.get(
+  "/dashboardLinks/:_id",
+  authController.isLoggedIn,
+  catchErrors(infoController.editDashboardLink),
+);
+
 // studentFocus routes
 router.get(
   "/studentFocus/search/:category",

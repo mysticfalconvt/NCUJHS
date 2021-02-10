@@ -1,0 +1,27 @@
+extends layout
+
+block content 
+    -const permissionList = ["admin","teacher","para", "student","parent","pbis"];
+    .inner 
+        h2 #{title}
+
+        form(action=`/dashboardLinks/add/${dashboardLinks._id || ''}` method="POST" class="card" )
+            label(for="title") Title
+            input(type="text" name="title" value=dashboardLinks.title)
+           
+            label(for="link") Link
+            input(type="text" name="link" value=`${dashboardLinks.link || ""}`)
+
+            - const permissions = dashboardLinks.permissions || []
+            p Permissions:
+            ul.tags
+                each permission in permissionList
+                    .tag.tag__choice
+                        input(type="checkbox" id=permission value=permission name="permissions" checked=(permissions.includes(permission)))
+                        label(for=permission) #{permission}
+
+            input(type="submit" value="Save →" class="button")
+        if dashboardLinks.title
+            form(action=`/dashboardlinks/add/${dashboardLinks._id || ''}` method="POST" class="calendar" )
+                input(type="hidden" name="deleted" value="true")
+                input.inner(type="submit" value="Delete Link" class="button")
