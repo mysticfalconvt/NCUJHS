@@ -36,6 +36,7 @@ require("./models/PbisTeam");
 require("./models/Discipline");
 require("./models/Progress");
 require("./models/Bullying");
+require("./models/DashboardLinks");
 
 // Start our app!
 const app = require("./app");

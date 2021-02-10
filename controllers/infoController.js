@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const { isStaff } = require("../handlers/permissions");
 const Info = mongoose.model("Info");
 const User = mongoose.model("User");
+const DashboardLinks = mongoose.model("DashboardLinks");
+
+// General Links Page Links
 
 exports.addInfo = (req, res) => {
   res.render("editInfo", { title: "Add Important Info" });
@@ -86,4 +89,73 @@ exports.searchInfos = async (req, res) => {
     })
     .limit(10);
   res.json(infos);
+};
+
+// Dashboard Page Links
+exports.addDashboardLink = (req, res) => {
+  res.render("dashboardLinksForm", {
+    title: "Add New Link to Dashboard",
+    dashboardLinks: {},
+  });
+};
+
+exports.createDashboardLink = async (req, res) => {
+  req.body.author = req.user.id;
+  const info = await new DashboardLinks(req.body).save();
+  req.flash("success", `Successfully Created ${info.title}.`);
+  res.redirect(`/dashboardLinks`);
+};
+
+exports.getDashboardLink = async (req, res) => {
+  if (req.user) {
+    // check if teacher for calendar events
+    if (isStaff(req.user)) {
+      const dashboardLinks = await DashboardLinks.find({
+        deleted: { $ne: "true" },
+      });
+      console.log(dashboardLinks);
+
+      links = await DashboardLinks.find({
+        $and: [
+          { permissions: { $in: req.user.permissions } },
+          { deleted: { $ne: "true" } },
+        ],
+      });
+
+      res.render("dashboardLinks", {
+        title: "List of links for dashboard page",
+        dashboardLinks,
+      });
+    }
+  } else {
+    res.redirect("/");
+  }
+};
+
+exports.editDashboardLink = async (req, res) => {
+  //find the event given id
+  const dashboardLinks = await DashboardLinks.findOne({ _id: req.params._id });
+
+  //confirm they are owner of the event or admin
+
+  //render out the edit form so they can edit
+  res.render("DashboardLinksForm", {
+    title: `edit ${dashboardLinks.title}`,
+    dashboardLinks,
+  });
+};
+
+exports.updateDashboardLink = async (req, res) => {
+  // find and update store
+  const info = await DashboardLinks.findOneAndUpdate(
+    { _id: req.params._id },
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    },
+  ).exec();
+  // redirect to the store and tell them it worked
+  req.flash("success", `Sucessfully Updated <strong>${info.title}</strong>.`);
+  res.redirect(`/`);
 };
