@@ -139,7 +139,7 @@ exports.editDashboardLink = async (req, res) => {
   //confirm they are owner of the event or admin
 
   //render out the edit form so they can edit
-  res.render("DashboardLinksForm", {
+  res.render("dashboardLinksForm", {
     title: `edit ${dashboardLinks.title}`,
     dashboardLinks,
   });
