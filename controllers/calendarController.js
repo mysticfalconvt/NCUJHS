@@ -4,6 +4,7 @@ const Calendar = mongoose.model("Calendar");
 const Callback = mongoose.model("Callback");
 const Pbis = mongoose.model("Pbis");
 const User = mongoose.model("User");
+const DashboardLinks = mongoose.model("DashboardLinks");
 const { getLatestProgresses } = require("../controllers/progressController");
 const { isStaff } = require("../handlers/permissions");
 // get yesterday's date
@@ -87,6 +88,12 @@ exports.dashboard = async (req, res) => {
   const schoolWidePbisData = await PbisTeam.findOne({ schoolWide: true });
   const pbisSchoolCount = await Pbis.find().countDocuments();
   let progresses = [];
+  let links = await DashboardLinks.find({
+    $and: [
+      { permissions: { $in: req?.user?.permissions } },
+      { deleted: { $ne: "true" } },
+    ],
+  });
   // check if logged in
   if (req.user) {
     // check if teacher for calendar events
@@ -171,6 +178,7 @@ exports.dashboard = async (req, res) => {
     pbisSchoolCount: pbisSchoolCount,
     schoolWidePbisData: schoolWidePbisData,
     progresses,
+    links,
   });
 };
 
