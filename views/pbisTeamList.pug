@@ -5,6 +5,9 @@ block content
         h1=title
             a.title_link(href="/pbis/team/add") Add a new PBIS Team
         
+        each date in dateList 
+            span=date.date.toLocaleDateString() 
+            span=date.quantity
         table.table
             thead
                 td Team Slogan
