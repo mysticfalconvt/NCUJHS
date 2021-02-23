@@ -1,24 +1,25 @@
-const mongoose = require("mongoose");
+const { date } = require('faker');
+const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const pbisTeamSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: "",
+    default: '',
   },
   teacher1: {
     type: mongoose.Schema.ObjectId,
-    ref: "User",
-    required: "You must supply a teacher1!",
+    ref: 'User',
+    required: 'You must supply a teacher1!',
   },
   teacher2: {
     type: mongoose.Schema.ObjectId,
-    ref: "User",
-    required: "You must supply a teacher2!",
+    ref: 'User',
+    required: 'You must supply a teacher2!',
   },
   teacher3: {
     type: mongoose.Schema.ObjectId,
-    ref: "User",
+    ref: 'User',
     default: null,
   },
   totalCards: {
@@ -49,16 +50,19 @@ const pbisTeamSchema = new mongoose.Schema({
   nextGoal: Number,
   teamsAtGoal: Number,
   totalTeams: Number,
+  cardsPerWeek: [Number],
+  weeksToDisplay: [String],
+  lastUpdated: Date,
 });
 
 function autopopulate(next) {
-  this.populate("teacher1");
-  this.populate("teacher2");
-  this.populate("teacher3");
+  this.populate('teacher1');
+  this.populate('teacher2');
+  this.populate('teacher3');
   next();
 }
 
-pbisTeamSchema.pre("find", autopopulate);
-pbisTeamSchema.pre("findOne", autopopulate);
+pbisTeamSchema.pre('find', autopopulate);
+pbisTeamSchema.pre('findOne', autopopulate);
 
-module.exports = mongoose.model("PbisTeam", pbisTeamSchema);
+module.exports = mongoose.model('PbisTeam', pbisTeamSchema);
