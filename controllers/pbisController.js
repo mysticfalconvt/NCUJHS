@@ -9,6 +9,7 @@ const averageCardsPerLevel = 15;
 const groupBy = require('lodash/groupBy');
 const moment = require('moment');
 const Chart = require('chart.js');
+const { date } = require('faker');
 
 updatePbisCounts = async (student) => {
   const pbisCount = await Pbis.find({
@@ -174,6 +175,39 @@ updateSchoolWidePbis = async () => {
     { schoolWide: true },
     update,
   );
+};
+
+updatePbisCardsPerWeek = async () => {
+  const schoolWidePbisData = await PbisTeam.findOne({ schoolWide: true });
+  const lastWeek = new Date().setDate(new Date().getDate() - 7);
+  if (schoolWidePbisData.lastUpdated < lastWeek) {
+    const pbisCards = await Pbis.find({}, 'category date');
+    dates = pbisCards.map((card) => {
+      return card.date;
+    });
+    const dateGroups = groupBy(dates, (date) => moment(date).week());
+    const dateList = [];
+    for (const [group, datesInGroup] of Object.entries(dateGroups)) {
+      const entry = { date: datesInGroup[0], quantity: datesInGroup.length };
+      dateList.push(entry);
+    }
+    dateList.sort((a, b) => a.date - b.date);
+    // const pbisChart = new Chart(ctx, )
+    const datesToShow = dateList.map((date) => date.date.toLocaleDateString());
+    const quantityToShow = dateList.map((date) => Number(date.quantity));
+    const updated = new Date();
+    console.log(datesToShow);
+    console.log(quantityToShow);
+    console.log(updated);
+    await PbisTeam.findOneAndUpdate(
+      { schoolWide: true },
+      {
+        cardsPerWeek: quantityToShow,
+        weeksToDisplay: datesToShow,
+        lastUpdated: updated,
+      },
+    );
+  }
 };
 
 exports.addPbis = async (req, res) => {
@@ -345,27 +379,16 @@ exports.addPbisTeam = (req, res) => {
 };
 
 exports.taTeamList = async (req, res) => {
-  const pbisCards = await Pbis.find({}, 'category date');
-  dates = pbisCards.map((card) => {
-    return card.date;
-  });
-  const dateGroups = groupBy(dates, (date) => moment(date).week());
-  const dateList = [];
-  for (const [group, datesInGroup] of Object.entries(dateGroups)) {
-    const entry = { date: datesInGroup[0], quantity: datesInGroup.length };
-    dateList.push(entry);
-  }
-  dateList.sort((a, b) => a.date - b.date);
-  // const pbisChart = new Chart(ctx, )
-  const datesToShow = dateList.map((date) => date.date.toLocaleDateString());
-  const quantityToShow = dateList.map((date) => Number(date.quantity));
+  await updatePbisCardsPerWeek();
+  const pbisCardInfo = await PbisTeam.findOne({ schoolWide: true });
+  const datesToShow = pbisCardInfo.weeksToDisplay;
+  const quantityToShow = pbisCardInfo.cardsPerWeek;
   const listOfTeams = await PbisTeam.find({ schoolWide: false });
   res.render('pbisTeamList', {
     title: 'PBIS Teams',
     listOfTeams,
     datesToShow,
     quantityToShow,
-    dateList,
   });
 };
 
