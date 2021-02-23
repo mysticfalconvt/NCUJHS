@@ -1,16 +1,19 @@
-const mongoose = require("mongoose");
-const Pbis = mongoose.model("Pbis");
-const User = mongoose.model("User");
-const PbisTeam = mongoose.model("PbisTeam");
-const { catchErrors } = require("../handlers/errorHandlers");
-const { isStaff } = require("../handlers/permissions");
-const { sendPbisWinners } = require("./mailController");
+const mongoose = require('mongoose');
+const Pbis = mongoose.model('Pbis');
+const User = mongoose.model('User');
+const PbisTeam = mongoose.model('PbisTeam');
+const { catchErrors } = require('../handlers/errorHandlers');
+const { isStaff } = require('../handlers/permissions');
+const { sendPbisWinners } = require('./mailController');
 const averageCardsPerLevel = 15;
+const groupBy = require('lodash/groupBy');
+const moment = require('moment');
+const Chart = require('chart.js');
 
 updatePbisCounts = async (student) => {
   const pbisCount = await Pbis.find({
     student: student,
-    counted: "",
+    counted: '',
   }).countDocuments();
   const yearPbisCount = await Pbis.find({
     student: student,
@@ -24,7 +27,7 @@ updatePbisCounts = async (student) => {
 
   const taNumbers = await Pbis.find({
     student: { $in: taStudents },
-    counted: "",
+    counted: '',
   }).countDocuments();
   const taTeacher = await User.findOneAndUpdate(
     { _id: updatedStudent.ta._id },
@@ -49,7 +52,7 @@ updateTeamPbis = async (team) => {
   // numberOfStudents = taTeamStudents.length();
   const taTeamUncounted = await Pbis.find({
     student: { $in: taTeamStudents },
-    counted: "",
+    counted: '',
   }).countDocuments();
   const taTeamTotalCards = await Pbis.find({
     student: { $in: taTeamStudents },
@@ -83,8 +86,8 @@ checkInTeamCards = async () => {
 
 resetPbisCounts = async () => {
   pbis = await Pbis.update(
-    { counted: "" },
-    { counted: "true" },
+    { counted: '' },
+    { counted: 'true' },
     { multi: true },
   );
   users = await User.update(
@@ -96,7 +99,7 @@ resetPbisCounts = async () => {
 
 getStudentWinner = async (teacher, previousWinner) => {
   const taStudents = await User.find({ ta: teacher }, { _id: 1 }).distinct(
-    "_id",
+    '_id',
   );
   const winner = await Pbis.aggregate([
     {
@@ -105,7 +108,7 @@ getStudentWinner = async (teacher, previousWinner) => {
           { student: { $in: taStudents } },
           { student: { $ne: previousWinner || null } },
         ],
-        counted: "",
+        counted: '',
       },
     },
     { $sample: { size: 1 } },
@@ -126,7 +129,7 @@ getStudentWinner = async (teacher, previousWinner) => {
     );
     return winnerName.name;
   } else {
-    return "No Winner";
+    return 'No Winner';
   }
 };
 
@@ -174,7 +177,7 @@ updateSchoolWidePbis = async () => {
 };
 
 exports.addPbis = async (req, res) => {
-  if (req.user.permissions.includes("teacher")) {
+  if (req.user.permissions.includes('teacher')) {
     const students = await User.find({
       $or: [
         // { math: req.user._id },
@@ -195,24 +198,24 @@ exports.addPbis = async (req, res) => {
         { block9: req.user._id },
       ],
     });
-    res.render("pbisForm", { title: "Virtual PBIS Business Card", students });
+    res.render('pbisForm', { title: 'Virtual PBIS Business Card', students });
   } else {
-    res.render("pbisForm", { title: "Virtual PBIS Business Card" });
+    res.render('pbisForm', { title: 'Virtual PBIS Business Card' });
   }
 };
 
 exports.getPbis = async (req, res) => {
-  const category = req.params.category || "category";
+  const category = req.params.category || 'category';
   let sort = {};
   sort[category] = 1;
   let pbiss = {};
   if (req.user) {
     // check if teacher for PBIS
     if (isStaff(req.user)) {
-      pbiss = await Pbis.find({ counted: "" }).sort(sort);
+      pbiss = await Pbis.find({ counted: '' }).sort(sort);
     }
   }
-  res.render("pbisData", { title: "PBIS Data", pbiss: pbiss });
+  res.render('pbisData', { title: 'PBIS Data', pbiss: pbiss });
 };
 
 exports.createPbis = async (req, res) => {
@@ -221,7 +224,7 @@ exports.createPbis = async (req, res) => {
   // get count for student and save
   const pbisCount = await Pbis.find({
     student: pbis.student._id,
-    counted: "",
+    counted: '',
   }).countDocuments();
 
   const yearPbisCount = await Pbis.find({
@@ -237,22 +240,22 @@ exports.createPbis = async (req, res) => {
 
   const taNumbers = await Pbis.find({
     student: { $in: taStudents },
-    counted: "",
+    counted: '',
   }).countDocuments();
   const taTeacher = await User.findOneAndUpdate(
     { _id: student.ta._id },
     { taPbisCount: taNumbers },
   );
-  req.flash("success", `Successfully Created !!`);
+  req.flash('success', `Successfully Created !!`);
   res.redirect(`/`);
 };
 
 exports.getWeeklyPbis = async (req, res) => {
   let teachers = await User.find({
-    $and: [{ permissions: "teacher" }, { taPbisCount: { $gt: 0 } }],
+    $and: [{ permissions: 'teacher' }, { taPbisCount: { $gt: 0 } }],
   })
-    .populate("previousPbisWinner")
-    .populate("currentPbisWinner");
+    .populate('previousPbisWinner')
+    .populate('currentPbisWinner');
   // console.log(teachers);
   let teachersWithWinners = [];
   for (let teacher of teachers) {
@@ -274,8 +277,8 @@ exports.getWeeklyPbis = async (req, res) => {
     teachersWithWinners.push(teacherWithWinner);
   }
   sendPbisWinners(teachersWithWinners);
-  res.render("weeklyPbis", {
-    title: "PBIS Counts since last collection",
+  res.render('weeklyPbis', {
+    title: 'PBIS Counts since last collection',
     teachers: teachersWithWinners,
   });
 };
@@ -303,14 +306,14 @@ exports.taPbis = async (req, res) => {
     { ta: { $in: teachers } },
     { name: 1 },
   ).sort({ name: 1 });
-  res.render("taPbisList", { title: "TA PBIS Entry", taStudents });
+  res.render('taPbisList', { title: 'TA PBIS Entry', taStudents });
 };
 
 exports.bulkPbisCard = async (req, res) => {
   const card = {
     student: req.params._id,
     teacher: req.user._id,
-    category: "Physical Card",
+    category: 'Physical Card',
   };
   for (let i = 0; i < req.body.numberOfCards; i++) {
     const pbis = await new Pbis(card).save();
@@ -318,10 +321,10 @@ exports.bulkPbisCard = async (req, res) => {
   const student = await User.findOne({ _id: req.params._id }, { name: 1 });
   catchErrors(updatePbisCounts(req.params._id));
   req.flash(
-    "success",
+    'success',
     `Successfully counted ${req.body.numberOfCards} Cards for ${student.name}`,
   );
-  res.redirect("back");
+  res.redirect('back');
 };
 
 exports.quickCard = async (req, res) => {
@@ -333,17 +336,37 @@ exports.quickCard = async (req, res) => {
   const pbis = await new Pbis(card).save();
 
   catchErrors(updatePbisCounts(req.params._id));
-  res.redirect("back");
+  res.redirect('back');
 };
 
 exports.addPbisTeam = (req, res) => {
   const pbisTeam = {};
-  res.render("editPbisTeam", { title: "Add a new PBIS Team", pbisTeam });
+  res.render('editPbisTeam', { title: 'Add a new PBIS Team', pbisTeam });
 };
 
 exports.taTeamList = async (req, res) => {
+  const pbisCards = await Pbis.find({}, 'category date');
+  dates = pbisCards.map((card) => {
+    return card.date;
+  });
+  const dateGroups = groupBy(dates, (date) => moment(date).week());
+  const dateList = [];
+  for (const [group, datesInGroup] of Object.entries(dateGroups)) {
+    const entry = { date: datesInGroup[0], quantity: datesInGroup.length };
+    dateList.push(entry);
+  }
+  dateList.sort((a, b) => a.date - b.date);
+  // const pbisChart = new Chart(ctx, )
+  const datesToShow = dateList.map((date) => date.date.toLocaleDateString());
+  const quantityToShow = dateList.map((date) => Number(date.quantity));
   const listOfTeams = await PbisTeam.find({ schoolWide: false });
-  res.render("pbisTeamList", { title: "PBIS Teams", listOfTeams });
+  res.render('pbisTeamList', {
+    title: 'PBIS Teams',
+    listOfTeams,
+    datesToShow,
+    quantityToShow,
+    dateList,
+  });
 };
 
 exports.createPbisTeam = async (req, res) => {
@@ -351,11 +374,11 @@ exports.createPbisTeam = async (req, res) => {
     req.body.teacher3 = null;
   }
   const pbisTeam = await new PbisTeam(req.body).save();
-  res.redirect("/pbis/teamList");
+  res.redirect('/pbis/teamList');
 };
 exports.editPbisTeam = async (req, res) => {
   const pbisTeam = await PbisTeam.findOne({ _id: req.params._id });
-  res.render("editPbisTeam", {
+  res.render('editPbisTeam', {
     title: `Edit Team ${pbisTeam.name}`,
     pbisTeam,
   });
@@ -368,12 +391,12 @@ exports.updatePbisTeam = async (req, res) => {
     { _id: req.params._id },
     req.body,
   );
-  res.redirect("/pbis/teamList");
+  res.redirect('/pbis/teamList');
 };
 
 exports.weeklyPbisCheckIn = async (req, res) => {
   await checkInTeamCards();
   await resetPbisCounts();
   await updateSchoolWidePbis();
-  res.redirect("/pbis/teamList");
+  res.redirect('/pbis/teamList');
 };
