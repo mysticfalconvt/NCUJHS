@@ -357,10 +357,16 @@ exports.taTeamList = async (req, res) => {
   }
   dateList.sort((a, b) => a.date - b.date);
   // const pbisChart = new Chart(ctx, )
-  console.log(dateList);
-
+  const datesToShow = dateList.map((date) => date.date.toLocaleDateString());
+  const quantityToShow = dateList.map((date) => Number(date.quantity));
   const listOfTeams = await PbisTeam.find({ schoolWide: false });
-  res.render('pbisTeamList', { title: 'PBIS Teams', listOfTeams, dateList });
+  res.render('pbisTeamList', {
+    title: 'PBIS Teams',
+    listOfTeams,
+    datesToShow,
+    quantityToShow,
+    dateList,
+  });
 };
 
 exports.createPbisTeam = async (req, res) => {
