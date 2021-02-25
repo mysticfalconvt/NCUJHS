@@ -6,6 +6,7 @@ include mixins/_teacherCurrentWorkForm
 include mixins/_showCurrentWork
 include mixins/_pbisCards
 include mixins/_progressDisplay
+include mixins/_pbisDashboardChart
 
 block content
     .inner
@@ -14,8 +15,12 @@ block content
             .PBIS_Container
                 progress.PBIS_Progress(value=schoolWidePbisData.teamsAtGoal max=schoolWidePbisData.totalTeams)
                 span.PBIS_Title School Wide PBIS Card Total!!
-                span.PBIS_Counter=pbisSchoolCount
                 span.PBIS_Title #{schoolWidePbisData.teamsAtGoal} out of #{schoolWidePbisData.totalTeams} teams have reached level #{schoolWidePbisData.nextGoal}
+                .counterContainer
+                    span.PBIS_Counter=pbisSchoolCount
+                    +pbisDashboardChart(datesToShow, quantityToShow)
+            //- span=datesToShow
+            //- span=quantityToShow
             if user
                 .dashboardLinks
                     each link in links 

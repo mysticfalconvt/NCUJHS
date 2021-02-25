@@ -380,15 +380,18 @@ exports.addPbisTeam = (req, res) => {
 
 exports.taTeamList = async (req, res) => {
   await updatePbisCardsPerWeek();
+  const cumulativeSum = ((sum) => (value) => (sum += value))(0);
   const pbisCardInfo = await PbisTeam.findOne({ schoolWide: true });
   const datesToShow = pbisCardInfo.weeksToDisplay;
   const quantityToShow = pbisCardInfo.cardsPerWeek;
+  // const cumulativeQuantity = quantityToShow.map(cumulativeSum);
   const listOfTeams = await PbisTeam.find({ schoolWide: false });
   res.render('pbisTeamList', {
     title: 'PBIS Teams',
     listOfTeams,
     datesToShow,
     quantityToShow,
+    // cumulativeQuantity,
   });
 };
 

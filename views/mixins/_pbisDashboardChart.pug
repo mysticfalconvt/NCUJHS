@@ -1,0 +1,46 @@
+mixin pbisDashboardChart(dateLabels = [], cardNumbers=[])
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js")
+    .chart-container
+                
+        canvas#myChart(height="70px" width="200px" ).PBISChart
+        script.
+            var ctx = document.getElementById("myChart").getContext('2d');
+            const data = !{JSON.stringify(cardNumbers)}
+            const label= !{JSON.stringify(dateLabels)}
+            var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+            labels: label,
+            datasets: [{
+            //- label: 'Cards given per week',
+            type: 'line',
+            data: data,
+            //- yAxiId: 'y-axis-0',
+            backgroundColor: [
+            'rgba(255, 130, 130, 0.2)',
+            ],
+            borderColor: [
+            'rgba(160,12,12,1)',
+            ],
+            borderWidth: 2,
+            pointRadius: 0,
+            },
+            ]
+            },
+            options: {
+                
+                legend:{display: false},
+            scales: {
+                xAxes: [{display: false}],
+                display: false,
+            yAxes: [{
+            position: "left",
+            display: false,
+            id: "y-axis-1",
+            beginAtZero: true,
+            type: 'linear',
+            stacked: false,
+            }, ]
+            }
+            }
+            });  
