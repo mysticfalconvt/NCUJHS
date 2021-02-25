@@ -45,12 +45,23 @@
   text-align: center;
   font-size: 1.1em;
 }
-
+.counterContainer {
+  position: relative;
+  margin-bottom: 10px;
+}
 .PBIS_Counter {
   color: $pink;
-  display: block;
+  // position: absolute;
+  top: 0;
+  display: inline;
   text-align: center;
   font-size: 2em;
+}
+.PBISChart {
+  position: absolute;
+  top: -5.5rem;
+  right: 0;
+  z-index: -10;
 }
 
 .PBIS_Progress {
