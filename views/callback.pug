@@ -16,7 +16,11 @@ block content
     .single.details.inner
         p= callback.description
         p= "Assigned by: " + callback.teacher.name
-        a(href=`//${callback.link}`)= "link to: " + callback.linkTitle
+        if callback.link.startsWith('http')
+            a(href=`${callback.link}`) Link to: #{callback.linkTitle}
+        else
+            a(href=`//${callback.link}`) Link to: #{callback.linkTitle || 'LINK'}
+        
         if owner
             hr
             form(action=`/callback/add/${callback._id || ''}` method="POST" )
