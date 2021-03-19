@@ -8,6 +8,7 @@ const infoController = require("../controllers/infoController");
 const studentFocusController = require("../controllers/studentFocusController");
 const mailController = require("../controllers/mailController");
 const taController = require("../controllers/taController");
+const awardsController = require("../controllers/awardsController");
 const pbisController = require("../controllers/pbisController");
 const disciplineController = require("../controllers/disciplineController");
 const progressController = require("../controllers/progressController");
@@ -426,6 +427,25 @@ router.get(
   authController.isTeacher,
   catchErrors(disciplineController.viewPrintBullying),
 );
+
+/* 
+	awards
+*/
+
+router.get(`/awards/add`,
+authController.isLoggedIn,
+authController.isTeacher,
+awardsController.addAward)
+
+router.post(`/awards/add`, 
+authController.isLoggedIn, 
+authController.isTeacher, 
+awardsController.createAward)
+
+router.get(`/awards/view`,
+authController.isLoggedIn,
+authController.isTeacher,
+awardsController.viewAwards)
 
 /* 
 	API

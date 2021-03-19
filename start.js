@@ -37,6 +37,7 @@ require("./models/Discipline");
 require("./models/Progress");
 require("./models/Bullying");
 require("./models/DashboardLinks");
+require("./models/Awards");
 
 // Start our app!
 const app = require("./app");

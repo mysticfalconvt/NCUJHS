@@ -1,0 +1,26 @@
+extends layout
+
+
+block content
+    .inner
+        h1=title
+            a.title_link(href="/awards/add") Add a new Award
+        
+       
+        
+        table.table
+            thead
+                td Student
+                td Teacher
+                td TA
+                td Category
+                td Teacher Subject
+                
+                
+            each award in awards
+                tr
+                    td=award.student.name
+                    td=award.teacher.name
+                    td=award.student.ta.name
+                    td=award.category
+                    td=award.teacher.teacherSubject
