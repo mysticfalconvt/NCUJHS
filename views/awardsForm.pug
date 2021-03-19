@@ -8,18 +8,18 @@ block content
             label(for="studentName") Student Name
             .student
                 if award.student
-                    input(name="studentName" value=award.student.name disabled="disabled")
+                    input(name="studentName" value=award.student.name disabled="disabled" required)
                 else
-                    input(name="studentName" id="search" type="text" autofocus value=award.student)
+                    input(name="studentName" id="search" type="text" autofocus value=award.student required)
                 .search
                     .search__results
 
             if award.student
                 .search__input
-                    input(name="student" id="id" value=award.student._id hidden)
+                    input(name="student" id="id" value=award.student._id hidden required)
             else
                 .search__input
-                    input(name="student" id="id" value=award.student hidden)
+                    input(name="student" id="id" value=award.student hidden required)
 
             input(name="trimester" value="2" hidden)
 
