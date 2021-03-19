@@ -7,8 +7,9 @@ const User = mongoose.model("User");
 const Award = mongoose.model("Awards");
 
 exports.addAward = async (req, res) => {
-   
-      res.render('awardsForm', { title: 'Give HOWL Award' , award: {}});
+    awards = await Award.find({teacher: req.user.id})
+//    res.json(awards)
+      res.render('awardsForm', { title: 'Give HOWL Award' , award: {}, awards: awards});
    
   };
 

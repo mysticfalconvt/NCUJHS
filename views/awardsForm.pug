@@ -35,3 +35,7 @@ block content
                     span.radio Perserverance
 
             input(type="submit" value="Save →" class="button")
+
+       
+        each oldAward in awards 
+            p #{oldAward.student.name} - #{oldAward.category}
