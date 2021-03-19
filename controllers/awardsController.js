@@ -21,7 +21,7 @@ exports.addAward = async (req, res) => {
 
 
   exports.viewAwards = async (req, res) => {
-awards = await Awards.find();
+awards = await Awards.find({trimester: "2"});
 res.render('viewAwards', {title: "View All HOWL Awards", awards: awards})
 
   }

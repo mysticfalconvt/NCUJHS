@@ -16,7 +16,7 @@ const awardsSchema = new mongoose.Schema({
     ref: "User",
     required: "You must supply a student!",
   },
-    
+    trimester: String,
   category: {
     type: String,
     default: "",
