@@ -21,7 +21,11 @@ exports.addAward = async (req, res) => {
 
 
   exports.viewAwards = async (req, res) => {
-awards = await Awards.find({trimester: "2"});
+    let sort ={date: -1}
+    // if(req.user.id==="5efe227b821ebd07800f8afc"){
+    //   sort[category] = 1;
+    // }
+awards = await Awards.find({trimester: "2"}).sort(sort);
 res.render('viewAwards', {title: "View All HOWL Awards", awards: awards})
 
   }
