@@ -15,6 +15,7 @@ block content
                 td TA
                 td Category
                 td Teacher Subject
+                td Date
                 
                 
             each award in awards
@@ -24,3 +25,4 @@ block content
                     td=award.student.ta.name
                     td=award.category
                     td=award.teacher.teacherSubject
+                    td=award.date.toDateString()
